@@ -1,6 +1,6 @@
-package democretes.api.energy;
+package democretes.api.macht;
 
-/** Proper use of IMachtStorage. Use this in conjuction with other classes to easily implement the Macht api.
+/** Proper use of IMachtStorage. Use this in conjunction with other tiles to easily implement the Macht api.
  * 
  * @author Democretes
  *

@@ -1,4 +1,4 @@
-package democretes.api.energy;
+package democretes.api.macht;
 
 /** TileEntities that extend IMachtStorage are able to store macht.
  * 	Please note that this extends IMachtHandler.
@@ -20,15 +20,15 @@ public interface IMachtStorage extends IMachtHandler {
 	 */
 	public void setSupercharged(boolean charge);
 	
-	/** 
+	/** Return the maximum amount of macht the tile can store.
 	 * 
-	 * @return
+	 * @return capacity
 	 */
 	public int getCapacity();
 	
-	/**
+	/** Returns the amount of macht currently stored.
 	 * 
-	 * @return
+	 * @return macht
 	 */
 	public int getMachtStored();
 

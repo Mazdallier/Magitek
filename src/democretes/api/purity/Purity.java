@@ -1,5 +1,7 @@
 package democretes.api.purity;
 
+import net.minecraft.nbt.NBTTagCompound;
+
 public class Purity implements IPurityHandler {
 
 	int purity = 0;
@@ -58,5 +60,16 @@ public class Purity implements IPurityHandler {
 			this.purity = this.minPurity;
 		}
 	}
+	
+	public void writeToNBT(NBTTagCompound nbt) {
+		nbt.setInteger("Purity", this.purity);
+		nbt.setInteger("MaxPurity", this.maxPurity);
+		nbt.setInteger("MinPurity", this.minPurity);
+	}
 
+	public void readFromNBT(NBTTagCompound nbt) {
+		this.purity = nbt.getInteger("Purity");
+		this.maxPurity = nbt.getInteger("MaxPurity");
+		this.minPurity = nbt.getInteger("MinPurity");
+	}
 }

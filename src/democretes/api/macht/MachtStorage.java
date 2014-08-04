@@ -1,5 +1,7 @@
 package democretes.api.macht;
 
+import net.minecraft.nbt.NBTTagCompound;
+
 /** Proper use of IMachtStorage. Use this in conjunction with other tiles to easily implement the Macht api.
  * 
  * @author Democretes
@@ -56,5 +58,16 @@ public class MachtStorage implements IMachtStorage {
 	public void setSupercharged(boolean charge) {
 		this.supercharge = charge;		
 	}
-
+	
+	public void writeToNBT(NBTTagCompound nbt) {
+		nbt.setInteger("Macht", this.macht);
+		nbt.setBoolean("Charge", this.supercharge);
+		nbt.setInteger("Capacity", this.capacity);
+	}
+	
+	public void readFromNBT(NBTTagCompound nbt) {
+		this.capacity = nbt.getInteger("Capacity");
+		this.macht = nbt.getInteger("Macht");
+		this.supercharge = nbt.getBoolean("Charge");
+	}
 }

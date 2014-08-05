@@ -8,23 +8,26 @@ public class TileSolarGenerator extends TileGeneratorBase {
 
 	@Override
 	public boolean canGenerate() {
-		return this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord, this.zCoord) 
-				&& this.worldObj.isDaytime() 
-				&& !this.worldObj.isRaining();
+		if(this.worldObj.isRaining() || this.worldObj.isThundering()) {
+			return false;
+		}
+		return this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord + 1, this.zCoord) 
+				&& this.worldObj.isDaytime();
 	}
 
 	private int count;
 	@Override
 	public int getFuel() {
 		count ++;
-		if(count >= 80) {
+		if(count >= 40) {
+			count = 0;
 			this.decreasePurity(1);
 			if(isDark()) {
-				return 2;
+				return 1;
 			}else if(isLight()) {
-				return 8;
-			}else{
 				return 4;
+			}else{
+				return 2;
 			}
 		}
 		return 0;

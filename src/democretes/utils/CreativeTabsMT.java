@@ -4,9 +4,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 
-public class CreativeTabsEM extends CreativeTabs {
+public class CreativeTabsMT extends CreativeTabs {
 
-	public CreativeTabsEM(int par1, String par2Str) {
+	public CreativeTabsMT(int par1, String par2Str) {
 		super(par1, par2Str);
 	}
 

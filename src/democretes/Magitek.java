@@ -1,6 +1,7 @@
 package democretes;
 
 import java.io.File;
+import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -12,13 +13,13 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import democretes.block.BlocksEM;
-import democretes.item.ItemsEM;
+import democretes.block.BlocksMT;
+import democretes.item.ItemsMT;
 import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
-import democretes.utils.CreativeTabsEM;
+import democretes.utils.CreativeTabsMT;
 import democretes.utils.handlers.ConfigHandler;
-import democretes.utils.handlers.EMEventHandler;
+import democretes.utils.handlers.MTEventHandler;
 import democretes.utils.handlers.GuiHandler;
 import democretes.utils.network.PacketHandler;
 
@@ -26,22 +27,21 @@ import democretes.utils.network.PacketHandler;
 	 name = Reference.MOD_NAME, 
 	 version = "0.0.1")
  
-public class Electromancy {
+public class Magitek {
 
 	@Instance(Reference.MOD_ID)
-    public static Electromancy instance;
+    public static Magitek instance;
 	
 	@SidedProxy(clientSide = "democretes.proxy.ClientProxy", serverSide = "democretes.proxy.CommonProxy")
     public static CommonProxy proxy;
 	
-	public static CreativeTabs tabEM = new CreativeTabsEM(CreativeTabs.getNextID(), Reference.MOD_NAME);	
-	
-	
+	public static CreativeTabs tabMT = new CreativeTabsMT(CreativeTabs.getNextID(), Reference.MOD_NAME);	
+		
 	@EventHandler
 	public void foreplay(FMLPreInitializationEvent event) {
-		ConfigHandler.init(new File(event.getModConfigurationDirectory(), "Electromancy.cfg"));
-		BlocksEM.init();
-		ItemsEM.init();
+		ConfigHandler.init(new File(event.getModConfigurationDirectory(), "Magitek.cfg"));
+		BlocksMT.init();
+		ItemsMT.init();
 	}
 	
 	@EventHandler
@@ -49,7 +49,7 @@ public class Electromancy {
 		PacketHandler.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		proxy.initRenderers();
-		MinecraftForge.EVENT_BUS.register(new EMEventHandler());
+		MinecraftForge.EVENT_BUS.register(new MTEventHandler());
 	}
 	
 	@EventHandler

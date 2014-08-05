@@ -59,15 +59,15 @@ public class MachtStorage implements IMachtStorage {
 		this.supercharge = charge;		
 	}
 	
-	public void writeToNBT(NBTTagCompound nbt) {
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		nbt.setInteger("Macht", this.macht);
 		nbt.setBoolean("Charge", this.supercharge);
-		nbt.setInteger("Capacity", this.capacity);
+		return nbt;
 	}
 	
-	public void readFromNBT(NBTTagCompound nbt) {
-		this.capacity = nbt.getInteger("Capacity");
+	public MachtStorage readFromNBT(NBTTagCompound nbt) {
 		this.macht = nbt.getInteger("Macht");
 		this.supercharge = nbt.getBoolean("Charge");
+		return this;
 	}
 }

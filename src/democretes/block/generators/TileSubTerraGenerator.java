@@ -8,16 +8,17 @@ public class TileSubTerraGenerator extends TileGeneratorBase {
 
 	@Override
 	public boolean canGenerate() {
-		return this.xCoord < 6;
+		return this.yCoord < 6;
 	}
 
 	int count;
 	@Override
 	public int getFuel() {
 		count++;
-		if(count == 40) {
-			this.decreasePurity(1);
-			return 10 + (this.getPurity()/500);
+		if(count >= 20) {
+			this.decreasePurity(5);
+			count = 0;
+			return 5 + (this.getPurity()/500);
 		}
 		return 0;
 	}

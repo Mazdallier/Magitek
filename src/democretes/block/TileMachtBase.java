@@ -4,7 +4,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import democretes.api.macht.IMachtStorage;
 import democretes.api.macht.MachtStorage;
 
-public class TileMachtBase extends TileTRBase implements IMachtStorage {
+public class TileMachtBase extends TileMTBase implements IMachtStorage {
 
 	private MachtStorage macht;
 	

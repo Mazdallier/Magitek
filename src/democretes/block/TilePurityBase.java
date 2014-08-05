@@ -6,7 +6,7 @@ import democretes.api.purity.Purity;
 
 public class TilePurityBase extends TileMachtBase implements IPurityHandler{
 
-	Purity purity = new Purity();
+	protected Purity purity = new Purity();
 	
 	public TilePurityBase(int machtCapacity) {
 		super(machtCapacity);
@@ -44,14 +44,18 @@ public class TilePurityBase extends TileMachtBase implements IPurityHandler{
 	
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
-		this.purity.writeToNBT(nbt);
 		super.writeToNBT(nbt);
+		this.purity.writeToNBT(nbt);
+	}
+	
+	public void setPurity(int amount) {
+		this.purity.purity = amount;
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
-		this.purity.readFromNBT(nbt);
 		super.readFromNBT(nbt);
+		this.purity.readFromNBT(nbt);
 	}
 
 }

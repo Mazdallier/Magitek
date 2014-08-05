@@ -5,16 +5,17 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import democretes.Electromancy;
+import democretes.Magitek;
 import democretes.api.block.BlockInfo;
 import democretes.api.block.IBlockDebug;
 import democretes.api.macht.IMachtStorage;
+import democretes.api.purity.IPurityHandler;
 
-public class BlockEMBase extends BlockContainer implements IBlockDebug {
+public class BlockMTBase extends BlockContainer implements IBlockDebug {
 
-	public BlockEMBase() {
+	public BlockMTBase() {
 		super(Material.iron);
-		setCreativeTab(Electromancy.tabEM);
+		setCreativeTab(Magitek.tabMT);
 		setHardness(2F);
 	}
 
@@ -25,11 +26,15 @@ public class BlockEMBase extends BlockContainer implements IBlockDebug {
 
 	@Override
 	public BlockInfo getInfo(EntityPlayer player, int x, int y, int z) {
+		BlockInfo info = new BlockInfo(player, x, y, z);
 		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
-		if(tile instanceof IMachtStorage) {
-			return new BlockInfo(player, x, y, z, ((IMachtStorage)tile).getMachtStored());
+		if(tile instanceof IPurityHandler) {
+			info.setPurity(((IPurityHandler)tile).getPurity());
 		}
-		return new BlockInfo(player, x, y, z);
+		if(tile instanceof IMachtStorage) {
+			info.setMacht(((IMachtStorage)tile).getMachtStored());
+		}
+		return info;
 	}
 
 	

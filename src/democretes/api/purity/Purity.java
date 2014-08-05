@@ -4,9 +4,9 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class Purity implements IPurityHandler {
 
-	int purity = 0;
-	int maxPurity = 2000;
-	int minPurity = -2000;
+	public int purity = 0;
+	public int maxPurity = 2000;
+	public int minPurity = -2000;
 	
 	public Purity() {}
 	
@@ -61,15 +61,14 @@ public class Purity implements IPurityHandler {
 		}
 	}
 	
-	public void writeToNBT(NBTTagCompound nbt) {
+	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		nbt.setInteger("Purity", this.purity);
-		nbt.setInteger("MaxPurity", this.maxPurity);
-		nbt.setInteger("MinPurity", this.minPurity);
+		return nbt;
 	}
 
-	public void readFromNBT(NBTTagCompound nbt) {
+	public Purity readFromNBT(NBTTagCompound nbt) {
 		this.purity = nbt.getInteger("Purity");
-		this.maxPurity = nbt.getInteger("MaxPurity");
-		this.minPurity = nbt.getInteger("MinPurity");
+		return this;
 	}
+	
 }

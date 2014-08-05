@@ -1,5 +1,6 @@
 package democretes.block.generators;
 
+import net.minecraft.nbt.NBTTagCompound;
 import democretes.block.TilePurityBase;
 
 public abstract class TileGeneratorBase extends TilePurityBase {
@@ -9,11 +10,10 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 		super(machtCapacity);
 	}
 
-	private int count;
 	@Override
 	public void updateEntity() {
-		if(canGenerate() && !this.worldObj.isRemote) {
-			receiveMacht(getFuel());
+		if(this.canGenerate() && !this.worldObj.isRemote) {
+			this.receiveMacht(this.getFuel());
 		}
 	}
 	

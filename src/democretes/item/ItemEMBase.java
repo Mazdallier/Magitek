@@ -3,9 +3,9 @@ package democretes.item;
 import democretes.Electromancy;
 import net.minecraft.item.Item;
 
-public class ItemTRBase extends Item {
+public class ItemEMBase extends Item {
 	
-	public ItemTRBase() {
+	public ItemEMBase() {
 		setCreativeTab(Electromancy.tabEM);
 	}
 

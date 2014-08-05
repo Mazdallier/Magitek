@@ -1,7 +1,7 @@
 package democretes.block.altar;
 
-import democretes.block.BlockTRBase;
+import democretes.block.BlockEMBase;
 
-public class BlockAltar extends BlockTRBase {
+public class BlockAltar extends BlockEMBase {
 
 }

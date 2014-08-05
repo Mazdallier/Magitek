@@ -1,5 +1,6 @@
 package democretes.block;
 
+import net.minecraft.nbt.NBTTagCompound;
 import democretes.api.macht.IMachtStorage;
 import democretes.api.macht.MachtStorage;
 
@@ -39,6 +40,18 @@ public class TileMachtBase extends TileTRBase implements IMachtStorage {
 	@Override
 	public int getMachtStored() {
 		return this.macht.getMachtStored();
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		this.macht.writeToNBT(nbt);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		this.macht.readFromNBT(nbt);
 	}
 
 }

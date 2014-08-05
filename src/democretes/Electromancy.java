@@ -12,19 +12,19 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import democretes.block.BlocksTR;
-import democretes.item.ItemsTR;
+import democretes.block.BlocksEM;
+import democretes.item.ItemsEM;
 import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
 import democretes.utils.CreativeTabsEM;
 import democretes.utils.handlers.ConfigHandler;
+import democretes.utils.handlers.EMEventHandler;
 import democretes.utils.handlers.GuiHandler;
 import democretes.utils.network.PacketHandler;
 
 @Mod(modid = Reference.MOD_ID, 
 	 name = Reference.MOD_NAME, 
-	 version = "0.0.1", 
-	 dependencies = "required-after:CoFHCore")
+	 version = "0.0.1")
  
 public class Electromancy {
 
@@ -39,9 +39,9 @@ public class Electromancy {
 	
 	@EventHandler
 	public void foreplay(FMLPreInitializationEvent event) {
-		ConfigHandler.init(new File(event.getModConfigurationDirectory(), "Technology Refined.cfg"));
-		BlocksTR.init();
-		ItemsTR.init();
+		ConfigHandler.init(new File(event.getModConfigurationDirectory(), "Electromancy.cfg"));
+		BlocksEM.init();
+		ItemsEM.init();
 	}
 	
 	@EventHandler
@@ -49,11 +49,12 @@ public class Electromancy {
 		PacketHandler.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		proxy.initRenderers();
-		//MinecraftForge.EVENT_BUS.register(new EMEventHandler());
+		MinecraftForge.EVENT_BUS.register(new EMEventHandler());
 	}
 	
 	@EventHandler
 	public void orgasm(FMLPostInitializationEvent event) {
+		
 	}
 	
 	

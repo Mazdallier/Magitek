@@ -10,9 +10,9 @@ import democretes.api.block.BlockInfo;
 import democretes.api.block.IBlockDebug;
 import democretes.api.macht.IMachtStorage;
 
-public class BlockTRBase extends BlockContainer implements IBlockDebug {
+public class BlockEMBase extends BlockContainer implements IBlockDebug {
 
-	public BlockTRBase() {
+	public BlockEMBase() {
 		super(Material.iron);
 		setCreativeTab(Electromancy.tabEM);
 		setHardness(2F);

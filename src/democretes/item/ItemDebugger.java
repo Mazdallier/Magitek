@@ -9,7 +9,7 @@ import democretes.api.block.BlockInfo;
 import democretes.api.block.IBlockDebug;
 import democretes.lib.Reference;
 
-public class ItemDebugger extends ItemTRBase {
+public class ItemDebugger extends ItemEMBase {
 
 	
 	@Override

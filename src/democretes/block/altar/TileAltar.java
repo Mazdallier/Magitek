@@ -1,8 +1,8 @@
 package democretes.block.altar;
 
-import democretes.block.TileMachtBase;
+import democretes.block.TilePurityBase;
 
-public class TileAltar extends TileMachtBase {
+public class TileAltar extends TilePurityBase {
 
 	public TileAltar() {
 		super(5000);

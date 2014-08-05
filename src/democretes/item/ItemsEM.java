@@ -4,7 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import democretes.lib.ItemNames;
 import net.minecraft.item.Item;
 
-public class ItemsTR {
+public class ItemsEM {
 	
 	public static Item debugger;
 	

@@ -2,9 +2,6 @@ package democretes.block.generators;
 
 public class TileSubTerraGenerator extends TileGeneratorBase {
 
-	public TileSubTerraGenerator() {
-		super(2000);
-	}
 
 	@Override
 	public boolean canGenerate() {

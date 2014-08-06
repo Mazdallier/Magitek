@@ -2,10 +2,6 @@ package democretes.block.generators;
 
 public class TilePurityGenerator extends TileGeneratorBase{
 
-	public TilePurityGenerator(int machtCapacity) {
-		super(machtCapacity);
-	}
-
 	@Override
 	public boolean canGenerate() {
 		return this.getPurity() != 0;

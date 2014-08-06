@@ -6,8 +6,8 @@ import democretes.block.TilePurityBase;
 public abstract class TileGeneratorBase extends TilePurityBase {
 	
 
-	public TileGeneratorBase(int machtCapacity) {
-		super(machtCapacity);
+	public TileGeneratorBase() {
+		super(500);
 	}
 
 	@Override

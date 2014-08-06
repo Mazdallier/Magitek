@@ -43,6 +43,11 @@ public class TilePurityBase extends TileMachtBase implements IPurityHandler{
 	}
 	
 	@Override
+	public boolean isFull() {
+		return purity.isFull();
+	}
+	
+	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
 		this.purity.writeToNBT(nbt);

@@ -20,7 +20,7 @@ public class ItemDebugger extends ItemMTBase {
 	}
 	
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int meta, float hitX, float hitY, float hitZ) {
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		Block block = world.getBlock(x, y, z);
 		if(block instanceof IBlockDebug && !world.isRemote) {
 			BlockInfo info = ((IBlockDebug)block).getInfo(player, x, y, z);

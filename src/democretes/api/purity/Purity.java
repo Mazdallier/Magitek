@@ -70,5 +70,10 @@ public class Purity implements IPurityHandler {
 		this.purity = nbt.getInteger("Purity");
 		return this;
 	}
+
+	@Override
+	public boolean isFull() {
+		return this.purity == this.maxPurity || this.purity == this.maxPurity;
+	}
 	
 }

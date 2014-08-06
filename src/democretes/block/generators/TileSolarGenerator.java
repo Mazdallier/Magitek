@@ -2,10 +2,6 @@ package democretes.block.generators;
 
 public class TileSolarGenerator extends TileGeneratorBase {
 
-	public TileSolarGenerator() {
-		super(1000);
-	}
-
 	@Override
 	public boolean canGenerate() {
 		if(this.worldObj.isRaining() || this.worldObj.isThundering()) {

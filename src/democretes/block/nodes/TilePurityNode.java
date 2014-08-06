@@ -7,7 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TilePurityNode extends TileNodeBase implements IPurityHandler {
 
-	Purity purity = new Purity(500, 500, 0);
+	Purity purity = new Purity(-100, 100, 0);
 	
 	@Override
 	public boolean canLink(TileEntity tile) {

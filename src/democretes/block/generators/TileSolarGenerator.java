@@ -3,7 +3,7 @@ package democretes.block.generators;
 public class TileSolarGenerator extends TileGeneratorBase {
 
 	@Override
-	public boolean canGenerate() {
+	protected boolean canGenerate() {
 		if(this.worldObj.isRaining() || this.worldObj.isThundering()) {
 			return false;
 		}
@@ -11,9 +11,8 @@ public class TileSolarGenerator extends TileGeneratorBase {
 				&& this.worldObj.isDaytime();
 	}
 
-	private int count;
 	@Override
-	public int getFuel() {
+	protected int getFuel() {
 		count ++;
 		if(count >= 40) {
 			count = 0;

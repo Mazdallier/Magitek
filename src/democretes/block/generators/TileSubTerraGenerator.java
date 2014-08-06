@@ -1,23 +1,66 @@
 package democretes.block.generators;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+
 public class TileSubTerraGenerator extends TileGeneratorBase {
 
 
 	@Override
-	public boolean canGenerate() {
-		return this.yCoord < 6;
+	protected boolean canGenerate() {
+		Block block = this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord);
+		return this.yCoord < 6 && block == Blocks.bedrock;
 	}
 
-	int count;
 	@Override
-	public int getFuel() {
+	protected int getFuel() {
 		count++;
 		if(count >= 20) {
 			this.decreasePurity(5);
 			count = 0;
-			return 5 + (this.getPurity()/500);
+			return 5 + (this.getPurity()/200);
 		}
 		return 0;
+	}
+	
+	boolean firstrun = true;
+	boolean direction;
+	public float inflation;
+	@Override
+	public void updateEntity() {
+		super.updateEntity();
+		if (this.firstrun) {
+			this.inflation = (0.35F + this.worldObj.rand.nextFloat() * 0.55F);
+	    }
+	    this.firstrun = false;
+	    if ((this.inflation > 0.05F) && (!this.direction)) {
+	        this.inflation -= 0.05F;
+	    }
+	    if ((this.inflation <= 0.05F) && (!this.direction)) {
+	        this.direction = true;
+	    }
+	    if ((this.inflation < 1.0F) && (this.direction)) {
+	        this.inflation += 0.015F;
+	    }
+	    if ((this.inflation >= 1.0F) && (this.direction)) {
+	        this.direction = false;
+	    }
+	}
+	
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setFloat("Inflation", this.inflation);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, nbt);
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+		this.inflation = pkt.func_148857_g().getFloat("Inflation");
 	}
 
 }

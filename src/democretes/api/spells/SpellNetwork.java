@@ -1,14 +1,12 @@
 package democretes.api.spells;
 
-import democretes.api.purity.PurityNetwork;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.world.World;
 
 public class SpellNetwork extends net.minecraft.world.WorldSavedData {
 	
     public Spell spell;
+    public int purity;
+    public int macht;
 
     public SpellNetwork(String string){
         super(string);
@@ -16,12 +14,17 @@ public class SpellNetwork extends net.minecraft.world.WorldSavedData {
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
-		this.spell = SpellHelper.getSpell(nbt.getString("Spell"));
+		String name = nbt.getString("Spell");
+		this.spell = SpellHelper.getSpell(name);
+		this.purity = nbt.getInteger("Purity");
+		this.macht = nbt.getInteger("Macht");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		nbt.setString("Spell", this.spell.getName());
+		nbt.setInteger("Purity", this.purity);
+		nbt.setInteger("Macht", this.macht);
 	}
 	
 	

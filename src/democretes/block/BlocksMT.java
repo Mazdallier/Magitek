@@ -2,6 +2,8 @@ package democretes.block;
 
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
+import democretes.block.dummy.BlockDummy;
+import democretes.block.dummy.TileDummy;
 import democretes.block.generators.BlockGenerator;
 import democretes.block.generators.ItemBlockGenerator;
 import democretes.block.generators.TilePurityGenerator;
@@ -41,5 +43,7 @@ public class BlocksMT {
 		GameRegistry.registerTileEntity(TilePurityInverter.class, Reference.MOD_NAME + "TilePurityInverter");
 		GameRegistry.registerTileEntity(TileEnergyNode.class, Reference.MOD_NAME + "TileEnergyNode");
 		GameRegistry.registerTileEntity(TilePurityNode.class, Reference.MOD_NAME + "TilePurityNode");
+		GameRegistry.registerTileEntity(TileDummy.class, Reference.MOD_NAME + "TileDummy");
+		
 	}
 }

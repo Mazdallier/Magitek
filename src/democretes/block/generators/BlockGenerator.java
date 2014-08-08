@@ -12,9 +12,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import democretes.block.BlockDummy;
 import democretes.block.BlockMTBase;
 import democretes.block.BlocksMT;
+import democretes.block.dummy.BlockDummy;
 import democretes.lib.RenderIds;
 
 public class BlockGenerator extends BlockMTBase {
@@ -49,6 +49,7 @@ public class BlockGenerator extends BlockMTBase {
 		if(stack.getItemDamage() == 1) {
 			world.setBlock(x, y+1, z, BlocksMT.dummy);
 			((BlockDummy)world.getBlock(x, y+1, z)).block = this;
+			world.getBlock(x, y+1, z).onPostBlockPlaced(world, x, y, z, stack.getItemDamage());
 		}
 	}
 	

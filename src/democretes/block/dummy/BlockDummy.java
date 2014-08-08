@@ -1,24 +1,19 @@
-package democretes.block;
+package democretes.block.dummy;
 
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import democretes.Magitek;
+import democretes.block.BlockMTBase;
 import democretes.block.generators.BlockGenerator;
 import democretes.lib.RenderIds;
-import democretes.utils.CreativeTabsMT;
 
-public class BlockDummy extends Block {
-	
-	public BlockDummy() {
-		super(Material.iron);
-	}	
-	
+public class BlockDummy extends BlockMTBase {
+		
 	public Block block;
 
 	@Override
@@ -33,6 +28,21 @@ public class BlockDummy extends Block {
 		if(world.getBlock(x, y-1, z) instanceof BlockGenerator == false) {
 			world.setBlockToAir(x, y, z);
 		}
+	}
+	
+	@Override
+	public void onPostBlockPlaced(World world, int x, int y, int z, int meta) {
+		if(!world.isRemote) {
+			TileEntity tile = world.getTileEntity(x, y-1, z);
+			if(world.getTileEntity(x, y, z) instanceof TileDummy) {
+				((TileDummy)world.getTileEntity(x, y, z)).setTile(tile);
+			}
+		}
+	}
+	
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileDummy();
 	}
 	
 	@Override

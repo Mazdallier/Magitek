@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import democretes.api.spells.Spell;
 import democretes.api.spells.SpellHelper;
 import democretes.item.ItemMTBase;
+import democretes.utils.helper.StringHelper;
 
 public class ItemSpellBinder extends ItemMTBase {
 	
@@ -36,7 +37,7 @@ public class ItemSpellBinder extends ItemMTBase {
 		}
 		Spell spell = SpellHelper.getSpell((String)Spell.spells.keySet().toArray()[stack.getItemDamage()]);
 		SpellHelper.bindSpell(player, spell);
-		player.addChatComponentMessage(new ChatComponentText("You have been bound with " + spell.getName() + "."));
+		player.addChatComponentMessage(new ChatComponentText(StringHelper.localize("spell." + spell.getName() + ".bound")));
 		return super.onItemRightClick(stack, world, player);
 	}
 	

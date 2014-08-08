@@ -10,4 +10,6 @@ public class Reference {
 	public static final String MODEL_PREFIX = TEXTURE_PREFIX + "textures/models/";
 	
 	public static final String MODEL_TERRA_GENERATOR_TEXTURE = MODEL_PREFIX + "ModelSubTerraGenerator.png";
+	public static final String MODEL_SOLAR_GENERATOR_TEXTURE = MODEL_PREFIX + "ModelSolarGenerator.png";
+	public static final String MODEL_PURITY_GENERATOR_TEXTURE = MODEL_PREFIX + "ModelPurityGenerator.png";;
 }

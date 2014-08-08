@@ -16,8 +16,12 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 
 	@Override
 	public void updateEntity() {
-		if(this.canGenerate() && !this.worldObj.isRemote) {
-			this.receiveMacht(this.getFuel());
+		if(this.canGenerate()) {
+			if(!this.worldObj.isRemote) {
+				this.receiveMacht(this.getFuel());
+			}else{
+				renderWhenActive();
+			}
 		}
 	}
 	
@@ -25,6 +29,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	
 	protected abstract int getFuel();
 	
+	protected abstract void renderWhenActive();
 	
 	
 }

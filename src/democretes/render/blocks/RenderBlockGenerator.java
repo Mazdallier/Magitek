@@ -8,6 +8,8 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import democretes.block.generators.TilePurityGenerator;
+import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSubTerraGenerator;
 import democretes.lib.RenderIds;
 
@@ -17,11 +19,16 @@ public class RenderBlockGenerator implements ISimpleBlockRenderingHandler{
 	public void renderInventoryBlock(Block block, int meta, int modelID, RenderBlocks renderer) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+		TileEntityRendererDispatcher dispatch = TileEntityRendererDispatcher.instance;
 		switch(meta) {
+		case 0:	
+			dispatch.renderTileEntityAt(new TileSolarGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
 		case 1:
-			GL11.glScalef(0.75F, 0.75F, 0.75F);
-			GL11.glTranslatef(0, 0.25F, 0);
-			TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileSubTerraGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);
+			GL11.glScalef(0.75F, 0.7F, 0.75F);
+			GL11.glTranslatef(0, -0.275F, 0);
+			dispatch.renderTileEntityAt(new TileSubTerraGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
+		case 2:
+			dispatch.renderTileEntityAt(new TilePurityGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);
 		}
 		GL11.glPopMatrix();
 	}

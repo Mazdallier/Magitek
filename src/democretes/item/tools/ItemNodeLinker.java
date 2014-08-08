@@ -1,4 +1,4 @@
-package democretes.item;
+package democretes.item.tools;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -6,6 +6,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import democretes.block.nodes.TileNodeBase;
+import democretes.item.ItemMTBase;
 import democretes.utils.helper.StringHelper;
 
 public class ItemNodeLinker extends ItemMTBase {

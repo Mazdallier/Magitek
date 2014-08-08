@@ -1,4 +1,4 @@
-package democretes.item;
+package democretes.item.tools;
 
 import java.util.List;
 
@@ -9,7 +9,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import democretes.api.purity.IPurityHandler;
 import democretes.api.purity.PurityHelper;
+import democretes.item.ItemMTBase;
 import democretes.lib.Reference;
+import democretes.utils.handlers.ConfigHandler;
 
 public class ItemPuritySyphon extends ItemMTBase {
 	
@@ -26,10 +28,10 @@ public class ItemPuritySyphon extends ItemMTBase {
 		TileEntity tile = world.getTileEntity(x, y, z);
 		if(tile instanceof IPurityHandler) {
 			IPurityHandler ptile = (IPurityHandler)tile;
-			int amount = 10;
+			int amount = ConfigHandler.syphonAmount;
 			if(player.isSneaking()) {
 				int purity = PurityHelper.getPlayerPurity(player);
-				amount = Math.min(Math.abs(purity), 10);
+				amount = Math.min(Math.abs(purity), ConfigHandler.syphonAmount);
 				if(purity < 0) {
 					ptile.decreasePurity(amount);
 					PurityHelper.increasePlayerPurity(player, amount);						
@@ -39,7 +41,7 @@ public class ItemPuritySyphon extends ItemMTBase {
 				}
 				return false;
 			}else{ 
-				amount = Math.min(Math.abs(ptile.getPurity()), 10);
+				amount = Math.min(Math.abs(ptile.getPurity()), ConfigHandler.syphonAmount);
 				if(ptile.getPurity() < 0) {
 					ptile.increasePurity(amount);
 					PurityHelper.decreasePlayerPurity(player, amount);

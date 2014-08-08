@@ -22,17 +22,16 @@ public class TileSubTerraGenerator extends TileGeneratorBase {
 		if(count >= 20) {
 			this.decreasePurity(5);
 			count = 0;
-			return 5 + (this.getPurity()/200);
+			return 5 + (this.getPurity()/500);
 		}
 		return 0;
 	}
-	
+
 	boolean firstrun = true;
 	boolean direction;
 	public float inflation;
 	@Override
-	public void updateEntity() {
-		super.updateEntity();
+	protected void renderWhenActive() {
 		if (this.firstrun) {
 			this.inflation = (0.35F + this.worldObj.rand.nextFloat() * 0.55F);
 	    }

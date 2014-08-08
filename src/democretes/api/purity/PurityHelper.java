@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 public class PurityHelper {
 	
 	public static PurityNetwork getNetwork(EntityPlayer player) {
-		String name = player.getDisplayName();
+		String name = player.getDisplayName() + "purity";
 		World world = MinecraftServer.getServer().worldServers[0];
 		PurityNetwork network = (PurityNetwork)world.loadItemData(PurityNetwork.class, name);
         if(network == null) {

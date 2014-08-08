@@ -19,6 +19,7 @@ public class PacketHandler {
     }
     
     public static void init() {
+    	registerPacket(PacketSpell.class, Side.SERVER);
     }
     
     public static void sendToClient(IMessage packet, EntityPlayerMP player) {

@@ -13,8 +13,10 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import democretes.api.spells.Spell;
 import democretes.block.BlocksMT;
 import democretes.item.ItemsMT;
+import democretes.item.spells.SpellsMT;
 import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
 import democretes.utils.CreativeTabsMT;
@@ -42,6 +44,7 @@ public class Magitek {
 		ConfigHandler.init(new File(event.getModConfigurationDirectory(), "Magitek.cfg"));
 		BlocksMT.init();
 		ItemsMT.init();
+		SpellsMT.init();
 	}
 	
 	@EventHandler
@@ -49,6 +52,7 @@ public class Magitek {
 		PacketHandler.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		proxy.initRenderers();
+  		proxy.registerKeyBindings();
 		MinecraftForge.EVENT_BUS.register(new MTEventHandler());
 	}
 	

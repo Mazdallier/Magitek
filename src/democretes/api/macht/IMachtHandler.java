@@ -1,7 +1,7 @@
 package democretes.api.macht;
 
 /** TileEntity that implement this interface are able to receive macht and have macht extracted from it.
- *  TileEntities that store Macht should use {@link}IMachtStorage.
+ *  TileEntities that store Macht should use {@link IMachtStorage}.
  * 
  * @author Democretes
  *

@@ -3,6 +3,7 @@ package democretes.api.macht;
 import net.minecraft.nbt.NBTTagCompound;
 
 /** Proper use of IMachtStorage. Use this in conjunction with other tiles to easily implement the Macht api.
+ * This extends {@link IMachHandler}
  * 
  * @author Democretes
  *

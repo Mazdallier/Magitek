@@ -1,8 +1,10 @@
 package democretes.block.generators;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
@@ -16,12 +18,13 @@ import democretes.block.BlockMTBase;
 import democretes.block.BlocksMT;
 import democretes.block.dummy.BlockDummy;
 import democretes.lib.RenderIds;
+import democretes.render.fx.SmokeFX;
 
 public class BlockGenerator extends BlockMTBase {
 	
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-		if(!world.isRemote && world.getBlock(x, y+1, z) != BlocksMT.dummy) {
+		if(!world.isRemote && world.getBlock(x, y+1, z) != BlocksMT.dummy && world.getBlockMetadata(x, y, z) == 1) {
 			this.dropBlockAsItem(world, x, y, z, new ItemStack(this, 1, 1));
 			world.setBlockToAir(x, y, z);
 		}
@@ -93,10 +96,5 @@ public class BlockGenerator extends BlockMTBase {
 		return RenderIds.idGENERATOR;
 	}
 	
-	@Override
-	public int getRenderBlockPass() {
-		return 1;
-	}
-
 	
 }

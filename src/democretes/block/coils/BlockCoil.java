@@ -1,4 +1,4 @@
-package democretes.block.nodes;
+package democretes.block.coils;
 
 import java.util.List;
 
@@ -6,8 +6,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import democretes.block.BlockMTBase;
+import democretes.lib.RenderIds;
 
-public class BlockNode extends BlockMTBase {
+public class BlockCoil extends BlockMTBase {
 	
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
@@ -16,4 +17,18 @@ public class BlockNode extends BlockMTBase {
 		}
 	}
 
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+	
+	@Override
+	public int getRenderType() {
+		return RenderIds.idNode;
+	}
 }

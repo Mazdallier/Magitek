@@ -6,8 +6,8 @@ public class TilePurityInverter extends TileMachineBase {
 
 	public TilePurityInverter() {
 		super(5000);
-		this.purity.maxPurity = 50;
-		this.purity.minPurity = -50;
+		this.purity.maxPurity = 100;
+		this.purity.minPurity = -100;
 	}
 
 	int count;

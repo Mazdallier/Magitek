@@ -6,7 +6,7 @@ import democretes.api.macht.MachtStorage;
 
 public class TileMachtBase extends TileMTBase implements IMachtStorage {
 
-	private MachtStorage macht;
+	protected MachtStorage macht;
 	
 	public TileMachtBase(int amount) {
 		this.macht = new MachtStorage(amount);

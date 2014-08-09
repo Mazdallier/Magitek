@@ -31,7 +31,7 @@ public class RenderPurityGenerator extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float)x, (float)y, (float)z);
 		GL11.glScalef(-1F, -1F, 1F);
 		GL11.glTranslatef(-.5F, -1.5F, .5F);
-		renderLiquid(tile, x, y, z, f);
+		renderLiquid(tile, x, y, z);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -41,13 +41,13 @@ public class RenderPurityGenerator extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 	
-	public void renderLiquid(TileEntity tile, double x, double y, double z, float f)  {
+	public void renderLiquid(TileEntity tile, double x, double y, double z)  {
 		 if (this.field_147501_a.field_147553_e == null) {
 		      return;
 		 }	    
 		 TilePurityGenerator entity = (TilePurityGenerator)tile;
 
-		 if(entity.amount == 0) {
+		 if(entity.getPurity() == 0) {
 			 return;
 		 }
 
@@ -58,11 +58,11 @@ public class RenderPurityGenerator extends TileEntitySpecialRenderer {
 		 RenderBlocks renderBlocks = new RenderBlocks();
 		 GL11.glDisable(2896);
 
-		 float level = Math.abs(entity.amount/200) * 0.65F;
+		 float level = Math.abs(entity.getPurity()/2000.0F) * 0.65F;
 
 		 Tessellator t = Tessellator.instance;
 
-		 renderBlocks.setRenderBounds(0.325D, 0.0625D, 0.325D, 0.675D, 0.0625D + level, 0.675D);
+		 renderBlocks.setRenderBounds(0.325D, 0.0625D, 0.325D, 0.675D, 0.125D + level, 0.675D);
 
 		 t.startDrawingQuads();
 		 t.setColorOpaque_I(255);

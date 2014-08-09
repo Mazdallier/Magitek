@@ -6,14 +6,12 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import democretes.utils.network.PacketHandler;
 
 public class TilePurityGenerator extends TileGeneratorBase{
 
 	@Override
 	protected boolean canGenerate() {
-		if(!this.worldObj.isRemote) {
-			this.amount = this.getPurity();
-		}
 		return this.getPurity() != 0;
 	}
 
@@ -34,20 +32,46 @@ public class TilePurityGenerator extends TileGeneratorBase{
 		return 0;
 	}
 	
+	int amount;
+	@Override
+	public void increasePurity(int amount) {
+		super.increasePurity(amount);
+		sync(amount);
+	}
+	
+	@Override
+	public void decreasePurity(int amount) {
+		super.decreasePurity(amount);
+		sync(amount);
+	}
+	
+	@Override
+	public void setPurity(int amount) {
+		super.setPurity(amount);
+		sync(amount);
+	}
+	
+	public void sync(int amount) {
+		this.amount += amount;
+		if(this.amount > 100){
+			this.amount = 0;
+			PacketHandler.syncPurity(this, this.purity.getPurity());
+		}
+	}
+	
 	@Override
 	protected void renderWhenActive() {}
 	
-	public int amount;	
 	@Override
 	public Packet getDescriptionPacket() {
 		NBTTagCompound nbt = new NBTTagCompound();
-		nbt.setInteger("Amount", this.amount);
+		writeToNBT(nbt);
 		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, nbt);
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
-		this.amount = pkt.func_148857_g().getInteger("Amount");
+		readFromNBT(pkt.func_148857_g());
 	}
 	
 }

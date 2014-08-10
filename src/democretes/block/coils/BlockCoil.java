@@ -29,6 +29,6 @@ public class BlockCoil extends BlockMTBase {
 	
 	@Override
 	public int getRenderType() {
-		return RenderIds.idNode;
+		return RenderIds.idNODE;
 	}
 }

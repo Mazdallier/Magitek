@@ -2,6 +2,7 @@ package democretes.block.generators;
 
 import java.util.ArrayList;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
@@ -12,7 +13,6 @@ import democretes.utils.handlers.ConfigHandler;
 
 public abstract class TileGeneratorBase extends TilePurityBase {
 	
-	int count;
 	ArrayList<TileEntity> tiles = new ArrayList();
 	ForgeDirection[] valid = {ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.NORTH, ForgeDirection.SOUTH};
 	Block[] blocks = {
@@ -30,26 +30,26 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 			Blocks.lapis_block};
 	
 	public TileGeneratorBase() {
-		super(500);
+		super(1000);
 	}
 
+	int count = 200;
 	@Override
 	public void updateEntity() {
+		if(!this.worldObj.isRemote) {
+			if(count == 200) {
+				count = 0;
+				searchForTiles();
+			}
+			count++;
+			transferEnergy();				
+		}
 		if(this.canGenerate()) {
 			if(!this.worldObj.isRemote) {
 				this.macht.receiveMacht(this.getFuel());
 			}else{
 				renderWhenActive();
 			}
-		}
-		if(!this.worldObj.isRemote) {
-			if(count == 200) {
-				count = 0;
-				searchForTiles();
-			}else{
-				count++;
-			}
-			transferEnergy();
 		}
 	}
 	
@@ -94,8 +94,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	void transferEnergy() {
 		for(TileEntity tile : tiles) {
 			if(tile != null) {
-				IMachtStorage storage = (IMachtStorage)tile;
-				this.extractMacht(storage.receiveMacht(100));
+				this.extractMacht(((IMachtStorage)tile).receiveMacht(Math.min(this.getMachtStored(), 100)));
 			}else{
 				tiles.remove(tile);
 			}

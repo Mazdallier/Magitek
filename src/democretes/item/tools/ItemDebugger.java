@@ -29,15 +29,7 @@ public class ItemDebugger extends ItemMTBase {
 		Block block = world.getBlock(x, y, z);
 		if(block instanceof IBlockDebug && !world.isRemote) {
 			BlockInfo info = ((IBlockDebug)block).getInfo(player, x, y, z);
-			if(player.isSneaking()) {
-				TileEntity tile = world.getTileEntity(x, y, z);
-				if(info.isMachtHandler()) {
-					((IMachtStorage)tile).extractMacht(((IMachtStorage)tile).getMachtStored());
-				}
-				if(info.isPurityHandler()) {
-					((IPurityHandler)tile).decreasePurity(((IPurityHandler)tile).getPurity());
-				}
-			}
+			
 			FMLLog.info("Block Name: " + block.getLocalizedName());
 			FMLLog.info("X Choord: " + info.getX());
 			FMLLog.info("Y Choord: " + info.getY());

@@ -12,8 +12,7 @@ public class TileSubTerraGenerator extends TileGeneratorBase {
 
 	@Override
 	protected boolean canGenerate() {
-		Block block = this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord);
-		return this.yCoord < 6 && block == Blocks.bedrock;
+		return this.yCoord < 6;
 	}
 
 	@Override

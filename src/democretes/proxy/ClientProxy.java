@@ -3,13 +3,15 @@ package democretes.proxy;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import democretes.block.altar.TileAltar;
 import democretes.block.coils.TileMachtCoil;
 import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSubTerraGenerator;
 import democretes.lib.RenderIds;
-import democretes.render.blocks.RenderBlockGenerator;
 import democretes.render.blocks.RenderBlockCoil;
+import democretes.render.blocks.RenderBlockGenerator;
+import democretes.render.tile.RenderAltar;
 import democretes.render.tile.RenderEnergyCoil;
 import democretes.render.tile.RenderPurityGenerator;
 import democretes.render.tile.RenderSolarGenerator;
@@ -31,7 +33,10 @@ public class ClientProxy extends CommonProxy{
     	RenderIds.idGENERATOR = RenderingRegistry.getNextAvailableRenderId();
     	
     	ClientRegistry.bindTileEntitySpecialRenderer(TileMachtCoil.class, new RenderEnergyCoil());
-    	RenderIds.idNode = RenderingRegistry.getNextAvailableRenderId();
+    	RenderIds.idNODE = RenderingRegistry.getNextAvailableRenderId();
+    	
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileAltar.class, new RenderAltar());
+    	RenderIds.idALTAR = RenderingRegistry.getNextAvailableRenderId();
     	
 		RenderingRegistry.registerBlockHandler(new RenderBlockGenerator());
 		RenderingRegistry.registerBlockHandler(new RenderBlockCoil());

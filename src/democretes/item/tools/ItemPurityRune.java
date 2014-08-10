@@ -17,9 +17,9 @@ import democretes.item.ItemMTBase;
 import democretes.lib.Reference;
 import democretes.utils.handlers.ConfigHandler;
 
-public class ItemPuritySyphon extends ItemMTBase {
+public class ItemPurityRune extends ItemMTBase {
 	
-	public ItemPuritySyphon() {
+	public ItemPurityRune() {
 		setMaxStackSize(1);
 		setUnlocalizedName(Reference.MOD_PREFIX + ".syphon");
 	}
@@ -62,33 +62,12 @@ public class ItemPuritySyphon extends ItemMTBase {
 	IIcon syphon;
 	@Override
 	public void registerIcons(IIconRegister ir) {
-		syphon = ir.registerIcon(Reference.TEXTURE_PREFIX + "syphon");
+		syphon = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune_purity");
 	}
 	
 	@Override
 	public IIcon getIconFromDamage(int meta) {
 		return syphon;
-	}
-	
-	@Override
-	public int getColorFromItemStack(ItemStack stack, int meta) {
-		int red = 0;
-		int blue = 0;
-		int green = 0;
-		if(stack.stackTagCompound != null) {
-			int purity = (stack.stackTagCompound.getInteger("Purity")*255/2000);
-			if(purity > 0) {
-				blue = purity;
-				green = purity/2;
-			}else if(purity <= -500){
-				red = Math.abs(purity);
-			}else{
-				return super.getColorFromItemStack(stack, meta);				
-			}
-		}else{
-			return super.getColorFromItemStack(stack, meta);
-		}
-		return (new Color(red, blue, green)).getRGB();
 	}
 	
 	@Override

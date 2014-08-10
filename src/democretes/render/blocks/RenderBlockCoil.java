@@ -32,7 +32,7 @@ public class RenderBlockCoil implements ISimpleBlockRenderingHandler{
 
 	@Override
 	public int getRenderId() {
-		return RenderIds.idNode;
+		return RenderIds.idNODE;
 	}
 
 	@Override

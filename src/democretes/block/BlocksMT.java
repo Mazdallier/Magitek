@@ -2,6 +2,8 @@ package democretes.block;
 
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
+import democretes.block.altar.BlockAltar;
+import democretes.block.altar.TileAltar;
 import democretes.block.coils.BlockCoil;
 import democretes.block.coils.TileMachtCoil;
 import democretes.block.dummy.BlockDummy;
@@ -23,17 +25,20 @@ public class BlocksMT {
 	public static Block machine;
 	public static Block dummy;
 	public static Block tesla;
+	public static Block altar;
 	
 	public static void init() {
 		generator = new BlockGenerator();
 		machine = new BlockMachine();
 		dummy = new BlockDummy();
 		tesla = new BlockCoil();
+		altar = new BlockAltar();
 		
 		GameRegistry.registerBlock(generator, ItemBlockGenerator.class, BlockNames.GENERATOR_NAME);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, BlockNames.MACHINE_NAME);
 		GameRegistry.registerBlock(dummy, BlockNames.DUMMY_NAME);
 		GameRegistry.registerBlock(tesla, BlockNames.TESLA_NAME);
+		GameRegistry.registerBlock(altar, BlockNames.ALTAR_NAME);
 		
 		GameRegistry.registerTileEntity(TileSubTerraGenerator.class, Reference.MOD_NAME + "TileSubTerra");
 		GameRegistry.registerTileEntity(TileSolarGenerator.class, Reference.MOD_NAME + "TileSolarGenerator");
@@ -41,6 +46,7 @@ public class BlocksMT {
 		GameRegistry.registerTileEntity(TilePurityInverter.class, Reference.MOD_NAME + "TilePurityInverter");
 		GameRegistry.registerTileEntity(TileMachtCoil.class, Reference.MOD_NAME + "TileEnergyNode");
 		GameRegistry.registerTileEntity(TileDummy.class, Reference.MOD_NAME + "TileDummy");
+		GameRegistry.registerTileEntity(TileAltar.class, Reference.MOD_NAME + "TileAltar");
 		
 	}
 }

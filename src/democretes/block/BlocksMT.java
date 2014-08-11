@@ -44,7 +44,7 @@ public class BlocksMT {
 		GameRegistry.registerTileEntity(TileSolarGenerator.class, Reference.MOD_NAME + "TileSolarGenerator");
 		GameRegistry.registerTileEntity(TilePurityGenerator.class, Reference.MOD_NAME + "TilePurityGenerator");
 		GameRegistry.registerTileEntity(TilePurityInverter.class, Reference.MOD_NAME + "TilePurityInverter");
-		GameRegistry.registerTileEntity(TileMachtCoil.class, Reference.MOD_NAME + "TileEnergyNode");
+		GameRegistry.registerTileEntity(TileMachtCoil.class, Reference.MOD_NAME + "TileEnergyCoil");
 		GameRegistry.registerTileEntity(TileDummy.class, Reference.MOD_NAME + "TileDummy");
 		GameRegistry.registerTileEntity(TileAltar.class, Reference.MOD_NAME + "TileAltar");
 		

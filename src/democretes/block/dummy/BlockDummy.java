@@ -1,10 +1,13 @@
 package democretes.block.dummy;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
@@ -17,6 +20,9 @@ import democretes.lib.RenderIds;
 public class BlockDummy extends BlockMTBase {
 		
 	public Block block;
+	
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) {}
 
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess access, int x, int y, int z) {

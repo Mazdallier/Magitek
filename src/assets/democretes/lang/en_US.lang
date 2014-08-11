@@ -1,0 +1,26 @@
+#Items
+item.magitek.purity.name=Sigil of Balance
+item.magitek.macht.name=Sigil of Power
+item.magitek.material.0.name=Blank Sigil
+item.magitek.coilLinker.name=Coil Linker
+item.magitek.debugger.name=Demo's Debugger
+
+#Blocks
+tile.magitek.generator.0.name=Solar Array
+tile.magitek.generator.1.name=Sub Terranean Generator
+tile.magitek.generator.2.name=Purity Extractor
+tile.magitek.machine.0.name=Purity Inverter
+tile.magitek.altar.name=Altar of Power
+tile.magitek.coil.name=Macht Coil
+
+#Spells
+magitek.spell.lowMacht=Your macht is too low to cast this spell.
+magitek.spell.lowPurity=You don't have enough purity to cast this spell.
+magitek.spell.bound=You have been bound with
+magitek.spell.godMode= has entered god mode.
+
+#Binders
+spell.heal.name=Heal Scroll
+spell.immortality.name=Scroll of the Ancients
+spell.blink.name=Teleportation Scroll
+spell.invisibility.name=Scroll of Invisibility

@@ -2,12 +2,15 @@ package democretes.item.spells;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import democretes.api.spells.Spell;
 import democretes.api.spells.SpellHelper;
@@ -37,13 +40,27 @@ public class ItemSpellBinder extends ItemMTBase {
 		}
 		Spell spell = SpellHelper.getSpell((String)Spell.spells.keySet().toArray()[stack.getItemDamage()]);
 		SpellHelper.bindSpell(player, spell);
-		player.addChatComponentMessage(new ChatComponentText(StringHelper.localize("spell." + spell.getName() + ".bound")));
+		player.addChatComponentMessage(new ChatComponentText(StringHelper.localize("magitek.spell.bound")+ " " + spell.getName() + "."));
 		return super.onItemRightClick(stack, world, player);
 	}
 	
 	@Override
 	public String getUnlocalizedNameInefficiently(ItemStack stack) {
 		return new String("spell." + stack.stackTagCompound.getString("SpellName"));
+	}
+	
+	IIcon icons[] = new IIcon[Spell.spells.size()];	
+	@Override
+	public void registerIcons(IIconRegister ir) {
+		for(int i = 0; i < icons.length; i++) {
+			ResourceLocation loc = SpellHelper.getSpell((String)Spell.spells.keySet().toArray()[i]).getTexture();
+			icons[i] = ir.registerIcon(loc.getResourceDomain() + loc.getResourcePath());
+		}
+	}
+	
+	@Override
+	public IIcon getIconFromDamage(int meta) {
+		return icons[meta];
 	}
 
 }

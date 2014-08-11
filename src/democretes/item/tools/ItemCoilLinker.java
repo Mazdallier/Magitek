@@ -7,9 +7,14 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import democretes.block.coils.TileMachtCoil;
 import democretes.item.ItemMTBase;
+import democretes.lib.Reference;
 import democretes.utils.helper.StringHelper;
 
-public class ItemNodeLinker extends ItemMTBase {
+public class ItemCoilLinker extends ItemMTBase {
+	
+	public ItemCoilLinker() {
+		setUnlocalizedName(Reference.MOD_PREFIX + ".coilLinker");
+	}
 	
 	boolean first = true;
 	TileMachtCoil coil;

@@ -21,7 +21,7 @@ public class ItemPurityRune extends ItemMTBase {
 	
 	public ItemPurityRune() {
 		setMaxStackSize(1);
-		setUnlocalizedName(Reference.MOD_PREFIX + ".syphon");
+		setUnlocalizedName(Reference.MOD_PREFIX + ".purity");
 	}
 		
 	@Override

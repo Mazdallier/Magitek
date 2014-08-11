@@ -15,11 +15,14 @@ public class Spell {
 	ResourceLocation texture;
 	ISpellActivation activate;
 	
+	//This will reference my mods assets. DO NOT USE.
 	public Spell(String name, int macht, int purity, ISpellActivation activate) {
 		this.macht = macht;
 		this.purity = purity;
 		this.name = name;
-		this.texture = new ResourceLocation(Reference.TEXTURE_PREFIX + "spells/" + name + ".png");
+		//This is an example of the ResourceLocation format.
+		//Make sure you correctly specify the domain.
+		this.texture = new ResourceLocation("democretes:", "textures/spells/" + name);
 		this.spells.put(name, this);
 		this.activate = activate;		
 	}

@@ -21,7 +21,7 @@ public class ItemMachtRune extends ItemMTBase{
 	
 	public ItemMachtRune() {
 		setMaxStackSize(1);
-		setUnlocalizedName(Reference.MOD_PREFIX + ".syphon");
+		setUnlocalizedName(Reference.MOD_PREFIX + ".macht");
 	}
 		
 	@Override
@@ -30,7 +30,7 @@ public class ItemMachtRune extends ItemMTBase{
 			return false;
 		}
 		TileEntity tile = world.getTileEntity(x, y, z);
-		if(tile instanceof IPurityHandler) {
+		if(tile instanceof IMachtHandler) {
 			IMachtHandler mtile = (IMachtHandler)tile;
 			int amount = ConfigHandler.syphonAmount;
 			SpellHelper.receiveMacht(player, mtile.extractMacht(amount));

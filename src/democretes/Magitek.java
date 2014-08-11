@@ -20,6 +20,7 @@ import democretes.item.spells.SpellsMT;
 import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
 import democretes.utils.CreativeTabsMT;
+import democretes.utils.crafting.AltarRecipes;
 import democretes.utils.handlers.ConfigHandler;
 import democretes.utils.handlers.MTEventHandler;
 import democretes.utils.handlers.GuiHandler;
@@ -42,9 +43,9 @@ public class Magitek {
 	@EventHandler
 	public void foreplay(FMLPreInitializationEvent event) {
 		ConfigHandler.init(new File(event.getModConfigurationDirectory(), "Magitek.cfg"));
+		SpellsMT.init();
 		BlocksMT.init();
 		ItemsMT.init();
-		SpellsMT.init();
 	}
 	
 	@EventHandler
@@ -53,12 +54,12 @@ public class Magitek {
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		proxy.initRenderers();
   		proxy.registerKeyBindings();
-		MinecraftForge.EVENT_BUS.register(new MTEventHandler());
+		//MinecraftForge.EVENT_BUS.register(new MTEventHandler());
 	}
 	
 	@EventHandler
 	public void orgasm(FMLPostInitializationEvent event) {
-		
+		AltarRecipes.initAltarRecipes();
 	}
 	
 	

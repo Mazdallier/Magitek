@@ -8,5 +8,6 @@ public class ItemNames {
 	public static final String PURITY_RUNE_NAME = "runePurity";
 	public static final String MACHT_RUNE_NAME = "runeMacht";
 	public static final String RING_NAME = "bauble";
+	public static final String MATERIAL_NAME = "material";
 
 }

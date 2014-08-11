@@ -8,6 +8,10 @@ public class StringHelper {
 		return StatCollector.translateToLocal(string);
 	}
 	
+	public static String titleCase(String string) {
+		return string.substring(0, 1).toUpperCase() + string.substring(1);
+	}
+	
 	/** When formatting a string, always apply color before font modification. */
 	public static final String BLACK = (char) 167 + "0";
 	public static final String BLUE = (char) 167 + "1";

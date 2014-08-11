@@ -7,7 +7,7 @@ import democretes.item.baubles.ItemBauble;
 import democretes.item.spells.ItemSpellBinder;
 import democretes.item.tools.ItemDebugger;
 import democretes.item.tools.ItemMachtRune;
-import democretes.item.tools.ItemNodeLinker;
+import democretes.item.tools.ItemCoilLinker;
 import democretes.item.tools.ItemPurityRune;
 import democretes.lib.ItemNames;
 
@@ -23,15 +23,17 @@ public class ItemsMT {
 	public static void init() {
 		debugger = new ItemDebugger();
 		purityRune = new ItemPurityRune();
-		link = new ItemNodeLinker();
+		link = new ItemCoilLinker();
 		binder = new ItemSpellBinder();
 		machtRune = new ItemMachtRune();
+		material = new ItemMaterial();
 		
 		GameRegistry.registerItem(debugger, ItemNames.DEBUGGER_NAME);
 		GameRegistry.registerItem(purityRune, ItemNames.PURITY_RUNE_NAME);
 		GameRegistry.registerItem(machtRune, ItemNames.MACHT_RUNE_NAME);
 		GameRegistry.registerItem(link, ItemNames.LINKER_NAME);
 		GameRegistry.registerItem(binder, ItemNames.SPELL_BINDER_NAME);
+		GameRegistry.registerItem(material, ItemNames.MATERIAL_NAME);
 
 		if(Loader.isModLoaded("Baubles")) {
 			initBaubles();

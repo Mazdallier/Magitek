@@ -9,25 +9,28 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.api.macht.IMachtStorage;
 import democretes.block.TilePurityBase;
+import democretes.block.dummy.TileDummy;
 import democretes.utils.handlers.ConfigHandler;
 
 public abstract class TileGeneratorBase extends TilePurityBase {
 	
 	ArrayList<TileEntity> tiles = new ArrayList();
-	ForgeDirection[] valid = {ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.NORTH, ForgeDirection.SOUTH};
-	Block[] blocks = {
+	ForgeDirection[] horizontal = {ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.NORTH, ForgeDirection.SOUTH};
+	ForgeDirection[] vertical = {ForgeDirection.UP, ForgeDirection.DOWN};
+	Block[] hBlocks = {
 			Blocks.stonebrick,
 			Blocks.nether_brick,
 			Blocks.sandstone,
 			Blocks.brick_block,
 			Blocks.iron_block, 
 			Blocks.gold_block, 
-			Blocks.diamond_block,
 			Blocks.redstone_block, 
-			Blocks.coal_block, 
+			Blocks.coal_block };
+	Block[] vBlocks = {
 			Blocks.quartz_block,
 			Blocks.emerald_block,
-			Blocks.lapis_block};
+			Blocks.lapis_block,
+			Blocks.diamond_block};
 	
 	public TileGeneratorBase() {
 		super(1000);
@@ -60,34 +63,54 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	protected abstract void renderWhenActive();
 	
 	void searchForTiles() {
+		this.tiles.clear();
 		int xx = xCoord;
 		int yy = yCoord - 1;
 		int zz = zCoord;
 		Block block = this.worldObj.getBlock(xx, yy, zz);
-		boolean b = false;
-		for(int i = 0; i < blocks.length; i++) {
-			if(block == blocks[i]) {
-				b = true;
+		boolean horizon = false;
+		boolean vertical = false;
+		for(int i = 0; i < hBlocks.length; i++) {
+			if(block == hBlocks[i]) {
+				horizon = true;
 				break;
 			}
 		}
-		if(!b) {
-			return;
+		for(int i = 0; i < vBlocks.length; i++) {
+			if(block == vBlocks[i]) {
+				vertical = true;
+				break;
+			}
 		}
-		for(ForgeDirection dir : valid) {
-			for(int j = 1; j < ConfigHandler.range; j++) {
-				if(block == this.worldObj.getBlock(xx + dir.offsetX*j, yy + dir.offsetY*j, zz + dir.offsetZ*j)) {
-					if(this.worldObj.getBlock(xx + dir.offsetX*j, yy + 1 + dir.offsetY*j, zz + dir.offsetZ*j) != null) {
-						TileEntity tile = this.worldObj.getTileEntity(xx + dir.offsetX*j, yy + 1 + dir.offsetY*j, zz + dir.offsetZ*j);
-						if(tile instanceof IMachtStorage) {
+		if(horizon) {
+			for(ForgeDirection dir : horizontal) {
+				for(int j = 1; j < ConfigHandler.range; j++) {
+					if(block == this.worldObj.getBlock(xx + dir.offsetX*j, yy + dir.offsetY*j, zz + dir.offsetZ*j)) {
+						if(this.worldObj.getBlock(xx + dir.offsetX*j, yy + 1 + dir.offsetY*j, zz + dir.offsetZ*j) != null) {
+							TileEntity tile = this.worldObj.getTileEntity(xx + dir.offsetX*j, yy + 1 + dir.offsetY*j, zz + dir.offsetZ*j);
+							if(tile instanceof IMachtStorage) {
+								this.tiles.add(tile);
+								break;
+							}
+						}
+					}else{
+						break;
+					}
+				}			
+			}
+		}
+		if(vertical) {
+			for(ForgeDirection dir : this.vertical) {
+				for(int j = 1; j < ConfigHandler.range; j++) {
+					if(this.worldObj.getBlock(xx, yy + 1 + dir.offsetY*j, zz) != null) {
+						TileEntity tile = this.worldObj.getTileEntity(xx, yy + 1 + dir.offsetY*j, zz);
+						if(tile instanceof IMachtStorage && tile instanceof TileDummy == false) {
 							this.tiles.add(tile);
 							break;
 						}
 					}
-				}else{
-					break;
-				}
-			}			
+				}			
+			}
 		}
 	}
 	

@@ -25,7 +25,7 @@ public class RenderBlockGenerator implements ISimpleBlockRenderingHandler{
 			dispatch.renderTileEntityAt(new TileSolarGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
 		case 1:
 			GL11.glScalef(0.75F, 0.7F, 0.75F);
-			GL11.glTranslatef(0, -0.275F, 0);
+			GL11.glTranslatef(0, -0.3F, 0);
 			dispatch.renderTileEntityAt(new TileSubTerraGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
 		case 2:
 			dispatch.renderTileEntityAt(new TilePurityGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);

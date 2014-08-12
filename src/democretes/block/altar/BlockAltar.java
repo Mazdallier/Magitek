@@ -11,6 +11,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import democretes.api.altar.RitualType;
 import democretes.block.BlockMTBase;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;
@@ -18,9 +19,16 @@ import democretes.utils.crafting.AltarRecipes;
 
 public class BlockAltar extends BlockMTBase {
 	
+	
+	
 	@Override
 	public boolean onBlockActivated(World world, int x,	int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileAltar altar = (TileAltar)world.getTileEntity(x, y, z);
+		if(player.getHeldItem() == null) {
+			if(player.isSneaking()) {
+				altar.ritual = RitualType.COMPLEX;
+			}
+		}
 		if(altar.inventory != null) {
 			if(player.isSneaking()) {
 				if(!player.inventory.addItemStackToInventory(altar.inventory)) {
@@ -31,18 +39,15 @@ public class BlockAltar extends BlockMTBase {
 			}
 		}else{
 			if(player.getHeldItem() != null) {
-				FMLLog.info("not null");
 				ItemStack stack = player.getHeldItem();
 				if(AltarRecipes.getResult(stack) == null) {
 					return false;
 				}
-				FMLLog.info("removedStack");
 				altar.inventory = stack.copy();
 				player.inventory.decrStackSize(player.inventory.currentItem, stack.stackSize);
 				return true;
 			}
-		}
-		
+		}		
 		return false;
 	}
 	

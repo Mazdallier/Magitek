@@ -33,8 +33,8 @@ public class RenderAltar extends TileEntitySpecialRenderer {
 		bindTexture(modelTexture);
 		model.render();
 
-		GL11.glPopMatrix();
-		
+		GL11.glPopMatrix();	
+	    
 		
 		GL11.glPushMatrix();
 		GL11.glTranslated(x, y, z);
@@ -55,7 +55,7 @@ public class RenderAltar extends TileEntitySpecialRenderer {
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		
 		
-		if(((TileAltar)tile).getRitualIcon() != null) {
+		if(((TileAltar)tile).getRitualIcon() != null && tile.getBlockType() != null) {
 			renderIcon(0, 0, ((TileAltar)tile).getRitualIcon(), 5, 5, 240);
 		}
 		GL11.glEnable(GL11.GL_ALPHA_TEST);

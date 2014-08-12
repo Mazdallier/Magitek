@@ -18,11 +18,8 @@ public class RenderBlockAltar implements ISimpleBlockRenderingHandler{
 	public void renderInventoryBlock(Block block, int meta, int modelID, RenderBlocks renderer) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		TileEntityRendererDispatcher dispatch = TileEntityRendererDispatcher.instance;
-		switch(meta) {
-		case 0:	
-			dispatch.renderTileEntityAt(new TileAltar(), 0.0D, 0.0D, 0.0D, 0.0F);break;
-		}
+	//	TileEntityRendererDispatcher.instance.renderTileEntityAt(new TileAltar(), 0.0D, 0.0D, 0.0D, 0.0F);
+		
 		GL11.glPopMatrix();
 	}
 

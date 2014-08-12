@@ -51,6 +51,8 @@ public class RitualRecipes {
 
 	}	
 	
+	
+	
 	public static void addRecipe(ItemStack catalyst, RitualType type, ItemStack[] input, ItemStack output, int macht) {
 		if(type.size != input.length) {
 			return;
@@ -58,10 +60,37 @@ public class RitualRecipes {
 		ritualRecipes.add(new RitualRecipe(catalyst, type, input, output, macht));
 	}
 
-	public static ItemStack[] getRecipeForCatalyst(ItemStack catalyst) {
+	public static RitualRecipe getRecipe(ItemStack catalyst) {
+		for(RitualRecipe recipe : ritualRecipes) {
+			if(recipe.getCatalyst().isItemEqual(catalyst)) {
+				return recipe;
+			}
+		}
+		return null;
+	}
+	
+	public static ItemStack[] getInputForCatalyst(ItemStack catalyst) {
 		for(RitualRecipe recipe : ritualRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getInput();
+			}
+		}
+		return null;
+	}
+	
+	public static ItemStack getOutputForCatalyst(ItemStack catalyst) {
+		for(RitualRecipe recipe : ritualRecipes) {
+			if(recipe.getCatalyst().isItemEqual(catalyst)) {
+				return recipe.getOutput();
+			}
+		}
+		return null;
+	}
+	
+	public static RitualType getTypeForCatalyst(ItemStack catalyst) {
+		for(RitualRecipe recipe : ritualRecipes) {
+			if(recipe.getCatalyst().isItemEqual(catalyst)) {
+				return recipe.getRitual();
 			}
 		}
 		return null;
@@ -77,7 +106,7 @@ public class RitualRecipes {
 	}
 	
 	public static boolean recipeExists(ItemStack catalyst) {
-		return getRecipeForCatalyst(catalyst) != null;
+		return getInputForCatalyst(catalyst) != null;
 	}
 	
 	public static boolean inputsMatch(ItemStack[] input, ItemStack recipe[]) {

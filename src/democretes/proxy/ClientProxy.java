@@ -9,6 +9,7 @@ import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSubTerraGenerator;
 import democretes.lib.RenderIds;
+import democretes.render.blocks.RenderBlockAltar;
 import democretes.render.blocks.RenderBlockCoil;
 import democretes.render.blocks.RenderBlockGenerator;
 import democretes.render.tile.RenderAltar;
@@ -40,6 +41,7 @@ public class ClientProxy extends CommonProxy{
     	
 		RenderingRegistry.registerBlockHandler(new RenderBlockGenerator());
 		RenderingRegistry.registerBlockHandler(new RenderBlockCoil());
+		RenderingRegistry.registerBlockHandler(new RenderBlockAltar());
 
     }
     

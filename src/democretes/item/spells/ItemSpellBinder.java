@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import democretes.api.spells.Spell;
 import democretes.api.spells.SpellHelper;
 import democretes.item.ItemMTBase;
+import democretes.item.ItemsMT;
 import democretes.utils.helper.StringHelper;
 
 public class ItemSpellBinder extends ItemMTBase {
@@ -61,6 +62,24 @@ public class ItemSpellBinder extends ItemMTBase {
 	@Override
 	public IIcon getIconFromDamage(int meta) {
 		return icons[meta];
+	}
+	
+	@Override
+	public IIcon getIconFromDamageForRenderPass(int meta, int pass) {
+		if(pass == 1) {
+			return icons[meta];
+		}
+		return ItemsMT.material.getIconFromDamage(2);
+	}
+	
+	@Override
+	public boolean requiresMultipleRenderPasses() {
+		return true;
+	}
+	
+	@Override
+	public int getRenderPasses(int metadata) {
+		return 2;
 	}
 
 }

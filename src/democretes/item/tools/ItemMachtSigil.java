@@ -1,6 +1,5 @@
 package democretes.item.tools;
 
-import java.awt.Color;
 import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,17 +10,18 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import democretes.api.macht.IMachtHandler;
 import democretes.api.purity.IPurityHandler;
 import democretes.api.spells.SpellHelper;
 import democretes.item.ItemMTBase;
 import democretes.lib.Reference;
 import democretes.utils.handlers.ConfigHandler;
 
-public class ItemPurityRune extends ItemMTBase {
+public class ItemMachtSigil extends ItemMTBase{
 	
-	public ItemPurityRune() {
+	public ItemMachtSigil() {
 		setMaxStackSize(1);
-		setUnlocalizedName(Reference.MOD_PREFIX + ".purity");
+		setUnlocalizedName(Reference.MOD_PREFIX + ".macht");
 	}
 		
 	@Override
@@ -30,30 +30,10 @@ public class ItemPurityRune extends ItemMTBase {
 			return false;
 		}
 		TileEntity tile = world.getTileEntity(x, y, z);
-		if(tile instanceof IPurityHandler) {
-			IPurityHandler ptile = (IPurityHandler)tile;
+		if(tile instanceof IMachtHandler) {
+			IMachtHandler mtile = (IMachtHandler)tile;
 			int amount = ConfigHandler.syphonAmount;
-			if(player.isSneaking()) {
-				int purity = SpellHelper.getPlayerPurity(player);
-				amount = Math.min(Math.abs(purity), ConfigHandler.syphonAmount);
-				if(purity < 0) {
-					ptile.decreasePurity(amount);
-					SpellHelper.increasePlayerPurity(player, amount);						
-				}else if(purity > 0) {
-					ptile.increasePurity(amount);
-					SpellHelper.decreasePlayerPurity(player, amount);
-				}
-				return false;
-			}else{ 
-				amount = Math.min(Math.abs(ptile.getPurity()), ConfigHandler.syphonAmount);
-				if(ptile.getPurity() < 0) {
-					ptile.increasePurity(amount);
-					SpellHelper.decreasePlayerPurity(player, amount);
-				}else if(ptile.getPurity() > 0) {
-					ptile.decreasePurity(amount);
-					SpellHelper.increasePlayerPurity(player, amount);				
-				}
-			}
+			SpellHelper.receiveMacht(player, mtile.extractMacht(amount));
 		}
 		return false;
 	}
@@ -62,7 +42,7 @@ public class ItemPurityRune extends ItemMTBase {
 	IIcon syphon;
 	@Override
 	public void registerIcons(IIconRegister ir) {
-		syphon = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune_purity");
+		syphon = ir.registerIcon(Reference.TEXTURE_PREFIX + "sigil_energy");
 	}
 	
 	@Override
@@ -74,25 +54,20 @@ public class ItemPurityRune extends ItemMTBase {
 	public void onUpdate(ItemStack stack, World world, Entity entity, int meta, boolean b) {
 		if(entity instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer)entity;
-			int purity = SpellHelper.getPlayerPurity(player);
+			int macht = SpellHelper.getMacht(player);
 			if(stack.stackTagCompound == null) {
 				stack.stackTagCompound = new NBTTagCompound();
 			}
-			stack.stackTagCompound.setInteger("Purity", SpellHelper.getPlayerPurity(player));
+			stack.stackTagCompound.setInteger("Macht", SpellHelper.getMacht(player));
 		}
 	}
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean b) {
 		stack.stackTagCompound = new NBTTagCompound();
-		int purity = SpellHelper.getPlayerPurity(player);
-		list.add("Your Purity: " + purity);
-		if(purity <= -1000) {
-			list.add("You soul has become dark.");
-		}else if(purity >= 1000) {
-			list.add("You soul has been lightened.");
-		}
-		stack.stackTagCompound.setInteger("Purity", purity);
+		int macht = SpellHelper.getMacht(player);
+		list.add("Your Macht: " + macht);
+		stack.stackTagCompound.setInteger("Purity", macht);
 	}
 
 }

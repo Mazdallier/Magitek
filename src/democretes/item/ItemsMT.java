@@ -6,9 +6,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import democretes.item.baubles.ItemBauble;
 import democretes.item.spells.ItemSpellBinder;
 import democretes.item.tools.ItemDebugger;
-import democretes.item.tools.ItemMachtRune;
+import democretes.item.tools.ItemMachtSigil;
 import democretes.item.tools.ItemCoilLinker;
-import democretes.item.tools.ItemPurityRune;
+import democretes.item.tools.ItemPuritySigil;
 import democretes.lib.ItemNames;
 
 public class ItemsMT {
@@ -22,10 +22,10 @@ public class ItemsMT {
 	
 	public static void init() {
 		debugger = new ItemDebugger();
-		purityRune = new ItemPurityRune();
+		purityRune = new ItemPuritySigil();
 		link = new ItemCoilLinker();
 		binder = new ItemSpellBinder();
-		machtRune = new ItemMachtRune();
+		machtRune = new ItemMachtSigil();
 		material = new ItemMaterial();
 		
 		GameRegistry.registerItem(debugger, ItemNames.DEBUGGER_NAME);

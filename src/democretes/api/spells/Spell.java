@@ -22,7 +22,8 @@ public class Spell {
 		this.name = name;
 		//This is an example of the ResourceLocation format.
 		//Make sure you correctly specify the domain.
-		this.texture = new ResourceLocation("democretes:", "textures/spells/" + name);
+		//This will return "democretes:textures/items/spells/"name".
+		this.texture = new ResourceLocation("democretes:", "spells/" + name);
 		this.spells.put(name, this);
 		this.activate = activate;		
 	}

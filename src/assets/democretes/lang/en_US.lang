@@ -1,7 +1,9 @@
 #Items
 item.magitek.purity.name=Sigil of Balance
 item.magitek.macht.name=Sigil of Power
-item.magitek.material.0.name=Blank Sigil
+item.magitek.material.0.name=Blank Rune
+item.magitek.material.1.name=Blank Sigil
+item.magitek.material.2.name=Blank Scroll
 item.magitek.coilLinker.name=Coil Linker
 item.magitek.debugger.name=Demo's Debugger
 

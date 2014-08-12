@@ -2,14 +2,16 @@ package democretes.utils.handlers;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import democretes.lib.Reference;
 import democretes.utils.crafting.AltarRecipes;
 
 public class MTEventHandler {
 	
-	@SubscribeEvent
+	@EventHandler
 	public void receiveMessages(FMLInterModComms.IMCEvent event) {
 		for(final FMLInterModComms.IMCMessage message : event.getMessages()) {
 			if(message.key.equalsIgnoreCase("altarrecipe")) {
@@ -20,6 +22,12 @@ public class MTEventHandler {
 			}
 		}
 	}
+	   
+	@SubscribeEvent
+	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+	    if(eventArgs.modID.equals(Reference.MOD_ID)) {
+	        ConfigHandler.sync();
+	    }
+	}
 	
-
 }

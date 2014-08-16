@@ -16,7 +16,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import democretes.block.BlockMTBase;
 import democretes.block.BlocksMT;
-import democretes.block.dummy.BlockDummy;
+import democretes.block.dummy.BlockSubTerraDummy;
 import democretes.lib.RenderIds;
 import democretes.render.fx.SmokeFX;
 
@@ -51,7 +51,7 @@ public class BlockGenerator extends BlockMTBase {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
 		if(stack.getItemDamage() == 1) {
 			world.setBlock(x, y+1, z, BlocksMT.dummy);
-			((BlockDummy)world.getBlock(x, y+1, z)).block = this;
+			((BlockSubTerraDummy)world.getBlock(x, y+1, z)).block = this;
 			world.getBlock(x, y+1, z).onPostBlockPlaced(world, x, y, z, stack.getItemDamage());
 		}
 	}

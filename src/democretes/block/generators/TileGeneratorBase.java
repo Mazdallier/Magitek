@@ -9,7 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.api.macht.IMachtStorage;
 import democretes.block.TilePurityBase;
-import democretes.block.dummy.TileDummy;
+import democretes.block.dummy.TileSubTerraDummy;
 import democretes.utils.handlers.ConfigHandler;
 
 public abstract class TileGeneratorBase extends TilePurityBase {
@@ -25,7 +25,9 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 			Blocks.iron_block, 
 			Blocks.gold_block, 
 			Blocks.redstone_block, 
-			Blocks.coal_block };
+			Blocks.coal_block,
+			Blocks.emerald_block,
+			Blocks.diamond_block };
 	Block[] vBlocks = {
 			Blocks.quartz_block,
 			Blocks.emerald_block,
@@ -36,11 +38,11 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 		super(1000);
 	}
 
-	int count = 200;
+	int count = 40;
 	@Override
 	public void updateEntity() {
 		if(!this.worldObj.isRemote) {
-			if(count == 200) {
+			if(count >= 40) {
 				count = 0;
 				searchForTiles();
 			}
@@ -104,7 +106,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 				for(int j = 1; j < ConfigHandler.range; j++) {
 					if(this.worldObj.getBlock(xx, yy + 1 + dir.offsetY*j, zz) != null) {
 						TileEntity tile = this.worldObj.getTileEntity(xx, yy + 1 + dir.offsetY*j, zz);
-						if(tile instanceof IMachtStorage && tile instanceof TileDummy == false) {
+						if(tile instanceof IMachtStorage && tile instanceof TileSubTerraDummy == false) {
 							this.tiles.add(tile);
 							break;
 						}
@@ -122,11 +124,6 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 				tiles.remove(tile);
 			}
 		}
-	}
-	
-	@Override
-	public int receiveMacht(int amount) {
-		return 0;
 	}
 	
 	

@@ -39,7 +39,7 @@ static List<AltarRecipe> altarRecipes = new LinkedList();
 	}
 	
 	public static void initAltarRecipes() {
-		addRecipe(new ItemStack(Blocks.stone), new ItemStack(ItemsMT.material, 1, 0), 1000);
+		addRecipe(new ItemStack(Blocks.stone), new ItemStack(ItemsMT.material, 1, 0), 500);
 	}	
 	
 	public static void addRecipe(ItemStack input, ItemStack output, int energy) {

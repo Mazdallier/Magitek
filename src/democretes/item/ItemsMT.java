@@ -4,10 +4,12 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import democretes.item.baubles.ItemBauble;
+import democretes.item.simple.ItemMaterial;
+import democretes.item.simple.ItemRune;
 import democretes.item.spells.ItemSpellBinder;
+import democretes.item.tools.ItemCoilLinker;
 import democretes.item.tools.ItemDebugger;
 import democretes.item.tools.ItemMachtSigil;
-import democretes.item.tools.ItemCoilLinker;
 import democretes.item.tools.ItemPuritySigil;
 import democretes.lib.ItemNames;
 
@@ -19,6 +21,7 @@ public class ItemsMT {
 	public static Item binder;
 	public static Item machtRune;
 	public static Item material;
+	public static Item rune;
 	
 	public static void init() {
 		debugger = new ItemDebugger();
@@ -27,6 +30,7 @@ public class ItemsMT {
 		binder = new ItemSpellBinder();
 		machtRune = new ItemMachtSigil();
 		material = new ItemMaterial();
+		rune = new ItemRune();
 		
 		GameRegistry.registerItem(debugger, ItemNames.DEBUGGER_NAME);
 		GameRegistry.registerItem(purityRune, ItemNames.PURITY_RUNE_NAME);
@@ -34,6 +38,7 @@ public class ItemsMT {
 		GameRegistry.registerItem(link, ItemNames.LINKER_NAME);
 		GameRegistry.registerItem(binder, ItemNames.SPELL_BINDER_NAME);
 		GameRegistry.registerItem(material, ItemNames.MATERIAL_NAME);
+		GameRegistry.registerItem(rune, ItemNames.RUNE_NAME);
 
 		if(Loader.isModLoaded("Baubles")) {
 			initBaubles();

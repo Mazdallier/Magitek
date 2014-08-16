@@ -22,6 +22,8 @@ import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
 import democretes.utils.CreativeTabsMT;
 import democretes.utils.crafting.AltarRecipes;
+import democretes.utils.crafting.RitualRecipes;
+import democretes.utils.crafting.RunicRecipes;
 import democretes.utils.handlers.ConfigHandler;
 import democretes.utils.handlers.MTEventHandler;
 import democretes.utils.handlers.GuiHandler;
@@ -65,6 +67,8 @@ public class Magitek {
 	@EventHandler
 	public void orgasm(FMLPostInitializationEvent event) {
 		AltarRecipes.initAltarRecipes();
+		RitualRecipes.initRitualRecipes();
+		RunicRecipes.initRunicRecipes();
 	}
 	
 	

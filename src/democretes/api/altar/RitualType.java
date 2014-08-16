@@ -11,6 +11,14 @@ public enum RitualType {
 	}
 	
 	public static RitualType getRitual(int size) {
-		return RitualType.values()[size];
+		switch(size) {
+		case 3:
+			return BASIC;
+		case 5:
+			return ADVANCED;
+		case 12:
+			return COMPLEX;
+		}
+		return null;
 	}
 }

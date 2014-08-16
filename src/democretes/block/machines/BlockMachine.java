@@ -11,6 +11,8 @@ public class BlockMachine extends BlockMTBase {
 		switch(meta) {
 		case 0:
 			return new TilePurityInverter();
+		case 1:
+			return new TileRuneConstructor();
 		}
 		return null;
 	}

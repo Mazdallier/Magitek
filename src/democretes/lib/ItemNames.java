@@ -9,5 +9,6 @@ public class ItemNames {
 	public static final String MACHT_RUNE_NAME = "runeMacht";
 	public static final String RING_NAME = "bauble";
 	public static final String MATERIAL_NAME = "material";
+	public static final String RUNE_NAME = "rune";
 
 }

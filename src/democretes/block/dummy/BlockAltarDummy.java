@@ -1,11 +1,14 @@
 package democretes.block.dummy;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -23,6 +26,9 @@ public class BlockAltarDummy extends BlockMTBase {
 		setLightOpacity(10000);
 		setLightLevel(15F);
 	}
+	
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) {}
 	
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {

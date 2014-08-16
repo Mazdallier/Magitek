@@ -47,7 +47,7 @@ public class RitualRecipes {
 		}	
 	}
 	
-	public static void initAltarRecipes() {
+	public static void initRitualRecipes() {
 
 	}	
 	

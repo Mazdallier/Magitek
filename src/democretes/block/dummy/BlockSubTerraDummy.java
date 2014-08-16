@@ -17,7 +17,7 @@ import democretes.block.generators.BlockGenerator;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;
 
-public class BlockDummy extends BlockMTBase {
+public class BlockSubTerraDummy extends BlockMTBase {
 		
 	public Block block;
 	
@@ -42,15 +42,15 @@ public class BlockDummy extends BlockMTBase {
 	public void onPostBlockPlaced(World world, int x, int y, int z, int meta) {
 		if(!world.isRemote) {
 			TileEntity tile = world.getTileEntity(x, y-1, z);
-			if(world.getTileEntity(x, y, z) instanceof TileDummy) {
-				((TileDummy)world.getTileEntity(x, y, z)).setTile(tile);
+			if(world.getTileEntity(x, y, z) instanceof TileSubTerraDummy) {
+				((TileSubTerraDummy)world.getTileEntity(x, y, z)).setTile(tile);
 			}
 		}
 	}
 	
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileDummy();
+		return new TileSubTerraDummy();
 	}
 	
 	@Override

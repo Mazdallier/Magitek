@@ -1,7 +1,8 @@
-package democretes.item;
+package democretes.item.simple;
 
 import java.util.List;
 
+import democretes.item.ItemMTBase;
 import democretes.lib.Reference;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;

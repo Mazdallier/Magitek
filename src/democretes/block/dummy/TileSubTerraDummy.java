@@ -6,7 +6,7 @@ import democretes.api.macht.IMachtStorage;
 import democretes.api.purity.IPurityHandler;
 import democretes.block.TileMTBase;
 
-public class TileDummy extends TileMTBase implements IPurityHandler, IMachtStorage {
+public class TileSubTerraDummy extends TileMTBase implements IPurityHandler, IMachtStorage {
 	
 	public TileEntity tile;	
 	public IMachtStorage macht;

@@ -8,6 +8,7 @@ import democretes.api.macht.IMachtHandler;
 import democretes.api.macht.IMachtStorage;
 import democretes.api.macht.MachtStorage;
 import democretes.block.TileMTBase;
+import democretes.block.generators.TileGeneratorBase;
 
 public class TileMachtCoil extends TileMTBase implements IMachtStorage  {
 	
@@ -62,7 +63,7 @@ public class TileMachtCoil extends TileMTBase implements IMachtStorage  {
 	}
 
 	public boolean canLink(TileEntity tile) {
-		return tile instanceof IMachtStorage;
+		return tile instanceof IMachtStorage && tile instanceof TileGeneratorBase == false;
 	}
 
 	public void extractFrom(TileEntity tile) {

@@ -12,13 +12,13 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.FMLLog;
 import democretes.api.altar.RitualType;
 import democretes.block.BlocksMT;
 import democretes.block.TilePurityBase;
 import democretes.block.dummy.TileAltarDummy;
 import democretes.utils.crafting.AltarRecipes;
 import democretes.utils.crafting.RitualRecipes;
-import democretes.utils.crafting.RitualRecipes.RitualRecipe;
 
 public class TileAltar extends TilePurityBase implements IInventory{
 
@@ -37,9 +37,6 @@ public class TileAltar extends TilePurityBase implements IInventory{
 	int slot;
 	@Override
 	public void updateEntity() {
-		if(this.worldObj.isRemote) {
-			return;
-		}
 		if(this.ritual != null ) {
 			if(!dummiesExist) {
 				if(!createDummies()) {
@@ -60,9 +57,9 @@ public class TileAltar extends TilePurityBase implements IInventory{
 				}
 				if(energy >= RitualRecipes.getMachtForCatalyst(inventory)) {
 					this.energy = 0;
-					this.energy = 0;
 					ItemStack stack = RitualRecipes.getOutputForCatalyst(this.inventory).copy();
 					this.inventory = stack.copy();
+					worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 				}
 			}
 			if(this.inventory != null) {
@@ -72,6 +69,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 						for(int i = 0; i < dummies.size(); i++) {
 							TileAltarDummy dummy = (TileAltarDummy)dummies.get(i);
 							input[i] = dummy.inventory;
+							worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 						}
 						if(!RitualRecipes.inputsMatch(input, RitualRecipes.getRecipe(this.inventory).getInput())) {
 							this.input = null;
@@ -93,6 +91,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					ItemStack stack = AltarRecipes.getResult(this.inventory).copy();
 					stack.stackSize = this.inventory.stackSize;
 					this.inventory = stack.copy();
+					worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 				}				
 			}
 		}else{
@@ -248,8 +247,8 @@ public class TileAltar extends TilePurityBase implements IInventory{
 	public IIcon getRitualIcon() {
 		BlockAltar altar = (BlockAltar)this.getBlockType();
 		if(this.ritual != null) {
-			index = this.ritual == RitualType.BASIC ? 0 : this.ritual == RitualType.ADVANCED ? 1 : 2;
-			return altar.circle[index];
+			index = this.ritual == RitualType.BASIC ? 1 : this.ritual == RitualType.ADVANCED ? 2 : this.ritual == RitualType.COMPLEX ? 3 : 0;
+			return altar.circle[index-1];
 		}
 		return null;
 	}
@@ -258,22 +257,39 @@ public class TileAltar extends TilePurityBase implements IInventory{
 	public Packet getDescriptionPacket() {
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setInteger("Index", this.index);
+		NBTTagCompound tag = new NBTTagCompound();
+		if(this.inventory != null) {
+			this.inventory.writeToNBT(tag);
+		}
+		nbt.setTag("Item", tag);
 		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, nbt);
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
 		this.index = pkt.func_148857_g().getInteger("Index");
+		NBTTagCompound tag = pkt.func_148857_g().getCompoundTag("Item");
+		this.inventory = ItemStack.loadItemStackFromNBT(tag);
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
-		nbt.setBoolean("Dummies", dummiesExist);
-		nbt.setInteger("Size", dummies.size());
-		for(int i = 0; i < dummies.size(); i++) {
-			nbt.setInteger("x" + i, dummies.get(i).xCoord);
-			nbt.setInteger("y" + i, dummies.get(i).yCoord);
-			nbt.setInteger("z" + i, dummies.get(i).zCoord);
+		super.writeToNBT(nbt);
+		
+		NBTTagCompound tag = new NBTTagCompound();
+		if(this.inventory != null) {
+			this.inventory.writeToNBT(tag);
+		}
+		nbt.setTag("Item", tag);
+		
+		if(dummiesExist) {
+			nbt.setBoolean("Dummies", dummiesExist);
+			nbt.setInteger("Size", dummies.size());
+			for(int i = 0; i < dummies.size(); i++) {
+				nbt.setInteger("x" + i, dummies.get(i).xCoord);
+				nbt.setInteger("y" + i, dummies.get(i).yCoord);
+				nbt.setInteger("z" + i, dummies.get(i).zCoord);
+			}
 		}
 		if(this.ritual != null) {
 			nbt.setInteger("Ritual", this.ritual.size);
@@ -282,13 +298,20 @@ public class TileAltar extends TilePurityBase implements IInventory{
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+
+		NBTTagCompound tag = nbt.getCompoundTag("Item");
+		this.inventory = ItemStack.loadItemStackFromNBT(tag);
+		
 		this.dummiesExist = nbt.getBoolean("Dummies");
-		int size = nbt.getInteger("Size");
-		for(int i = 0; i < size; i++) {
-			int x = nbt.getInteger("x" + i);
-			int y = nbt.getInteger("y" + i);
-			int z = nbt.getInteger("z" + i);
-			this.dummies.add(this.worldObj.getTileEntity(x, y, z));
+		if(this.dummiesExist) {
+			int size = nbt.getInteger("Size");
+			for(int i = 0; i < size; i++) {
+				int x = nbt.getInteger("x" + i);
+				int y = nbt.getInteger("y" + i);
+				int z = nbt.getInteger("z" + i);
+				this.dummies.add(this.worldObj.getTileEntity(x, y, z));
+			}
 		}	
 		this.ritual = RitualType.getRitual(nbt.getInteger("Ritual"));
 	}

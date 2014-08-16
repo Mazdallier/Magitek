@@ -7,13 +7,14 @@ import democretes.block.altar.TileAltar;
 import democretes.block.coils.BlockCoil;
 import democretes.block.coils.TileMachtCoil;
 import democretes.block.dummy.BlockAltarDummy;
-import democretes.block.dummy.BlockDummy;
+import democretes.block.dummy.BlockSubTerraDummy;
 import democretes.block.dummy.TileAltarDummy;
-import democretes.block.dummy.TileDummy;
+import democretes.block.dummy.TileSubTerraDummy;
 import democretes.block.generators.BlockGenerator;
 import democretes.block.generators.ItemBlockGenerator;
 import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileSolarGenerator;
+import democretes.block.generators.TileSpreader;
 import democretes.block.generators.TileSubTerraGenerator;
 import democretes.block.machines.BlockMachine;
 import democretes.block.machines.ItemBlockMachine;
@@ -33,7 +34,7 @@ public class BlocksMT {
 	public static void init() {
 		generator = new BlockGenerator();
 		machine = new BlockMachine();
-		dummy = new BlockDummy();
+		dummy = new BlockSubTerraDummy();
 		tesla = new BlockCoil();
 		altar = new BlockAltar();
 		altarDummy = new BlockAltarDummy();
@@ -50,9 +51,9 @@ public class BlocksMT {
 		GameRegistry.registerTileEntity(TilePurityGenerator.class, Reference.MOD_NAME + "TilePurityGenerator");
 		GameRegistry.registerTileEntity(TilePurityInverter.class, Reference.MOD_NAME + "TilePurityInverter");
 		GameRegistry.registerTileEntity(TileMachtCoil.class, Reference.MOD_NAME + "TileEnergyCoil");
-		GameRegistry.registerTileEntity(TileDummy.class, Reference.MOD_NAME + "TileDummy");
+		GameRegistry.registerTileEntity(TileSubTerraDummy.class, Reference.MOD_NAME + "TileDummy");
 		GameRegistry.registerTileEntity(TileAltar.class, Reference.MOD_NAME + "TileAltar");
 		GameRegistry.registerTileEntity(TileAltarDummy.class, Reference.MOD_NAME + "TileAltarDummy");
-		
+		GameRegistry.registerTileEntity(TileSpreader.class, Reference.MOD_NAME + "TileSpreader");
 	}
 }

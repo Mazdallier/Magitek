@@ -33,8 +33,8 @@ public class Spell {
 		this.purity = purity;
 		this.name = name;
 		this.texture = texture;
-		this.spells.put(name, this);	
 		this.activate = activate;	
+		this.spells.put(name, this);	
 	}
 	
 	public int getEnergyUsage() {

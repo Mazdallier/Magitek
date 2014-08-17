@@ -38,12 +38,10 @@ public class AltarRecipes {
 		}	
 	}
 	
-	public static void initAltarRecipes() {
-		addRecipe(new ItemStack(Blocks.stone), new ItemStack(ItemsMT.material, 1, 0), 500);
-	}	
-	
-	public static void addRecipe(ItemStack input, ItemStack output, int energy) {
-		altarRecipes.add(new AltarRecipe(input, output, energy));
+	public static AltarRecipe addRecipe(ItemStack input, ItemStack output, int energy) {
+		AltarRecipe recipe = new AltarRecipe(input, output, energy);
+		altarRecipes.add(recipe);
+		return recipe;
 	}
 	
 	public static ItemStack getResult(ItemStack input) {

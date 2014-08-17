@@ -8,23 +8,23 @@ import java.util.ListIterator;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import democretes.item.ItemsMT;
+import democretes.utils.crafting.AltarRecipes.AltarRecipe;
 
 public class RunicRecipes {
-	
-	static List<RunicRecipe> runeRecipes = new ArrayList<RunicRecipe>();
-	
-	public static class RunicRecipe {
+		
+	public static class RuneRecipe {
 		
 		static ItemStack catalyst;
 		static ItemStack output;
 		static int macht;
 		static int purity;
 		
-		public RunicRecipe(ItemStack catalyst, ItemStack output, int macht, int purity) {
+		public RuneRecipe(ItemStack catalyst, ItemStack output, int macht, int purity) {
 			this.catalyst = catalyst;
 			this.output = output;
 			this.macht = macht;
 			this.purity = purity;
+			runeRecipes.add(this);
 		}
 		
 		public static ItemStack getCatalyst() {
@@ -42,29 +42,22 @@ public class RunicRecipes {
 		public static int getPurity() {
 			return purity;
 		}
+	}	
+
+	public static List<RuneRecipe> runeRecipes = new ArrayList<RuneRecipe>();
+		
+	public static RuneRecipe addRecipe(ItemStack input, ItemStack output, int energy, int purity) {
+		RuneRecipe recipe = new RuneRecipe(input, output, energy, purity);
+		runeRecipes.add(recipe);
+		return recipe;
 	}
 	
-	public static void initRunicRecipes() {
-		addRecipe(new ItemStack(Items.blaze_powder), new ItemStack(ItemsMT.rune, 2, 0), 600, 0);
-		addRecipe(new ItemStack(Items.dye, 1, 4), new ItemStack(ItemsMT.rune, 2, 1), 600, 0);
-		addRecipe(new ItemStack(Items.clay_ball), new ItemStack(ItemsMT.rune, 2, 2), 600, 0);
-		addRecipe(new ItemStack(Items.feather), new ItemStack(ItemsMT.rune, 2, 3), 600, 0);
-		addRecipe(new ItemStack(Items.blaze_rod), new ItemStack(ItemsMT.rune, 1, 4), 2400, 0);
-		addRecipe(new ItemStack(Items.magma_cream), new ItemStack(ItemsMT.rune, 1, 5), 1800, 0);
-		addRecipe(new ItemStack(Items.ender_eye), new ItemStack(ItemsMT.rune, 1, 6), 2400, 0);
-		for(int i = 0; i < runeRecipes.size(); i++) {
-			RunicRecipe recipe = runeRecipes.get(i);
-			System.out.println(recipe.getEnergyRequired());
-		}
-	}	
-	
-	public static void addRecipe(ItemStack catalyst, ItemStack output, int energy, int purity) {
-		RunicRecipe recipe = new RunicRecipe(catalyst, output, energy, purity);
+	public static void addRecipe(RuneRecipe recipe) {
 		runeRecipes.add(recipe);
 	}
 	
 	public static ItemStack getResult(ItemStack catalyst) {
-		for(RunicRecipe recipe : runeRecipes) {
+		for(RuneRecipe recipe : runeRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getOutput().copy();
 			}
@@ -73,7 +66,7 @@ public class RunicRecipes {
 	}
 	
 	public static int getMacht(ItemStack catalyst) {
-		for(RunicRecipe recipe : runeRecipes) {
+		for(RuneRecipe recipe : runeRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getEnergyRequired();
 			}
@@ -82,7 +75,7 @@ public class RunicRecipes {
 	}
 	
 	public static int getPurity(ItemStack catalyst) {
-		for(RunicRecipe recipe : runeRecipes) {
+		for(RuneRecipe recipe : runeRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getPurity();
 			}
@@ -95,7 +88,7 @@ public class RunicRecipes {
 	}
 	
 	public static ItemStack getCatalystFromOutput(ItemStack output) {
-		for(RunicRecipe recipe : runeRecipes) {
+		for(RuneRecipe recipe : runeRecipes) {
 			if(recipe.getOutput().isItemEqual(output)) {
 				return recipe.getCatalyst().copy();
 			}
@@ -104,7 +97,7 @@ public class RunicRecipes {
 	}	
 	
 	public static int getMachtFromOutput(ItemStack output) {
-		for(RunicRecipe recipe : runeRecipes) {
+		for(RuneRecipe recipe : runeRecipes) {
 			if(recipe.getOutput().isItemEqual(output)) {
 				return recipe.getEnergyRequired();
 			}

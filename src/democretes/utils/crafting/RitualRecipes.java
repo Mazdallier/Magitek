@@ -47,17 +47,13 @@ public class RitualRecipes {
 		}	
 	}
 	
-	public static void initRitualRecipes() {
-
-	}	
-	
-	
-	
-	public static void addRecipe(ItemStack catalyst, RitualType type, ItemStack[] input, ItemStack output, int macht) {
+	public static RitualRecipe addRecipe(ItemStack catalyst, RitualType type, ItemStack[] input, ItemStack output, int macht) {
 		if(type.size != input.length) {
-			return;
+			return null;
 		}
-		ritualRecipes.add(new RitualRecipe(catalyst, type, input, output, macht));
+		RitualRecipe recipe = new RitualRecipe(catalyst, type, input, output, macht);
+		ritualRecipes.add(recipe);
+		return recipe;
 	}
 
 	public static RitualRecipe getRecipe(ItemStack catalyst) {

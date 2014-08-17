@@ -60,7 +60,7 @@ public class BlockGenerator extends BlockMTBase {
 				}else{
 					if(player.getHeldItem() != null) {
 						ItemStack stack = player.getHeldItem();
-						if(RunicRecipes.recipeExists(stack)) {
+						if(RunicRecipes.recipeExistsFromOutput(stack)) {
 							return false;
 						}
 						int size = player.isSneaking() ? stack.stackSize : 1;

@@ -1,7 +1,6 @@
 package democretes;
 
 import java.io.File;
-import java.util.logging.Logger;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -13,7 +12,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import democretes.api.spells.Spell;
 import democretes.block.BlocksMT;
 import democretes.entity.EntitiesMT;
 import democretes.item.ItemsMT;
@@ -21,12 +19,12 @@ import democretes.item.spells.SpellsMT;
 import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
 import democretes.utils.CreativeTabsMT;
-import democretes.utils.crafting.AltarRecipes;
+import democretes.utils.crafting.RecipeRegistry;
 import democretes.utils.crafting.RitualRecipes;
 import democretes.utils.crafting.RunicRecipes;
 import democretes.utils.handlers.ConfigHandler;
-import democretes.utils.handlers.MTEventHandler;
 import democretes.utils.handlers.GuiHandler;
+import democretes.utils.handlers.MTEventHandler;
 import democretes.utils.network.PacketHandler;
 
 @Mod(modid = Reference.MOD_ID, 
@@ -66,9 +64,9 @@ public class Magitek {
 	
 	@EventHandler
 	public void orgasm(FMLPostInitializationEvent event) {
-		AltarRecipes.initAltarRecipes();
-		RitualRecipes.initRitualRecipes();
-		RunicRecipes.initRunicRecipes();
+		RecipeRegistry.initAltarRecipes();
+		RecipeRegistry.initRitualRecipes();
+		RecipeRegistry.initRunicRecipes();
 	}
 	
 	

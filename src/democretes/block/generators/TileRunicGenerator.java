@@ -18,7 +18,6 @@ public class TileRunicGenerator extends TileGeneratorBase {
 		if(this.inventory == null) {
 			return false;
 		}
-		System.out.println(this.inventory.getUnlocalizedName() + this.inventory.getItemDamage());
 		return RunicRecipes.recipeExistsFromOutput(this.inventory);
 	}
 

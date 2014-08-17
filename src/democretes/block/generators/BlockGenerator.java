@@ -7,6 +7,8 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,17 +16,20 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import democretes.block.BlockMTBase;
 import democretes.block.BlocksMT;
 import democretes.block.dummy.BlockSubTerraDummy;
 import democretes.lib.RenderIds;
 import democretes.render.fx.SmokeFX;
+import democretes.utils.crafting.AltarRecipes;
+import democretes.utils.crafting.RunicRecipes;
 
 public class BlockGenerator extends BlockMTBase {
 	
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-		if(!world.isRemote && world.getBlock(x, y+1, z) != BlocksMT.dummy && world.getBlockMetadata(x, y, z) == 1) {
+		if(!world.isRemote && world.getBlock(x, y+1, z) != BlocksMT.terraDummy && world.getBlockMetadata(x, y, z) == 1) {
 			this.dropBlockAsItem(world, x, y, z, new ItemStack(this, 1, 1));
 			world.setBlockToAir(x, y, z);
 		}
@@ -40,6 +45,37 @@ public class BlockGenerator extends BlockMTBase {
 	}
 	
 	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+		if(world.getBlockMetadata(x, y, z) == 4) {
+			if(world.getTileEntity(x, y, z) instanceof TileRunicGenerator) {
+				TileRunicGenerator generator = (TileRunicGenerator)world.getTileEntity(x, y, z);
+				if(generator.inventory != null) {
+					if(player.isSneaking()) {
+						if(!player.inventory.addItemStackToInventory(generator.inventory)) {
+							ForgeDirection fd = ForgeDirection.getOrientation(side);
+							world.spawnEntityInWorld(new EntityItem(world, x + 0.5F + fd.offsetX / 3.0F, y + 0.5F, z + 0.5F + fd.offsetZ / 3.0F, generator.inventory));
+						}
+						generator.inventory = null;
+					}
+				}else{
+					if(player.getHeldItem() != null) {
+						ItemStack stack = player.getHeldItem();
+						if(RunicRecipes.recipeExists(stack)) {
+							return false;
+						}
+						int size = player.isSneaking() ? stack.stackSize : 1;
+						generator.inventory = stack.copy();
+						generator.inventory.stackSize = size;
+						player.inventory.decrStackSize(player.inventory.currentItem, size);
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	@Override
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
 		if(world.getBlockMetadata(x, y, z) == 1 && !world.isAirBlock(x, y + 1, z)) {
 			return false;
@@ -50,7 +86,7 @@ public class BlockGenerator extends BlockMTBase {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
 		if(stack.getItemDamage() == 1) {
-			world.setBlock(x, y+1, z, BlocksMT.dummy);
+			world.setBlock(x, y+1, z, BlocksMT.terraDummy);
 			((BlockSubTerraDummy)world.getBlock(x, y+1, z)).block = this;
 			world.getBlock(x, y+1, z).onPostBlockPlaced(world, x, y, z, stack.getItemDamage());
 		}
@@ -58,7 +94,7 @@ public class BlockGenerator extends BlockMTBase {
 	
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < 5; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}
@@ -77,6 +113,10 @@ public class BlockGenerator extends BlockMTBase {
 			return new TileSubTerraGenerator();
 		case 2:
 			return new TilePurityGenerator();
+		case 3:
+			return new TileSpreader();
+		case 4:
+			return new TileRunicGenerator();
 		}
 		return null;
 	}

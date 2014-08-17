@@ -12,7 +12,7 @@ import democretes.item.ItemsMT;
 
 public class AltarRecipes {
 	
-static List<AltarRecipe> altarRecipes = new LinkedList();
+	static LinkedList<AltarRecipe> altarRecipes = new LinkedList<AltarRecipe>();
 	
 	public static class AltarRecipe {
 		static ItemStack input;

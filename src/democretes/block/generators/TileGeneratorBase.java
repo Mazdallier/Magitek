@@ -37,18 +37,20 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	public TileGeneratorBase() {
 		super(1000);
 	}
+	
+	public TileGeneratorBase(int capacity) {
+		super(capacity);
+	}
 
 	int count = 40;
 	@Override
 	public void updateEntity() {
-		if(!this.worldObj.isRemote) {
-			if(count >= 40) {
-				count = 0;
-				searchForTiles();
-			}
-			count++;
-			transferEnergy();				
+		if(count >= 40) {
+			count = 0;
+			searchForTiles();
 		}
+		count++;
+		transferEnergy();		
 		if(this.canGenerate()) {
 			if(!this.worldObj.isRemote) {
 				this.macht.receiveMacht(this.getFuel());
@@ -65,7 +67,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	protected abstract void renderWhenActive();
 	
 	void searchForTiles() {
-		this.tiles.clear();
+		this.tiles = new ArrayList();
 		int xx = xCoord;
 		int yy = yCoord - 1;
 		int zz = zCoord;

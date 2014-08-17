@@ -3,17 +3,15 @@ package democretes.utils.crafting;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
-import democretes.item.ItemsMT;
-import democretes.utils.crafting.AltarRecipes.AltarRecipe;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
+import democretes.item.ItemsMT;
 
 public class RunicRecipes {
-	static List<RunicRecipe> runeRecipes = new LinkedList();
-
+	
+	static List<RunicRecipe> runeRecipes = new ArrayList<RunicRecipe>();
 	
 	public static class RunicRecipe {
 		
@@ -54,10 +52,15 @@ public class RunicRecipes {
 		addRecipe(new ItemStack(Items.blaze_rod), new ItemStack(ItemsMT.rune, 1, 4), 2400, 0);
 		addRecipe(new ItemStack(Items.magma_cream), new ItemStack(ItemsMT.rune, 1, 5), 1800, 0);
 		addRecipe(new ItemStack(Items.ender_eye), new ItemStack(ItemsMT.rune, 1, 6), 2400, 0);
+		for(int i = 0; i < runeRecipes.size(); i++) {
+			RunicRecipe recipe = runeRecipes.get(i);
+			System.out.println(recipe.getEnergyRequired());
+		}
 	}	
 	
 	public static void addRecipe(ItemStack catalyst, ItemStack output, int energy, int purity) {
-		runeRecipes.add(new RunicRecipe(catalyst, output, energy, purity));
+		RunicRecipe recipe = new RunicRecipe(catalyst, output, energy, purity);
+		runeRecipes.add(recipe);
 	}
 	
 	public static ItemStack getResult(ItemStack catalyst) {
@@ -87,12 +90,30 @@ public class RunicRecipes {
 		return 0;
 	}
 	
-	public static boolean recipeExists(ItemStack stack) {
-		return getResult(stack) != null;
+	public static boolean recipeExists(ItemStack catalyst) {
+		return getResult(catalyst) != null;
+	}
+	
+	public static ItemStack getCatalystFromOutput(ItemStack output) {
+		for(RunicRecipe recipe : runeRecipes) {
+			if(recipe.getOutput().isItemEqual(output)) {
+				return recipe.getCatalyst().copy();
+			}
+		}
+		return null;
 	}	
-
-	private static ArrayList<ItemStack> getOreDictStack(String name) {
-		return OreDictionary.getOres(name);
+	
+	public static int getMachtFromOutput(ItemStack output) {
+		for(RunicRecipe recipe : runeRecipes) {
+			if(recipe.getOutput().isItemEqual(output)) {
+				return recipe.getEnergyRequired();
+			}
+		}
+		return 0;
+	}
+	
+	public static boolean recipeExistsFromOutput(ItemStack output) {
+		return getCatalystFromOutput(output) != null;
 	}
 
 }

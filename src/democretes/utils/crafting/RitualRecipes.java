@@ -8,7 +8,7 @@ import democretes.api.altar.RitualType;
 
 public class RitualRecipes {
 
-	static List<RitualRecipe> ritualRecipes = new LinkedList();
+	static LinkedList<RitualRecipe> ritualRecipes = new LinkedList<RitualRecipe>();
 
 	
 	public static class RitualRecipe {

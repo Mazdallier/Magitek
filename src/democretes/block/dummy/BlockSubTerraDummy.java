@@ -13,6 +13,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import democretes.block.BlockMTBase;
+import democretes.block.BlocksMT;
 import democretes.block.generators.BlockGenerator;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;
@@ -55,10 +56,7 @@ public class BlockSubTerraDummy extends BlockMTBase {
 	
 	@Override
 	public IIcon getIcon(int side, int meta) {
-		if(block == null) {
-			return super.getIcon(side, meta);
-		}
-		return block.getIcon(side, meta);
+		return BlocksMT.generator.getIcon(side, meta);
 	}
 	
 	@Override

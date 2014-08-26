@@ -1,5 +1,8 @@
 package democretes.block.dummy;
 
+import java.util.List;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -10,7 +13,7 @@ import democretes.block.TileMTBase;
 public class TileAltarDummy extends TileMTBase implements IInventory {
 
 	public ItemStack inventory;
-	public int deathTime = 600;
+	public int deathTime = 20;
 	
 	EntityItem item;
 	@Override
@@ -20,13 +23,21 @@ public class TileAltarDummy extends TileMTBase implements IInventory {
 			this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord);
 			this.worldObj.removeTileEntity(this.xCoord, this.yCoord, this.zCoord);
 		}
-		item = (EntityItem)this.worldObj.findNearestEntityWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(0, 0, 0, 1, 1, 1), null);
+		List<Entity> entities = this.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 1, this.zCoord + 1));
+		this.item = null;
+		for(Entity e : entities) {
+			if(e instanceof EntityItem) {
+				this.item = (EntityItem)e;
+			}
+		}		
 		if(item == null) {
 			if(this.inventory != null) {
 				this.inventory = null;
 			}
 			return;
 		}
+		item.posX = this.xCoord + 0.5D;
+		item.posZ = this.zCoord + 0.5D;
 		this.inventory = item.getEntityItem();
 	}
 	
@@ -47,9 +58,15 @@ public class TileAltarDummy extends TileMTBase implements IInventory {
 
 	@Override
 	public ItemStack decrStackSize(int slot, int amount) {
+		if(this.inventory == null) {
+			return null;
+		}
 		this.inventory.stackSize -= amount;
 		if(this.inventory.stackSize <= 0) {
 			this.inventory = null;
+			this.worldObj.removeEntity(item);			
+		}else{
+			this.item.setEntityItemStack(this.inventory);			
 		}
 		return this.inventory;
 	}
@@ -62,6 +79,7 @@ public class TileAltarDummy extends TileMTBase implements IInventory {
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		this.inventory = stack;
+		this.item.setEntityItemStack(stack);
 	}
 
 	@Override

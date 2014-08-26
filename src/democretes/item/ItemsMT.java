@@ -11,34 +11,38 @@ import democretes.item.tools.ItemCoilLinker;
 import democretes.item.tools.ItemDebugger;
 import democretes.item.tools.ItemMachtSigil;
 import democretes.item.tools.ItemPuritySigil;
+import democretes.item.tools.ItemRitualSigil;
 import democretes.lib.ItemNames;
 
 public class ItemsMT {
-	
-	public static Item debugger;
-	public static Item purityRune;
-	public static Item link;
-	public static Item binder;
-	public static Item machtRune;
+
 	public static Item material;
 	public static Item rune;
+	public static Item debugger;
+	public static Item link;
+	public static Item binder;
+	public static Item machtSigil;
+	public static Item puritySigil;
+	public static Item ritualSigil;
 	
 	public static void init() {
+		material = new ItemMaterial();
 		debugger = new ItemDebugger();
-		purityRune = new ItemPuritySigil();
 		link = new ItemCoilLinker();
 		binder = new ItemSpellBinder();
-		machtRune = new ItemMachtSigil();
-		material = new ItemMaterial();
 		rune = new ItemRune();
-		
+		machtSigil = new ItemMachtSigil();
+		puritySigil = new ItemPuritySigil();
+		ritualSigil = new ItemRitualSigil();
+
+		GameRegistry.registerItem(material, ItemNames.MATERIAL_NAME);
 		GameRegistry.registerItem(debugger, ItemNames.DEBUGGER_NAME);
-		GameRegistry.registerItem(purityRune, ItemNames.PURITY_RUNE_NAME);
-		GameRegistry.registerItem(machtRune, ItemNames.MACHT_RUNE_NAME);
 		GameRegistry.registerItem(link, ItemNames.LINKER_NAME);
 		GameRegistry.registerItem(binder, ItemNames.SPELL_BINDER_NAME);
-		GameRegistry.registerItem(material, ItemNames.MATERIAL_NAME);
 		GameRegistry.registerItem(rune, ItemNames.RUNE_NAME);
+		GameRegistry.registerItem(puritySigil, ItemNames.PURITY_RUNE_NAME);
+		GameRegistry.registerItem(machtSigil, ItemNames.MACHT_RUNE_NAME);
+		GameRegistry.registerItem(ritualSigil, ItemNames.RITUAL_NAME);
 
 		if(Loader.isModLoaded("Baubles")) {
 			initBaubles();

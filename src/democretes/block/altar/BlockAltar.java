@@ -13,9 +13,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.block.BlockMTBase;
+import democretes.block.dummy.TileAltarDummy;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;
-import democretes.utils.crafting.AltarRecipes;
+import democretes.utils.crafting.AltarHelper;
+import democretes.utils.crafting.RitualHelper;
 
 public class BlockAltar extends BlockMTBase {	
 	
@@ -33,7 +35,7 @@ public class BlockAltar extends BlockMTBase {
 		}else{
 			if(player.getHeldItem() != null) {
 				ItemStack stack = player.getHeldItem();
-				if(AltarRecipes.getResult(stack) == null) {
+				if(!AltarHelper.recipeExists(stack) && !RitualHelper.recipeExists(stack)) {
 					return false;
 				}
 				int size = player.isSneaking() ? stack.stackSize : 1;
@@ -41,6 +43,17 @@ public class BlockAltar extends BlockMTBase {
 				altar.inventory.stackSize = size;
 				player.inventory.decrStackSize(player.inventory.currentItem, size);
 				return true;
+			}else{
+				if(player.isSneaking()) {
+					altar.ritual = null;
+					if(altar.dummies != null) {
+						for(TileEntity dummy : altar.dummies) {
+							world.removeTileEntity(dummy.xCoord, dummy.yCoord, dummy.zCoord);
+							world.setBlockToAir(dummy.xCoord, dummy.yCoord, dummy.zCoord);
+						}
+					}	
+					altar.dummies = null;
+				}
 			}
 		}		
 		return false;

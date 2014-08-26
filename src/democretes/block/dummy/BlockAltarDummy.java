@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.block.BlockMTBase;
 import democretes.lib.Reference;
-import democretes.utils.crafting.AltarRecipes;
+import democretes.utils.crafting.AltarHelper;
 
 public class BlockAltarDummy extends BlockMTBase {
 	

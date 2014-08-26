@@ -3,9 +3,11 @@ package democretes.utils.crafting;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import democretes.api.altar.RitualType;
+import democretes.api.recipe.AltarRecipe;
+import democretes.api.recipe.RitualRecipe;
+import democretes.api.recipe.RuneRecipe;
 import democretes.item.ItemsMT;
-import democretes.utils.crafting.AltarRecipes.AltarRecipe;
-import democretes.utils.crafting.RunicRecipes.RuneRecipe;
 
 public final class RecipeRegistry {
 
@@ -25,19 +27,21 @@ public final class RecipeRegistry {
 		energy = new RuneRecipe(new ItemStack(Items.blaze_rod), new ItemStack(ItemsMT.rune, 1, 4), 2400, 0);
 		balance = new RuneRecipe(new ItemStack(Items.magma_cream), new ItemStack(ItemsMT.rune, 1, 5), 1800, 0);
 		control = new RuneRecipe(new ItemStack(Items.ender_eye), new ItemStack(ItemsMT.rune, 1, 6), 2400, 0);
-		for(int i = 0; i < RunicRecipes.runeRecipes.size(); i++) {
-			System.out.println(i + "recipes" + RunicRecipes.runeRecipes.get(i).getEnergyRequired());
-		}
 	}
 	
 	public static AltarRecipe rune;
 	
 	public static void initAltarRecipes() {
-		rune = AltarRecipes.addRecipe(new ItemStack(Blocks.stone), new ItemStack(ItemsMT.material, 1, 0), 500);
+		rune = new AltarRecipe(new ItemStack(Blocks.stone), new ItemStack(ItemsMT.material, 1, 0), 500);
 	}	
 
+	public static RitualRecipe blah;
 	public static void initRitualRecipes() {
-		
+		blah = new RitualRecipe(new ItemStack(Blocks.cobblestone), RitualType.BASIC, new ItemStack[] {
+			new ItemStack(Blocks.cobblestone), 
+			new ItemStack(Blocks.cobblestone), 
+			new ItemStack(Blocks.cobblestone)}
+			, new ItemStack(Items.diamond), 100);
 	}
 	
 }

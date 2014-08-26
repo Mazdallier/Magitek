@@ -1,63 +1,14 @@
 package democretes.utils.crafting;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import net.minecraft.item.ItemStack;
 import democretes.api.altar.RitualType;
+import democretes.api.recipe.RitualRecipe;
 
-public class RitualRecipes {
+public class RitualHelper {
 
-	static LinkedList<RitualRecipe> ritualRecipes = new LinkedList<RitualRecipe>();
-
-	
-	public static class RitualRecipe {
-		static ItemStack catalyst;
-		static RitualType type;
-		static ItemStack[] input;
-		static ItemStack output;
-		static int macht;
-		
-		RitualRecipe(ItemStack catalyst, RitualType type, ItemStack[] input, ItemStack output, int macht) {
-			this.catalyst = catalyst;
-			this.type = type;
-			this.input = input;
-			this.output = output;
-			this.macht = macht;
-		}
-		
-		public static ItemStack getCatalyst() {
-			return catalyst;
-		}
-		
-		public static RitualType getRitual() {
-			return type;
-		}
-		
-		public static ItemStack[] getInput() {
-			return input;
-		}
-		
-		public static ItemStack getOutput() {
-			return output;
-		}
-		
-		public static int getEnergyRequired() {
-			return macht;
-		}	
-	}
-	
-	public static RitualRecipe addRecipe(ItemStack catalyst, RitualType type, ItemStack[] input, ItemStack output, int macht) {
-		if(type.size != input.length) {
-			return null;
-		}
-		RitualRecipe recipe = new RitualRecipe(catalyst, type, input, output, macht);
-		ritualRecipes.add(recipe);
-		return recipe;
-	}
 
 	public static RitualRecipe getRecipe(ItemStack catalyst) {
-		for(RitualRecipe recipe : ritualRecipes) {
+		for(RitualRecipe recipe : RitualRecipe.ritualRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe;
 			}
@@ -66,7 +17,7 @@ public class RitualRecipes {
 	}
 	
 	public static ItemStack[] getInputForCatalyst(ItemStack catalyst) {
-		for(RitualRecipe recipe : ritualRecipes) {
+		for(RitualRecipe recipe : RitualRecipe.ritualRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getInput();
 			}
@@ -75,7 +26,10 @@ public class RitualRecipes {
 	}
 	
 	public static ItemStack getOutputForCatalyst(ItemStack catalyst) {
-		for(RitualRecipe recipe : ritualRecipes) {
+		if(catalyst == null) {
+			return null;
+		}
+		for(RitualRecipe recipe : RitualRecipe.ritualRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getOutput();
 			}
@@ -84,7 +38,7 @@ public class RitualRecipes {
 	}
 	
 	public static RitualType getTypeForCatalyst(ItemStack catalyst) {
-		for(RitualRecipe recipe : ritualRecipes) {
+		for(RitualRecipe recipe : RitualRecipe.ritualRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getRitual();
 			}
@@ -93,7 +47,10 @@ public class RitualRecipes {
 	}
 	
 	public static int getMachtForCatalyst(ItemStack catalyst) {
-		for(RitualRecipe recipe : ritualRecipes) {
+		if(catalyst == null) {
+			return 0;
+		}
+		for(RitualRecipe recipe : RitualRecipe.ritualRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getEnergyRequired();
 			}
@@ -116,12 +73,16 @@ public class RitualRecipes {
 		int check = 0;
 		for(int i = 0; i < stacks.length; i++) {
 			for(int j = 0; j < recipe.length; j++) {
+				if(recipe[j] == null || stacks[i] == null) {
+					return false;
+				}
 				if(stacks[i].isItemEqual(recipe[j])) {
 					check++;
+					break;
 				}
 			}
 		}
-		return check == recipe.length;
+		return check >= recipe.length;
 	}
 	
 }

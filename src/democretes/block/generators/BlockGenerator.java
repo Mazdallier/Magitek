@@ -22,8 +22,8 @@ import democretes.block.BlocksMT;
 import democretes.block.dummy.BlockSubTerraDummy;
 import democretes.lib.RenderIds;
 import democretes.render.fx.SmokeFX;
-import democretes.utils.crafting.AltarRecipes;
-import democretes.utils.crafting.RunicRecipes;
+import democretes.utils.crafting.AltarHelper;
+import democretes.utils.crafting.RunicHelper;
 
 public class BlockGenerator extends BlockMTBase {
 	
@@ -60,7 +60,7 @@ public class BlockGenerator extends BlockMTBase {
 				}else{
 					if(player.getHeldItem() != null) {
 						ItemStack stack = player.getHeldItem();
-						if(RunicRecipes.recipeExistsFromOutput(stack)) {
+						if(!RunicHelper.recipeExistsFromOutput(stack)) {
 							return false;
 						}
 						int size = player.isSneaking() ? stack.stackSize : 1;

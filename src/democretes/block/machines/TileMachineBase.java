@@ -10,11 +10,9 @@ public abstract class TileMachineBase extends TilePurityBase {
 	
 	@Override
 	public void updateEntity() {
-		if(!this.worldObj.isRemote) {
-			if(canActivate()) {
-				doStuff();
-			}
-		}
+		if(canActivate()) {
+			doStuff();
+		}		
 	}
 	
 	public abstract void doStuff();

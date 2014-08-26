@@ -1,8 +1,9 @@
 package democretes.block.machines;
 
+import cpw.mods.fml.common.FMLLog;
 import democretes.item.ItemsMT;
-import democretes.utils.crafting.AltarRecipes;
-import democretes.utils.crafting.RunicRecipes;
+import democretes.utils.crafting.AltarHelper;
+import democretes.utils.crafting.RunicHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -15,28 +16,36 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 
 public class TileRuneConstructor extends TileMachineBase implements IInventory {
 
-	ItemStack[] inventory = new ItemStack[2];
+	public ItemStack[] inventory = new ItemStack[2];
 	
 	public TileRuneConstructor() {
-		super(5000);
+		super(10000);
 	}
 
 	int energy;
 	@Override
 	public void doStuff() {
-		if(RunicRecipes.recipeExists(this.inventory[1])) {
-			energy += this.extractMacht(RunicRecipes.getMacht(this.inventory[1])/20);
-			if(this.energy >= RunicRecipes.getMacht(this.inventory[1])) {
-				ItemStack stack;
+		if(RunicHelper.recipeExists(this.inventory[1])) {
+			int multiplier = Math.min(this.inventory[0].stackSize, this.inventory[1].stackSize);
+			energy += this.extractMacht(RunicHelper.getMacht(this.inventory[1])*multiplier/20);
+			if(this.energy >= RunicHelper.getMacht(this.inventory[1])) {
 				this.energy = 0;
-				stack = RunicRecipes.getResult(this.inventory[1]).copy();
-				stack.stackSize = this.inventory[1].stackSize*2;
-				if(stack.stackSize > 64) {
-					EntityItem item = new EntityItem(this.worldObj, this.xCoord + 0.5F, this.yCoord + 0.5F, this.zCoord + 0.5F, stack);
+				ItemStack stack = RunicHelper.getResult(this.inventory[1]).copy();
+				stack.stackSize *= multiplier;
+				if(stack.stackSize > stack.getMaxStackSize() || this.inventory[1].stackSize > this.inventory[0].stackSize) {
+					EntityItem item = new EntityItem(this.worldObj, this.xCoord, this.yCoord + 0.5F, this.zCoord, stack);
+					this.inventory[1].stackSize -= multiplier;
+					if(this.inventory[1].stackSize == 0) {
+						this.inventory[1] = null;
+					}
 					this.worldObj.spawnEntityInWorld(item);
 				}else{
 					this.inventory[1] = stack;						
-				}					
+				}	
+				this.inventory[0].stackSize -= multiplier;
+				if(this.inventory[0].stackSize == 0) {
+					this.inventory[0] = null;
+				}				
 				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);				
 			}
 		}else{
@@ -52,23 +61,24 @@ public class TileRuneConstructor extends TileMachineBase implements IInventory {
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
 		NBTTagList nbttaglist = new NBTTagList();
 	    for (int i = 0; i < this.inventory.length; ++i) {
 	        if (this.inventory[i] != null) {
-	            NBTTagCompound compound1 = new NBTTagCompound();
-	            compound1.setByte("Slot", (byte)i);
-	            this.inventory[i].writeToNBT(compound1);
-	            nbttaglist.appendTag(compound1);
+	            NBTTagCompound nbt1 = new NBTTagCompound();
+	            nbt1.setByte("Slot", (byte)i);
+	            this.inventory[i].writeToNBT(nbt1);
+	            nbttaglist.appendTag(nbt1);
 	        }
 	    }
-	    compound.setTag("Items", nbttaglist);
+	    nbt.setTag("Items", nbttaglist);
 	}
 	
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		NBTTagList nbttaglist = compound.getTagList("Items", 2);
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		NBTTagList nbttaglist = nbt.getTagList("Items", 2);
         this.inventory = new ItemStack[this.getSizeInventory()];
         for (int i = 0; i < nbttaglist.tagCount(); ++i) {
             NBTTagCompound compound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
@@ -134,7 +144,6 @@ public class TileRuneConstructor extends TileMachineBase implements IInventory {
 		return false;
 	}
 
-
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if(i == 0) {
@@ -162,14 +171,31 @@ public class TileRuneConstructor extends TileMachineBase implements IInventory {
 
 	@Override
 	public Packet getDescriptionPacket() {
-		// TODO Auto-generated method stub
-		return super.getDescriptionPacket();
+		NBTTagCompound nbt  = new NBTTagCompound();
+		NBTTagList nbttaglist = new NBTTagList();
+	    for (int i = 0; i < this.inventory.length; ++i) {
+	        if (this.inventory[i] != null) {
+	            NBTTagCompound compound1 = new NBTTagCompound();
+	            compound1.setByte("Slot", (byte)i);
+	            this.inventory[i].writeToNBT(compound1);
+	            nbttaglist.appendTag(compound1);
+	        }
+	    }
+	    nbt.setTag("Items", nbttaglist);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, nbt);
 	}
 	
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
-		// TODO Auto-generated method stub
-		super.onDataPacket(net, pkt);
+		NBTTagList nbttaglist = pkt.func_148857_g().getTagList("Items", 0);
+        this.inventory = new ItemStack[this.getSizeInventory()];
+        for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+            NBTTagCompound compound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
+            int j = compound1.getByte("Slot") & 255;
+            if (j >= 0 && j < this.inventory.length)            {
+                this.inventory[j] = ItemStack.loadItemStackFromNBT(compound1);
+            }
+        }
 	}
 	
 

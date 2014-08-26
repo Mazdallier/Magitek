@@ -14,6 +14,10 @@ import net.minecraft.world.World;
 
 public class ItemMaterial extends ItemMTBase {
 	
+	public ItemMaterial() {
+		setHasSubtypes(true);
+	}
+	
 	@Override
 	public void getSubItems(Item item, CreativeTabs tab, List list) {
 		for(int i = 0; i < icons.length; i++) {

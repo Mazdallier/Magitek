@@ -1,5 +1,8 @@
 package democretes.utils;
 
+import democretes.api.spells.Spell;
+import democretes.item.ItemsMT;
+import democretes.item.spells.SpellsMT;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -12,7 +15,7 @@ public class CreativeTabsMT extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		return Items.gold_ingot;
+		return ItemsMT.binder;
 	}
 	
 	

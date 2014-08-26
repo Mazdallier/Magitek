@@ -8,6 +8,7 @@ import democretes.block.coils.TileMachtCoil;
 import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSubTerraGenerator;
+import democretes.block.machines.TileRuneConstructor;
 import democretes.lib.RenderIds;
 import democretes.render.blocks.RenderBlockAltar;
 import democretes.render.blocks.RenderBlockCoil;
@@ -15,6 +16,7 @@ import democretes.render.blocks.RenderBlockGenerator;
 import democretes.render.tile.RenderAltar;
 import democretes.render.tile.RenderEnergyCoil;
 import democretes.render.tile.RenderPurityGenerator;
+import democretes.render.tile.RenderRuneConstructor;
 import democretes.render.tile.RenderSolarGenerator;
 import democretes.render.tile.RenderSubTerraGenerator;
 import democretes.utils.handlers.KeyHandler;
@@ -38,6 +40,8 @@ public class ClientProxy extends CommonProxy{
     	
     	ClientRegistry.bindTileEntitySpecialRenderer(TileAltar.class, new RenderAltar());
     	RenderIds.idALTAR = RenderingRegistry.getNextAvailableRenderId();
+    	
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileRuneConstructor.class, new RenderRuneConstructor());
     	
 		RenderingRegistry.registerBlockHandler(new RenderBlockGenerator());
 		RenderingRegistry.registerBlockHandler(new RenderBlockCoil());

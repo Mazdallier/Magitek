@@ -14,8 +14,8 @@ import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
-public class ConfigHandler extends GuiConfig implements IModGuiFactory{
-	
+public class ConfigHandler /**extends GuiConfig implements IModGuiFactory**/ {
+	/**
 	public ConfigHandler(GuiScreen parentScreen) {
 		super(parentScreen, 
 				new ConfigElement(config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), 
@@ -23,7 +23,7 @@ public class ConfigHandler extends GuiConfig implements IModGuiFactory{
 				false, 
 				false, 
 				GuiConfig.getAbridgedConfigPath(config.toString()));
-	}
+	}**/
 
 	public static int syphonAmount;
 	public static int range;
@@ -47,7 +47,8 @@ public class ConfigHandler extends GuiConfig implements IModGuiFactory{
 		
 		config.save();  
 	}
-
+	
+	/**
 	@Override
 	public void initialize(Minecraft minecraftInstance) {}
 
@@ -65,5 +66,5 @@ public class ConfigHandler extends GuiConfig implements IModGuiFactory{
 	public RuntimeOptionGuiHandler getHandlerFor(RuntimeOptionCategoryElement element) {
 		return null;
 	}
-	
+	**/
 }

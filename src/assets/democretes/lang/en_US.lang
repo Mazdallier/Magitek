@@ -1,6 +1,8 @@
+itemGroup.Magitek=Magitek
+
 #Items
-item.magitek.purity.name=Sigil of Purity
-item.magitek.macht.name=Sigil of Power
+item.magitek.coilLinker.name=Coil Linker
+item.magitek.debugger.name=Demo's Debugger
 item.magitek.material.0.name=Blank Rune
 item.magitek.material.1.name=Blank Sigil
 item.magitek.material.2.name=Blank Scroll
@@ -11,14 +13,20 @@ item.magitek.rune.3.name=Air Rune
 item.magitek.rune.4.name=Rune of Energy
 item.magitek.rune.5.name=Rune of Balance
 item.magitek.rune.6.name=Rune of Control
-item.magitek.coilLinker.name=Coil Linker
-item.magitek.debugger.name=Demo's Debugger
+item.magitek.purity.name=Sigil of Purity
+item.magitek.macht.name=Sigil of Power
+item.magitek.ritual.0.name=Crude Sigil of Binding
+item.magitek.ritual.1.name=Generic Sigil of Binding
+item.magitek.ritual.2.name=Sophisticated Sigil of Binding
 
 #Blocks
 tile.magitek.generator.0.name=Solar Array
 tile.magitek.generator.1.name=Sub Terranean Generator
 tile.magitek.generator.2.name=Purity Extractor
+tile.magitek.generator.3.name=Macht Distributor
+tile.magitek.generator.4.name=Runic Generator
 tile.magitek.machine.0.name=Purity Inverter
+tile.magitek.machine.1.name=Runic Constructor
 tile.magitek.altar.name=Altar of Power
 tile.magitek.coil.name=Macht Coil
 

@@ -1,0 +1,43 @@
+1407178334063	Delete elements
+1407178344736	Delete elements
+1407178348678	Delete element
+1407178361863	Delete element
+1407178367113	Delete element
+1407178393139	Delete element
+1407178397782	Delete elements
+1407178423481	Delete element
+1407178449310	Delete element
+1407178463440	Rename type 'TechnologyRefined'
+1407178477265	Delete element
+1407178483428	Delete element
+1407178525903	Delete element
+1407178530681	Delete element
+1407178651655	Rename type 'CreativeTabsTR'
+1407178721057	Delete element
+1407178880034	Rename type 'IEnergyMachtHandler'
+1407182226028	Rename package 'democretes.api.energy'
+1407182786183	Rename type 'PurityHandler'
+1407183792291	Rename type 'BlocksTR'
+1407183804459	Rename type 'BlockTRBase'
+1407183811768	Rename type 'ItemsTR'
+1407183819971	Rename type 'ItemTRBase'
+1407186082620	Rename type 'TileGenerator'
+1407210450208	Delete element
+1407255454678	Delete element
+1407261441942	Rename type 'TileTRBase'
+1407264315094	Rename type 'Electromancy'
+1407264342553	Rename type 'BlocksEM'
+1407264348434	Rename type 'BlockEMBase'
+1407264355046	Rename type 'ItemsEM'
+1407264361285	Rename type 'ItemEMBase'
+1407264398495	Rename type 'CreativeTabsEM'
+1407264721590	Delete element
+1407264784718	Rename type 'TileEMBase'
+1407264797339	Rename type 'EMEventHandler'
+1407268750599	Delete element
+1407269822447	Rename type 'ItemPurityContainer'
+1407272650138	Move compilation unit
+1407359074285	Rename type 'RenderBlockSubTerraGenerator'
+1407366133753	Move file
+1407366178746	Move file
+1407366289721	Delete elements

@@ -14,11 +14,21 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLLog;
-import democretes.block.BlocksMT;
-import democretes.block.generators.BlockGenerator;
+import democretes.utils.handlers.ConfigHandler;
 
 public class FXOrb extends EntityFX {	
 
+
+	public static Queue<FXOrb> queuedRenders = new ArrayDeque();
+	
+	// Queue values
+	float f;
+	float f1;
+	float f2;
+	float f3;
+	float f4;
+	float f5;
+	
 	public static final ResourceLocation texture = new ResourceLocation("democretes", "textures/particles/orb.png");
 
 	boolean distanceLimit = true;
@@ -50,19 +60,51 @@ public class FXOrb extends EntityFX {
 		prevPosY = posY;
 		prevPosZ = posZ;
 	}
+	
+	public static void dispatchQueuedRenders(Tessellator tessellator) {
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.75F);
+		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
+
+		if(!queuedRenders.isEmpty()) {
+			tessellator.startDrawingQuads();
+			for(FXOrb orb : queuedRenders)
+				orb.renderQueued(tessellator);
+			tessellator.draw();
+		}
+
+		queuedRenders.clear();
+	}
+
+	private void renderQueued(Tessellator tessellator) {
+		float agescale = 0;
+		if (agescale > 1F){
+			agescale = 2 - agescale;
+		}
+		particleScale = particleScale * agescale;
+
+		float f10 = 0.5F * particleScale;
+		float f11 = (float)(prevPosX + (posX - prevPosX) * f - interpPosX);
+		float f12 = (float)(prevPosY + (posY - prevPosY) * f - interpPosY);
+		float f13 = (float)(prevPosZ + (posZ - prevPosZ) * f - interpPosZ);
+
+		tessellator.setBrightness(240);
+		tessellator.setColorRGBA_F(particleRed, particleGreen, particleBlue, 0.5F);
+		tessellator.addVertexWithUV(f11 - f1 * f10 - f4 * f10, f12 - f2 * f10, f13 - f3 * f10 - f5 * f10, 0, 1);
+		tessellator.addVertexWithUV(f11 - f1 * f10 + f4 * f10, f12 + f2 * f10, f13 - f3 * f10 + f5 * f10, 1, 1);
+		tessellator.addVertexWithUV(f11 + f1 * f10 + f4 * f10, f12 + f2 * f10, f13 + f3 * f10 + f5 * f10, 1, 0);
+		tessellator.addVertexWithUV(f11 + f1 * f10 - f4 * f10, f12 - f2 * f10, f13 + f3 * f10 - f5 * f10, 0, 0);
+	}
 
 	@Override
-	public void renderParticle(Tessellator t, float tick, float par3, float par4, float par5, float par6, float par7) {
-		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
-		t.setBrightness(getBrightnessForRender(tick));
-		float scale = 0.1F * particleScale;
-		float x = (float)(this.prevPosX + (this.posX - this.prevPosX) * (double)tick - interpPosX);
-		float y = (float)(this.prevPosY + (this.posY - this.prevPosY) * (double)tick - interpPosY);
-		float z = (float)(this.prevPosZ + (this.posZ - this.prevPosZ) * (double)tick - interpPosZ);
-		t.addVertexWithUV((double)(x - par3 * scale - par6 * scale), (double)(y - par4 * scale), (double)(z - par5 * scale - par7 * scale), 1, 1);
-		t.addVertexWithUV((double)(x - par3 * scale + par6 * scale), (double)(y + par4 * scale), (double)(z - par5 * scale + par7 * scale), 1, 0);
-		t.addVertexWithUV((double)(x + par3 * scale + par6 * scale), (double)(y + par4 * scale), (double)(z + par5 * scale + par7 * scale), 0, 0);
-		t.addVertexWithUV((double)(x + par3 * scale - par6 * scale), (double)(y - par4 * scale), (double)(z + par5 * scale - par7 * scale), 0, 1);
+	public void renderParticle(Tessellator t, float tick, float f1, float f2, float f3, float f4, float f5) {
+		this.f = tick;
+		this.f1 = f1;
+		this.f2 = f2;
+		this.f3 = f3;
+		this.f4 = f4;
+		this.f5 = f5;
+
+		queuedRenders.add(this);
 	}
 
 	@Override

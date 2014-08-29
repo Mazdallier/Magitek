@@ -23,7 +23,6 @@ import democretes.block.BlocksMT;
 import democretes.block.dummy.BlockSubTerraDummy;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;
-import democretes.render.fx.SmokeFX;
 import democretes.utils.crafting.AltarHelper;
 import democretes.utils.crafting.RunicHelper;
 

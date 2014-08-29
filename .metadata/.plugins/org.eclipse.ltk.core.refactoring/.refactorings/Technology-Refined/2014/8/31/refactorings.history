@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;democretes.utils.handlers.EventHandler&apos; to &apos;TREventHandler&apos;&#x0D;&#x0A;- Original project: &apos;Technology-Refined&apos;&#x0D;&#x0A;- Original element: &apos;democretes.utils.handlers.EventHandler&apos;&#x0D;&#x0A;- Renamed element: &apos;democretes.utils.handlers.TREventHandler&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;EventHandler&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;democretes.utils.handlers{EventHandler.java[EventHandler" matchStrategy="1" name="TREventHandler" qualified="false" references="true" similarDeclarations="false" stamp="1406953333360" textual="false" version="1.0"/>
+</session>

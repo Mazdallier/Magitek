@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Energy.png&apos; to &apos;Technology-Refined/src/assets.democretes.textures.gui.elements&apos;&#x0D;&#x0A;- Original project: &apos;CoFHLib&apos;&#x0D;&#x0A;- Destination element: &apos;Technology-Refined/src/assets.democretes.textures.gui.elements&apos;&#x0D;&#x0A;- Original element: &apos;Energy.png&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="=Technology-Refined/src&lt;assets.democretes.textures.gui.elements" element1="src/main/resources/assets/cofh/textures/gui/elements/Energy.png" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1405790076455" units="0" version="1.0"/>
+</session>

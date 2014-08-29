@@ -27,6 +27,7 @@ public class ConfigHandler /**extends GuiConfig implements IModGuiFactory**/ {
 
 	public static int syphonAmount;
 	public static int range;
+	public static int maxRatio;
 
 	static Configuration config;
 	
@@ -44,6 +45,9 @@ public class ConfigHandler /**extends GuiConfig implements IModGuiFactory**/ {
 		
 		Property r = config.get(Configuration.CATEGORY_GENERAL, "Range that generators and runes search.", 10);
 		range = r.getInt();
+		
+		Property ratio = config.get(Configuration.CATEGORY_GENERAL, "The ratio at which the Macht Ring will stop providing energy. (MaxPlayerMacht*Ratio)/100.", 75);
+		maxRatio = ratio.getInt();
 		
 		config.save();  
 	}

@@ -1,9 +1,11 @@
 package democretes.item.tools;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import democretes.block.coils.TileMachtCoil;
 import democretes.item.ItemMTBase;
@@ -39,6 +41,17 @@ public class ItemCoilLinker extends ItemMTBase {
 			}
 		}
 		return false;
+	}
+	
+	IIcon link;
+	@Override
+	public void registerIcons(IIconRegister ir) {
+		link = ir.registerIcon(Reference.TEXTURE_PREFIX + "linker");
+	}
+	
+	@Override
+	public IIcon getIconFromDamage(int meta) {
+		return link;
 	}
 
 }

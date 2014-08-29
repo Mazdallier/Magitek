@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import democretes.Magitek;
 import democretes.api.macht.IMachtStorage;
 import democretes.block.TilePurityBase;
 import democretes.block.dummy.TileSubTerraDummy;
@@ -43,11 +44,19 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	}
 
 	int count = 40;
+	int distance;
+	
 	@Override
 	public void updateEntity() {
 		if(count >= 40) {
 			count = 0;
 			searchForTiles();
+			for(int i = 0; i < 25; i++) {
+				float red = (float) Math.random();
+				float green = (float) Math.random();
+				float blue = (float) Math.random();
+				Magitek.proxy.orbFX(worldObj, xCoord + 0.5 + Math.random() * 0.4 - 0.2, yCoord + 1, zCoord + 0.5 + Math.random() * 0.4 - 0.2, red, green, blue, (float) Math.random(), 10);
+			}
 		}
 		count++;
 		transferEnergy();		

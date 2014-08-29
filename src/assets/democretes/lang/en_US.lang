@@ -18,6 +18,16 @@ item.magitek.macht.name=Sigil of Power
 item.magitek.ritual.0.name=Crude Sigil of Binding
 item.magitek.ritual.1.name=Generic Sigil of Binding
 item.magitek.ritual.2.name=Sophisticated Sigil of Binding
+item.magitek.ring.pure.0.name=Purity Ring
+item.magitek.ring.pure.1.name=Ring of Saints
+item.magitek.ring.pure.2.name=Ring of Angels
+item.magitek.ring.impure.3.name=Evil Ring
+item.magitek.ring.impure.4.name=Demonic Ring
+item.magitek.ring.impure.5.name=One Ring
+item.magitek.ring.macht.0.name=Macht Ring
+item.magitek.ring.macht.1.name=Energetic Ring
+item.magitek.ring.macht.2.name=Infinity Ring
+
 
 #Blocks
 tile.magitek.generator.0.name=Solar Array

@@ -75,7 +75,17 @@ public class SpellHelper {
 	}
 	
 	public static boolean isSupercharged(EntityPlayer player) {
-		return getMacht(player) > 10000;
+		return getMacht(player) > getMax(player);
+	}
+	
+	public static int getMax(EntityPlayer player) {
+		return getNetwork(player).max;
+	}
+	
+	public static void setMax(EntityPlayer player, int max) {
+		SpellNetwork network = getNetwork(player);
+		network.max = max;
+		network.markDirty();
 	}
 
 }

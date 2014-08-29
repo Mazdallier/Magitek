@@ -5,6 +5,7 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -20,6 +21,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import democretes.block.BlockMTBase;
 import democretes.block.BlocksMT;
 import democretes.block.dummy.BlockSubTerraDummy;
+import democretes.lib.Reference;
 import democretes.lib.RenderIds;
 import democretes.render.fx.SmokeFX;
 import democretes.utils.crafting.AltarHelper;

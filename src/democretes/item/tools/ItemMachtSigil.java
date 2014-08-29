@@ -42,7 +42,7 @@ public class ItemMachtSigil extends ItemMTBase{
 	IIcon syphon;
 	@Override
 	public void registerIcons(IIconRegister ir) {
-		syphon = ir.registerIcon(Reference.TEXTURE_PREFIX + "sigil_energy");
+		syphon = ir.registerIcon(Reference.TEXTURE_PREFIX + "sigil/sigil_energy");
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package democretes.proxy;
 
+import net.minecraft.world.World;
 import democretes.utils.handlers.KeyHandler;
 
 public class CommonProxy {
@@ -18,4 +19,5 @@ public class CommonProxy {
     	
     }
     
+	public void orbFX(World world, double x, double y, double z, float r, float g, float b, float size, int m) { }
 }

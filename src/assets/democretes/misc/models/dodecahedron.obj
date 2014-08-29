@@ -1,5 +1,7 @@
 # Blender v2.71 (sub 0) OBJ File: ''
 # www.blender.org
+mtllib dodecahedron.mtl
+o Object001
 v 0.722503 -1.145669 0.773023
 v 1.079325 -0.925141 0.195673
 v 1.079325 -0.211497 0.195673

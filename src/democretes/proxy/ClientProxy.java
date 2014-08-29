@@ -1,5 +1,7 @@
 package democretes.proxy;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.World;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -13,6 +15,7 @@ import democretes.lib.RenderIds;
 import democretes.render.blocks.RenderBlockAltar;
 import democretes.render.blocks.RenderBlockCoil;
 import democretes.render.blocks.RenderBlockGenerator;
+import democretes.render.fx.FXOrb;
 import democretes.render.tile.RenderAltar;
 import democretes.render.tile.RenderEnergyCoil;
 import democretes.render.tile.RenderPurityGenerator;
@@ -53,5 +56,24 @@ public class ClientProxy extends CommonProxy{
 	public void registerKeyBindings() {
 		keyHandler = new KeyHandler();
 		FMLCommonHandler.instance().bus().register(keyHandler);
+	}
+	
+	private boolean doParticle() {
+		float chance = 1F;
+		if(Minecraft.getMinecraft().gameSettings.particleSetting == 1) {
+			chance = 0.6F;
+		}else if(Minecraft.getMinecraft().gameSettings.particleSetting == 2) {
+			chance = 0.2F;
+		}
+		return Math.random() < chance;
+	}
+	
+	@Override
+	public void orbFX(World world, double x, double y, double z, float r, float g, float b, float size, int m) {
+		if(!doParticle()) {
+			return;
+		}
+		FXOrb sparkle = new FXOrb(world, x, y, z, size, r, g, b, m);
+		Minecraft.getMinecraft().effectRenderer.addEffect(sparkle);
 	}
 }

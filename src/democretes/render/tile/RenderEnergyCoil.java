@@ -11,9 +11,14 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 public class RenderEnergyCoil extends TileEntitySpecialRenderer { 
-
-		//private IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation("democretes","misc/models/coil.obj"));
-		private ResourceLocation texture = new ResourceLocation("democretes", "textures/models/dodecahedron.png");
+	
+	
+		private IModelCustom model;
+		private ResourceLocation texture = new ResourceLocation("democretes", "textures/models/cylinder.png");
+		
+		public RenderEnergyCoil() {
+			//model = AdvancedModelLoader.loadModel(new ResourceLocation("democretes","misc/models/dodecahedron.obj"));
+		}
 		
 		@Override
 		public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float f) {
@@ -32,9 +37,27 @@ public class RenderEnergyCoil extends TileEntitySpecialRenderer {
 		    GL11.glRotatef(t/250, 0.0F, 1.0F, 0.0F);
 		    
 		    Minecraft.getMinecraft().renderEngine.bindTexture(this.texture);
-		    //this.model.renderAll();
+		    
 		    	    
 		    GL11.glPopMatrix();		    
+		}
+		
+		public void renderCoils() {
+			model.renderPart("Durr");
+			model.renderPart("Durr");
+			model.renderPart("Durr");
+		}
+		
+		public void renderSphere() {
+			model.renderPart("Durr");			
+		}
+		
+		public void renderBase() {
+			model.renderPart("Durr");			
+		}
+		
+		public void renderPole() {
+			model.renderPart("Durr");			
 		}
 
 }

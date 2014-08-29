@@ -8,11 +8,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileSpreader extends TileGeneratorBase{
+public class TileSpreader extends TileGeneratorBase {
 	
 	public TileSpreader() {
+		super(10000);
 	}
-
+	
 	@Override
 	protected boolean canGenerate() {
 		return false;
@@ -71,6 +72,11 @@ public class TileSpreader extends TileGeneratorBase{
 				if(this.worldObj.getTileEntity(xx + dir.offsetX*j, yy + 1 + dir.offsetY*j, zz + dir.offsetZ*j) != null) {
 					TileEntity tile = this.worldObj.getTileEntity(xx + dir.offsetX*j, yy + 1 + dir.offsetY*j, zz + dir.offsetZ*j);
 					if(tile instanceof IMachtStorage) {
+						if(tile instanceof TileGeneratorBase) {
+							if(tile instanceof TileSpreader == false) {
+								break;
+							}
+						}
 						this.tiles.add(tile);
 						break;
 					}

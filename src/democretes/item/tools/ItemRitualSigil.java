@@ -71,7 +71,7 @@ public class ItemRitualSigil extends ItemMTBase {
 	public void registerIcons(IIconRegister ir) {
 		for(int i = 0; i < icons.length; i++) {
 			String ritual = RitualType.values()[i].toString().toLowerCase();
-			icons[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "sigil_" + ritual);
+			icons[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "sigil/sigil_" + ritual);
 		}
 	}
 

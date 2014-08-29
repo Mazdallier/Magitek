@@ -3,7 +3,8 @@ package democretes.item;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import democretes.item.baubles.ItemBauble;
+import democretes.item.baubles.ItemMachtRing;
+import democretes.item.baubles.ItemPurityRing;
 import democretes.item.simple.ItemMaterial;
 import democretes.item.simple.ItemRune;
 import democretes.item.spells.ItemSpellBinder;
@@ -49,12 +50,15 @@ public class ItemsMT {
 		}
 	}
 	
-	public static Item bauble;
+	public static Item purityRing;
+	public static Item machtRing;
 	
 	public static void initBaubles() {
-		bauble = new ItemBauble();
+		purityRing = new ItemPurityRing();
+		machtRing = new ItemMachtRing();
 		
-		GameRegistry.registerItem(bauble, ItemNames.RING_NAME);
+		GameRegistry.registerItem(purityRing, ItemNames.RING_NAME + "Purity");
+		GameRegistry.registerItem(machtRing, ItemNames.RING_NAME + "Macht");
 	}
 
 }

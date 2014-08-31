@@ -15,6 +15,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import democretes.Magitek;
 import democretes.api.altar.RitualType;
 import democretes.block.BlocksMT;
 import democretes.block.TilePurityBase;
@@ -92,6 +93,9 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					this.hasInputs = false;
 					ItemStack stack = RitualHelper.getOutputForCatalyst(this.inventory).copy();
 					this.inventory = stack.copy();
+					for(int i = 0; i < 15; i++) {
+						Magitek.proxy.orbFX(this.worldObj, this.xCoord + 0.5D, this.yCoord + 1.0D, this.zCoord + 0.5D, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, 59.0F, 137.0F, 167.0F, (float)Math.random(), 2, true);
+					}
 					this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 				}
 			}else if(this.inventory != null) {

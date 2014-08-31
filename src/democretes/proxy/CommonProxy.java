@@ -19,5 +19,7 @@ public class CommonProxy {
     	
     }
     
-	public void orbFX(World world, double x, double y, double z, float r, float g, float b, float size, int m) { }
+	public void orbFX(World world, double x, double y, double z, float r, float g, float b, float size, int maxAge, boolean shrink) { }
+
+	public void orbFX(World world, double x, double y, double z, double motionX, double motionY, double motionZ, float r, float g, float b, float size, int maxAge, boolean shrink) {}
 }

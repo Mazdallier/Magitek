@@ -32,18 +32,21 @@ public class FXOrb extends EntityFX {
 	public static final ResourceLocation texture = new ResourceLocation("democretes", "textures/particles/orb.png");
 
 	boolean distanceLimit = true;
+	boolean shrink;
 
-	public FXOrb(World world, double x, double y, double z, float size, float red, float blue, float green, int maxAge) {
-		super(world, x, y, z, 0.0D, 0.0D, 0.0D);
-		FMLLog.info("Spawned");
-		motionX = motionY = motionZ = 0;
+	public FXOrb(World world, double x, double y, double z, double motionX, double motionY, double motionZ, float red, float green, float blue, float size, int maxAge, boolean shrink) {
+		super(world, x, y, z, motionX, motionY, motionZ);
+		this.motionX = motionX;
+		this.motionY = motionY;
+		this.motionZ = motionZ;
 		particleRed = red;
 		particleGreen = green;
 		particleBlue = blue;
 		particleGravity = 0;
 		particleScale *= size;
 		particleMaxAge = (int)(28D / (Math.random() * 0.3D + 0.7D) * maxAge);
-		
+		this.shrink = shrink;
+
 		noClip = true;
 		setSize(0.01F, 0.01F);
 		EntityLivingBase renderentity = FMLClientHandler.instance().getClient().renderViewEntity;
@@ -61,38 +64,41 @@ public class FXOrb extends EntityFX {
 		prevPosZ = posZ;
 	}
 	
-	public static void dispatchQueuedRenders(Tessellator tessellator) {
+	public static void dispatchQueuedRenders(Tessellator t) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.75F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(texture);
 
-		if(!queuedRenders.isEmpty()) {
-			tessellator.startDrawingQuads();
-			for(FXOrb orb : queuedRenders)
-				orb.renderQueued(tessellator);
-			tessellator.draw();
-		}
+		t.startDrawingQuads();
+		for(FXOrb orb : queuedRenders)
+			orb.renderQueued(t);
+		t.draw();		
 
 		queuedRenders.clear();
 	}
 
-	private void renderQueued(Tessellator tessellator) {
-		float agescale = 0;
-		if (agescale > 1F){
-			agescale = 2 - agescale;
+	boolean other = true;
+	private void renderQueued(Tessellator t) {
+		if(shrink)  {
+			scale -= 0.00075F;
+			if(other) {
+				particleScale *= (scale+0.95)/2;
+				other = false;
+			}else{
+				other = true;
+			}
 		}
-		particleScale = particleScale * agescale;
-
+		
 		float f10 = 0.5F * particleScale;
 		float f11 = (float)(prevPosX + (posX - prevPosX) * f - interpPosX);
 		float f12 = (float)(prevPosY + (posY - prevPosY) * f - interpPosY);
 		float f13 = (float)(prevPosZ + (posZ - prevPosZ) * f - interpPosZ);
 
-		tessellator.setBrightness(240);
-		tessellator.setColorRGBA_F(particleRed, particleGreen, particleBlue, 0.5F);
-		tessellator.addVertexWithUV(f11 - f1 * f10 - f4 * f10, f12 - f2 * f10, f13 - f3 * f10 - f5 * f10, 0, 1);
-		tessellator.addVertexWithUV(f11 - f1 * f10 + f4 * f10, f12 + f2 * f10, f13 - f3 * f10 + f5 * f10, 1, 1);
-		tessellator.addVertexWithUV(f11 + f1 * f10 + f4 * f10, f12 + f2 * f10, f13 + f3 * f10 + f5 * f10, 1, 0);
-		tessellator.addVertexWithUV(f11 + f1 * f10 - f4 * f10, f12 - f2 * f10, f13 + f3 * f10 - f5 * f10, 0, 0);
+		t.setBrightness(240);
+		t.setColorRGBA_F(particleRed, particleGreen, particleBlue, 0.5F);
+		t.addVertexWithUV(f11 - f1 * f10 - f4 * f10, f12 - f2 * f10, f13 - f3 * f10 - f5 * f10, 0, 1);
+		t.addVertexWithUV(f11 - f1 * f10 + f4 * f10, f12 + f2 * f10, f13 - f3 * f10 + f5 * f10, 1, 1);
+		t.addVertexWithUV(f11 + f1 * f10 + f4 * f10, f12 + f2 * f10, f13 + f3 * f10 + f5 * f10, 1, 0);
+		t.addVertexWithUV(f11 + f1 * f10 - f4 * f10, f12 - f2 * f10, f13 + f3 * f10 - f5 * f10, 0, 0);
 	}
 
 	@Override
@@ -107,22 +113,20 @@ public class FXOrb extends EntityFX {
 		queuedRenders.add(this);
 	}
 
+	float scale = 0.99F;
 	@Override
 	public void onUpdate() {
 		prevPosX = posX;
 		prevPosY = posY;
 		prevPosZ = posZ;
-
-		if (particleAge++ >= particleMaxAge) {
+		if(particleAge++ >= particleMaxAge) {
 			setDead();
 		}
 		motionY -= 0.04D * particleGravity;
 		posX += motionX;
 		posY += motionY;
 		posZ += motionZ;
-		motionX *= 0.98000001907348633D;
-		motionY *= 0.98000001907348633D;
-		motionZ *= 0.98000001907348633D;
+		
 	}
 
 }

@@ -18,6 +18,7 @@ import democretes.item.ItemsMT;
 import democretes.item.spells.SpellsMT;
 import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
+import democretes.render.fx.ParticleRenderDispatcher;
 import democretes.utils.CreativeTabsMT;
 import democretes.utils.crafting.RecipeRegistry;
 import democretes.utils.crafting.RitualHelper;
@@ -60,6 +61,7 @@ public class Magitek {
 		proxy.initRenderers();
   		proxy.registerKeyBindings();
 		MinecraftForge.EVENT_BUS.register(new MTEventHandler());
+		MinecraftForge.EVENT_BUS.register(new ParticleRenderDispatcher());
 	}
 	
 	@EventHandler

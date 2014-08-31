@@ -69,11 +69,20 @@ public class ClientProxy extends CommonProxy{
 	}
 	
 	@Override
-	public void orbFX(World world, double x, double y, double z, float r, float g, float b, float size, int m) {
+	public void orbFX(World world, double x, double y, double z, float r, float g, float b, float size, int maxAge, boolean shrink) {
 		if(!doParticle()) {
 			return;
 		}
-		FXOrb sparkle = new FXOrb(world, x, y, z, size, r, g, b, m);
+		FXOrb sparkle = new FXOrb(world, x, y, z, 0.0D, 0.0D, 0.0D, r, g, b, size, maxAge, shrink);
+		Minecraft.getMinecraft().effectRenderer.addEffect(sparkle);
+	}
+	
+	@Override
+	public void orbFX(World world, double x, double y, double z, double motionX, double motionY, double motionZ, float r, float g, float b, float size, int maxAge, boolean shrink) {
+		if(!doParticle()) {
+			return;
+		}
+		FXOrb sparkle = new FXOrb(world, x, y, z, motionX, motionY, motionZ, r, g, b, size, maxAge, shrink);
 		Minecraft.getMinecraft().effectRenderer.addEffect(sparkle);
 	}
 }

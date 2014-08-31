@@ -44,18 +44,26 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	}
 
 	int count = 40;
-	int distance;
-	
+	int distance = 1;	
+	ForgeDirection[] ends = new ForgeDirection[6];
 	@Override
 	public void updateEntity() {
-		if(count >= 40) {
+		if(this.worldObj.isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord)) {
+			return;
+		}
+		if(count == 40) {
 			count = 0;
 			searchForTiles();
-			for(int i = 0; i < 25; i++) {
-				float red = (float) Math.random();
-				float green = (float) Math.random();
-				float blue = (float) Math.random();
-				Magitek.proxy.orbFX(worldObj, xCoord + 0.5 + Math.random() * 0.4 - 0.2, yCoord + 1, zCoord + 0.5 + Math.random() * 0.4 - 0.2, red, green, blue, (float) Math.random(), 10);
+			if(this.tiles.size() > 0) {
+				for(TileEntity tile : tiles) {
+					renderParticlesTowardsEntity(tile);
+				}
+				if(distance++ == 15) {
+					distance = 1;
+					ends = new ForgeDirection[6];
+				}
+			}else{
+				distance = 1;
 			}
 		}
 		count++;
@@ -74,6 +82,35 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	protected abstract int getFuel();
 	
 	protected abstract void renderWhenActive();
+	
+	void renderParticlesTowardsEntity(TileEntity tile) {
+		ForgeDirection dir = null;
+		if(tile.xCoord > this.xCoord) {
+			dir = ForgeDirection.EAST;
+		}else if(tile.xCoord < this.xCoord) {
+			dir = ForgeDirection.WEST;
+		}else if(tile.yCoord > this.yCoord) {
+			dir = ForgeDirection.UP;
+		}else if(tile.yCoord < this.yCoord) {
+			dir = ForgeDirection.DOWN;
+		}else if(tile.zCoord > this.zCoord) {
+			dir = ForgeDirection.SOUTH;
+		}else if(tile.zCoord < this.zCoord) {
+			dir = ForgeDirection.NORTH;
+		}
+		if(dir != null) {
+			if(ends[dir.ordinal()] != null) {
+				return;
+			}
+		}else{
+			return;
+		}
+		if(this.worldObj.getTileEntity(this.xCoord + dir.offsetX*distance, this.yCoord + dir.offsetY*distance, this.zCoord + dir.offsetZ*distance) == tile) {
+			ends[dir.ordinal()] = dir;
+			return;
+		}
+		Magitek.proxy.orbFX(this.worldObj, this.xCoord + dir.offsetX*distance + 0.5D, this.yCoord + dir.offsetY*distance + 0.35D, this.zCoord + dir.offsetZ*distance + 0.5D, 0.0D, -0.01D, 0.0D, 0.12F, 0.46F, 0.78F, (float)Math.random()+0.5F, 2, true);
+	}
 	
 	void searchForTiles() {
 		this.tiles = new ArrayList();
@@ -128,9 +165,10 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	}
 	
 	void transferEnergy() {
+		int amount = (Math.min(this.getMachtStored(), 100))/this.tiles.size();
 		for(TileEntity tile : tiles) {
 			if(tile != null) {
-				this.extractMacht(((IMachtStorage)tile).receiveMacht(Math.min(this.getMachtStored(), 100)));
+				this.extractMacht(((IMachtStorage)tile).receiveMacht(Math.min(amount, this.getMachtStored())));
 			}else{
 				tiles.remove(tile);
 			}

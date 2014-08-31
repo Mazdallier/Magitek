@@ -12,6 +12,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import democretes.Magitek;
 import democretes.block.BlockMTBase;
 import democretes.block.dummy.TileAltarDummy;
 import democretes.lib.Reference;
@@ -106,7 +107,13 @@ public class BlockAltar extends BlockMTBase {
                 }
                 if (r.nextInt(16) == 0) {
                     for (int j = y; j <= y + 1; ++j) {
-                       world.spawnParticle("portal", (double)x + 0.5D, (double)y + 1.0D, (double)z + 0.5D, (double)((float)(l - x) + r.nextFloat()) - 0.5D, (double)((float)(j - y) - r.nextFloat() - 1.0F), (double)((float)(i - z) + r.nextFloat()) - 0.5D);
+                    	double xx = x + 0.5D;
+                    	double yy = y + 1.0D;
+                    	double zz = z + 0.5D;
+                    	double mX = (double)((float)(l - x) + r.nextFloat()) - 0.5D;
+                    	double mY = (double)((float)(j - y) - r.nextFloat() - 1.0F);
+                    	double mZ = (double)((float)(i - z) + r.nextFloat()) - 0.5D;
+                    	world.spawnParticle("portal", xx, yy, zz, mX, mY, mZ);
                     }
                 }
             }

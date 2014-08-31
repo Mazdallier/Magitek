@@ -24,7 +24,9 @@ public class SpellNetwork extends net.minecraft.world.WorldSavedData {
 
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
-		nbt.setString("Spell", this.spell.getName());
+		if(this.spell != null) {
+			nbt.setString("Spell", this.spell.getName());
+		}		
 		nbt.setInteger("Purity", this.purity);
 		nbt.setInteger("Macht", this.macht);
 		nbt.setInteger("Max", this.max);

@@ -74,10 +74,12 @@ public class TileSpreader extends TileGeneratorBase {
 					if(tile instanceof IMachtStorage) {
 						if(tile instanceof TileGeneratorBase) {
 							if(tile instanceof TileSpreader == false) {
+								canSearch = false;
 								break;
 							}
 						}
 						this.tiles.add(tile);
+						canSearch = false;
 						break;
 					}
 				}				

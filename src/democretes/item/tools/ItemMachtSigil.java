@@ -21,7 +21,7 @@ public class ItemMachtSigil extends ItemMTBase{
 	
 	public ItemMachtSigil() {
 		setMaxStackSize(1);
-		setUnlocalizedName(Reference.MOD_PREFIX + ".macht");
+		setUnlocalizedName(Reference.MOD_PREFIX + ".sigil.macht");
 	}
 		
 	@Override
@@ -49,22 +49,12 @@ public class ItemMachtSigil extends ItemMTBase{
 	public IIcon getIconFromDamage(int meta) {
 		return syphon;
 	}
-	
-	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int meta, boolean b) {
-		if(entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer)entity;
-			int macht = SpellHelper.getMacht(player);
-			if(stack.stackTagCompound == null) {
-				stack.stackTagCompound = new NBTTagCompound();
-			}
-			stack.stackTagCompound.setInteger("Macht", SpellHelper.getMacht(player));
-		}
-	}
 
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean b) {
-		stack.stackTagCompound = new NBTTagCompound();
+		if(stack.stackTagCompound == null) {
+			stack.stackTagCompound = new NBTTagCompound();
+		}
 		int macht = SpellHelper.getMacht(player);
 		list.add("Your Macht: " + macht);
 		stack.stackTagCompound.setInteger("Purity", macht);

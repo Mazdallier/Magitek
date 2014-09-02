@@ -10,6 +10,7 @@ import democretes.item.simple.ItemRune;
 import democretes.item.spells.ItemSpellBinder;
 import democretes.item.tools.ItemCoilLinker;
 import democretes.item.tools.ItemDebugger;
+import democretes.item.tools.ItemEnhancingSigil;
 import democretes.item.tools.ItemMachtSigil;
 import democretes.item.tools.ItemPuritySigil;
 import democretes.item.tools.ItemRitualSigil;
@@ -25,6 +26,7 @@ public class ItemsMT {
 	public static Item machtSigil;
 	public static Item puritySigil;
 	public static Item ritualSigil;
+	public static Item enhanceSigil;
 	
 	public static void init() {
 		material = new ItemMaterial();
@@ -35,6 +37,7 @@ public class ItemsMT {
 		machtSigil = new ItemMachtSigil();
 		puritySigil = new ItemPuritySigil();
 		ritualSigil = new ItemRitualSigil();
+		enhanceSigil = new ItemEnhancingSigil();
 
 		GameRegistry.registerItem(material, ItemNames.MATERIAL_NAME);
 		GameRegistry.registerItem(debugger, ItemNames.DEBUGGER_NAME);
@@ -44,6 +47,7 @@ public class ItemsMT {
 		GameRegistry.registerItem(puritySigil, ItemNames.PURITY_RUNE_NAME);
 		GameRegistry.registerItem(machtSigil, ItemNames.MACHT_RUNE_NAME);
 		GameRegistry.registerItem(ritualSigil, ItemNames.RITUAL_NAME);
+		GameRegistry.registerItem(enhanceSigil, ItemNames.ENHANCE_SIGIL_NAME);
 
 		if(Loader.isModLoaded("Baubles")) {
 			initBaubles();

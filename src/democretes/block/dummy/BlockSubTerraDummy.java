@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -56,7 +57,7 @@ public class BlockSubTerraDummy extends BlockMTBase {
 	
 	@Override
 	public IIcon getIcon(int side, int meta) {
-		return BlocksMT.generator.getIcon(side, meta);
+		return Blocks.stone.getIcon(0, 0);
 	}
 	
 	@Override

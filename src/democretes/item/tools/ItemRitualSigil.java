@@ -9,7 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import democretes.api.altar.RitualType;
+import democretes.api.RitualType;
 import democretes.block.altar.TileAltar;
 import democretes.item.ItemMTBase;
 import democretes.lib.Reference;
@@ -50,7 +50,7 @@ public class ItemRitualSigil extends ItemMTBase {
 	
 	@Override
 	public String getUnlocalizedNameInefficiently(ItemStack stack) {
-		return "item." + Reference.MOD_PREFIX + ".ritual." + stack.getItemDamage();
+		return "item." + Reference.MOD_PREFIX + ".sigil.ritual." + stack.getItemDamage();
 	}
 	
 	public String getItemStackDisplayName(ItemStack stack) {

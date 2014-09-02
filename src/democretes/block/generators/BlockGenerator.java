@@ -15,18 +15,27 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.block.BlockMTBase;
 import democretes.block.BlocksMT;
 import democretes.block.dummy.BlockSubTerraDummy;
+import democretes.block.generators.disposable.TileDetonationGenerator;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;
 import democretes.utils.crafting.AltarHelper;
 import democretes.utils.crafting.RunicHelper;
 
 public class BlockGenerator extends BlockMTBase {
+
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+		for(int i = 0; i < 5; i++) {
+			list.add(new ItemStack(item, 1, i));
+		}
+	}
 	
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
@@ -34,6 +43,13 @@ public class BlockGenerator extends BlockMTBase {
 			this.dropBlockAsItem(world, x, y, z, new ItemStack(this, 1, 1));
 			world.setBlockToAir(x, y, z);
 		}
+	}
+	
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world,	int x, int y, int z) {
+		Block block = world.getBlock(x, y, z);
+		int meta = world.getBlockMetadata(x, y, z);
+		return new ItemStack(block, 1, meta);
 	}
 	
 	@Override
@@ -90,13 +106,6 @@ public class BlockGenerator extends BlockMTBase {
 			world.setBlock(x, y+1, z, BlocksMT.terraDummy);
 			((BlockSubTerraDummy)world.getBlock(x, y+1, z)).block = this;
 			world.getBlock(x, y+1, z).onPostBlockPlaced(world, x, y, z, stack.getItemDamage());
-		}
-	}
-	
-	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for(int i = 0; i < 5; i++) {
-			list.add(new ItemStack(item, 1, i));
 		}
 	}
 		

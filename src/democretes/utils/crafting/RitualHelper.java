@@ -1,7 +1,7 @@
 package democretes.utils.crafting;
 
 import net.minecraft.item.ItemStack;
-import democretes.api.altar.RitualType;
+import democretes.api.RitualType;
 import democretes.api.recipe.RitualRecipe;
 
 public class RitualHelper {

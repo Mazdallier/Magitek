@@ -9,6 +9,7 @@ import democretes.block.altar.TileAltar;
 import democretes.block.coils.TileMachtCoil;
 import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileSolarGenerator;
+import democretes.block.generators.TileSpreader;
 import democretes.block.generators.TileSubTerraGenerator;
 import democretes.block.machines.TileRuneConstructor;
 import democretes.lib.RenderIds;
@@ -17,10 +18,11 @@ import democretes.render.blocks.RenderBlockCoil;
 import democretes.render.blocks.RenderBlockGenerator;
 import democretes.render.fx.FXOrb;
 import democretes.render.tile.RenderAltar;
-import democretes.render.tile.RenderEnergyCoil;
+import democretes.render.tile.RenderMachtCoil;
 import democretes.render.tile.RenderPurityGenerator;
 import democretes.render.tile.RenderRuneConstructor;
 import democretes.render.tile.RenderSolarGenerator;
+import democretes.render.tile.RenderSpreader;
 import democretes.render.tile.RenderSubTerraGenerator;
 import democretes.utils.handlers.KeyHandler;
 
@@ -36,10 +38,11 @@ public class ClientProxy extends CommonProxy{
     	ClientRegistry.bindTileEntitySpecialRenderer(TileSubTerraGenerator.class, new RenderSubTerraGenerator());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileSolarGenerator.class, new RenderSolarGenerator());
     	ClientRegistry.bindTileEntitySpecialRenderer(TilePurityGenerator.class, new RenderPurityGenerator());
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileSpreader.class, new RenderSpreader());
     	RenderIds.idGENERATOR = RenderingRegistry.getNextAvailableRenderId();
     	
-    	ClientRegistry.bindTileEntitySpecialRenderer(TileMachtCoil.class, new RenderEnergyCoil());
-    	RenderIds.idNODE = RenderingRegistry.getNextAvailableRenderId();
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileMachtCoil.class, new RenderMachtCoil());
+    	RenderIds.idCOIL = RenderingRegistry.getNextAvailableRenderId();
     	
     	ClientRegistry.bindTileEntitySpecialRenderer(TileAltar.class, new RenderAltar());
     	RenderIds.idALTAR = RenderingRegistry.getNextAvailableRenderId();

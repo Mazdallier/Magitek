@@ -3,7 +3,7 @@ package democretes.utils.crafting;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import democretes.api.altar.RitualType;
+import democretes.api.RitualType;
 import democretes.api.recipe.AltarRecipe;
 import democretes.api.recipe.RitualRecipe;
 import democretes.api.recipe.RuneRecipe;
@@ -32,16 +32,15 @@ public final class RecipeRegistry {
 	public static AltarRecipe rune;
 	
 	public static void initAltarRecipes() {
-		rune = new AltarRecipe(new ItemStack(Blocks.stone), new ItemStack(ItemsMT.material, 1, 0), 500);
+		rune = new AltarRecipe(new ItemStack(Blocks.stone), new ItemStack(ItemsMT.material, 1, 0), 250);
 	}	
 
 	public static RitualRecipe blah;
+	
 	public static void initRitualRecipes() {
 		blah = new RitualRecipe(new ItemStack(Blocks.cobblestone), RitualType.BASIC, new ItemStack[] {
-			new ItemStack(Blocks.cobblestone), 
-			new ItemStack(Blocks.cobblestone), 
-			new ItemStack(Blocks.cobblestone)}
-			, new ItemStack(Items.diamond), 100);
+			new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.cobblestone)}, 
+			new ItemStack(Items.diamond), 100);
 	}
 	
 }

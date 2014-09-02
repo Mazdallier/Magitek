@@ -21,7 +21,7 @@ public class ItemPuritySigil extends ItemMTBase {
 	
 	public ItemPuritySigil() {
 		setMaxStackSize(1);
-		setUnlocalizedName(Reference.MOD_PREFIX + ".purity");
+		setUnlocalizedName(Reference.MOD_PREFIX + ".sigil.purity");
 	}
 		
 	@Override

@@ -9,10 +9,11 @@ public class TileSolarGenerator extends TileGeneratorBase {
 
 	@Override
 	protected boolean canGenerate() {
-		if(this.worldObj.isRaining() || this.worldObj.isThundering()) {
+		if(this.worldObj.isRaining() || this.worldObj.isThundering() || !this.worldObj.isDaytime()) {
+			this.decreasePurity(1);
 			return false;
 		}
-		return this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord + 1, this.zCoord) && this.worldObj.isDaytime();
+		return this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord + 1, this.zCoord);
 	}
 
 	@Override
@@ -21,7 +22,6 @@ public class TileSolarGenerator extends TileGeneratorBase {
 		if(count >= 40) {
 			count = 0;
 			if(isDark()) {
-				this.decreasePurity(1);
 				return 1;
 			}else if(isLight()) {
 				return 4;
@@ -33,7 +33,6 @@ public class TileSolarGenerator extends TileGeneratorBase {
 	}
 	
 	public float angle;
-	float lastAngle;
 	@Override
 	protected void renderWhenActive() {
 		float f = this.worldObj.getCelestialAngleRadians(1.0F);

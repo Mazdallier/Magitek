@@ -12,27 +12,26 @@ import democretes.api.macht.IMachtStorage;
 import democretes.block.TilePurityBase;
 import democretes.block.dummy.TileSubTerraDummy;
 import democretes.utils.handlers.ConfigHandler;
+import democretes.utils.helper.DirectionHelper;
 
 public abstract class TileGeneratorBase extends TilePurityBase {
 	
 	ArrayList<TileEntity> tiles = new ArrayList();
-	ForgeDirection[] horizontal = {ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.NORTH, ForgeDirection.SOUTH};
-	ForgeDirection[] vertical = {ForgeDirection.UP, ForgeDirection.DOWN};
 	Block[] hBlocks = {
+			Blocks.sandstone,
 			Blocks.stonebrick,
 			Blocks.nether_brick,
-			Blocks.sandstone,
 			Blocks.brick_block,
+			Blocks.obsidian,
 			Blocks.iron_block, 
 			Blocks.gold_block, 
-			Blocks.redstone_block, 
-			Blocks.coal_block,
 			Blocks.emerald_block,
 			Blocks.diamond_block };
 	Block[] vBlocks = {
+			Blocks.coal_block,
 			Blocks.quartz_block,
-			Blocks.emerald_block,
 			Blocks.lapis_block,
+			Blocks.emerald_block,
 			Blocks.diamond_block};
 	
 	public TileGeneratorBase() {
@@ -67,7 +66,9 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 			}
 		}
 		count++;
-		transferEnergy();		
+		if(this.tiles.size() > 0) {
+			transferEnergy();		
+		}
 		if(this.canGenerate()) {
 			if(!this.worldObj.isRemote) {
 				this.macht.receiveMacht(this.getFuel());
@@ -84,20 +85,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	protected abstract void renderWhenActive();
 	
 	void renderParticlesTowardsEntity(TileEntity tile) {
-		ForgeDirection dir = null;
-		if(tile.xCoord > this.xCoord) {
-			dir = ForgeDirection.EAST;
-		}else if(tile.xCoord < this.xCoord) {
-			dir = ForgeDirection.WEST;
-		}else if(tile.yCoord > this.yCoord) {
-			dir = ForgeDirection.UP;
-		}else if(tile.yCoord < this.yCoord) {
-			dir = ForgeDirection.DOWN;
-		}else if(tile.zCoord > this.zCoord) {
-			dir = ForgeDirection.SOUTH;
-		}else if(tile.zCoord < this.zCoord) {
-			dir = ForgeDirection.NORTH;
-		}
+		ForgeDirection dir = DirectionHelper.getDirectionFromTiles(tile, this);
 		if(dir != null) {
 			if(ends[dir.ordinal()] != null) {
 				return;
@@ -109,7 +97,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 			ends[dir.ordinal()] = dir;
 			return;
 		}
-		Magitek.proxy.orbFX(this.worldObj, this.xCoord + dir.offsetX*distance + 0.5D, this.yCoord + dir.offsetY*distance + 0.35D, this.zCoord + dir.offsetZ*distance + 0.5D, 0.0D, -0.01D, 0.0D, 0.12F, 0.46F, 0.78F, (float)Math.random()+0.5F, 2, true);
+		Magitek.proxy.orbFX(this.worldObj, this.xCoord + dir.offsetX*distance + 0.5D, this.yCoord + dir.offsetY*distance + 0.35D, this.zCoord + dir.offsetZ*distance + 0.5D, 0.0D, -0.01D, 0.0D, 0.01F, 0.61F, 0.8F, (float)Math.random()+0.5F, 2, true);
 	}
 	
 	void searchForTiles() {
@@ -133,7 +121,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 			}
 		}
 		if(horizon) {
-			for(ForgeDirection dir : horizontal) {
+			for(ForgeDirection dir : DirectionHelper.horizontal) {
 				for(int j = 1; j < ConfigHandler.range; j++) {
 					if(block == this.worldObj.getBlock(xx + dir.offsetX*j, yy + dir.offsetY*j, zz + dir.offsetZ*j)) {
 						if(this.worldObj.getBlock(xx + dir.offsetX*j, yy + 1 + dir.offsetY*j, zz + dir.offsetZ*j) != null) {
@@ -150,7 +138,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 			}
 		}
 		if(vertical) {
-			for(ForgeDirection dir : this.vertical) {
+			for(ForgeDirection dir : DirectionHelper.vertical) {
 				for(int j = 1; j < ConfigHandler.range; j++) {
 					if(this.worldObj.getBlock(xx, yy + 1 + dir.offsetY*j, zz) != null) {
 						TileEntity tile = this.worldObj.getTileEntity(xx, yy + 1 + dir.offsetY*j, zz);

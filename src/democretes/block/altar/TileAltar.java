@@ -16,7 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import democretes.Magitek;
-import democretes.api.altar.RitualType;
+import democretes.api.RitualType;
 import democretes.block.BlocksMT;
 import democretes.block.TilePurityBase;
 import democretes.block.dummy.TileAltarDummy;
@@ -94,7 +94,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					ItemStack stack = RitualHelper.getOutputForCatalyst(this.inventory).copy();
 					this.inventory = stack.copy();
 					for(int i = 0; i < 15; i++) {
-						Magitek.proxy.orbFX(this.worldObj, this.xCoord + 0.5D, this.yCoord + 1.0D, this.zCoord + 0.5D, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, 59.0F, 137.0F, 167.0F, (float)Math.random(), 2, true);
+						Magitek.proxy.orbFX(this.worldObj, this.xCoord + 0.5D, this.yCoord + 1.0D, this.zCoord + 0.5D, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (float)Math.random(), (float)Math.random(), (float)Math.random(), (float)Math.random(), 2, true);
 					}
 					this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 				}
@@ -129,6 +129,9 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					stack.stackSize = this.inventory.stackSize;
 					this.inventory = stack.copy();
 					worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
+					for(int i = 0; i < 15; i++) {
+						Magitek.proxy.orbFX(this.worldObj, this.xCoord + 0.5D, this.yCoord + 1.0D, this.zCoord + 0.5D, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (float)Math.random(), (float)Math.random(), (float)Math.random(), (float)Math.random(), 2, true);
+					}
 				}				
 			}
 		}else{
@@ -176,45 +179,39 @@ public class TileAltar extends TilePurityBase implements IInventory{
 			this.dummies.add(world.getTileEntity(x + 2, y, z - 2));
 			this.dummies.add(world.getTileEntity(x - 2, y, z - 2));
 		}else{
-			boolean a = world.isAirBlock(x, y, z + 5) || world.getBlock(x, y, z + 5) == BlocksMT.altarDummy;
+			boolean a = world.isAirBlock(x, y, z + 4) || world.getBlock(x, y, z + 4) == BlocksMT.altarDummy;
 			boolean b = world.isAirBlock(x + 2, y, z + 3) || world.getBlock(x + 2, y, z + 3) == BlocksMT.altarDummy;
 			boolean c = world.isAirBlock(x - 2, y, z + 3) || world.getBlock(x - 2, y, z + 3) == BlocksMT.altarDummy;
-			boolean d = world.isAirBlock(x + 4, y, z + 2) || world.getBlock(x + 4, y, z + 2) == BlocksMT.altarDummy;
-			boolean e = world.isAirBlock(x - 4, y, z + 2) || world.getBlock(x - 4, y, z + 2) == BlocksMT.altarDummy;
-			boolean f = world.isAirBlock(x + 3, y, z) || world.getBlock(x + 3, y, z) == BlocksMT.altarDummy;
-			boolean g = world.isAirBlock(x - 3, y, z) || world.getBlock(x - 3, y, z) == BlocksMT.altarDummy;
-			boolean h = world.isAirBlock(x + 4, y, z - 2) || world.getBlock(x + 4, y, z - 2) == BlocksMT.altarDummy;
-			boolean i = world.isAirBlock(x - 4, y, z - 2) || world.getBlock(x - 4, y, z - 2) == BlocksMT.altarDummy;
+			boolean d = world.isAirBlock(x + 4, y, z + 1) || world.getBlock(x + 4, y, z + 1) == BlocksMT.altarDummy;
+			boolean e = world.isAirBlock(x - 4, y, z + 1) || world.getBlock(x - 4, y, z + 1) == BlocksMT.altarDummy;
+			boolean h = world.isAirBlock(x + 4, y, z - 1) || world.getBlock(x + 4, y, z - 1) == BlocksMT.altarDummy;
+			boolean i = world.isAirBlock(x - 4, y, z - 1) || world.getBlock(x - 4, y, z - 1) == BlocksMT.altarDummy;
 			boolean j = world.isAirBlock(x + 2, y, z - 3) || world.getBlock(x + 2, y, z - 3) == BlocksMT.altarDummy;
 			boolean k = world.isAirBlock(x - 2, y, z - 3) || world.getBlock(x - 2, y, z - 3) == BlocksMT.altarDummy;
-			boolean l = world.isAirBlock(x, y, z - 5) || world.getBlock(x, y, z - 5) == BlocksMT.altarDummy;;
-			if(!a || !b || !c || !d || !e || !f || !g || !h || !i || !j || !k || !l) {
+			boolean l = world.isAirBlock(x, y, z - 4) || world.getBlock(x, y, z - 4) == BlocksMT.altarDummy;;
+			if(!a || !b || !c || !d || !e || !h || !i || !j || !k || !l) {
 				return false;
 			}
-			world.setBlock(x, y, z + 5, BlocksMT.altarDummy);
+			world.setBlock(x, y, z + 4, BlocksMT.altarDummy);
 			world.setBlock(x + 2, y, z + 3, BlocksMT.altarDummy);
 			world.setBlock(x - 2, y, z + 3, BlocksMT.altarDummy);
-			world.setBlock(x + 4, y, z + 2, BlocksMT.altarDummy);
-			world.setBlock(x - 4, y, z + 2, BlocksMT.altarDummy);
-			world.setBlock(x + 3, y, z, BlocksMT.altarDummy);
-			world.setBlock(x - 3, y, z, BlocksMT.altarDummy);
-			world.setBlock(x + 4, y, z - 2, BlocksMT.altarDummy);
-			world.setBlock(x - 4, y, z - 2, BlocksMT.altarDummy);
+			world.setBlock(x + 4, y, z + 1, BlocksMT.altarDummy);
+			world.setBlock(x - 4, y, z + 1, BlocksMT.altarDummy);
+			world.setBlock(x + 4, y, z - 1, BlocksMT.altarDummy);
+			world.setBlock(x - 4, y, z - 1, BlocksMT.altarDummy);
 			world.setBlock(x + 2, y, z - 3, BlocksMT.altarDummy);
 			world.setBlock(x - 2, y, z - 3, BlocksMT.altarDummy);
-			world.setBlock(x, y, z - 5, BlocksMT.altarDummy);
-			this.dummies.add(world.getTileEntity(x, y, z + 5));
+			world.setBlock(x, y, z - 4, BlocksMT.altarDummy);
+			this.dummies.add(world.getTileEntity(x, y, z + 4));
 			this.dummies.add(world.getTileEntity(x + 2, y, z + 3));
 			this.dummies.add(world.getTileEntity(x - 2, y, z + 3));
-			this.dummies.add(world.getTileEntity(x + 4, y, z + 2));
-			this.dummies.add(world.getTileEntity(x - 4, y, z + 2));
-			this.dummies.add(world.getTileEntity(x + 3, y, z));
-			this.dummies.add(world.getTileEntity(x - 3, y, z));
-			this.dummies.add(world.getTileEntity(x + 4, y, z - 2));
-			this.dummies.add(world.getTileEntity(x - 4, y, z - 2));
+			this.dummies.add(world.getTileEntity(x + 4, y, z + 1));
+			this.dummies.add(world.getTileEntity(x - 4, y, z + 1));
+			this.dummies.add(world.getTileEntity(x + 4, y, z - 1));
+			this.dummies.add(world.getTileEntity(x - 4, y, z - 1));
 			this.dummies.add(world.getTileEntity(x + 2, y, z - 3));
 			this.dummies.add(world.getTileEntity(x - 2, y, z - 3));
-			this.dummies.add(world.getTileEntity(x, y, z - 5));
+			this.dummies.add(world.getTileEntity(x, y, z - 4));
 		}
 		this.dummiesExist = true;
 		return true;

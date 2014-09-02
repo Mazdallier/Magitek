@@ -95,5 +95,15 @@ public class TileSubTerraDummy extends TileMTBase implements IPurityHandler, IMa
 	public boolean isFull() {
 		return purity.isFull();
 	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+	}
 
 }

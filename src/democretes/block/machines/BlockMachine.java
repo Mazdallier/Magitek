@@ -3,6 +3,7 @@ package democretes.block.machines;
 import java.util.List;
 
 import cpw.mods.fml.common.FMLLog;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
@@ -11,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -36,6 +38,13 @@ public class BlockMachine extends BlockMTBase {
 		for(int i = 0; i < 2; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
+	}
+	
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world,	int x, int y, int z) {
+		Block block = world.getBlock(x, y, z);
+		int meta = world.getBlockMetadata(x, y, z);
+		return new ItemStack(block, 1, meta);
 	}
 	
 	@Override

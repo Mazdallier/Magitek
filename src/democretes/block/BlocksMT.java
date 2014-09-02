@@ -17,6 +17,9 @@ import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSpreader;
 import democretes.block.generators.TileSubTerraGenerator;
+import democretes.block.generators.disposable.BlockDisposableGenerator;
+import democretes.block.generators.disposable.ItemBlockDisposableGenerator;
+import democretes.block.generators.disposable.TileDetonationGenerator;
 import democretes.block.machines.BlockMachine;
 import democretes.block.machines.ItemBlockMachine;
 import democretes.block.machines.TilePurityInverter;
@@ -32,6 +35,7 @@ public class BlocksMT {
 	public static Block tesla;
 	public static Block altar;
 	public static Block altarDummy;
+	public static Block disposable;
 	
 	public static void init() {
 		generator = new BlockGenerator();
@@ -40,6 +44,7 @@ public class BlocksMT {
 		tesla = new BlockCoil();
 		altar = new BlockAltar();
 		altarDummy = new BlockAltarDummy();
+		disposable = new BlockDisposableGenerator();
 		
 		GameRegistry.registerBlock(generator, ItemBlockGenerator.class, BlockNames.GENERATOR_NAME);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, BlockNames.MACHINE_NAME);
@@ -47,6 +52,7 @@ public class BlocksMT {
 		GameRegistry.registerBlock(tesla, BlockNames.TESLA_NAME);
 		GameRegistry.registerBlock(altar, BlockNames.ALTAR_NAME);
 		GameRegistry.registerBlock(altarDummy, BlockNames.ALTAR_NAME + "dumbass");
+		GameRegistry.registerBlock(disposable, ItemBlockDisposableGenerator.class, BlockNames.GENERATOR_NAME + "Disposable");
 		
 		GameRegistry.registerTileEntity(TileSubTerraGenerator.class, Reference.MOD_NAME + "TileSubTerra");
 		GameRegistry.registerTileEntity(TileSolarGenerator.class, Reference.MOD_NAME + "TileSolarGenerator");
@@ -58,6 +64,7 @@ public class BlocksMT {
 		GameRegistry.registerTileEntity(TileSpreader.class, Reference.MOD_NAME + "TileSpreader");
 		GameRegistry.registerTileEntity(TileRunicGenerator.class, Reference.MOD_NAME + "TileRunicGenerator");
 		GameRegistry.registerTileEntity(TileRuneConstructor.class, Reference.MOD_NAME + "TileRuneConstrctor");
+		GameRegistry.registerTileEntity(TileDetonationGenerator.class, Reference.MOD_NAME + "TileDetonationGenerator");
 
 	}
 }

@@ -11,7 +11,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class TileSpreader extends TileGeneratorBase {
 	
 	public TileSpreader() {
-		super(10000);
+		super(50000);
 	}
 	
 	@Override
@@ -41,10 +41,12 @@ public class TileSpreader extends TileGeneratorBase {
 				break;
 			}
 		}
-		for(int i = 0; i < vBlocks.length; i++) {
-			if(block == vBlocks[i]) {
-				canSearch = true;
-				break;
+		if(!canSearch) {
+			for(int i = 0; i < vBlocks.length; i++) {
+				if(block == vBlocks[i]) {
+					canSearch = true;
+					break;
+				}
 			}
 		}
 		if(!canSearch) {
@@ -60,11 +62,16 @@ public class TileSpreader extends TileGeneratorBase {
 						break;
 					}
 				}
-				for(int i = 0; i < vBlocks.length; i++) {
-					if(block == vBlocks[i]) {
-						canSearch = true;
-						break;
+				if(!canSearch) {
+					for(int i = 0; i < vBlocks.length; i++) {
+						if(block == vBlocks[i]) {
+							canSearch = true;
+							break;
+						}
 					}
+				}
+				if(dir == ForgeDirection.DOWN || dir == ForgeDirection.UP) {
+					canSearch = true;
 				}
 				if(!canSearch) {
 					break;
@@ -85,6 +92,20 @@ public class TileSpreader extends TileGeneratorBase {
 				}				
 			}			
 		}	
+	}
+	
+	@Override
+	void transferEnergy() {
+		int amount = (Math.min(this.getMachtStored(), 100))/this.tiles.size();
+		for(TileEntity tile : tiles) {
+			if(tile != null) {
+				if(((IMachtStorage)tile).getMachtStored() < this.getMachtStored()) {
+					this.extractMacht(((IMachtStorage)tile).receiveMacht(Math.min(amount, this.getMachtStored())));
+				}
+			}else{
+				tiles.remove(tile);
+			}
+		}
 	}
 	
 

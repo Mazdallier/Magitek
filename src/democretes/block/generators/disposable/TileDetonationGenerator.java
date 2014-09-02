@@ -26,7 +26,7 @@ public class TileDetonationGenerator extends TileSingleGeneratorBase {
 				count = 0;
 				if(r.nextFloat() > (float)this.energyRemaining/(float)this.maxEnergy) {
 					ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[r.nextInt(5)];
-					this.worldObj.createExplosion(null, this.xCoord + dir.offsetX*2, this.yCoord + dir.offsetY*2, this.zCoord + dir.offsetZ*2, explosionStrength, false);
+					this.worldObj.createExplosion(null, this.xCoord + dir.offsetX*2, this.yCoord + dir.offsetY*2, this.zCoord + dir.offsetZ*2, explosionStrength, true);
 				}
 			}
 		}
@@ -35,12 +35,12 @@ public class TileDetonationGenerator extends TileSingleGeneratorBase {
 	@Override
 	public void detonate() {
 		if(!this.worldObj.isRemote) {
-			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
-				this.worldObj.createExplosion(null, this.xCoord + dir.offsetX*2, this.yCoord + dir.offsetY*2, this.zCoord + dir.offsetZ*2, 1, true);			
-			}
-			this.worldObj.createExplosion(null, this.xCoord, this.yCoord, this.zCoord, 1, true);	
 			this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord);
-			this.worldObj.removeTileEntity(this.xCoord, this.yCoord, this.zCoord);
+			for(ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+				this.worldObj.createExplosion(null, this.xCoord + dir.offsetX*2, this.yCoord + dir.offsetY*2, this.zCoord + dir.offsetZ*2, explosionStrength*2, true);			
+			}
+			this.worldObj.createExplosion(null, this.xCoord, this.yCoord, this.zCoord, explosionStrength*2, true);
+			this.worldObj.removeTileEntity(this.xCoord, this.yCoord, this.zCoord);	
 		}
 	}
 

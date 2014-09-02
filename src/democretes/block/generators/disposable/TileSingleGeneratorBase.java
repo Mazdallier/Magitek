@@ -11,7 +11,7 @@ public abstract class TileSingleGeneratorBase extends TileGeneratorBase {
 	int energyRemaining;
 	int maxEnergy;
 	int drain = 50;
-	float explosionStrength = 6;
+	float explosionStrength = 2;
 	
 	public TileSingleGeneratorBase(int energy) {
 		super(10000);

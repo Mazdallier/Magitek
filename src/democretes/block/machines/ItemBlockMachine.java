@@ -15,5 +15,7 @@ public class ItemBlockMachine extends ItemBlockWithMetadata{
 	public String getUnlocalizedName(ItemStack stack) {
 		return "tile." + Reference.MOD_PREFIX + ".machine." + stack.getItemDamage();
 	}
+	
+	
 
 }

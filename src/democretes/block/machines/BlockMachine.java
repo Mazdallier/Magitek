@@ -23,6 +23,7 @@ import democretes.lib.Reference;
 import democretes.utils.crafting.RunicHelper;
 
 public class BlockMachine extends BlockMTBase {
+
 	
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess access, int x, int y, int z) {

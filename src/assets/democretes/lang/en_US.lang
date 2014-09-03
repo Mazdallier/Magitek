@@ -37,10 +37,11 @@ tile.magitek.generator.1.name=Sub Terranean Generator
 tile.magitek.generator.2.name=Purity Extractor
 tile.magitek.generator.3.name=Macht Crystal
 tile.magitek.generator.4.name=Runic Generator
-tile.magitek.machine.0.name=Purity Inverter
-tile.magitek.machine.1.name=Runic Constructor
+tile.magitek.machine.0.name=Runic Constructor
+tile.magitek.machine.1.name=Purity Inverter
 tile.magitek.altar.name=Altar of Power
 tile.magitek.coil.name=Macht Coil
+tile.magitek.disposable.0.name=Explosive Generator
 
 #Spells
 magitek.spell.lowMacht=Your macht is too low to cast this spell.

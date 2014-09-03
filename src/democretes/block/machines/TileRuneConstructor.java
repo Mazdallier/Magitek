@@ -63,30 +63,29 @@ public class TileRuneConstructor extends TileMachineBase implements IInventory {
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
-		NBTTagList nbttaglist = new NBTTagList();
-	    for (int i = 0; i < this.inventory.length; ++i) {
-	        if (this.inventory[i] != null) {
-	            NBTTagCompound nbt1 = new NBTTagCompound();
-	            nbt1.setByte("Slot", (byte)i);
-	            this.inventory[i].writeToNBT(nbt1);
-	            nbttaglist.appendTag(nbt1);
-	        }
-	    }
-	    nbt.setTag("Items", nbttaglist);
+		NBTTagList var2 = new NBTTagList();
+		for (int var3 = 0; var3 < inventory.length; ++var3) {
+			if (inventory[var3] != null) {
+				NBTTagCompound var4 = new NBTTagCompound();
+				var4.setByte("Slot", (byte)var3);
+				inventory[var3].writeToNBT(var4);
+				var2.appendTag(var4);
+			}
+		}
+		nbt.setTag("Items", var2);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
-		NBTTagList nbttaglist = nbt.getTagList("Items", 2);
-        this.inventory = new ItemStack[this.getSizeInventory()];
-        for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-            NBTTagCompound compound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
-            int j = compound1.getByte("Slot") & 255;
-            if (j >= 0 && j < this.inventory.length)            {
-                this.inventory[j] = ItemStack.loadItemStackFromNBT(compound1);
-            }
-        }
+		NBTTagList var2 = nbt.getTagList("Items", 10);
+		inventory = new ItemStack[getSizeInventory()];
+		for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
+			NBTTagCompound var4 = var2.getCompoundTagAt(var3);
+			byte var5 = var4.getByte("Slot");
+			if (var5 >= 0 && var5 < inventory.length)
+				inventory[var5] = ItemStack.loadItemStackFromNBT(var4);
+		}
 	}
 	
 	@Override
@@ -187,7 +186,7 @@ public class TileRuneConstructor extends TileMachineBase implements IInventory {
 	
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
-		NBTTagList nbttaglist = pkt.func_148857_g().getTagList("Items", 0);
+		NBTTagList nbttaglist = pkt.func_148857_g().getTagList("Items", 10);
         this.inventory = new ItemStack[this.getSizeInventory()];
         for (int i = 0; i < nbttaglist.tagCount(); ++i) {
             NBTTagCompound compound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);

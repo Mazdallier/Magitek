@@ -36,7 +36,7 @@ public class RenderRuneConstructor extends TileEntitySpecialRenderer {
 			    GL11.glPushMatrix();
 			    GL11.glPushAttrib(8192);
 				GL11.glColor4f(1F, 1F, 1F, 1F);
-				GL11.glTranslated(x, y, z);
+				GL11.glTranslated(x, y + 0.25D, z);
 				GL11.glTranslatef(0.45F, 0.825F, 0.35F);
 				float yy = 0;
 				if(stack.stackSize >= 32) {
@@ -62,12 +62,12 @@ public class RenderRuneConstructor extends TileEntitySpecialRenderer {
 			if(((TileRuneConstructor)tile).inventory[1] != null) {
 				GL11.glPushMatrix();
 				if(item2 == null) {
-					item2 = new EntityItem(tile.getWorldObj(), tile.xCoord, tile.yCoord + 0.75F, tile.zCoord, ((TileRuneConstructor)tile).inventory[1]);
+					item2 = new EntityItem(tile.getWorldObj(), tile.xCoord, tile.yCoord, tile.zCoord, ((TileRuneConstructor)tile).inventory[1]);
 				}
 				item2.age = (int)tile.getWorldObj().getTotalWorldTime();
 				item2.setEntityItemStack(((TileRuneConstructor)tile).inventory[1]);
 				GL11.glColor4f(1F, 1F, 1F, 1F);
-				GL11.glTranslatef(0.5F, 1.0F, 0.5F);
+				GL11.glTranslatef(0.5F, 1.25F, 0.5F);
 				((Render)RenderManager.instance.entityRenderMap.get(EntityItem.class)).doRender(item2, x, y, z, 1F, f);
 				GL11.glTranslatef(-0.5F, -1.25F, -0.5F);
 				GL11.glPopMatrix();

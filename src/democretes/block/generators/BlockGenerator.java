@@ -54,12 +54,21 @@ public class BlockGenerator extends BlockMTBase {
 	
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess access, int x, int y, int z) {
-		if(access.getBlockMetadata(x, y, z) == 1) {
+		int meta = access.getBlockMetadata(x, y, z);
+		if(meta == 0) {
+			setBlockBounds(0F, 0F, 0F, 1F, 0.65F, 1F);			
+		}else if(meta == 1) {
 			setBlockBounds(0F, 0F, 0F, 1F, 2F, 1F);
+		}else if(meta == 2) {
+			setBlockBounds(0.15F, 0.0F, 0.15F, 0.85F, 0.85F, 0.85F);			
+		}else if(meta == 3) {
+			setBlockBounds(0.25F, 0.0F, 0.25F, 0.75F, 1.0F, 0.75F);
 		}else{
 			setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
 		}
 	}
+	
+	
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
@@ -73,6 +82,11 @@ public class BlockGenerator extends BlockMTBase {
 							world.spawnEntityInWorld(new EntityItem(world, x + 0.5F + fd.offsetX / 3.0F, y + 0.5F, z + 0.5F + fd.offsetZ / 3.0F, generator.inventory));
 						}
 						generator.inventory = null;
+					}else{
+						if(player.getHeldItem().getItem() == generator.inventory.getItem() && player.getHeldItem().getItemDamage() == generator.inventory.getItemDamage()) {
+							generator.inventory.stackSize++;
+							player.inventory.decrStackSize(player.inventory.currentItem, 1);
+						}
 					}
 				}else{
 					if(player.getHeldItem() != null) {

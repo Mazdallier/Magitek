@@ -13,12 +13,12 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.Magitek;
+import democretes.api.AltarHelper;
+import democretes.api.RitualHelper;
 import democretes.block.BlockMTBase;
 import democretes.block.dummy.TileAltarDummy;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;
-import democretes.utils.crafting.AltarHelper;
-import democretes.utils.crafting.RitualHelper;
 
 public class BlockAltar extends BlockMTBase {	
 	

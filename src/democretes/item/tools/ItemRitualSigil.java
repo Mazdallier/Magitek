@@ -4,11 +4,13 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import democretes.api.RitualType;
 import democretes.block.altar.TileAltar;
 import democretes.item.ItemMTBase;
@@ -36,6 +38,17 @@ public class ItemRitualSigil extends ItemMTBase {
 				type = RitualType.COMPLEX;
 			}
 			altar.ritual = type;
+			if(altar.inventory != null) {
+				if(altar.inventory.stackSize > 1) {
+					ItemStack altarStack = altar.inventory.copy();
+					altarStack.stackSize -= 1;
+					altar.inventory.stackSize = 1;
+					if(!player.inventory.addItemStackToInventory(altarStack)) {
+						ForgeDirection fd = ForgeDirection.getOrientation(side);
+						world.spawnEntityInWorld(new EntityItem(world, x + 0.5F + fd.offsetX / 3.0F, y + 0.5F, z + 0.5F + fd.offsetZ / 3.0F, altarStack));
+					}
+				}
+			}
 			world.markBlockForUpdate(x, y, z);
 		}
 		return false;

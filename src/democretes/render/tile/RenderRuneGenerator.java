@@ -46,7 +46,7 @@ public class RenderRuneGenerator extends TileEntitySpecialRenderer {
 			    GL11.glPushAttrib(8192);
 				GL11.glColor4f(1F, 1F, 1F, 1F);
 				GL11.glTranslated(x, y - 0.125D, z);
-				GL11.glTranslatef(0.5F, 0.825F, 0.225F);
+				GL11.glTranslatef(0.5F, 0.825F, 0.4F);
 				float yy = 0;
 				if(stack.stackSize >= 32) {
 					yy = 0;

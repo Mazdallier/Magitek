@@ -16,9 +16,9 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import democretes.api.AltarHelper;
 import democretes.block.BlockMTBase;
 import democretes.lib.Reference;
-import democretes.utils.crafting.AltarHelper;
 
 public class BlockAltarDummy extends BlockMTBase {
 	

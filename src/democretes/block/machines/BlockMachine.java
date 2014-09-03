@@ -16,11 +16,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import democretes.api.RunicHelper;
 import democretes.block.BlockMTBase;
 import democretes.block.generators.TileRunicGenerator;
 import democretes.item.ItemsMT;
 import democretes.lib.Reference;
-import democretes.utils.crafting.RunicHelper;
 
 public class BlockMachine extends BlockMTBase {
 
@@ -41,7 +41,7 @@ public class BlockMachine extends BlockMTBase {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		if(world.getBlockMetadata(x, y, z) == 1) {
+		if(world.getBlockMetadata(x, y, z) == 0) {
 			if(world.getTileEntity(x, y, z) instanceof TileRuneConstructor) {
 				TileRuneConstructor construct = (TileRuneConstructor)world.getTileEntity(x, y, z);
 				if(player.getHeldItem() != null) {
@@ -84,39 +84,41 @@ public class BlockMachine extends BlockMTBase {
 	}
 	
 	
-	IIcon[] constructor = new IIcon[3];
+	IIcon[] top = new IIcon[2];
+	IIcon[] bot = new IIcon[2];
+	IIcon[] sides = new IIcon[2];	
 	@Override
 	public void registerBlockIcons(IIconRegister ir) {
-		constructor[0] = ir.registerIcon(Reference.TEXTURE_PREFIX + "constructor_bottom");
-		constructor[1] = ir.registerIcon(Reference.TEXTURE_PREFIX + "constructor_top");
-		constructor[2] = ir.registerIcon(Reference.TEXTURE_PREFIX + "constructor_side");
+		for(int i = 0; i < top.length; i++) {
+			top[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "machine_" + i + "_top");
+		}
+		for(int i = 0; i < bot.length; i++) {
+			bot[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "machine_" + i + "_bot");
+		}
+		for(int i = 0; i < sides.length; i++) {
+			sides[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "machine_" + i + "_side");
+		}
 	}
 	
 	@Override
 	public IIcon getIcon(int side, int meta) {
-		if(meta == 1) {
-			if(side > 1) {
-				return constructor[2];
-			}else{
-				return constructor[side];
-			}
+		if(side == 0) {
+			return bot[meta];
 		}
-		return null;
+		if(side == 1) {
+			return top[meta];
+		}
+		return sides[meta];
 	}
 	
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		switch(meta) {
 		case 0:
-			return new TilePurityInverter();
-		case 1:
 			return new TileRuneConstructor();
+		case 1:
+			return new TilePurityInverter();
 		}
 		return null;
-	}
-
-	@Override
-	public boolean isOpaqueCube() {
-		return false;
 	}
 }

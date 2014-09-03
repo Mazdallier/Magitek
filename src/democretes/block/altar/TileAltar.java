@@ -16,12 +16,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import democretes.Magitek;
+import democretes.api.AltarHelper;
+import democretes.api.RitualHelper;
 import democretes.api.RitualType;
 import democretes.block.BlocksMT;
 import democretes.block.TilePurityBase;
 import democretes.block.dummy.TileAltarDummy;
-import democretes.utils.crafting.AltarHelper;
-import democretes.utils.crafting.RitualHelper;
 
 public class TileAltar extends TilePurityBase implements IInventory{
 
@@ -259,7 +259,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 
 	@Override
 	public int getInventoryStackLimit() {
-		return 64;
+		return this.ritual == null ? 64 : 1;
 	}
 
 	@Override

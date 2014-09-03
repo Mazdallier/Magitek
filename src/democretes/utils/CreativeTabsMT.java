@@ -1,6 +1,7 @@
 package democretes.utils;
 
 import democretes.api.spells.Spell;
+import democretes.block.BlocksMT;
 import democretes.item.ItemsMT;
 import democretes.item.spells.SpellsMT;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,7 +16,7 @@ public class CreativeTabsMT extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		return ItemsMT.binder;
+		return Item.getItemFromBlock(BlocksMT.altar);
 	}
 	
 	

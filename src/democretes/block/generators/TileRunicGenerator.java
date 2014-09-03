@@ -2,10 +2,10 @@ package democretes.block.generators;
 
 import cpw.mods.fml.common.FMLLog;
 import democretes.Magitek;
+import democretes.api.RitualHelper;
 import democretes.api.RitualType;
+import democretes.api.RunicHelper;
 import democretes.item.ItemsMT;
-import democretes.utils.crafting.RitualHelper;
-import democretes.utils.crafting.RunicHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;

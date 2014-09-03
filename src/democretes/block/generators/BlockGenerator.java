@@ -19,14 +19,14 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import democretes.api.AltarHelper;
+import democretes.api.RunicHelper;
 import democretes.block.BlockMTBase;
 import democretes.block.BlocksMT;
 import democretes.block.dummy.BlockSubTerraDummy;
 import democretes.block.generators.disposable.TileDetonationGenerator;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;
-import democretes.utils.crafting.AltarHelper;
-import democretes.utils.crafting.RunicHelper;
 
 public class BlockGenerator extends BlockMTBase {
 
@@ -83,6 +83,9 @@ public class BlockGenerator extends BlockMTBase {
 						}
 						generator.inventory = null;
 					}else{
+						if(player.getHeldItem() == null) {
+							return false;
+						}
 						if(player.getHeldItem().getItem() == generator.inventory.getItem() && player.getHeldItem().getItemDamage() == generator.inventory.getItemDamage()) {
 							generator.inventory.stackSize++;
 							player.inventory.decrStackSize(player.inventory.currentItem, 1);

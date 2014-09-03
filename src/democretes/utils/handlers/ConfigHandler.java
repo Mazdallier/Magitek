@@ -1,35 +1,28 @@
 package democretes.utils.handlers;
 
 import java.io.File;
-import java.util.List;
-import java.util.Set;
 
-import cpw.mods.fml.client.IModGuiFactory;
-import cpw.mods.fml.client.config.GuiConfig;
-import cpw.mods.fml.client.config.IConfigElement;
-import democretes.lib.Reference;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import cpw.mods.fml.client.config.GuiConfig;
+import cpw.mods.fml.client.event.ConfigChangedEvent;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import democretes.lib.Reference;
 
-public class ConfigHandler /**extends GuiConfig implements IModGuiFactory**/ {
-	/**
+public class ConfigHandler extends GuiConfig {
+	
 	public ConfigHandler(GuiScreen parentScreen) {
-		super(parentScreen, 
-				new ConfigElement(config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), 
-				Reference.MOD_ID, 
-				false, 
-				false, 
-				GuiConfig.getAbridgedConfigPath(config.toString()));
-	}**/
+		super(parentScreen, new ConfigElement(config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), Reference.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath(config.toString()));
+	}
 
 	public static int syphonAmount;
 	public static int range;
 	public static int maxRatio;
 
-	static Configuration config;
+	public static Configuration config;
 	
 	public static void init(File file)    {
 		config = new Configuration(file);
@@ -37,6 +30,8 @@ public class ConfigHandler /**extends GuiConfig implements IModGuiFactory**/ {
 		config.load();   
 		
 		sync();
+
+		FMLCommonHandler.instance().bus().register(new ConfigChange());
 	}
 	
 	public static void sync() {	
@@ -46,29 +41,20 @@ public class ConfigHandler /**extends GuiConfig implements IModGuiFactory**/ {
 		Property r = config.get(Configuration.CATEGORY_GENERAL, "Range that generators and runes search.", 10);
 		range = r.getInt();
 		
-		Property ratio = config.get(Configuration.CATEGORY_GENERAL, "The ratio at which the Macht Ring will stop providing energy. (MaxPlayerMacht*Ratio)/100.", 75);
+		Property ratio = config.get(Configuration.CATEGORY_GENERAL, "The ratio as a percent at which the Macht Ring will stop providing energy. (MaxPlayerMacht*Ratio)/100.", 75);
 		maxRatio = ratio.getInt();
 		
 		config.save();  
 	}
 	
-	/**
-	@Override
-	public void initialize(Minecraft minecraftInstance) {}
+	public static class ConfigChange {
 
-	@Override
-	public Class<? extends GuiScreen> mainConfigGuiClass() {
-		return this.getClass();
-	}
+		@SubscribeEvent
+		public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+			if(eventArgs.modID.equals(Reference.MOD_ID)) {
+				sync();
+			}
+		}
 
-	@Override
-	public Set<RuntimeOptionCategoryElement> runtimeGuiCategories() {
-		return null;
 	}
-
-	@Override
-	public RuntimeOptionGuiHandler getHandlerFor(RuntimeOptionCategoryElement element) {
-		return null;
-	}
-	**/
 }

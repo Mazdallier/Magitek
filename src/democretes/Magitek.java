@@ -31,7 +31,7 @@ import democretes.utils.network.PacketHandler;
 @Mod(modid = Reference.MOD_ID, 
 	 name = Reference.MOD_NAME, 
 	 version = "0.0.1",
-	 guiFactory = "democretes.utils.handlers.ConfigHandler")
+	 guiFactory = "democretes.utils.handlers.GuiFactory")
  
 public class Magitek {
 
@@ -47,7 +47,7 @@ public class Magitek {
 	
 	@EventHandler
 	public void foreplay(FMLPreInitializationEvent event) {
-		ConfigHandler.init(new File(event.getModConfigurationDirectory(), "Magitek.cfg"));
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		SpellsMT.init();
 		BlocksMT.init();
 		ItemsMT.init();
@@ -57,7 +57,7 @@ public class Magitek {
 	@EventHandler
 	public void penetration(FMLInitializationEvent event) {
 		PacketHandler.init();
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		proxy.initRenderers();
   		proxy.registerKeyBindings();
 		MinecraftForge.EVENT_BUS.register(new MTEventHandler());

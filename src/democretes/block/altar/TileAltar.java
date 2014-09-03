@@ -244,6 +244,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		this.inventory = stack;
+		this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 	}
 
 	@Override

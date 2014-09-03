@@ -26,15 +26,6 @@ public class BlockMachine extends BlockMTBase {
 
 	
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess access, int x, int y, int z) {
-		if(access.getBlockMetadata(x, y, z) == 1) {
-			setBlockBounds(0F, 0F, 0F, 1F, 0.75F, 1F);
-		}else{
-			setBlockBounds(0F, 0F, 0F, 1F, 1F, 1F);
-		}
-	}
-	
-	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
 		for(int i = 0; i < 2; i++) {
 			list.add(new ItemStack(item, 1, i));
@@ -122,11 +113,6 @@ public class BlockMachine extends BlockMTBase {
 			return new TileRuneConstructor();
 		}
 		return null;
-	}
-	
-	@Override
-	public boolean renderAsNormalBlock() {
-		return false;
 	}
 
 	@Override

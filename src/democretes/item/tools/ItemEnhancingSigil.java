@@ -61,7 +61,7 @@ public class ItemEnhancingSigil extends ItemMTBase {
 		}else{
 			if(SpellHelper.getMacht(player) > 2500) {
 				SpellHelper.extractMacht(player, 2500);
-				player.addPotionEffect(new PotionEffect(SigilEffects.values()[stack.getItemDamage()].potionId, 2400, 1));
+				player.addPotionEffect(new PotionEffect(SigilEffects.values()[stack.getItemDamage()].potionId, 2400, 2));
 			}
 		}
 		return stack;
@@ -69,9 +69,9 @@ public class ItemEnhancingSigil extends ItemMTBase {
 	
 	public enum SigilEffects {
 
-		STRENGTH(Potion.damageBoost.id), 
+		STRENGTH(Potion.damageBoost.id),
+		JUMP(Potion.jump.id),  
 		SPEED(Potion.moveSpeed.id),
-		JUMP(Potion.jump.id), 
 		DEFENSE(Potion.resistance.id), 
 		MINING(Potion.digSpeed.id),
 		BREATH(Potion.waterBreathing.id);

@@ -6,6 +6,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,10 @@ import democretes.block.BlockMTBase;
 import democretes.lib.Reference;
 
 public class BlockDisposableGenerator extends BlockMTBase {
+	
+	public BlockDisposableGenerator() {
+		setHardness(25.0F);
+	}
 	
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
@@ -77,5 +82,10 @@ public class BlockDisposableGenerator extends BlockMTBase {
 				world.spawnParticle("smoke", x + 0.5D + r.nextDouble() - r.nextDouble(), y + 0.5D, z + 0.5D + r.nextDouble() - r.nextDouble(), 0.0D, 0.0D, 0.0D);
 			}
 		}
+	}
+	
+	@Override
+	public boolean canHarvestBlock(EntityPlayer player, int meta) {
+		return false;
 	}
 }

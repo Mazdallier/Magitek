@@ -8,10 +8,10 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 
 public abstract class TileSingleGeneratorBase extends TileGeneratorBase {
 	
-	int energyRemaining;
-	int maxEnergy;
+	public int energyRemaining;
+	public int maxEnergy;
 	int drain = 50;
-	float explosionStrength = 2;
+	float explosionStrength = 1.5F;
 	
 	public TileSingleGeneratorBase(int energy) {
 		super(10000);

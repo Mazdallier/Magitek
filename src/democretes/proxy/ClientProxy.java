@@ -8,6 +8,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import democretes.block.altar.TileAltar;
 import democretes.block.coils.TileMachtCoil;
 import democretes.block.generators.TilePurityGenerator;
+import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSpreader;
 import democretes.block.generators.TileSubTerraGenerator;
@@ -21,6 +22,7 @@ import democretes.render.tile.RenderAltar;
 import democretes.render.tile.RenderMachtCoil;
 import democretes.render.tile.RenderPurityGenerator;
 import democretes.render.tile.RenderRuneConstructor;
+import democretes.render.tile.RenderRuneGenerator;
 import democretes.render.tile.RenderSolarGenerator;
 import democretes.render.tile.RenderSpreader;
 import democretes.render.tile.RenderSubTerraGenerator;
@@ -39,6 +41,7 @@ public class ClientProxy extends CommonProxy{
     	ClientRegistry.bindTileEntitySpecialRenderer(TileSolarGenerator.class, new RenderSolarGenerator());
     	ClientRegistry.bindTileEntitySpecialRenderer(TilePurityGenerator.class, new RenderPurityGenerator());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileSpreader.class, new RenderSpreader());
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileRunicGenerator.class, new RenderRuneGenerator());    	
     	RenderIds.idGENERATOR = RenderingRegistry.getNextAvailableRenderId();
     	
     	ClientRegistry.bindTileEntitySpecialRenderer(TileMachtCoil.class, new RenderMachtCoil());

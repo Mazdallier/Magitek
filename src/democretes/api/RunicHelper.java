@@ -1,4 +1,4 @@
-package democretes.utils.crafting;
+package democretes.api;
 
 import net.minecraft.item.ItemStack;
 import democretes.api.recipe.RuneRecipe;

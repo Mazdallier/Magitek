@@ -1,4 +1,4 @@
-package democretes.utils.crafting;
+package democretes.api;
 
 import java.util.ArrayList;
 

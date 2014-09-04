@@ -1,5 +1,7 @@
 package democretes.api.spells;
 
+import java.util.Set;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
@@ -86,6 +88,18 @@ public class SpellHelper {
 		SpellNetwork network = getNetwork(player);
 		network.max = max;
 		network.markDirty();
+	}
+	
+	public static int getSpellIndex(Spell spell) {
+		Set<String> strings = Spell.spells.keySet();
+		int i = 0;
+		for(String string : strings) {	
+			if(string.equals(spell.name)) {
+				return i;
+			}
+			i++;
+		}
+		return 0;
 	}
 
 }

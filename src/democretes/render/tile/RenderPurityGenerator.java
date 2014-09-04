@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import democretes.block.BlocksMT;
+import democretes.block.MTBlocks;
 import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileSubTerraGenerator;
 import democretes.block.machines.TilePurityInverter;
@@ -73,7 +73,7 @@ public class RenderPurityGenerator extends TileEntitySpecialRenderer {
 		 IIcon icon = Blocks.lava.getIcon(0, 0);
 		 this.field_147501_a.field_147553_e.bindTexture(TextureMap.locationBlocksTexture);
 
-		 Block generator = BlocksMT.generator;
+		 Block generator = MTBlocks.generator;
 
 		 renderBlocks.renderFaceYNeg(generator, -0.5D, 0.0D, -0.5D, icon);
 		 renderBlocks.renderFaceYPos(generator, -0.5D, 0.0D, -0.5D, icon);

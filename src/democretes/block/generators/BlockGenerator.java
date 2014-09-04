@@ -22,7 +22,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import democretes.api.AltarHelper;
 import democretes.api.RunicHelper;
 import democretes.block.BlockMTBase;
-import democretes.block.BlocksMT;
+import democretes.block.MTBlocks;
 import democretes.block.dummy.BlockSubTerraDummy;
 import democretes.block.generators.disposable.TileDetonationGenerator;
 import democretes.lib.Reference;
@@ -39,7 +39,7 @@ public class BlockGenerator extends BlockMTBase {
 	
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
-		if(!world.isRemote && world.getBlock(x, y+1, z) != BlocksMT.terraDummy && world.getBlockMetadata(x, y, z) == 1) {
+		if(!world.isRemote && world.getBlock(x, y+1, z) != MTBlocks.terraDummy && world.getBlockMetadata(x, y, z) == 1) {
 			this.dropBlockAsItem(world, x, y, z, new ItemStack(this, 1, 1));
 			world.setBlockToAir(x, y, z);
 		}
@@ -120,7 +120,7 @@ public class BlockGenerator extends BlockMTBase {
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
 		if(stack.getItemDamage() == 1) {
-			world.setBlock(x, y+1, z, BlocksMT.terraDummy);
+			world.setBlock(x, y+1, z, MTBlocks.terraDummy);
 			((BlockSubTerraDummy)world.getBlock(x, y+1, z)).block = this;
 			world.getBlock(x, y+1, z).onPostBlockPlaced(world, x, y, z, stack.getItemDamage());
 		}

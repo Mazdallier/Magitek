@@ -2,6 +2,7 @@ package democretes.block.altar;
 
 import java.util.ArrayList;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -19,9 +20,12 @@ import democretes.Magitek;
 import democretes.api.AltarHelper;
 import democretes.api.RitualHelper;
 import democretes.api.RitualType;
-import democretes.block.BlocksMT;
+import democretes.api.recipe.RitualRecipe;
+import democretes.api.spells.Spell;
+import democretes.block.MTBlocks;
 import democretes.block.TilePurityBase;
 import democretes.block.dummy.TileAltarDummy;
+import democretes.item.MTItems;
 
 public class TileAltar extends TilePurityBase implements IInventory{
 
@@ -39,6 +43,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 	ArrayList<TileEntity> dummies = new ArrayList();
 	int slot;
 	boolean hasInputs;
+	ItemStack output;
 	@Override
 	public void updateEntity() {
 		if(this.ritual != null ) {
@@ -86,12 +91,16 @@ public class TileAltar extends TilePurityBase implements IInventory{
 						hasInputs = true;
 					}
 				}
-				if(energy >= RitualHelper.getMachtForCatalyst(this.inventory) && hasInputs && RitualHelper.getOutputForCatalyst(this.inventory) != null) {
+				if(energy >= RitualHelper.getMachtForCatalyst(this.inventory) && hasInputs && output != null) {
 					this.energy = 0;
 					this.input = null;
 					this.slot = 0;
 					this.hasInputs = false;
-					ItemStack stack = RitualHelper.getOutputForCatalyst(this.inventory).copy();
+					ItemStack stack = output.copy();
+					if(stack.getItem() == MTItems.binder) {
+						stack.stackTagCompound = new NBTTagCompound();
+						stack.stackTagCompound.setString("SpellName", (String)Spell.spells.keySet().toArray()[stack.getItemDamage()]);						
+					}
 					this.inventory = stack.copy();
 					for(int i = 0; i < 15; i++) {
 						Magitek.proxy.orbFX(this.worldObj, this.xCoord + 0.5D, this.yCoord + 1.0D, this.zCoord + 0.5D, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (float)Math.random(), (float)Math.random(), (float)Math.random(), (float)Math.random(), 2, true);
@@ -99,16 +108,19 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 				}
 			}else if(this.inventory != null) {
-				if(RitualHelper.recipeExists(this.inventory)) {
-					if(RitualHelper.getTypeForCatalyst(this.inventory) == this.ritual) {
+				ArrayList<RitualRecipe> recipes = RitualHelper.getRecipes(this.inventory);
+				for(RitualRecipe recipe : recipes) {
+					if(recipe.getRitual() == this.ritual) {
 						input = new ItemStack[dummies.size()];
 						for(int i = 0; i < dummies.size(); i++) {
 							TileAltarDummy dummy = (TileAltarDummy)dummies.get(i);
 							input[i] = dummy.getStackInSlot(0);
 							worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 						}
-						if(!RitualHelper.inputsMatch(input, RitualHelper.getRecipe(this.inventory).getInput())) {
+						if(!RitualHelper.inputsMatch(input, recipe.getInput())) {
 							this.input = null;
+						}else{
+							this.output = recipe.getOutput();
 							return;
 						}
 					}
@@ -119,8 +131,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					this.energy = 0;
 				}
 			}
-		}
-		if(this.inventory != null) {
+		}else if(this.inventory != null) {
 			if(AltarHelper.recipeExists(this.inventory)) {
 				energy += this.extractMacht(AltarHelper.getMacht(inventory)/20);
 				if(this.energy >= AltarHelper.getMacht(inventory)*inventory.stackSize) {
@@ -147,61 +158,61 @@ public class TileAltar extends TilePurityBase implements IInventory{
 		int y = this.yCoord;
 		int z = this.zCoord;
 		if(this.ritual == RitualType.BASIC) {
-			boolean a = world.isAirBlock(x, y, z + 2) || world.getBlock(x, y, z + 2) == BlocksMT.altarDummy;
-			boolean b = world.isAirBlock(x + 2, y, z - 2) || world.getBlock(x + 2, y, z - 2) == BlocksMT.altarDummy;
-			boolean c = world.isAirBlock(x - 2, y, z - 2) || world.getBlock(x - 2, y, z - 2) == BlocksMT.altarDummy;
+			boolean a = world.isAirBlock(x, y, z + 2) || world.getBlock(x, y, z + 2) == MTBlocks.altarDummy;
+			boolean b = world.isAirBlock(x + 2, y, z - 2) || world.getBlock(x + 2, y, z - 2) == MTBlocks.altarDummy;
+			boolean c = world.isAirBlock(x - 2, y, z - 2) || world.getBlock(x - 2, y, z - 2) == MTBlocks.altarDummy;
 			if(!a || !b || !c) {
 				return false;
 			}
-			world.setBlock(x, y, z + 2, BlocksMT.altarDummy);
-			world.setBlock(x + 2, y, z - 2, BlocksMT.altarDummy);
-			world.setBlock(x - 2, y, z - 2, BlocksMT.altarDummy);
+			world.setBlock(x, y, z + 2, MTBlocks.altarDummy);
+			world.setBlock(x + 2, y, z - 2, MTBlocks.altarDummy);
+			world.setBlock(x - 2, y, z - 2, MTBlocks.altarDummy);
 			this.dummies.add(world.getTileEntity(x, y, z + 2));
 			this.dummies.add(world.getTileEntity(x + 2, y, z - 2));
 			this.dummies.add(world.getTileEntity(x - 2, y, z - 2));
 		}else if(this.ritual == RitualType.ADVANCED) {
-			boolean a = world.isAirBlock(x, y, z + 3) || world.getBlock(x, y, z + 3) == BlocksMT.altarDummy;
-			boolean b = world.isAirBlock(x + 3, y, z + 1) || world.getBlock(x + 3, y, z + 1) == BlocksMT.altarDummy;
-			boolean c = world.isAirBlock(x - 3, y, z + 1) || world.getBlock(x - 3, y, z + 1) == BlocksMT.altarDummy;
-			boolean d = world.isAirBlock(x + 2, y, z - 2) || world.getBlock(x + 2, y, z - 2) == BlocksMT.altarDummy;
-			boolean e = world.isAirBlock(x - 2, y, z - 2) || world.getBlock(x - 2, y, z - 2) == BlocksMT.altarDummy;
+			boolean a = world.isAirBlock(x, y, z + 3) || world.getBlock(x, y, z + 3) == MTBlocks.altarDummy;
+			boolean b = world.isAirBlock(x + 3, y, z + 1) || world.getBlock(x + 3, y, z + 1) == MTBlocks.altarDummy;
+			boolean c = world.isAirBlock(x - 3, y, z + 1) || world.getBlock(x - 3, y, z + 1) == MTBlocks.altarDummy;
+			boolean d = world.isAirBlock(x + 2, y, z - 2) || world.getBlock(x + 2, y, z - 2) == MTBlocks.altarDummy;
+			boolean e = world.isAirBlock(x - 2, y, z - 2) || world.getBlock(x - 2, y, z - 2) == MTBlocks.altarDummy;
 			if(!a || !b || !c || !d || !e) {
 				return false;
 			}
-			world.setBlock(x, y, z + 3, BlocksMT.altarDummy);
-			world.setBlock(x + 3, y, z + 1, BlocksMT.altarDummy);
-			world.setBlock(x - 3, y, z + 1, BlocksMT.altarDummy);
-			world.setBlock(x + 2, y, z - 2, BlocksMT.altarDummy);
-			world.setBlock(x - 2, y, z - 2, BlocksMT.altarDummy);
+			world.setBlock(x, y, z + 3, MTBlocks.altarDummy);
+			world.setBlock(x + 3, y, z + 1, MTBlocks.altarDummy);
+			world.setBlock(x - 3, y, z + 1, MTBlocks.altarDummy);
+			world.setBlock(x + 2, y, z - 2, MTBlocks.altarDummy);
+			world.setBlock(x - 2, y, z - 2, MTBlocks.altarDummy);
 			this.dummies.add(world.getTileEntity(x, y, z + 3));
 			this.dummies.add(world.getTileEntity(x + 3, y, z + 1));
 			this.dummies.add(world.getTileEntity(x - 3, y, z + 1));
 			this.dummies.add(world.getTileEntity(x + 2, y, z - 2));
 			this.dummies.add(world.getTileEntity(x - 2, y, z - 2));
 		}else{
-			boolean a = world.isAirBlock(x, y, z + 4) || world.getBlock(x, y, z + 4) == BlocksMT.altarDummy;
-			boolean b = world.isAirBlock(x + 2, y, z + 3) || world.getBlock(x + 2, y, z + 3) == BlocksMT.altarDummy;
-			boolean c = world.isAirBlock(x - 2, y, z + 3) || world.getBlock(x - 2, y, z + 3) == BlocksMT.altarDummy;
-			boolean d = world.isAirBlock(x + 4, y, z + 1) || world.getBlock(x + 4, y, z + 1) == BlocksMT.altarDummy;
-			boolean e = world.isAirBlock(x - 4, y, z + 1) || world.getBlock(x - 4, y, z + 1) == BlocksMT.altarDummy;
-			boolean h = world.isAirBlock(x + 4, y, z - 1) || world.getBlock(x + 4, y, z - 1) == BlocksMT.altarDummy;
-			boolean i = world.isAirBlock(x - 4, y, z - 1) || world.getBlock(x - 4, y, z - 1) == BlocksMT.altarDummy;
-			boolean j = world.isAirBlock(x + 2, y, z - 3) || world.getBlock(x + 2, y, z - 3) == BlocksMT.altarDummy;
-			boolean k = world.isAirBlock(x - 2, y, z - 3) || world.getBlock(x - 2, y, z - 3) == BlocksMT.altarDummy;
-			boolean l = world.isAirBlock(x, y, z - 4) || world.getBlock(x, y, z - 4) == BlocksMT.altarDummy;;
+			boolean a = world.isAirBlock(x, y, z + 4) || world.getBlock(x, y, z + 4) == MTBlocks.altarDummy;
+			boolean b = world.isAirBlock(x + 2, y, z + 3) || world.getBlock(x + 2, y, z + 3) == MTBlocks.altarDummy;
+			boolean c = world.isAirBlock(x - 2, y, z + 3) || world.getBlock(x - 2, y, z + 3) == MTBlocks.altarDummy;
+			boolean d = world.isAirBlock(x + 4, y, z + 1) || world.getBlock(x + 4, y, z + 1) == MTBlocks.altarDummy;
+			boolean e = world.isAirBlock(x - 4, y, z + 1) || world.getBlock(x - 4, y, z + 1) == MTBlocks.altarDummy;
+			boolean h = world.isAirBlock(x + 4, y, z - 1) || world.getBlock(x + 4, y, z - 1) == MTBlocks.altarDummy;
+			boolean i = world.isAirBlock(x - 4, y, z - 1) || world.getBlock(x - 4, y, z - 1) == MTBlocks.altarDummy;
+			boolean j = world.isAirBlock(x + 2, y, z - 3) || world.getBlock(x + 2, y, z - 3) == MTBlocks.altarDummy;
+			boolean k = world.isAirBlock(x - 2, y, z - 3) || world.getBlock(x - 2, y, z - 3) == MTBlocks.altarDummy;
+			boolean l = world.isAirBlock(x, y, z - 4) || world.getBlock(x, y, z - 4) == MTBlocks.altarDummy;;
 			if(!a || !b || !c || !d || !e || !h || !i || !j || !k || !l) {
 				return false;
 			}
-			world.setBlock(x, y, z + 4, BlocksMT.altarDummy);
-			world.setBlock(x + 2, y, z + 3, BlocksMT.altarDummy);
-			world.setBlock(x - 2, y, z + 3, BlocksMT.altarDummy);
-			world.setBlock(x + 4, y, z + 1, BlocksMT.altarDummy);
-			world.setBlock(x - 4, y, z + 1, BlocksMT.altarDummy);
-			world.setBlock(x + 4, y, z - 1, BlocksMT.altarDummy);
-			world.setBlock(x - 4, y, z - 1, BlocksMT.altarDummy);
-			world.setBlock(x + 2, y, z - 3, BlocksMT.altarDummy);
-			world.setBlock(x - 2, y, z - 3, BlocksMT.altarDummy);
-			world.setBlock(x, y, z - 4, BlocksMT.altarDummy);
+			world.setBlock(x, y, z + 4, MTBlocks.altarDummy);
+			world.setBlock(x + 2, y, z + 3, MTBlocks.altarDummy);
+			world.setBlock(x - 2, y, z + 3, MTBlocks.altarDummy);
+			world.setBlock(x + 4, y, z + 1, MTBlocks.altarDummy);
+			world.setBlock(x - 4, y, z + 1, MTBlocks.altarDummy);
+			world.setBlock(x + 4, y, z - 1, MTBlocks.altarDummy);
+			world.setBlock(x - 4, y, z - 1, MTBlocks.altarDummy);
+			world.setBlock(x + 2, y, z - 3, MTBlocks.altarDummy);
+			world.setBlock(x - 2, y, z - 3, MTBlocks.altarDummy);
+			world.setBlock(x, y, z - 4, MTBlocks.altarDummy);
 			this.dummies.add(world.getTileEntity(x, y, z + 4));
 			this.dummies.add(world.getTileEntity(x + 2, y, z + 3));
 			this.dummies.add(world.getTileEntity(x - 2, y, z + 3));
@@ -215,6 +226,23 @@ public class TileAltar extends TilePurityBase implements IInventory{
 		}
 		this.dummiesExist = true;
 		return true;
+	}
+	
+	public void setRitual(RitualType type) {
+		this.ritual = type;
+		this.input = null;
+		this.energy = 0;
+		if(this.dummies.size() > 0) {
+			for(TileEntity tile : this.dummies) {
+				this.worldObj.setBlockToAir(tile.xCoord, tile.yCoord, tile.zCoord);
+				this.worldObj.removeTileEntity(tile.xCoord, tile.yCoord, tile.zCoord);
+			}
+		}
+		this.dummies = new ArrayList();
+		this.dummiesExist = false;
+		this.hasInputs = false;
+		this.slot = 0;
+		this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 	}
 	
 	@Override

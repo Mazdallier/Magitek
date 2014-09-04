@@ -3,7 +3,7 @@ package democretes.block.machines;
 import cpw.mods.fml.common.FMLLog;
 import democretes.api.AltarHelper;
 import democretes.api.RunicHelper;
-import democretes.item.ItemsMT;
+import democretes.item.MTItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -146,7 +146,7 @@ public class TileRuneConstructor extends TileMachineBase implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if(i == 0) {
-			return stack.getItem() == ItemsMT.material && stack.getItemDamage() == 0;
+			return stack.getItem() == MTItems.material && stack.getItemDamage() == 0;
 		}else{
 			return i == 1;
 		}

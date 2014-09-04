@@ -13,5 +13,6 @@ public class ItemNames {
 	public static final String RITUAL_NAME = "ritual";
 	public static final String ENHANCE_SIGIL_NAME = "sigilEnhance";
 	public static final String DEACTIVATOR_SIGIL_NAME = "sigilDeactivate";
+	public static final String DIVINATION_SIGIL_NAME = "sigilDivination";
 
 }

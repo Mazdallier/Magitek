@@ -25,13 +25,16 @@ public class ItemMaterial extends ItemMTBase {
 		}
 	}
 	
-	IIcon icons[] = new IIcon[3];
+	IIcon icons[] = new IIcon[6];
 	
 	@Override
 	public void registerIcons(IIconRegister ir) {
 		icons[0] = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune");
 		icons[1] = ir.registerIcon(Reference.TEXTURE_PREFIX + "sigil");
 		icons[2] = ir.registerIcon(Reference.TEXTURE_PREFIX + "scroll");
+		icons[3] = ir.registerIcon(Reference.TEXTURE_PREFIX + "macht_ingot");
+		icons[4] = ir.registerIcon(Reference.TEXTURE_PREFIX + "core");
+		icons[5] = ir.registerIcon(Reference.TEXTURE_PREFIX + "core_advanced");
 	}
 	
 	@Override

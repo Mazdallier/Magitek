@@ -6,6 +6,9 @@ item.magitek.debugger.name=Demo's Debugger
 item.magitek.material.0.name=Blank Rune
 item.magitek.material.1.name=Blank Sigil
 item.magitek.material.2.name=Blank Scroll
+item.magitek.material.3.name=Macht Ingot
+item.magitek.material.4.name=Macht Core
+item.magitek.material.5.name=Advanced Macht Core
 item.magitek.rune.0.name=Fire Rune
 item.magitek.rune.1.name=Water Rune
 item.magitek.rune.2.name=Earth Rune
@@ -20,6 +23,7 @@ item.magitek.sigil.ritual.1.name=Generic Sigil of Binding
 item.magitek.sigil.ritual.2.name=Sophisticated Sigil of Binding
 item.magitek.sigil.enhance.name=Sigil of Abilities
 item.magitek.sigil.deactivator.name=Deactivation Sigil
+item.magitek.sigil.divination.name=Divination Sigil
 item.magitek.ring.pure.0.name=Purity Ring
 item.magitek.ring.pure.1.name=Ring of Saints
 item.magitek.ring.pure.2.name=Ring of Angels
@@ -42,6 +46,8 @@ tile.magitek.machine.1.name=Purity Inverter
 tile.magitek.altar.name=Altar of Power
 tile.magitek.coil.name=Macht Coil
 tile.magitek.disposable.0.name=Explosive Generator
+tile.magitek.simple.0.name=Macht Block
+tile.magitek.simple.1.name=Macht Infused Brick
 
 #Spells
 magitek.spell.lowMacht=Your macht is too low to cast this spell.
@@ -54,3 +60,7 @@ spell.heal.name=Heal Scroll
 spell.immortality.name=Scroll of the Ancients
 spell.blink.name=Teleportation Scroll
 spell.invisibility.name=Scroll of Invisibility
+
+#Misc
+magitek.macht.stored=Macht Stored
+magitek.purity.stored=Purity Stored

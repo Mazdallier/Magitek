@@ -19,7 +19,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import democretes.api.RunicHelper;
 import democretes.block.BlockMTBase;
 import democretes.block.generators.TileRunicGenerator;
-import democretes.item.ItemsMT;
+import democretes.item.MTItems;
 import democretes.lib.Reference;
 
 public class BlockMachine extends BlockMTBase {
@@ -45,7 +45,7 @@ public class BlockMachine extends BlockMTBase {
 			if(world.getTileEntity(x, y, z) instanceof TileRuneConstructor) {
 				TileRuneConstructor construct = (TileRuneConstructor)world.getTileEntity(x, y, z);
 				if(player.getHeldItem() != null) {
-					int i = player.getHeldItem().getItem() == ItemsMT.material && player.getHeldItem().getItemDamage() == 0? 0 : 1;
+					int i = player.getHeldItem().getItem() == MTItems.material && player.getHeldItem().getItemDamage() == 0? 0 : 1;
 					ItemStack stack = player.getHeldItem();
 					if(i == 1) {
 						if(!RunicHelper.recipeExists(stack)) {

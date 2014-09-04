@@ -1,5 +1,6 @@
 package democretes.block.altar;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -12,11 +13,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import democretes.Magitek;
 import democretes.api.AltarHelper;
 import democretes.api.RitualHelper;
 import democretes.block.BlockMTBase;
-import democretes.block.dummy.TileAltarDummy;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;
 
@@ -47,13 +46,13 @@ public class BlockAltar extends BlockMTBase {
 			}else{
 				if(player.isSneaking()) {
 					altar.ritual = null;
-					if(altar.dummies != null) {
+					if(altar.dummies.size() > 0) {
 						for(TileEntity dummy : altar.dummies) {
 							world.removeTileEntity(dummy.xCoord, dummy.yCoord, dummy.zCoord);
 							world.setBlockToAir(dummy.xCoord, dummy.yCoord, dummy.zCoord);
 						}
 					}	
-					altar.dummies = null;
+					altar.dummies = new ArrayList();
 				}
 			}
 		}		

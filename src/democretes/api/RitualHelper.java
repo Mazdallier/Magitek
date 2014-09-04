@@ -1,5 +1,7 @@
 package democretes.api;
 
+import java.util.ArrayList;
+
 import net.minecraft.item.ItemStack;
 import democretes.api.recipe.RitualRecipe;
 
@@ -13,6 +15,17 @@ public class RitualHelper {
 			}
 		}
 		return null;
+	}
+	
+	public static ArrayList getRecipes(ItemStack catalyst) {
+		ArrayList<RitualRecipe> recipes = new ArrayList<RitualRecipe>();
+
+		for(RitualRecipe recipe : RitualRecipe.ritualRecipes) {
+			if(recipe.getCatalyst().isItemEqual(catalyst)) {
+				recipes.add(recipe);
+			}
+		}
+		return recipes;
 	}
 	
 	public static ItemStack[] getInputForCatalyst(ItemStack catalyst) {

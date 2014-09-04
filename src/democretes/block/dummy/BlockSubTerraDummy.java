@@ -14,7 +14,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import democretes.block.BlockMTBase;
-import democretes.block.BlocksMT;
+import democretes.block.MTBlocks;
 import democretes.block.generators.BlockGenerator;
 import democretes.lib.Reference;
 import democretes.lib.RenderIds;

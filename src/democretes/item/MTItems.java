@@ -11,13 +11,14 @@ import democretes.item.spells.ItemSpellBinder;
 import democretes.item.tools.ItemCoilLinker;
 import democretes.item.tools.ItemDeactivatorSigil;
 import democretes.item.tools.ItemDebugger;
+import democretes.item.tools.ItemDivinationSigil;
 import democretes.item.tools.ItemEnhancingSigil;
 import democretes.item.tools.ItemMachtSigil;
 import democretes.item.tools.ItemPuritySigil;
 import democretes.item.tools.ItemRitualSigil;
 import democretes.lib.ItemNames;
 
-public class ItemsMT {
+public class MTItems {
 
 	public static Item material;
 	public static Item rune;
@@ -29,6 +30,7 @@ public class ItemsMT {
 	public static Item ritualSigil;
 	public static Item enhanceSigil;
 	public static Item deactivator;
+	public static Item divinationSigil;
 	
 	public static void init() {
 		material = new ItemMaterial();
@@ -41,10 +43,11 @@ public class ItemsMT {
 		ritualSigil = new ItemRitualSigil();
 		enhanceSigil = new ItemEnhancingSigil();
 		deactivator = new ItemDeactivatorSigil();
+		divinationSigil = new ItemDivinationSigil();
 
 		GameRegistry.registerItem(material, ItemNames.MATERIAL_NAME);
 		GameRegistry.registerItem(debugger, ItemNames.DEBUGGER_NAME);
-		GameRegistry.registerItem(link, ItemNames.LINKER_NAME);
+		//GameRegistry.registerItem(link, ItemNames.LINKER_NAME);
 		GameRegistry.registerItem(binder, ItemNames.SPELL_BINDER_NAME);
 		GameRegistry.registerItem(rune, ItemNames.RUNE_NAME);
 		GameRegistry.registerItem(puritySigil, ItemNames.PURITY_RUNE_NAME);
@@ -52,6 +55,7 @@ public class ItemsMT {
 		GameRegistry.registerItem(ritualSigil, ItemNames.RITUAL_NAME);
 		GameRegistry.registerItem(enhanceSigil, ItemNames.ENHANCE_SIGIL_NAME);
 		GameRegistry.registerItem(deactivator, ItemNames.DEACTIVATOR_SIGIL_NAME);
+		GameRegistry.registerItem(divinationSigil, ItemNames.DIVINATION_SIGIL_NAME);
 
 		if(Loader.isModLoaded("Baubles")) {
 			initBaubles();

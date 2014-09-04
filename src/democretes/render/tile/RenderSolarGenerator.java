@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import democretes.block.BlocksMT;
+import democretes.block.MTBlocks;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSubTerraGenerator;
 import democretes.lib.Reference;

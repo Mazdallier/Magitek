@@ -5,7 +5,7 @@ import democretes.Magitek;
 import democretes.api.RitualHelper;
 import democretes.api.RitualType;
 import democretes.api.RunicHelper;
-import democretes.item.ItemsMT;
+import democretes.item.MTItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;

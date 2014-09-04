@@ -14,9 +14,9 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import democretes.api.RitualHelper;
 import democretes.api.RunicHelper;
-import democretes.block.BlocksMT;
+import democretes.block.MTBlocks;
 import democretes.entity.EntitiesMT;
-import democretes.item.ItemsMT;
+import democretes.item.MTItems;
 import democretes.item.spells.SpellsMT;
 import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
@@ -49,8 +49,8 @@ public class Magitek {
 	public void foreplay(FMLPreInitializationEvent event) {
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		SpellsMT.init();
-		BlocksMT.init();
-		ItemsMT.init();
+		MTBlocks.init();
+		MTItems.init();
 		EntitiesMT.init();
 	}
 	
@@ -66,9 +66,7 @@ public class Magitek {
 	
 	@EventHandler
 	public void orgasm(FMLPostInitializationEvent event) {
-		RecipeRegistry.initAltarRecipes();
-		RecipeRegistry.initRitualRecipes();
-		RecipeRegistry.initRunicRecipes();
+		RecipeRegistry.initAllTheRecipes();
 	}
 	
 	

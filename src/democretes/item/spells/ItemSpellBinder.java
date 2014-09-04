@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 import democretes.api.spells.Spell;
 import democretes.api.spells.SpellHelper;
 import democretes.item.ItemMTBase;
-import democretes.item.ItemsMT;
+import democretes.item.MTItems;
 import democretes.utils.helper.StringHelper;
 
 public class ItemSpellBinder extends ItemMTBase {
@@ -69,7 +69,7 @@ public class ItemSpellBinder extends ItemMTBase {
 		if(pass == 1) {
 			return icons[meta];
 		}
-		return ItemsMT.material.getIconFromDamage(2);
+		return MTItems.material.getIconFromDamage(2);
 	}
 	
 	@Override

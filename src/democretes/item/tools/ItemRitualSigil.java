@@ -37,7 +37,7 @@ public class ItemRitualSigil extends ItemMTBase {
 			case 2:
 				type = RitualType.COMPLEX;
 			}
-			altar.ritual = type;
+			altar.setRitual(type);
 			if(altar.inventory != null) {
 				if(altar.inventory.stackSize > 1) {
 					ItemStack altarStack = altar.inventory.copy();

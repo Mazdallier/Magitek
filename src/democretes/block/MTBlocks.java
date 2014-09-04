@@ -24,10 +24,12 @@ import democretes.block.machines.BlockMachine;
 import democretes.block.machines.ItemBlockMachine;
 import democretes.block.machines.TilePurityInverter;
 import democretes.block.machines.TileRuneConstructor;
+import democretes.block.simple.BlockSimple;
+import democretes.block.simple.ItemBlockSimple;
 import democretes.lib.BlockNames;
 import democretes.lib.Reference;
 
-public class BlocksMT {
+public class MTBlocks {
 	
 	public static Block generator;
 	public static Block machine;
@@ -36,6 +38,7 @@ public class BlocksMT {
 	public static Block altar;
 	public static Block altarDummy;
 	public static Block disposable;
+	public static Block simple;
 	
 	public static void init() {
 		generator = new BlockGenerator();
@@ -45,6 +48,7 @@ public class BlocksMT {
 		altar = new BlockAltar();
 		altarDummy = new BlockAltarDummy();
 		disposable = new BlockDisposableGenerator();
+		simple = new BlockSimple();
 		
 		GameRegistry.registerBlock(generator, ItemBlockGenerator.class, BlockNames.GENERATOR_NAME);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, BlockNames.MACHINE_NAME);
@@ -53,6 +57,7 @@ public class BlocksMT {
 		GameRegistry.registerBlock(altar, BlockNames.ALTAR_NAME);
 		GameRegistry.registerBlock(altarDummy, BlockNames.ALTAR_NAME + "dumbass");
 		GameRegistry.registerBlock(disposable, ItemBlockDisposableGenerator.class, BlockNames.GENERATOR_NAME + "Disposable");
+		GameRegistry.registerBlock(simple, ItemBlockSimple.class, BlockNames.SIMPLE_NAME);
 		
 		GameRegistry.registerTileEntity(TileSubTerraGenerator.class, Reference.MOD_NAME + "TileSubTerra");
 		GameRegistry.registerTileEntity(TileSolarGenerator.class, Reference.MOD_NAME + "TileSolarGenerator");

@@ -36,6 +36,7 @@ public class TileAltarDummy extends TileMTBase implements IInventory {
 			}
 			return;
 		}
+		item.delayBeforeCanPickup = 20;
 		item.posX = this.xCoord + 0.5D;
 		item.posZ = this.zCoord + 0.5D;
 		this.inventory = item.getEntityItem();

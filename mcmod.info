@@ -1,0 +1,16 @@
+[
+{
+  "modid": "magitek",
+  "name": "Magitek",
+  "description": "Magic and Technology, it's really that simple.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Democretes"],
+  "credits": "Fuck the lot of you, y'all didn't help worth shit.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

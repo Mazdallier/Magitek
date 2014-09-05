@@ -33,7 +33,11 @@ public class ItemMachtSigil extends ItemMTBase{
 		if(tile instanceof IMachtHandler) {
 			IMachtHandler mtile = (IMachtHandler)tile;
 			int amount = ConfigHandler.syphonAmount;
-			SpellHelper.receiveMacht(player, mtile.extractMacht(amount));
+			if(player.isSneaking()) {
+				SpellHelper.extractMacht(player, mtile.receiveMacht(amount));				
+			}else{
+				SpellHelper.receiveMacht(player, mtile.extractMacht(amount));
+			}
 		}
 		return false;
 	}

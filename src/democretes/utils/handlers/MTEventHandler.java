@@ -2,6 +2,7 @@ package democretes.utils.handlers;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.event.world.ChunkWatchEvent;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInterModComms;
@@ -27,5 +28,9 @@ public class MTEventHandler {
 		}
 	}
 	*/
+	
+	@SubscribeEvent
+	public void updateChunks(ChunkWatchEvent.Watch event) {
+	}
 	
 }

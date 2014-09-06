@@ -50,7 +50,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 		if(this.worldObj.isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord)) {
 			return;
 		}
-		if(count == 40) {
+		if(count++ >= 40) {
 			count = 0;
 			searchForTiles();
 			if(this.tiles.size() > 0) {
@@ -101,6 +101,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 	}
 	
 	void searchForTiles() {
+		this.tiles.clear();
 		this.tiles = new ArrayList();
 		int xx = xCoord;
 		int yy = yCoord - 1;

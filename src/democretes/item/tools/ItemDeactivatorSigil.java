@@ -10,7 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import democretes.api.macht.IMachtStorage;
 import democretes.api.spells.SpellHelper;
+import democretes.block.generators.BlockGenerator;
 import democretes.block.generators.disposable.BlockDisposableGenerator;
 import democretes.block.generators.disposable.TileSingleGeneratorBase;
 import democretes.item.ItemMTBase;
@@ -38,6 +40,16 @@ public class ItemDeactivatorSigil extends ItemMTBase {
 				world.removeTileEntity(x, y, z);
 				return true;
 			}
+		}
+		if(block instanceof BlockGenerator && world.getBlockMetadata(x, y, z) == 3) {
+			ItemStack crystal = new ItemStack(block, 1, 3);
+			NBTTagCompound nbt = new NBTTagCompound();
+			nbt.setInteger("Macht", ((IMachtStorage)world.getTileEntity(x, y, z)).getMachtStored());
+			crystal.setTagCompound(nbt);
+			world.spawnEntityInWorld(new EntityItem(world, x, y, z, crystal));
+			world.setBlockToAir(x, y, z);
+			world.removeTileEntity(x, y, z);
+			return true;
 		}
 		return false;
 	}

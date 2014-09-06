@@ -16,10 +16,10 @@ public class TileSolarGenerator extends TileGeneratorBase {
 		return this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord + 1, this.zCoord);
 	}
 
+	private int count;
 	@Override
 	protected int getFuel() {
-		count ++;
-		if(count >= 40) {
+		if(count++ >= 40) {
 			count = 0;
 			if(isDark()) {
 				return 1;

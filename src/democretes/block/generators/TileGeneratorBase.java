@@ -42,7 +42,7 @@ public abstract class TileGeneratorBase extends TilePurityBase {
 		super(capacity);
 	}
 
-	int count = 40;
+	private int count = 40;
 	int distance = 1;	
 	ForgeDirection[] ends = new ForgeDirection[6];
 	@Override

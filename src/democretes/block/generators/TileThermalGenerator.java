@@ -13,11 +13,18 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class TileThermalGenerator extends TileGeneratorBase implements IFluidHandler {
 	
 	FluidTank tank = new FluidTank(1000);
+	
+	public TileThermalGenerator() {
+		super(5000);
+	}
 
-	int count = 80;
+	private int count = 80;
 	@Override
 	protected boolean canGenerate() {
-		if(count++ >= 80) {
+		if(this.getMachtStored() >= this.getCapacity()) {
+			return false;
+		}
+		if(this.count++ >= 80) {
 			count = 0;
 			getLava();			
 		}
@@ -26,7 +33,7 @@ public class TileThermalGenerator extends TileGeneratorBase implements IFluidHan
 
 	@Override
 	protected int getFuel() {
-		if(count%10 == 0) {
+		if(count%20 == 0) {	
 			return this.tank.drain(100, true).amount/2;
 		}
 		return 0;
@@ -42,7 +49,7 @@ public class TileThermalGenerator extends TileGeneratorBase implements IFluidHan
 					int xx = this.xCoord + x;
 					int yy = this.yCoord + y;
 					int zz = this.zCoord + z;
-					if(this.worldObj.getBlock(xx, yy, zz) == Blocks.lava && this.worldObj.getBlockMetadata(xx, yy, zz) == 0&& this.tank.getCapacity() > this.tank.getFluidAmount() + 1000) {
+					if(this.worldObj.getBlock(xx, yy, zz) == Blocks.lava && this.worldObj.getBlockMetadata(xx, yy, zz) == 0 && this.tank.getCapacity() >= this.tank.getFluidAmount() + 1000) {
 						this.worldObj.setBlockToAir(xx, yy, zz);
 						this.tank.fill(new FluidStack(FluidRegistry.LAVA, 1000), true);
 						return true;

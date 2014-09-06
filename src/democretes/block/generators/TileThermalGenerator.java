@@ -14,7 +14,7 @@ public class TileThermalGenerator extends TileGeneratorBase implements IFluidHan
 	
 	FluidTank tank = new FluidTank(1000);
 
-	int count = 40;
+	int count = 80;
 	@Override
 	protected boolean canGenerate() {
 		if(count++ >= 80) {
@@ -26,7 +26,10 @@ public class TileThermalGenerator extends TileGeneratorBase implements IFluidHan
 
 	@Override
 	protected int getFuel() {
-		return this.tank.drain(100, true).amount/2;
+		if(count%10 == 0) {
+			return this.tank.drain(100, true).amount/2;
+		}
+		return 0;
 	}
 
 	@Override

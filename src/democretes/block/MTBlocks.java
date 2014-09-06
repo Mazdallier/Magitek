@@ -17,6 +17,7 @@ import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSpreader;
 import democretes.block.generators.TileSubTerraGenerator;
+import democretes.block.generators.TileThermalGenerator;
 import democretes.block.generators.disposable.BlockDisposableGenerator;
 import democretes.block.generators.disposable.ItemBlockDisposableGenerator;
 import democretes.block.generators.disposable.TileDetonationGenerator;
@@ -70,6 +71,6 @@ public class MTBlocks {
 		GameRegistry.registerTileEntity(TileRunicGenerator.class, Reference.MOD_NAME + "TileRunicGenerator");
 		GameRegistry.registerTileEntity(TileRuneConstructor.class, Reference.MOD_NAME + "TileRuneConstrctor");
 		GameRegistry.registerTileEntity(TileDetonationGenerator.class, Reference.MOD_NAME + "TileDetonationGenerator");
-
+		GameRegistry.registerTileEntity(TileThermalGenerator.class, Reference.MOD_NAME + "TileThermalGenerator");
 	}
 }

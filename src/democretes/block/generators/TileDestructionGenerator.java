@@ -1,5 +1,6 @@
 package democretes.block.generators;
 
+import democretes.api.MagitekHelper;
 import democretes.api.macht.IMachtStorage;
 import democretes.utils.handlers.ConfigHandler;
 import democretes.utils.helper.DirectionHelper;
@@ -80,8 +81,8 @@ public class TileDestructionGenerator extends TileGeneratorBase {
 		int zz = zCoord;
 		base = this.worldObj.getBlock(xx, yy, zz);
 		boolean horizon = false;
-		for(int i = 0; i < hBlocks.length; i++) {
-			if(base == hBlocks[i]) {
+		for(int i = 0; i < MagitekHelper.horizontal.size(); i++) {
+			if(base == MagitekHelper.horizontal.get(i)) {
 				horizon = true;
 				break;
 			}

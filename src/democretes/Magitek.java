@@ -23,6 +23,7 @@ import democretes.proxy.CommonProxy;
 import democretes.render.fx.ParticleRenderDispatcher;
 import democretes.utils.CreativeTabsMT;
 import democretes.utils.crafting.RecipeRegistry;
+import democretes.utils.handlers.BlockTransferHandler;
 import democretes.utils.handlers.ConfigHandler;
 import democretes.utils.handlers.GuiHandler;
 import democretes.utils.handlers.MTEventHandler;
@@ -62,6 +63,7 @@ public class Magitek {
   		proxy.registerKeyBindings();
 		MinecraftForge.EVENT_BUS.register(new MTEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ParticleRenderDispatcher());
+		BlockTransferHandler.registerBlocks();
 	}
 	
 	@EventHandler

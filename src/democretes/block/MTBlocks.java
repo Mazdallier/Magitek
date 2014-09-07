@@ -1,11 +1,12 @@
 package democretes.block;
 
+import com.sun.webkit.graphics.Ref;
+
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 import democretes.block.altar.BlockAltar;
 import democretes.block.altar.TileAltar;
 import democretes.block.coils.BlockCoil;
-import democretes.block.coils.TileMachtCoil;
 import democretes.block.dummy.BlockAltarDummy;
 import democretes.block.dummy.BlockSubTerraDummy;
 import democretes.block.dummy.TileAltarDummy;
@@ -28,6 +29,8 @@ import democretes.block.machines.TilePurityInverter;
 import democretes.block.machines.TileRuneConstructor;
 import democretes.block.simple.BlockSimple;
 import democretes.block.simple.ItemBlockSimple;
+import democretes.block.transfer.BlockTransfer;
+import democretes.block.transfer.TileItemTransfer;
 import democretes.lib.BlockNames;
 import democretes.lib.Reference;
 
@@ -41,6 +44,7 @@ public class MTBlocks {
 	public static Block altarDummy;
 	public static Block disposable;
 	public static Block simple;
+	public static Block transfer;
 	
 	public static void init() {
 		generator = new BlockGenerator();
@@ -51,6 +55,7 @@ public class MTBlocks {
 		altarDummy = new BlockAltarDummy();
 		disposable = new BlockDisposableGenerator();
 		simple = new BlockSimple();
+		transfer = new BlockTransfer();
 		
 		GameRegistry.registerBlock(generator, ItemBlockGenerator.class, BlockNames.GENERATOR_NAME);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, BlockNames.MACHINE_NAME);
@@ -60,6 +65,7 @@ public class MTBlocks {
 		GameRegistry.registerBlock(altarDummy, BlockNames.ALTAR_NAME + "dumbass");
 		GameRegistry.registerBlock(disposable, ItemBlockDisposableGenerator.class, BlockNames.GENERATOR_NAME + "Disposable");
 		GameRegistry.registerBlock(simple, ItemBlockSimple.class, BlockNames.SIMPLE_NAME);
+		GameRegistry.registerBlock(transfer, BlockNames.TRANSFER_NAME);
 		
 		GameRegistry.registerTileEntity(TileSubTerraGenerator.class, Reference.MOD_NAME + "TileSubTerra");
 		GameRegistry.registerTileEntity(TileSubTerraDummy.class, Reference.MOD_NAME + "TileSubTerraDummy");		
@@ -75,5 +81,6 @@ public class MTBlocks {
 		GameRegistry.registerTileEntity(TileDetonationGenerator.class, Reference.MOD_NAME + "TileDetonationGenerator");
 		GameRegistry.registerTileEntity(TileThermalGenerator.class, Reference.MOD_NAME + "TileThermalGenerator");
 		GameRegistry.registerTileEntity(TileDestructionGenerator.class, Reference.MOD_NAME + "TileDestructionGenerator");
+		GameRegistry.registerTileEntity(TileItemTransfer.class, Reference.MOD_NAME + "TileItemTransfer");
 	}
 }

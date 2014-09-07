@@ -95,7 +95,7 @@ public class TileRuneConstructor extends TileMachineBase implements IInventory {
 
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		return this.inventory[i];
+		return this.inventory[i] == null ? null : this.inventory[i].copy();
 	}
 
 	@Override

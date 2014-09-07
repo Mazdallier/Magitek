@@ -12,6 +12,8 @@ public class TilePurityInverter extends TileMachineBase {
 
 	int count;
 	int energy;
+	boolean pulse;	
+	
 	@Override
 	public void doStuff() {
 		count++;
@@ -20,24 +22,30 @@ public class TilePurityInverter extends TileMachineBase {
 			if(energy >= Math.abs(getPurity()*100)) {
 				setPurity(getPurity()*-1);
 				this.energy -= Math.abs(getPurity()*100);
+				pulse = false;
 			}
 		}
 	}
 
 	@Override
 	public boolean canActivate() {
-		return getPurity() != 0 && this.worldObj.isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord);
+		if(this.worldObj.isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord)) {
+			pulse = true;
+		}
+		return getPurity() != 0 && pulse;
 	}
 	
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
 		nbt.setInteger("Energy", this.energy);
+		nbt.setBoolean("Pulse", this.pulse);
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
 		this.energy = nbt.getInteger("Energy");
+		this.pulse = nbt.getBoolean("Pulse");
 	}
 }

@@ -116,7 +116,7 @@ public class TileEnergyTransferer extends TilePurityBase {
 	}
 	
 	protected void transferEnergy() {
-		int amount = (Math.min(this.getMachtStored(), 100))/this.tiles.size();
+		int amount = (Math.min(this.getMachtStored(), Math.max(this.getCapacity()/100, 500)))/this.tiles.size();
 		for(TileEntity tile : tiles) {
 			if(tile != null) {
 				this.extractMacht(((IMachtStorage)tile).receiveMacht(Math.min(amount, this.getMachtStored())));

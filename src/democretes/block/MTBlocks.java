@@ -26,6 +26,7 @@ import democretes.block.generators.disposable.TileDetonationGenerator;
 import democretes.block.machines.BlockMachine;
 import democretes.block.machines.ItemBlockMachine;
 import democretes.block.machines.TilePurityInverter;
+import democretes.block.machines.TileReconstructor;
 import democretes.block.machines.TileRuneConstructor;
 import democretes.block.simple.BlockSimple;
 import democretes.block.simple.ItemBlockSimple;
@@ -82,5 +83,6 @@ public class MTBlocks {
 		GameRegistry.registerTileEntity(TileThermalGenerator.class, Reference.MOD_NAME + "TileThermalGenerator");
 		GameRegistry.registerTileEntity(TileDestructionGenerator.class, Reference.MOD_NAME + "TileDestructionGenerator");
 		GameRegistry.registerTileEntity(TileItemTransfer.class, Reference.MOD_NAME + "TileItemTransfer");
+		GameRegistry.registerTileEntity(TileReconstructor.class, Reference.MOD_NAME + "TileReconstructor");
 	}
 }

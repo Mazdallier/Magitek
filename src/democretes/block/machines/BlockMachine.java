@@ -27,7 +27,7 @@ public class BlockMachine extends BlockMTBase {
 	
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for(int i = 0; i < 2; i++) {
+		for(int i = 0; i < sides.length; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}
@@ -84,9 +84,9 @@ public class BlockMachine extends BlockMTBase {
 	}
 	
 	
-	IIcon[] top = new IIcon[2];
-	IIcon[] bot = new IIcon[2];
-	IIcon[] sides = new IIcon[2];	
+	IIcon[] top = new IIcon[3];
+	IIcon[] bot = new IIcon[3];
+	IIcon[] sides = new IIcon[3];	
 	@Override
 	public void registerBlockIcons(IIconRegister ir) {
 		for(int i = 0; i < top.length; i++) {
@@ -118,6 +118,8 @@ public class BlockMachine extends BlockMTBase {
 			return new TileRuneConstructor();
 		case 1:
 			return new TilePurityInverter();
+		case 2:
+			return new TileReconstructor();
 		}
 		return null;
 	}

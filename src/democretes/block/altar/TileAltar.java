@@ -252,7 +252,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		return this.inventory;
+		return this.inventory == null ? null : this.inventory.copy();
 	}
 
 	@Override

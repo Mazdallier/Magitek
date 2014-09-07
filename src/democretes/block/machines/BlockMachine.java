@@ -16,7 +16,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import democretes.api.RunicHelper;
+import democretes.api.helpers.RunicHelper;
 import democretes.block.BlockMTBase;
 import democretes.block.generators.TileRunicGenerator;
 import democretes.item.MTItems;

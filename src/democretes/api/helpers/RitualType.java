@@ -1,4 +1,4 @@
-package democretes.api;
+package democretes.api.helpers;
 
 	public enum RitualType {
 		BASIC(3), 

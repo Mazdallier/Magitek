@@ -1,6 +1,6 @@
 package democretes.utils.handlers;
 
-import democretes.api.MagitekHelper;
+import democretes.api.helpers.MagitekHelper;
 import democretes.block.MTBlocks;
 import net.minecraft.init.Blocks;
 

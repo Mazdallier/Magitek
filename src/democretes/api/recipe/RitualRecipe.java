@@ -3,7 +3,7 @@ package democretes.api.recipe;
 import java.util.LinkedList;
 
 import net.minecraft.item.ItemStack;
-import democretes.api.RitualType;
+import democretes.api.helpers.RitualType;
 
 public class RitualRecipe {
 	ItemStack catalyst;

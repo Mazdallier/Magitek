@@ -1,6 +1,6 @@
 package democretes.block.generators;
 
-import democretes.api.MagitekHelper;
+import democretes.api.helpers.MagitekHelper;
 import democretes.api.macht.IMachtStorage;
 import democretes.block.TileEnergyTransferer;
 import democretes.block.dummy.TileSubTerraDummy;

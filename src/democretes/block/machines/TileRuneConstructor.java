@@ -1,8 +1,8 @@
 package democretes.block.machines;
 
 import cpw.mods.fml.common.FMLLog;
-import democretes.api.AltarHelper;
-import democretes.api.RunicHelper;
+import democretes.api.helpers.AltarHelper;
+import democretes.api.helpers.RunicHelper;
 import democretes.item.MTItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;

@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import democretes.api.RitualType;
+import democretes.api.helpers.RitualType;
 import democretes.block.altar.TileAltar;
 import democretes.item.ItemMTBase;
 import democretes.lib.Reference;

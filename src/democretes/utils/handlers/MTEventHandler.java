@@ -8,7 +8,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
-import democretes.api.AltarHelper;
+import democretes.api.helpers.AltarHelper;
 import democretes.item.MTItems;
 import democretes.lib.Reference;
 

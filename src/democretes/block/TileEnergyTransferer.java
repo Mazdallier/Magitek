@@ -3,7 +3,7 @@ package democretes.block;
 import java.util.ArrayList;
 
 import democretes.Magitek;
-import democretes.api.MagitekHelper;
+import democretes.api.helpers.MagitekHelper;
 import democretes.api.macht.IMachtStorage;
 import democretes.block.dummy.TileSubTerraDummy;
 import democretes.utils.handlers.ConfigHandler;

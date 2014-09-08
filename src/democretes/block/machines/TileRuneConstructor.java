@@ -148,7 +148,7 @@ public class TileRuneConstructor extends TileMachineBase implements IInventory {
 		if(i == 0) {
 			return stack.getItem() == MTItems.material && stack.getItemDamage() == 0;
 		}else{
-			return i == 1;
+			return RunicHelper.recipeExists(this.inventory[i]);
 		}
 	}
 

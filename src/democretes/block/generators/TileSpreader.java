@@ -86,9 +86,12 @@ public class TileSpreader extends TileEnergyTransferer {
 		int amount = (Math.min(this.getMachtStored(), 100))/this.tiles.size();
 		for(TileEntity tile : tiles) {
 			if(tile != null) {
-				if(((IMachtStorage)tile).getMachtStored() < this.getMachtStored()) {
-					this.extractMacht(((IMachtStorage)tile).receiveMacht(Math.min(amount, this.getMachtStored())));
+				if(tile instanceof TileSpreader) {
+					if(((IMachtStorage)tile).getMachtStored() > this.getMachtStored()) {
+						continue;
+					}
 				}
+				this.extractMacht(((IMachtStorage)tile).receiveMacht(Math.min(amount, this.getMachtStored())));
 			}else{
 				tiles.remove(tile);
 			}

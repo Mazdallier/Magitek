@@ -38,7 +38,7 @@ public class ConfigHandler extends GuiConfig {
 		Property syphon = config.get(Configuration.CATEGORY_GENERAL, "Amount the syphon drains per use.", 100);
 		syphonAmount = syphon.getInt();
 		
-		Property r = config.get(Configuration.CATEGORY_GENERAL, "Range that generators and runes search.", 10);
+		Property r = config.get(Configuration.CATEGORY_GENERAL, "Range that generators and runes search.", 15);
 		range = r.getInt();
 		
 		Property ratio = config.get(Configuration.CATEGORY_GENERAL, "The ratio as a percent at which the Macht Ring will stop providing energy. (MaxPlayerMacht*Ratio)/100.", 75);

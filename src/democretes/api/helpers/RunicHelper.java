@@ -39,6 +39,9 @@ public class RunicHelper {
 	}
 	
 	public static ItemStack getCatalystFromOutput(ItemStack output) {
+		if(output == null) {
+			return null;
+		}
 		for(RuneRecipe recipe : RuneRecipe.runeRecipes) {
 			if(recipe.getOutput().isItemEqual(output)) {
 				return recipe.getCatalyst().copy();

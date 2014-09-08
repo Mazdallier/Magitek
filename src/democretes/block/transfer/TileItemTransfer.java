@@ -20,6 +20,9 @@ public class TileItemTransfer extends TileEntity implements IInventory {
 	private int count = 20;
 	@Override
 	public void updateEntity() {
+		if(this.worldObj.isBlockIndirectlyGettingPowered(this.xCoord, this.yCoord, this.zCoord)) {
+			return;
+		}
 		if(count++ >= 20) {
 			getItems();
 			transferItems();

@@ -43,9 +43,9 @@ public class TileDestructionGenerator extends TileGeneratorBase {
 				layer--;
 			}
 			count = 0;
-			this.decreasePurity(amount/2);
+			this.decreasePurity(amount/5);
 		}
-		return amount;
+		return amount*2;
 	}
 
 	@Override

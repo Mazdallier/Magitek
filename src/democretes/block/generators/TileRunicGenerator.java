@@ -147,7 +147,7 @@ public class TileRunicGenerator extends TileGeneratorBase implements IInventory 
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return RunicHelper.recipeExistsFromOutput(this.inventory);
+		return RunicHelper.recipeExistsFromOutput(stack);
 	}	
 
 }

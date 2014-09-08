@@ -5,12 +5,14 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
-import democretes.block.TileMTBase;
 import democretes.utils.handlers.ConfigHandler;
 
-public class TileItemTransfer extends TileMTBase implements IInventory {
+public class TileItemTransfer extends TileEntity implements IInventory {
 	
 	ItemStack inventory;
 	public int facing;
@@ -70,6 +72,9 @@ public class TileItemTransfer extends TileMTBase implements IInventory {
 					ItemStack inv = ((IInventory)tile).getStackInSlot(j);
 					int amount = 0;
 					if(this.inventory != null) {
+						if(!((IInventory)tile).isItemValidForSlot(i, this.inventory)) {
+							continue;
+						}
 						if(inv == null) {
 							inv = this.inventory;
 							this.inventory = null;
@@ -182,6 +187,17 @@ public class TileItemTransfer extends TileMTBase implements IInventory {
 		this.inventory = ItemStack.loadItemStackFromNBT(tag);	
 	}
 	
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+		this.facing = pkt.func_148857_g().getInteger("Facing");
+	}
 	
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbt  = new NBTTagCompound();
+
+		nbt.setInteger("Facing", this.facing);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, nbt);
+	}
 
 }

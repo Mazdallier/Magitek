@@ -80,6 +80,18 @@ public class BlockMachine extends BlockMTBase {
 				return true;
 			}
 		}
+		if(world.getBlockMetadata(x, y, z) == 2) {
+			TileReconstructor tile = (TileReconstructor)world.getTileEntity(x, y, z);
+			if(tile.inventory != null) {
+				if(player.isSneaking()) {
+					if(!player.inventory.addItemStackToInventory(tile.inventory)) {
+						ForgeDirection fd = ForgeDirection.getOrientation(side);
+						world.spawnEntityInWorld(new EntityItem(world, x + 0.5F + fd.offsetX / 3.0F, y + 0.5F, z + 0.5F + fd.offsetZ / 3.0F, tile.inventory));
+					}
+					tile.inventory = null;
+				}
+			}
+		}
 		return false;
 	}
 	
@@ -90,13 +102,13 @@ public class BlockMachine extends BlockMTBase {
 	@Override
 	public void registerBlockIcons(IIconRegister ir) {
 		for(int i = 0; i < top.length; i++) {
-			top[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "machine_" + i + "_top");
+			top[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "machine/machine_" + i + "_top");
 		}
 		for(int i = 0; i < bot.length; i++) {
-			bot[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "machine_" + i + "_bot");
+			bot[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "machine/machine_" + i + "_bot");
 		}
 		for(int i = 0; i < sides.length; i++) {
-			sides[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "machine_" + i + "_side");
+			sides[i] = ir.registerIcon(Reference.TEXTURE_PREFIX + "machine/machine_" + i + "_side");
 		}
 	}
 	

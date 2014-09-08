@@ -13,6 +13,7 @@ import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSpreader;
 import democretes.block.generators.TileSubTerraGenerator;
+import democretes.block.generators.TileThermalGenerator;
 import democretes.lib.RenderIds;
 
 public class RenderBlockGenerator implements ISimpleBlockRenderingHandler{
@@ -35,6 +36,8 @@ public class RenderBlockGenerator implements ISimpleBlockRenderingHandler{
 			dispatch.renderTileEntityAt(new TileSpreader(), 0.0D, 0.0D, 0.0D, 0.0F);break;
 		case 4:
 			dispatch.renderTileEntityAt(new TileRunicGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
+		case 5:
+			dispatch.renderTileEntityAt(new TileThermalGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
 		}
 		GL11.glPopMatrix();
 	}

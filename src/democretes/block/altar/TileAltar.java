@@ -303,7 +303,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return true;
+		return AltarHelper.recipeExists(stack);
 	}	
 	
 	

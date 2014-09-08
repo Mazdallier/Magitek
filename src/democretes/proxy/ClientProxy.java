@@ -12,13 +12,17 @@ import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSpreader;
 import democretes.block.generators.TileSubTerraGenerator;
+import democretes.block.generators.TileThermalGenerator;
 import democretes.block.machines.TileRuneConstructor;
+import democretes.block.transfer.TileItemTransfer;
 import democretes.lib.RenderIds;
 import democretes.render.blocks.RenderBlockAltar;
 import democretes.render.blocks.RenderBlockCoil;
 import democretes.render.blocks.RenderBlockGenerator;
+import democretes.render.blocks.RenderBlockItemTransfer;
 import democretes.render.fx.FXOrb;
 import democretes.render.tile.RenderAltar;
+import democretes.render.tile.RenderItemTransfer;
 import democretes.render.tile.RenderMachtCoil;
 import democretes.render.tile.RenderPurityGenerator;
 import democretes.render.tile.RenderRuneConstructor;
@@ -26,6 +30,7 @@ import democretes.render.tile.RenderRuneGenerator;
 import democretes.render.tile.RenderSolarGenerator;
 import democretes.render.tile.RenderSpreader;
 import democretes.render.tile.RenderSubTerraGenerator;
+import democretes.render.tile.RenderThermalGenerator;
 import democretes.utils.handlers.KeyHandler;
 
 public class ClientProxy extends CommonProxy{
@@ -41,7 +46,8 @@ public class ClientProxy extends CommonProxy{
     	ClientRegistry.bindTileEntitySpecialRenderer(TileSolarGenerator.class, new RenderSolarGenerator());
     	ClientRegistry.bindTileEntitySpecialRenderer(TilePurityGenerator.class, new RenderPurityGenerator());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileSpreader.class, new RenderSpreader());
-    	ClientRegistry.bindTileEntitySpecialRenderer(TileRunicGenerator.class, new RenderRuneGenerator());    	
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileRunicGenerator.class, new RenderRuneGenerator());   
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileThermalGenerator.class, new RenderThermalGenerator());    	
     	RenderIds.idGENERATOR = RenderingRegistry.getNextAvailableRenderId();
     	
     	ClientRegistry.bindTileEntitySpecialRenderer(TileMachtCoil.class, new RenderMachtCoil());
@@ -52,9 +58,13 @@ public class ClientProxy extends CommonProxy{
     	
     	ClientRegistry.bindTileEntitySpecialRenderer(TileRuneConstructor.class, new RenderRuneConstructor());
     	
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileItemTransfer.class, new RenderItemTransfer());
+    	RenderIds.idTRANSFER = RenderingRegistry.getNextAvailableRenderId();
+    	
 		RenderingRegistry.registerBlockHandler(new RenderBlockGenerator());
 		RenderingRegistry.registerBlockHandler(new RenderBlockCoil());
 		RenderingRegistry.registerBlockHandler(new RenderBlockAltar());
+		RenderingRegistry.registerBlockHandler(new RenderBlockItemTransfer());
 
     }
     

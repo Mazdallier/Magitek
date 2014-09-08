@@ -11,9 +11,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.api.helpers.ReconstructorHelper;
+import democretes.api.helpers.RitualType;
 import democretes.utils.helper.DirectionHelper;
 
 
@@ -33,6 +37,9 @@ public class TileReconstructor extends TileMachineBase implements IInventory{
 	@Override
 	public void doStuff() {
 		getDisplayItems();
+		if(filter.size() == 0) {
+			return;
+		}
 		if(this.current == null) {
 			current = filter.get(slot);
 			if(slot++ >= filter.size()) {
@@ -49,17 +56,12 @@ public class TileReconstructor extends TileMachineBase implements IInventory{
 							if(this.inventory.stackSize < this.inventory.getMaxStackSize()) {
 								this.inventory.stackSize++;
 								this.current = null;
-								FMLLog.info("Fuck1");
 								return;
 							}
 						}
 						this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.xCoord + 0.5F, this.yCoord + 0.5F, this.zCoord + 0.5F, current));
 					}else{
-						FMLLog.info("Fuck2");
 						this.inventory = current.copy();
-						FMLLog.info(inventory.getDisplayName());
-						FMLLog.info("D: " + inventory.getItemDamage());
-						FMLLog.info("S: " + inventory.stackSize);
 					}
 					this.current = null;
 				}
@@ -144,7 +146,7 @@ public class TileReconstructor extends TileMachineBase implements IInventory{
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return true;
+		return false;
 	}
 	
 	@Override
@@ -162,6 +164,23 @@ public class TileReconstructor extends TileMachineBase implements IInventory{
 		super.readFromNBT(nbt);
 		NBTTagCompound tag = nbt.getCompoundTag("Item");
 		this.inventory = ItemStack.loadItemStackFromNBT(tag);	
+	}
+	
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbt = new NBTTagCompound();
+		NBTTagCompound tag = new NBTTagCompound();
+		if(this.inventory != null) {
+			this.inventory.writeToNBT(tag);
+		}
+		nbt.setTag("Item", tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, nbt);
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+		NBTTagCompound tag = pkt.func_148857_g().getCompoundTag("Item");
+		this.inventory = ItemStack.loadItemStackFromNBT(tag);
 	}
 
 }

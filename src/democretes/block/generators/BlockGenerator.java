@@ -23,6 +23,7 @@ import democretes.api.helpers.AltarHelper;
 import democretes.api.helpers.RunicHelper;
 import democretes.block.BlockMTBase;
 import democretes.block.MTBlocks;
+import democretes.block.altar.TileAltar;
 import democretes.block.dummy.BlockSubTerraDummy;
 import democretes.block.generators.disposable.TileDetonationGenerator;
 import democretes.lib.Reference;
@@ -107,6 +108,23 @@ public class BlockGenerator extends BlockMTBase {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public void randomDisplayTick(World world, int x, int y, int z, Random r) {
+		TileEntity tile = world.getTileEntity(x, y, z);
+		if(tile instanceof TileThermalGenerator) {
+			if(((TileThermalGenerator)tile).tank.getFluidAmount() > 0) {
+		            float f = (float)x + 0.5F;
+		            float f1 = (float)y + 0.0F  +0.2F + r.nextFloat() * 6.0F / 16.0F;
+		            float f2 = (float)z + 0.5F;
+		            float f3 = 0.52F;
+		            float f4 = r.nextFloat() * 0.6F - 0.3F;
+		            world.spawnParticle("flame", (double)(f + f4), (double)f1, (double)(f2 - f3 + 0.2F), 0.0D, 0.0D, 0.0D);
+		            world.spawnParticle("flame", (double)(f + f4), (double)f1, (double)(f2 + f3 - 0.2F), 0.0D, 0.0D, 0.0D);
+		            
+		        }			
+		}
 	}
 	
 	@Override

@@ -34,7 +34,7 @@ public class TileRunicGenerator extends TileGeneratorBase implements IInventory 
 	int count;
 	@Override
 	protected int getFuel() {
-		if(count >= 40) {
+		if(count++ >= 60) {
 			count =  0;
 			ItemStack stack = this.inventory;
 			this.inventory.stackSize--;
@@ -47,7 +47,6 @@ public class TileRunicGenerator extends TileGeneratorBase implements IInventory 
 			}
 			return RunicHelper.getMachtFromOutput(stack)*4/5;
 		}
-		count ++;
 		return 0;
 	}
 

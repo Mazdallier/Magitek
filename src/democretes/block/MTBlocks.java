@@ -1,7 +1,5 @@
 package democretes.block;
 
-import com.sun.webkit.graphics.Ref;
-
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 import democretes.block.altar.BlockAltar;

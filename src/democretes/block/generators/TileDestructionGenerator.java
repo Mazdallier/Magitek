@@ -1,21 +1,25 @@
 package democretes.block.generators;
 
-import democretes.api.helpers.MagitekHelper;
-import democretes.api.macht.IMachtStorage;
-import democretes.utils.handlers.ConfigHandler;
-import democretes.utils.helper.DirectionHelper;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import democretes.api.helpers.MagitekHelper;
+import democretes.utils.handlers.ConfigHandler;
+import democretes.utils.helper.DirectionHelper;
 
 public class TileDestructionGenerator extends TileGeneratorBase {
 	
 	
 	private int radius = 1;
 	private int maxRadius = -1;
-	private int layer = -1;
+	public int layer = -1;
 	
 	
 	public TileDestructionGenerator() {
@@ -117,5 +121,31 @@ public class TileDestructionGenerator extends TileGeneratorBase {
 		this.layer = nbt.getInteger("Layer");
 		this.radius = nbt.getInteger("Radius");
 		this.maxRadius = nbt.getInteger("MaxRadius");
+	}
+	
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbt = new NBTTagCompound();
+		nbt.setInteger("Layer", this.layer);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, nbt);
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+		this.layer = pkt.func_148857_g().getInteger("Layer");
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public AxisAlignedBB getRenderBoundingBox()
+	{
+		return INFINITE_EXTENT_AABB;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public double getMaxRenderDistanceSquared()
+	{
+		return 65536;
 	}
 }

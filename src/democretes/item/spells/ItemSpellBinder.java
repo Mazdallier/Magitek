@@ -17,6 +17,8 @@ import democretes.api.spells.SpellHelper;
 import democretes.item.ItemMTBase;
 import democretes.item.MTItems;
 import democretes.utils.helper.StringHelper;
+import democretes.utils.network.PacketHandler;
+import democretes.utils.network.PacketSpell;
 
 public class ItemSpellBinder extends ItemMTBase {
 	
@@ -40,8 +42,12 @@ public class ItemSpellBinder extends ItemMTBase {
 			return super.onItemRightClick(stack, world, player);
 		}
 		Spell spell = SpellHelper.getSpell((String)Spell.spells.keySet().toArray()[stack.getItemDamage()]);
-		SpellHelper.bindSpell(player, spell);
-		player.addChatComponentMessage(new ChatComponentText(StringHelper.localize("magitek.spell.bound")+ " " + spell.getName() + "."));
+		if(!player.isSneaking()) {
+			PacketHandler.sendToServer(new PacketSpell((int)player.posX, (int)player.posY, (int)player.posZ));
+		}else{
+			SpellHelper.bindSpell(player, spell);
+			player.addChatComponentMessage(new ChatComponentText(StringHelper.localize("magitek.spell.bound")+ " " + spell.getName() + "."));
+		}
 		return super.onItemRightClick(stack, world, player);
 	}
 	

@@ -25,8 +25,8 @@ public class RenderSpreader extends TileEntitySpecialRenderer{
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		
-		GL11.glColor4f(0.098F, 0.842F, 0.849F, 0.8F);
+
+		GL11.glColor4f((float)7/256, (float)132/256, (float)212/256, 0.95F);
 		
 		
 	    float t = (float)Minecraft.getSystemTime();

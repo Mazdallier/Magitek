@@ -44,7 +44,7 @@ public class FXOrb extends EntityFX {
 		particleBlue = blue;
 		particleGravity = 0;
 		particleScale *= size;
-		particleMaxAge = (int)(28D / (Math.random() * 0.3D + 0.7D) * maxAge);
+		particleMaxAge = (int)(10D / (Math.random() * 0.3D + 0.7D) * maxAge);
 		this.shrink = shrink;
 
 		noClip = true;

@@ -40,7 +40,7 @@ public class TileDestructionGenerator extends TileGeneratorBase {
 	@Override
 	protected int getFuel() {
 		int amount = 0;
-		if(count++ >= 60) {
+		if(count++ >= 50) {
 			amount = destroyBlocks(radius);
 			if(radius++ > maxRadius) {
 				radius = 1;

@@ -45,11 +45,13 @@ tile.magitek.generator.5.name=Thermal Assimilator
 tile.magitek.generator.6.name=Chunk Devourer
 tile.magitek.machine.0.name=Runic Constructor
 tile.magitek.machine.1.name=Purity Inverter
+tile.magitek.machine.2.name=Mass Constructor
 tile.magitek.altar.name=Altar of Power
 tile.magitek.coil.name=Macht Coil
 tile.magitek.disposable.0.name=Explosive Generator
 tile.magitek.simple.0.name=Macht Block
 tile.magitek.simple.1.name=Macht Infused Brick
+tile.item.transfer.name=Item Discharger
 
 #Spells
 magitek.spell.lowMacht=Your macht is too low to cast this spell.

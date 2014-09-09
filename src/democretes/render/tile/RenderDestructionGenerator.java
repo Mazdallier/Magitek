@@ -33,13 +33,12 @@ public class RenderDestructionGenerator extends TileEntitySpecialRenderer {
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		
-		GL11.glColor4f(0.098F, 0.842F, 0.849F, 0.8F);
-		
+		GL11.glColor4f((float)7/256, (float)132/256, (float)212/256, 0.95F);
 		
 	    float t = (float)Minecraft.getSystemTime();
-	    GL11.glTranslatef((float)x + 0.5F, (float)y + 0.2F, (float)z + 0.5F);
+	    GL11.glTranslatef((float)x + 0.5F, (float)y + 0.5F, (float)z + 0.5F);
 	    GL11.glRotatef(t/250, 0.0F, 1.0F, 0.0F);
-	    GL11.glScalef(0.175F, 0.17F, 0.175F);
+	    GL11.glScalef(0.3F, 0.275F, 0.3F);
 	    
 	    Minecraft.getMinecraft().renderEngine.bindTexture(this.texture);
 	    model.renderAll();
@@ -49,7 +48,7 @@ public class RenderDestructionGenerator extends TileEntitySpecialRenderer {
 	    GL11.glPushMatrix();
 	    if( ((TileDestructionGenerator)tile).layer > 1) {
 	    	Minecraft.getMinecraft().renderEngine.bindTexture(new ResourceLocation("democretes", "textures/misc/beacon_beam.png"));
-	    	renderLaser(tile, x, y, z, ((TileDestructionGenerator)tile).yCoord - ((TileDestructionGenerator)tile).layer + 1, f);
+	    	renderLaser(tile, x, y + 0.25F, z, ((TileDestructionGenerator)tile).yCoord - ((TileDestructionGenerator)tile).layer + 1, f);
 	    }
 	    GL11.glPopMatrix();
 	}

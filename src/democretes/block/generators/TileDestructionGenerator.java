@@ -23,7 +23,9 @@ public class TileDestructionGenerator extends TileGeneratorBase {
 	
 	
 	public TileDestructionGenerator() {
-		super(25000);
+		super(50000);
+		this.purity.maxPurity = 10000;
+		this.purity.minPurity = 10000;
 	}	
 	
 	private int count;
@@ -38,18 +40,19 @@ public class TileDestructionGenerator extends TileGeneratorBase {
 	@Override
 	protected int getFuel() {
 		int amount = 0;
-		if(count++ >= 20) {
+		if(count++ >= 60) {
 			amount = destroyBlocks(radius);
 			if(radius++ > maxRadius) {
 				radius = 1;
 			}
 			if(radius == 1) {
 				layer--;
+				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 			}
 			count = 0;
 			this.decreasePurity(amount/5);
 		}
-		return amount*2;
+		return amount*5/3;
 	}
 
 	@Override

@@ -10,12 +10,14 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
+import democretes.Magitek;
 import democretes.utils.handlers.ConfigHandler;
 
 public class TileItemTransfer extends TileEntity implements IInventory {
 	
 	ItemStack inventory;
 	public int facing;
+	public int length;
 	
 	private int count = 20;
 	@Override
@@ -71,6 +73,7 @@ public class TileItemTransfer extends TileEntity implements IInventory {
 		for(int i = 1; i < ConfigHandler.range; i++) {
 			TileEntity tile = this.worldObj.getTileEntity(this.xCoord + dir.offsetX*i, this.yCoord + dir.offsetY*i, this.zCoord + dir.offsetZ*i);
 			if(tile instanceof IInventory) {
+				this.length = i;
 				for(int j = 0; j < ((IInventory)tile).getSizeInventory(); j++) {
 					ItemStack inv = ((IInventory)tile).getStackInSlot(j);
 					int amount = 0;
@@ -99,6 +102,10 @@ public class TileItemTransfer extends TileEntity implements IInventory {
 						}else{
 							((IInventory)tile).setInventorySlotContents(j, inv);							
 						}
+						double motionX = (tile.xCoord - this.xCoord + (Math.random() - Math.random())/2)/50.0D;
+						double motionY = (tile.yCoord - this.yCoord + (Math.random() - Math.random())/2)/50.0D;
+						double motionZ = (tile.zCoord - this.zCoord + (Math.random() - Math.random())/2)/50.0D;
+						Magitek.proxy.orbFX(this.worldObj, this.xCoord + 0.5F, this.yCoord + 0.5F, this.zCoord + 0.5F, motionX, motionY, motionZ, 0.01F, 0.61F, 0.8F, 0.5F, 3, true);;
 					}
 				}
 				return;
@@ -193,12 +200,13 @@ public class TileItemTransfer extends TileEntity implements IInventory {
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
 		this.facing = pkt.func_148857_g().getInteger("Facing");
+		this.length = pkt.func_148857_g().getInteger("Length");
 	}
 	
 	@Override
 	public Packet getDescriptionPacket() {
 		NBTTagCompound nbt  = new NBTTagCompound();
-
+		nbt.setInteger("Length", this.length);
 		nbt.setInteger("Facing", this.facing);
 		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, nbt);
 	}

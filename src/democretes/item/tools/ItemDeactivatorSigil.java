@@ -24,7 +24,7 @@ public class ItemDeactivatorSigil extends ItemMTBase {
 	
 	public ItemDeactivatorSigil() {
 		setMaxStackSize(1);
-		setUnlocalizedName(Reference.MOD_PREFIX + ".deactivator");
+		setUnlocalizedName(Reference.MOD_PREFIX + ".sigil.deactivator");
 	}
 	
 	@Override

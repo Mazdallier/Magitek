@@ -12,6 +12,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import democretes.api.macht.IMachtStorage;
 import democretes.api.spells.SpellHelper;
+import democretes.block.BlockMTBase;
+import democretes.block.MTBlocks;
 import democretes.block.generators.BlockGenerator;
 import democretes.block.generators.disposable.BlockDisposableGenerator;
 import democretes.block.generators.disposable.TileSingleGeneratorBase;
@@ -31,22 +33,21 @@ public class ItemDeactivatorSigil extends ItemMTBase {
 			return false;
 		}
 		Block block = world.getBlock(x, y, z);
-		if(block instanceof BlockDisposableGenerator) {
-			TileSingleGeneratorBase tile = (TileSingleGeneratorBase)world.getTileEntity(x, y, z);
-			if(SpellHelper.getMacht(player) >= tile.maxEnergy - tile.energyRemaining) {
-				SpellHelper.extractMacht(player, tile.maxEnergy - tile.energyRemaining);
-				world.spawnEntityInWorld(new EntityItem(world, x, y, z, new ItemStack(block, 1, world.getBlockMetadata(x, y, z))));
-				world.setBlockToAir(x, y, z);
-				world.removeTileEntity(x, y, z);
-				return true;
+		if(block instanceof BlockMTBase && block != MTBlocks.simple) {
+			ItemStack blockStack = null;
+			if(block instanceof BlockDisposableGenerator) {
+				TileSingleGeneratorBase tile = (TileSingleGeneratorBase)world.getTileEntity(x, y, z);
+				if(SpellHelper.getMacht(player) >= tile.maxEnergy - tile.energyRemaining) {
+					SpellHelper.extractMacht(player, tile.maxEnergy - tile.energyRemaining);
+					blockStack = new ItemStack(block, 1, world.getBlockMetadata(x, y, z));
+				}
+			}else if(block instanceof BlockGenerator && world.getBlockMetadata(x, y, z) == 3) {
+				blockStack = new ItemStack(block, 1, 3);
+				NBTTagCompound nbt = new NBTTagCompound();
+				nbt.setInteger("Macht", ((IMachtStorage)world.getTileEntity(x, y, z)).getMachtStored());
+				blockStack.setTagCompound(nbt);
 			}
-		}
-		if(block instanceof BlockGenerator && world.getBlockMetadata(x, y, z) == 3) {
-			ItemStack crystal = new ItemStack(block, 1, 3);
-			NBTTagCompound nbt = new NBTTagCompound();
-			nbt.setInteger("Macht", ((IMachtStorage)world.getTileEntity(x, y, z)).getMachtStored());
-			crystal.setTagCompound(nbt);
-			world.spawnEntityInWorld(new EntityItem(world, x, y, z, crystal));
+			world.spawnEntityInWorld(new EntityItem(world, x, y, z, blockStack));
 			world.setBlockToAir(x, y, z);
 			world.removeTileEntity(x, y, z);
 			return true;

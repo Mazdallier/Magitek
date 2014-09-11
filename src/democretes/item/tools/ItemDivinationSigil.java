@@ -27,12 +27,14 @@ public class ItemDivinationSigil extends ItemMTBase {
 		Block block = world.getBlock(x, y, z);
 		if(block instanceof IBlockDebug && !world.isRemote) {
 			BlockInfo info = ((IBlockDebug)block).getInfo(player, x, y, z);
+			ChatComponentText text = new ChatComponentText("");
 			if(info.isMachtHandler()) {
-				player.addChatComponentMessage(new ChatComponentText(StringHelper.localize("magitek.macht.stored") + ": " + info.getMacht()));
+				text.appendText(StringHelper.localize("magitek.macht.stored") + ": " + info.getMacht());
 			}
 			if(info.isPurityHandler()) {
-				player.addChatComponentMessage(new ChatComponentText(StringHelper.localize("magitek.purity.stored") + ": " + info.getPurity()));
+				text.appendText(", " + StringHelper.localize("magitek.purity.stored") + ": " + info.getPurity());
 			}
+			player.addChatComponentMessage(text);
 		}
 		return false;
 	}

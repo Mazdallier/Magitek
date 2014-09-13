@@ -7,6 +7,7 @@ import net.minecraft.client.gui.GuiScreen;
 import cpw.mods.fml.client.IModGuiFactory;
 import cpw.mods.fml.client.IModGuiFactory.RuntimeOptionCategoryElement;
 import cpw.mods.fml.client.IModGuiFactory.RuntimeOptionGuiHandler;
+import democretes.gui.ConfigGui;
 
 public class GuiFactory implements IModGuiFactory {
 
@@ -16,7 +17,7 @@ public class GuiFactory implements IModGuiFactory {
 
 	@Override
 	public Class<? extends GuiScreen> mainConfigGuiClass() {
-		return ConfigHandler.class;
+		return ConfigGui.class;
 	}
 
 	@Override

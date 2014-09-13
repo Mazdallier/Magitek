@@ -12,11 +12,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import democretes.lib.Reference;
 
-public class ConfigHandler extends GuiConfig {
-	
-	public ConfigHandler(GuiScreen parentScreen) {
-		super(parentScreen, new ConfigElement(config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), Reference.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath(config.toString()));
-	}
+public class ConfigHandler {
 
 	public static int syphonAmount;
 	public static int range;

@@ -74,7 +74,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					double motionZ = (this.zCoord - dummy.zCoord + Math.random() - Math.random())/40.0D;
 					Color color = new Color(dummy.inventory.getItem().getColorFromItemStack(dummy.inventory, dummy.inventory.getItemDamage()));
 					if(Math.random() > 0.8D) {
-						Magitek.proxy.orbFX(this.worldObj, dummy.xCoord + 0.5D, dummy.yCoord+ 0.2D, dummy.zCoord + 0.5D, motionX, motionY, motionZ, color.getRed()/256.0F, color.getGreen()/256.0F, color.getBlue()/256.0F, (float)Math.random(), 2, true);	
+						Magitek.proxy.orbFX(this.worldObj, dummy.xCoord + 0.5D, dummy.yCoord+ 0.2D, dummy.zCoord + 0.5D, motionX, motionY, motionZ, color.getRed()/256.0F, color.getGreen()/256.0F, color.getBlue()/256.0F, (float)Math.random(), 3, true);	
 					}
 					System.out.println(count);
 					if(count++ >= 80) {

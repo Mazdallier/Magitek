@@ -10,10 +10,11 @@ import cpw.mods.fml.client.config.IConfigElement;
 import democretes.lib.Reference;
 import democretes.utils.handlers.ConfigHandler;
 
-public class ConfigGui extends GuiConfig{
+public class ConfigGui extends GuiConfig {
 
 	public ConfigGui(GuiScreen screen) {
-		super(screen, new ConfigElement(ConfigHandler.config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), Reference.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath(ConfigHandler.config.toString()));
+		super(screen, new ConfigElement(
+				ConfigHandler.config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), Reference.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath(ConfigHandler.config.toString()));
 
 	}
 

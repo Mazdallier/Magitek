@@ -1,5 +1,6 @@
 package democretes.block.altar;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import net.minecraft.block.Block;
@@ -48,7 +49,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 	ItemStack output;
 	@Override
 	public void updateEntity() {
-		if(this.ritual != null ) {
+		if(this.ritual != null) {
 			if(!dummiesExist) {
 				if(!createDummies()) {
 					this.ritual = null;
@@ -64,33 +65,26 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					dummy.deathTime = 40;
 				}	
 			}
-			if(input != null) {
+			if(input != null && this.inventory != null) {
 				energy += this.extractMacht(RitualHelper.getMachtForCatalyst(inventory)/(this.dummies.size()*20));
-				count++;
 				TileAltarDummy dummy = !hasInputs ? (TileAltarDummy)dummies.get(slot) : null;
-				if(this.worldObj.isRemote && !hasInputs && energy > 0) {
-					int motionX = (this.xCoord - dummy.xCoord);
-					int motionY = 10;
-					int motionZ = (this.zCoord - dummy.zCoord);
-					if(dummy.getStackInSlot(0) != null) {
-						Item item = dummy.getStackInSlot(0).getItem();
-						int damage = dummy.getStackInSlot(0).getItemDamage();
-						String s;
-						if(Block.getBlockFromItem(dummy.inventory.getItem()) != null) {
-							s = "blockcrack_" + Block.getIdFromBlock(Block.getBlockFromItem(dummy.inventory.getItem()));
-						}else{
-							s = "itemcrack_" + Item.getIdFromItem(dummy.inventory.getItem());
-						}	
-						s = s + "_" + dummy.inventory.getItemDamage();
-						this.worldObj.spawnParticle(s, dummy.xCoord + 0.5D, dummy.yCoord + 0.25D, dummy.zCoord + 0.5D, motionX, motionY, motionZ);
+				if(energy > 0 && !hasInputs && dummy != null) {
+					double motionX = (this.xCoord - dummy.xCoord + Math.random() - Math.random())/40.0D;
+					double motionY = 0.045D;
+					double motionZ = (this.zCoord - dummy.zCoord + Math.random() - Math.random())/40.0D;
+					Color color = new Color(dummy.inventory.getItem().getColorFromItemStack(dummy.inventory, dummy.inventory.getItemDamage()));
+					if(Math.random() > 0.8D) {
+						Magitek.proxy.orbFX(this.worldObj, dummy.xCoord + 0.5D, dummy.yCoord+ 0.2D, dummy.zCoord + 0.5D, motionX, motionY, motionZ, color.getRed()/256.0F, color.getGreen()/256.0F, color.getBlue()/256.0F, (float)Math.random(), 2, true);	
 					}
-				}
-				if(count >= 40 && !hasInputs && energy > 0) {
-					count = 0;			
-					dummy.decrStackSize(0, 1);;
-					slot++;
-					if(slot == dummies .size()) {
-						hasInputs = true;
+					System.out.println(count);
+					if(count++ >= 80) {
+						count = 0;		
+						System.out.println("Taken");
+						dummy.decrStackSize(0, 1);;
+						slot++;
+						if(slot == dummies.size()) {
+							hasInputs = true;
+						}
 					}
 				}
 				if(energy >= RitualHelper.getMachtForCatalyst(this.inventory) && hasInputs && output != null) {
@@ -98,7 +92,9 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					this.input = null;
 					this.slot = 0;
 					this.hasInputs = false;
+					this.inventory = null;
 					ItemStack stack = output.copy();
+					this.output = null;
 					if(stack.getItem() == MTItems.binder) {
 						stack.stackTagCompound = new NBTTagCompound();
 						stack.stackTagCompound.setString("SpellName", (String)Spell.spells.keySet().toArray()[stack.getItemDamage()]);						
@@ -128,10 +124,11 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					}
 				}
 			}else{
+				this.energy = 0;
 				this.input = null;
-				if(this.energy > 0) {
-					this.energy = 0;
-				}
+				this.output = null;
+				this.hasInputs = false;
+				this.slot = 0;
 			}
 		}else if(this.inventory != null) {
 			if(AltarHelper.recipeExists(this.inventory)) {

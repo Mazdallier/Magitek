@@ -93,7 +93,7 @@ public class BlockAltar extends BlockMTBase {
 	public String getUnlocalizedName() {
 		return "tile." + Reference.MOD_PREFIX + ".altar";
 	}
-	
+
 	@Override
 	public void randomDisplayTick(World world, int x, int y, int z, Random r) {
 		if(((TileAltar)world.getTileEntity(x, y, z)).inventory == null) {
@@ -104,7 +104,7 @@ public class BlockAltar extends BlockMTBase {
                 if (l > x - 2 && l < x + 2 && i == z - 1) {
                     i = z + 2;
                 }
-                if (r.nextInt(16) == 0) {
+                if(r.nextInt(32) == 0) {
                     for (int j = y; j <= y + 1; ++j) {
                     	double xx = x + 0.5D;
                     	double yy = y + 1.0D;
@@ -118,7 +118,7 @@ public class BlockAltar extends BlockMTBase {
             }
         }
 	}
-	
+
 	public static IIcon circle[] = new IIcon[3];
 	@Override
 	public void registerBlockIcons(IIconRegister ir) {

@@ -18,7 +18,8 @@ public class RitualRegistry {
 	public static RitualRecipe sigilPower;
 	public static RitualRecipe sigilPurity;
 	public static RitualRecipe sigilDeactivate;	
-	public static RitualRecipe coreAdvanced;
+	public static RitualRecipe coreAdvanced;	
+	public static RitualRecipe coreComplex;
 	public static RitualRecipe sigilDivination;
 	public static RitualRecipe sigilAbilities;
 	
@@ -40,14 +41,17 @@ public class RitualRegistry {
 			new ItemStack(MTItems.machtSigil), 5000);
 		sigilDeactivate = new RitualRecipe(new ItemStack(MTItems.material, 1, 1), RitualType.BASIC, new ItemStack[] {
 			new ItemStack(MTItems.rune, 1, 6), new ItemStack(MTItems.rune, 1, 5), new ItemStack(MTItems.rune, 1, 4)},
-			new ItemStack(MTItems.divinationSigil), 5000);	
-		coreAdvanced = new RitualRecipe(new ItemStack(MTItems.material, 1, 4), RitualType.BASIC, new ItemStack[] {
-			new ItemStack(MTItems.material, 1, 3), new ItemStack(Items.diamond), new ItemStack(Items.ender_pearl)}, 
-			new ItemStack(MTItems.material, 3, 5), 15000);
+			new ItemStack(MTItems.divinationSigil), 5000);
 		sigilAbilities = new RitualRecipe(new ItemStack(MTItems.material, 1, 1), RitualType.COMPLEX, new ItemStack[] {
 			new ItemStack(Items.blaze_powder), new ItemStack(Items.fermented_spider_eye), new ItemStack(Items.sugar), new ItemStack(Items.magma_cream), new ItemStack(Items.fish), 
 			new ItemStack(Items.ghast_tear), new ItemStack(Items.speckled_melon), new ItemStack(Items.golden_apple), new ItemStack(Items.ender_pearl), new ItemStack(Items.golden_carrot)},
-			new ItemStack(MTItems.enhanceSigil), 75000);
+			new ItemStack(MTItems.enhanceSigil), 75000);	
+		coreAdvanced = new RitualRecipe(new ItemStack(MTItems.material, 1, 4), RitualType.BASIC, new ItemStack[] {
+			new ItemStack(MTItems.material, 1, 3), new ItemStack(Items.diamond), new ItemStack(Items.ender_pearl)}, 
+			new ItemStack(MTItems.material, 3, 5), 15000);	
+		coreAdvanced = new RitualRecipe(new ItemStack(MTItems.material, 1, 5), RitualType.ADVANCED, new ItemStack[] {
+			new ItemStack(MTItems.material, 1, 3), new ItemStack(Items.diamond), new ItemStack(Items.ender_pearl), new ItemStack(MTItems.rune, 1, 5), new ItemStack(MTItems.rune, 1, 4)}, 
+			new ItemStack(MTItems.material, 3, 6), 30000);
 	}
 	
 	public static RitualRecipe spellInvisible;

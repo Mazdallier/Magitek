@@ -96,6 +96,16 @@ public final class RecipeRegistry {
 				'I', new ItemStack(MTBlocks.simple, 1, 1),
 				'C', new ItemStack(MTItems.material, 1, 4),
 				'M', new ItemStack(MTItems.material, 1, 3));
+		GameRegistry.addShapedRecipe(new ItemStack(MTBlocks.generator, 1, 5), 
+				"O O", "IOI", "OCO",
+				'O', new ItemStack(Blocks.obsidian),
+				'I', new ItemStack(MTItems.material, 1, 3),
+				'C', new ItemStack(MTItems.material, 1, 4));
+		GameRegistry.addShapedRecipe(new ItemStack(MTBlocks.generator, 1, 6), 
+				"ICI", "CAC", "ICI",
+				'I', new ItemStack(MTItems.material, 1, 3),
+				'A', new ItemStack(MTItems.material, 1, 5),
+				'C', new ItemStack(MTItems.material, 1, 6));
 		addOreDictRecipe(new ItemStack(MTBlocks.altar),
 				"SSS", " T ", " T ", 
 				'S', new ItemStack(Blocks.stone_slab),
@@ -106,6 +116,12 @@ public final class RecipeRegistry {
 				'C', new ItemStack(MTItems.material, 1, 4),
 				'D', new ItemStack(Items.diamond));
 		GameRegistry.addShapedRecipe(new ItemStack(MTBlocks.machine, 1, 1), 
+				"BIB", "ITI", "BCB",
+				'B', new ItemStack(MTBlocks.simple, 1, 1),
+				'C', new ItemStack(MTItems.material, 1, 6),
+				'T', new ItemStack(Blocks.crafting_table),
+				'I', new ItemStack(MTItems.material, 1, 3));
+		GameRegistry.addShapedRecipe(new ItemStack(MTBlocks.machine, 1, 2), 
 				" I ", "ICI", "IMI",
 				'I', new ItemStack(MTBlocks.simple, 1, 1),
 				'C', new ItemStack(MTItems.material, 1, 4),
@@ -115,6 +131,11 @@ public final class RecipeRegistry {
 				'I', new ItemStack(MTBlocks.simple, 1, 1),
 				'T', new ItemStack(Blocks.tnt),
 				'C', new ItemStack(MTItems.material, 1, 5));
+		GameRegistry.addShapedRecipe(new ItemStack(MTBlocks.transfer), 
+				"   ", " H ", "BCB",
+				'C', new ItemStack(MTItems.material, 1, 4),
+				'H', new ItemStack(Blocks.hopper),
+				'B', new ItemStack(MTBlocks.simple, 1, 1));
 	}
 	
 	public static void initShapelessRecipes() {

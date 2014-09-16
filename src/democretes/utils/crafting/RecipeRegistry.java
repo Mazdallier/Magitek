@@ -63,12 +63,12 @@ public final class RecipeRegistry {
 				'B', new ItemStack(MTItems.material, 1, 0),
 				'F', new ItemStack(MTItems.rune, 1, 0),
 				'E', new ItemStack(MTItems.rune, 1, 2));
-		GameRegistry.addShapedRecipe(new ItemStack(MTItems.material, 3, 4), 
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.material, 1, 4), 
 				" L ", "RDR", " L ",
 				'L', new ItemStack(Items.dye, 1, 4),
 				'R', new ItemStack(Items.redstone),
 				'D', new ItemStack(Items.gold_ingot));
-		GameRegistry.addShapedRecipe(new ItemStack(MTItems.material, 3, 4), 
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.material, 1, 4), 
 				" R ", "LDL", " R ",
 				'L', new ItemStack(Items.dye, 1, 4),
 				'R', new ItemStack(Items.redstone),

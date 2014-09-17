@@ -43,9 +43,7 @@ public class NEIAltarRecipeHandler extends TemplateRecipeHandler {
 	public void loadCraftingRecipes(String outputId, Object... results) {
 		if(outputId.equals("magitekInfusion") && getClass() == NEIAltarRecipeHandler.class) {
 			for(AltarRecipe recipe: AltarRecipe.altarRecipes) {
-				FMLLog.info("looked");
 				if(recipe.getOutput() != null) {
-					System.out.println("found");
 					arecipes.add(new CachedAltarRecipe(recipe));
 				}
 			}
@@ -68,10 +66,8 @@ public class NEIAltarRecipeHandler extends TemplateRecipeHandler {
 	@Override
 	public void loadCraftingRecipes(ItemStack result) {
 		for(AltarRecipe recipe: AltarRecipe.altarRecipes) {
-			System.out.println("looked");
 			if(NEIServerUtils.areStacksSameTypeCrafting(recipe.getOutput(), result)) {
 				if(recipe.getOutput() != null) {
-					System.out.println("found");
 					arecipes.add(new CachedAltarRecipe(recipe));
 				}
 			}
@@ -81,10 +77,8 @@ public class NEIAltarRecipeHandler extends TemplateRecipeHandler {
 	@Override
     public void loadUsageRecipes(ItemStack ingredient)  {
 		for(AltarRecipe recipe: AltarRecipe.altarRecipes) {
-			System.out.println("looked");
 			if(NEIServerUtils.areStacksSameTypeCrafting(recipe.getInput(), ingredient)) {
 				if(recipe.getOutput() != null) {
-					System.out.println("found");
 					arecipes.add(new CachedAltarRecipe(recipe));
 				}
 			}

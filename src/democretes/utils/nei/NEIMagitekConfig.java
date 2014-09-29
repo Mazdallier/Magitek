@@ -7,7 +7,7 @@ import codechicken.nei.api.IConfigureNEI;
 import cpw.mods.fml.common.FMLLog;
 import democretes.block.MTBlocks;
 
-public class NEIConfigs implements IConfigureNEI {	
+public class NEIMagitekConfig implements IConfigureNEI {	
 	
 	@Override
 	public void loadConfig() {
@@ -16,6 +16,13 @@ public class NEIConfigs implements IConfigureNEI {
 		
 		API.registerRecipeHandler(new NEIAltarRecipeHandler());
 		API.registerUsageHandler(new NEIAltarRecipeHandler());
+		API.registerRecipeHandler(new NEIRitualRecipeHandler.NEIBasicRitualHandler());
+		API.registerUsageHandler(new NEIRitualRecipeHandler.NEIBasicRitualHandler());
+		API.registerRecipeHandler(new NEIRitualRecipeHandler.NEIAdvancedRitualHandler());
+		API.registerUsageHandler(new NEIRitualRecipeHandler.NEIAdvancedRitualHandler());
+		API.registerRecipeHandler(new NEIRitualRecipeHandler.NEIComplexRitualHandler());
+		API.registerUsageHandler(new NEIRitualRecipeHandler.NEIComplexRitualHandler());
+		API.registerRecipeHandler(new NEIReconstructorRecipeHandler());
 	}
 
 	@Override

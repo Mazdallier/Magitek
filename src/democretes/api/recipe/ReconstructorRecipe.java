@@ -20,7 +20,7 @@ public class ReconstructorRecipe {
 		return energy;
 	}
 	
-	public ItemStack getStack() {
+	public ItemStack getOutput() {
 		return stack;
 	}
 

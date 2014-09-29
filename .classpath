@@ -3,5 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/NotEnoughItems"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CodeChickenCore"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CodeChickenLib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

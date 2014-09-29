@@ -22,8 +22,8 @@ public class NEIAltarRecipeHandler extends TemplateRecipeHandler {
 		int macht;
 		
 		public CachedAltarRecipe(AltarRecipe recipe) {
-			input = new PositionedStack(recipe.getInput(), 32, 12);
-			output = new PositionedStack(recipe.getOutput(), 112, 31);
+			input = new PositionedStack(recipe.getInput(), 28, 2);
+			output = new PositionedStack(recipe.getOutput(), 110, 23);
 			macht = recipe.getEnergyRequired();
 		}
 		
@@ -55,7 +55,7 @@ public class NEIAltarRecipeHandler extends TemplateRecipeHandler {
 	@Override
 	public void drawExtras(int id) {
 		CachedAltarRecipe recipe = (CachedAltarRecipe)arecipes.get(id);
-		Minecraft.getMinecraft().fontRenderer.drawString("Macht: " + recipe.macht, 62, 34, 0);
+		Minecraft.getMinecraft().fontRenderer.drawString(StringHelper.GRAY + "Macht: " + recipe.macht, 62, 50, 0);
 	}
 	
 	@Override

@@ -11,7 +11,7 @@ public class ReconstructorHelper {
 			return 0;
 		}
 		for(ReconstructorRecipe recipe : ReconstructorRecipe.reconstructorRecipes) {
-			if(recipe.getStack().isItemEqual(stack)) {
+			if(recipe.getOutput().isItemEqual(stack)) {
 				return recipe.getEnergy();
 			}
 		}

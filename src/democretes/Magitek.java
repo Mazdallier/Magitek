@@ -31,7 +31,7 @@ import democretes.utils.network.PacketHandler;
 
 @Mod(modid = Reference.MOD_ID, 
 	 name = Reference.MOD_NAME, 
-	 version = "0.0.1",
+	 version = "0.2.0",
 	 guiFactory = "democretes.utils.handlers.GuiFactory")
  
 public class Magitek {

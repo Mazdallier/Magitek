@@ -1,5 +1,6 @@
 package democretes.utils.crafting;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -28,8 +29,10 @@ public final class RecipeRegistry {
 		ReconstructorRegistry.initReconstructorRecipes();
 		initShapedRecipes();
 		initShapelessRecipes();
-		initBaubleRecipes();
-		RitualRegistry.initBaubleRecipes();
+		if(Loader.isModLoaded("Baubles")) {
+			initBaubleRecipes();
+			RitualRegistry.initBaubleRecipes();			
+		}
 	}	
 	
 	public static void initShapedRecipes() {

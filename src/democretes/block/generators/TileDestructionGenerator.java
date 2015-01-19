@@ -24,8 +24,8 @@ public class TileDestructionGenerator extends TileGeneratorBase {
 	
 	public TileDestructionGenerator() {
 		super(50000);
-		this.purity.maxPurity = 10000;
-		this.purity.minPurity = 10000;
+		this.purity.maxPurity = 50000;
+		this.purity.minPurity = 50000;
 	}	
 	
 	private int count;
@@ -50,9 +50,9 @@ public class TileDestructionGenerator extends TileGeneratorBase {
 				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 			}
 			count = 0;
-			this.decreasePurity(amount/5);
+			this.decreasePurity(amount/10);
 		}
-		return amount*5/3;
+		return amount*5/2;
 	}
 
 	@Override

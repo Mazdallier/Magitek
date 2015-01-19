@@ -45,7 +45,7 @@ public class TileRunicGenerator extends TileGeneratorBase implements IInventory 
 			for(int i = 0; i < 5; i++) {
 				Magitek.proxy.orbFX(this.worldObj, this.xCoord + 0.5D, this.yCoord + 1.0D, this.zCoord + 0.5D, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (float)Math.random(), (float)Math.random(), (float)Math.random(), (float)Math.random(), 2, true);
 			}
-			this.increasePurity(2);
+			this.decreasePurity(5);
 			return RunicHelper.getMachtFromOutput(stack)*4/5;
 		}
 		return 0;

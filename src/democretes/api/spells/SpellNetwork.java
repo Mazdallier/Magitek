@@ -8,6 +8,7 @@ public class SpellNetwork extends net.minecraft.world.WorldSavedData {
     public int purity;
     public int macht;
     public int max = 10000;
+    public int tier;
 
     public SpellNetwork(String string){
         super(string);
@@ -20,6 +21,7 @@ public class SpellNetwork extends net.minecraft.world.WorldSavedData {
 		this.purity = nbt.getInteger("Purity");
 		this.macht = nbt.getInteger("Macht");
 		this.max = nbt.getInteger("Max");
+		this.tier = nbt.getInteger("Tier");
 	}
 
 	@Override
@@ -30,6 +32,7 @@ public class SpellNetwork extends net.minecraft.world.WorldSavedData {
 		nbt.setInteger("Purity", this.purity);
 		nbt.setInteger("Macht", this.macht);
 		nbt.setInteger("Max", this.max);
+		nbt.setInteger("Tier", this.tier);
 	}
 	
 	

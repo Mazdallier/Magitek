@@ -37,12 +37,14 @@ public class SpellHelper {
 	public static void setPlayerPurity(EntityPlayer player, int purity) {
 		SpellNetwork network = getNetwork(player);
         network.purity = purity;
+        setPurityTier(network);
         network.markDirty();
 	}
 	
 	public static void increasePlayerPurity(EntityPlayer player, int purity) {
 		SpellNetwork network = getNetwork(player);
         network.purity += purity;
+        setPurityTier(network);
         network.markDirty();
 	}
 	
@@ -50,6 +52,20 @@ public class SpellHelper {
 		SpellNetwork network = getNetwork(player);
         network.purity -= purity;
         network.markDirty();
+	}	
+
+	public static void setPurityTier(SpellNetwork network) {
+		if(Math.abs(network.purity) >= 50000) {
+			network.tier = 3;
+		}else if(Math.abs(network.purity) >= 25000 && network.tier < 2) {
+			network.tier = 2;
+		}else if(Math.abs(network.purity) >= 1000 && network.tier < 1) {
+			network.tier = 1;
+		}
+	}
+	
+	public static int getTier(EntityPlayer player) {
+		return getNetwork(player).tier;
 	}
 	
 	public static int getMacht(EntityPlayer player) {
@@ -101,5 +117,6 @@ public class SpellHelper {
 		}
 		return 0;
 	}
+	
 
 }

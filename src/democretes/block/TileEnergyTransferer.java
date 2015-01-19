@@ -3,7 +3,7 @@ package democretes.block;
 import java.util.ArrayList;
 
 import democretes.Magitek;
-import democretes.api.helpers.MagitekHelper;
+import democretes.api.MagitekApi;
 import democretes.api.macht.IMachtStorage;
 import democretes.block.dummy.TileSubTerraDummy;
 import democretes.utils.handlers.ConfigHandler;
@@ -71,14 +71,14 @@ public class TileEnergyTransferer extends TilePurityBase {
 		Block block = this.worldObj.getBlock(xx, yy, zz);
 		boolean horizon = false;
 		boolean vertical = false;
-		for(int i = 0; i < MagitekHelper.horizontal.size(); i++) {
-			if(block == MagitekHelper.horizontal.get(i)) {
+		for(int i = 0; i < MagitekApi.horizontal.size(); i++) {
+			if(block == MagitekApi.horizontal.get(i)) {
 				horizon = true;
 				break;
 			}
 		}
-		for(int i = 0; i < MagitekHelper.vertical.size(); i++) {
-			if(block == MagitekHelper.vertical.get(i)) {
+		for(int i = 0; i < MagitekApi.vertical.size(); i++) {
+			if(block == MagitekApi.vertical.get(i)) {
 				vertical = true;
 				break;
 			}

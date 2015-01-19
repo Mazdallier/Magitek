@@ -1,4 +1,4 @@
-package democretes.item.tools;
+package democretes.item.sigils;
 
 import java.awt.Color;
 import java.util.List;

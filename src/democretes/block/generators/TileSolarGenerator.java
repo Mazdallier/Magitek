@@ -10,7 +10,7 @@ public class TileSolarGenerator extends TileGeneratorBase {
 	@Override
 	protected boolean canGenerate() {
 		if(this.worldObj.isRaining() || this.worldObj.isThundering() || !this.worldObj.isDaytime()) {
-			this.decreasePurity(1);
+			this.increasePurity(1);
 			return false;
 		}
 		return this.worldObj.canBlockSeeTheSky(this.xCoord, this.yCoord + 1, this.zCoord);

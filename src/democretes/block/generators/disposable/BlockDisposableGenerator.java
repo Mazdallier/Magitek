@@ -25,7 +25,7 @@ public class BlockDisposableGenerator extends BlockMTBase {
 	
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for(int i = 0; i < 1; i++) {
+		for(int i = 0; i < 2; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}
@@ -37,9 +37,9 @@ public class BlockDisposableGenerator extends BlockMTBase {
 		return new ItemStack(block, 1, meta);
 	}
 	
-	IIcon[] top = new IIcon[1];
-	IIcon[] bot = new IIcon[1];
-	IIcon[] sides = new IIcon[1];
+	IIcon[] top = new IIcon[2];
+	IIcon[] bot = new IIcon[2];
+	IIcon[] sides = new IIcon[2];
 	
 	@Override
 	public void registerBlockIcons(IIconRegister ir) {
@@ -70,6 +70,8 @@ public class BlockDisposableGenerator extends BlockMTBase {
 		switch(meta) {
 		case 0:
 			return new TileDetonationGenerator();
+		case 1:
+			return new TileLightningGenerator();
 		}
 		return null;
 	}

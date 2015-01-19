@@ -34,6 +34,7 @@ public class TileThermalGenerator extends TileGeneratorBase implements IFluidHan
 	@Override
 	protected int getFuel() {
 		if(count%40 == 0) {	
+			this.decreasePurity(4);
 			return this.tank.drain(100, true).amount;
 		}
 		return 0;

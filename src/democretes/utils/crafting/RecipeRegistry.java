@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import democretes.api.helpers.RitualType;
+import democretes.api.RitualType;
 import democretes.api.recipe.AltarRecipe;
 import democretes.api.recipe.RitualRecipe;
 import democretes.api.recipe.RuneRecipe;

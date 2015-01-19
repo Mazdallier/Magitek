@@ -16,7 +16,7 @@ import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
-import democretes.api.helpers.RitualType;
+import democretes.api.RitualType;
 import democretes.api.recipe.RitualRecipe;
 import democretes.utils.helper.StringHelper;
 

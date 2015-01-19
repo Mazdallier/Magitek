@@ -13,14 +13,9 @@ public abstract class TileSingleGeneratorBase extends TileGeneratorBase {
 	int drain = 50;
 	float explosionStrength = 1.5F;
 	
-	public TileSingleGeneratorBase(int energy) {
-		super(10000);
-		this.energyRemaining = this.maxEnergy = energy;
-	}
-	
-	public TileSingleGeneratorBase(int capacity, int energy) {
+	public TileSingleGeneratorBase(int capacity) {
 		super(capacity);
-		this.energyRemaining = this.maxEnergy = energy;
+		this.energyRemaining = this.maxEnergy = capacity;
 	}
 
 	@Override

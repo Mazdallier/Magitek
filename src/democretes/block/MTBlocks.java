@@ -12,6 +12,7 @@ import democretes.block.dummy.TileSubTerraDummy;
 import democretes.block.generators.BlockGenerator;
 import democretes.block.generators.ItemBlockGenerator;
 import democretes.block.generators.TileDestructionGenerator;
+import democretes.block.generators.TileMiniSpreader;
 import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
@@ -21,6 +22,7 @@ import democretes.block.generators.TileThermalGenerator;
 import democretes.block.generators.disposable.BlockDisposableGenerator;
 import democretes.block.generators.disposable.ItemBlockDisposableGenerator;
 import democretes.block.generators.disposable.TileDetonationGenerator;
+import democretes.block.generators.disposable.TileLightningGenerator;
 import democretes.block.machines.BlockMachine;
 import democretes.block.machines.ItemBlockMachine;
 import democretes.block.machines.TilePurityInverter;
@@ -82,5 +84,7 @@ public class MTBlocks {
 		GameRegistry.registerTileEntity(TileDestructionGenerator.class, Reference.MOD_NAME + "TileDestructionGenerator");
 		GameRegistry.registerTileEntity(TileItemTransfer.class, Reference.MOD_NAME + "TileItemTransfer");
 		GameRegistry.registerTileEntity(TileReconstructor.class, Reference.MOD_NAME + "TileReconstructor");
+		GameRegistry.registerTileEntity(TileMiniSpreader.class, Reference.MOD_NAME + "TileMiniSpreader");
+		GameRegistry.registerTileEntity(TileLightningGenerator.class,  Reference.MOD_NAME + "TileLightningGenerator");
 	}
 }

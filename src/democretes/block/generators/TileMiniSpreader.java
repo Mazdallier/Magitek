@@ -1,19 +1,17 @@
 package democretes.block.generators;
 
+import net.minecraft.block.Block;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.ForgeDirection;
 import democretes.api.MagitekApi;
 import democretes.api.macht.IMachtStorage;
 import democretes.block.TileEnergyTransferer;
-import democretes.block.dummy.TileSubTerraDummy;
 import democretes.utils.handlers.ConfigHandler;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileSpreader extends TileEnergyTransferer {
+public class TileMiniSpreader extends TileEnergyTransferer {
 	
-	public TileSpreader() {
-		super(50000);
+	public TileMiniSpreader() {
+		super(1000);
 	}
 	
 	@Override
@@ -68,7 +66,7 @@ public class TileSpreader extends TileEnergyTransferer {
 					if(tile instanceof IMachtStorage) {
 						if(tile instanceof TileGeneratorBase) {
 							canSearch = false;
-							break;
+							break;							
 						}
 						this.tiles.add(tile);
 						canSearch = false;
@@ -95,6 +93,4 @@ public class TileSpreader extends TileEnergyTransferer {
 			}
 		}
 	}
-	
-
 }

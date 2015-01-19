@@ -9,6 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import democretes.block.generators.TileDestructionGenerator;
+import democretes.block.generators.TileMiniSpreader;
 import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
@@ -41,6 +42,8 @@ public class RenderBlockGenerator implements ISimpleBlockRenderingHandler{
 			dispatch.renderTileEntityAt(new TileThermalGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
 		case 6:
 			dispatch.renderTileEntityAt(new TileDestructionGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
+		case 7:
+			dispatch.renderTileEntityAt(new TileMiniSpreader(), 0.0D, 0.0D, 0.0D, 0.0F);
 		}
 		GL11.glPopMatrix();
 	}

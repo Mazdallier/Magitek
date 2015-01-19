@@ -3,6 +3,7 @@ package democretes.api.helpers;
 import java.util.ArrayList;
 
 import net.minecraft.item.ItemStack;
+import democretes.api.RitualType;
 import democretes.api.recipe.RitualRecipe;
 
 public class RitualHelper {

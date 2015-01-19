@@ -1,4 +1,4 @@
-package democretes.item.tools;
+package democretes.item.sigils;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;

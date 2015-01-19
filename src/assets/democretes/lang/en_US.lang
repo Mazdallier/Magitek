@@ -44,6 +44,7 @@ tile.magitek.generator.3.name=Macht Crystal
 tile.magitek.generator.4.name=Runic Generator
 tile.magitek.generator.5.name=Thermal Assimilator
 tile.magitek.generator.6.name=Chunk Devourer
+tile.magitek.generator.7.name=Macht Fragment
 tile.magitek.machine.0.name=Runic Constructor
 tile.magitek.machine.1.name=Purity Inverter
 tile.magitek.machine.2.name=Mass Constructor

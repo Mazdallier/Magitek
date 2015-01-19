@@ -15,4 +15,17 @@ public class Reference {
 	public static final String MODEL_ALTAR_TEXTURE = MODEL_PREFIX + "ModelAltar.png";
 	public static final String MODEL_ITEM_TRANSFER_TEXTURE = MODEL_PREFIX + "ModelItemTransfer.png";
 	public static final String MODEL_THERMAL_TEXTURE = MODEL_PREFIX + "ModelThermalGenerator.png";
+	
+
+	public static final String ARMOR_PREFIX = TEXTURE_PREFIX + "textures/armor/";
+	
+	public static final String ARMOR_PURE_1 = ARMOR_PREFIX + "pure_layer_1.png";
+	public static final String ARMOR_PURE_2 = ARMOR_PREFIX + "pure_layer_2.png";
+	
+	public static final String ARMOR_DARK_1 = ARMOR_PREFIX + "dark_layer_1.png";
+	public static final String ARMOR_DARK_2 = ARMOR_PREFIX + "dark_layer_2.png";
+	
+	
+	
+	
 }

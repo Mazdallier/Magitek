@@ -10,7 +10,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import democretes.api.helpers.MagitekHelper;
+import democretes.api.MagitekApi;
 import democretes.utils.handlers.ConfigHandler;
 import democretes.utils.helper.DirectionHelper;
 
@@ -88,8 +88,8 @@ public class TileDestructionGenerator extends TileGeneratorBase {
 		int zz = zCoord;
 		base = this.worldObj.getBlock(xx, yy, zz);
 		boolean horizon = false;
-		for(int i = 0; i < MagitekHelper.horizontal.size(); i++) {
-			if(base == MagitekHelper.horizontal.get(i)) {
+		for(int i = 0; i < MagitekApi.horizontal.size(); i++) {
+			if(base == MagitekApi.horizontal.get(i)) {
 				horizon = true;
 				break;
 			}

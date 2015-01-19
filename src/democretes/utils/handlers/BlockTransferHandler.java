@@ -1,6 +1,6 @@
 package democretes.utils.handlers;
 
-import democretes.api.helpers.MagitekHelper;
+import democretes.api.MagitekApi;
 import democretes.block.MTBlocks;
 import net.minecraft.init.Blocks;
 
@@ -8,21 +8,21 @@ public class BlockTransferHandler {
 	
 	public static void registerBlocks() {
 
-		MagitekHelper.registerBlockForHorizontalEnergyTransfer(Blocks.sandstone);
-		MagitekHelper.registerBlockForHorizontalEnergyTransfer(Blocks.stonebrick);
-		MagitekHelper.registerBlockForHorizontalEnergyTransfer(Blocks.nether_brick);
-		MagitekHelper.registerBlockForHorizontalEnergyTransfer(Blocks.brick_block);
-		MagitekHelper.registerBlockForHorizontalEnergyTransfer(Blocks.obsidian);
-		MagitekHelper.registerBlockForHorizontalEnergyTransfer(Blocks.iron_block);
-		MagitekHelper.registerBlockForHorizontalEnergyTransfer(Blocks.gold_block);
+		MagitekApi.registerBlockForHorizontalEnergyTransfer(Blocks.sandstone);
+		MagitekApi.registerBlockForHorizontalEnergyTransfer(Blocks.stonebrick);
+		MagitekApi.registerBlockForHorizontalEnergyTransfer(Blocks.nether_brick);
+		MagitekApi.registerBlockForHorizontalEnergyTransfer(Blocks.brick_block);
+		MagitekApi.registerBlockForHorizontalEnergyTransfer(Blocks.obsidian);
+		MagitekApi.registerBlockForHorizontalEnergyTransfer(Blocks.iron_block);
+		MagitekApi.registerBlockForHorizontalEnergyTransfer(Blocks.gold_block);
 		
-		MagitekHelper.registerBlockForVerticalEnergyTransfer(Blocks.coal_block);
-		MagitekHelper.registerBlockForVerticalEnergyTransfer(Blocks.quartz_block);
-		MagitekHelper.registerBlockForVerticalEnergyTransfer(Blocks.lapis_block);
+		MagitekApi.registerBlockForVerticalEnergyTransfer(Blocks.coal_block);
+		MagitekApi.registerBlockForVerticalEnergyTransfer(Blocks.quartz_block);
+		MagitekApi.registerBlockForVerticalEnergyTransfer(Blocks.lapis_block);
 
-		MagitekHelper.registerBlockForEnergyTransfer(Blocks.diamond_block);
-		MagitekHelper.registerBlockForEnergyTransfer(Blocks.emerald_block);
-		MagitekHelper.registerBlockForEnergyTransfer(MTBlocks.simple);
+		MagitekApi.registerBlockForEnergyTransfer(Blocks.diamond_block);
+		MagitekApi.registerBlockForEnergyTransfer(Blocks.emerald_block);
+		MagitekApi.registerBlockForEnergyTransfer(MTBlocks.simple);
 	}
 
 }

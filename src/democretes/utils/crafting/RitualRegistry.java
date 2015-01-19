@@ -3,7 +3,7 @@ package democretes.utils.crafting;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import democretes.api.helpers.RitualType;
+import democretes.api.RitualType;
 import democretes.api.recipe.RitualRecipe;
 import democretes.api.spells.SpellHelper;
 import democretes.block.MTBlocks;

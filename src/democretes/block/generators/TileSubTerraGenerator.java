@@ -19,9 +19,9 @@ public class TileSubTerraGenerator extends TileGeneratorBase {
 	@Override
 	protected int getFuel() {
 		if(count++ >= 20) {
-			this.increasePurity(2);
+			this.decreasePurity(2);
 			count = 0;
-			return 5 + (this.getPurity()/500);
+			return 5 + Math.abs(this.getPurity()/500);
 		}
 		return 0;
 	}

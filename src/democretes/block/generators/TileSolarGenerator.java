@@ -21,9 +21,7 @@ public class TileSolarGenerator extends TileGeneratorBase {
 		if(count++ >= 40) {
 			this.increasePurity(2);
 			count = 0;
-			if(isDark()) {
-				return 1;
-			}else if(isLight()) {
+			if(isLight()) {
 				return 4;
 			}else{
 				return 2;

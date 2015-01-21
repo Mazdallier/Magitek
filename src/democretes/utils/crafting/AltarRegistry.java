@@ -19,8 +19,8 @@ public class AltarRegistry {
 	public static void initAltarRecipes() {
 		rune = new AltarRecipe(new ItemStack(Blocks.stone), new ItemStack(MTItems.material, 1, 0), 250);
 		brickInfused = new AltarRecipe(new ItemStack(Blocks.stonebrick), new ItemStack(MTBlocks.simple, 1, 1), 200);
-		sigilCrude = new AltarRecipe(new ItemStack(MTItems.material, 1, 1), new ItemStack(MTItems.ritualSigil, 1, 0), 5000);
-		machtIngot = new AltarRecipe(new ItemStack(Items.iron_ingot), new ItemStack(MTItems.material, 1, 3), 1000);
-		scroll = new AltarRecipe(new ItemStack(Items.paper), new ItemStack(MTItems.material, 1, 2), 1000);
+		sigilCrude = new AltarRecipe(new ItemStack(MTItems.material, 1, 1), new ItemStack(MTItems.ritualSigil, 1, 0), 1000);
+		machtIngot = new AltarRecipe(new ItemStack(Items.iron_ingot), new ItemStack(MTItems.material, 1, 3), 500);
+		scroll = new AltarRecipe(new ItemStack(Items.paper), new ItemStack(MTItems.material, 1, 2), 500);
 	}
 }

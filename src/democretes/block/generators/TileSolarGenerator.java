@@ -22,9 +22,9 @@ public class TileSolarGenerator extends TileGeneratorBase {
 			this.increasePurity(2);
 			count = 0;
 			if(isLight()) {
-				return 4;
+				return 8;
 			}else{
-				return 2;
+				return 4;
 			}
 		}
 		return 0;

@@ -38,10 +38,10 @@ item.magitek.ring.macht.2.name=Infinity Ring
 #Blocks
 tile.magitek.generator.0.name=Solar Array
 tile.magitek.generator.1.name=Sub Terranean Generator
-tile.magitek.generator.2.name=Purity Extractor
+tile.magitek.generator.2.name=Purity Reactor
 tile.magitek.generator.3.name=Macht Crystal
 tile.magitek.generator.4.name=Runic Generator
-tile.magitek.generator.5.name=Thermal Assimilator
+tile.magitek.generator.5.name=Magmatic Consumer
 tile.magitek.generator.6.name=Chunk Devourer
 tile.magitek.generator.7.name=Macht Fragment
 tile.magitek.machine.0.name=Runic Constructor

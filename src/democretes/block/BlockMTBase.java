@@ -45,6 +45,11 @@ public class BlockMTBase extends BlockContainer implements IBlockDebug {
 	}
 	
 	@Override
+	public int damageDropped(int meta) {
+		return meta;
+	}
+	
+	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
 		TileEntity tile = world.getTileEntity(x, y, z);
 		if(tile instanceof IInventory) {

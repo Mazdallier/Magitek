@@ -1,11 +1,10 @@
 package democretes.block.generators;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -13,20 +12,18 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import democretes.api.helpers.AltarHelper;
 import democretes.api.helpers.RunicHelper;
+import democretes.api.macht.IMachtStorage;
 import democretes.block.BlockMTBase;
 import democretes.block.MTBlocks;
-import democretes.block.altar.TileAltar;
 import democretes.block.dummy.BlockSubTerraDummy;
-import democretes.block.generators.disposable.TileDetonationGenerator;
-import democretes.lib.Reference;
 import democretes.lib.RenderIds;
 
 public class BlockGenerator extends BlockMTBase {
@@ -51,7 +48,7 @@ public class BlockGenerator extends BlockMTBase {
 		Block block = world.getBlock(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		return new ItemStack(block, 1, meta);
-	}
+	}	
 	
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess access, int x, int y, int z) {
@@ -69,6 +66,25 @@ public class BlockGenerator extends BlockMTBase {
 		}
 	}
 	
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+		if(metadata == 3) {
+			ArrayList<ItemStack> stacks = new ArrayList<ItemStack>();
+			return stacks;
+		}
+		return super.getDrops(world, x, y, z, metadata, fortune);
+	}
+	
+	@Override
+    public void onBlockPreDestroy(World world, int x, int y, int z, int meta) {
+		if(meta == 3) {
+			int macht = ((IMachtStorage)world.getTileEntity(x, y, z)).getMachtStored();
+			ItemStack stack = new ItemStack(this, 1, 3);
+			stack.stackTagCompound = new NBTTagCompound();
+			stack.stackTagCompound.setInteger("Macht", macht);
+			world.spawnEntityInWorld(new EntityItem(world, x, y, z, stack));			
+		}
+	}
 	
 	
 	@Override

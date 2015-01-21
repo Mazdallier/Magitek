@@ -21,7 +21,7 @@ public class TileSubTerraGenerator extends TileGeneratorBase {
 		if(count++ >= 20) {
 			this.decreasePurity(2);
 			count = 0;
-			return 5 + Math.abs(this.getPurity()/500);
+			return 10 + Math.abs(this.getPurity()/500);
 		}
 		return 0;
 	}

@@ -9,6 +9,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 import democretes.utils.network.PacketHandler;
 
 public class TilePurityGenerator extends TileGeneratorBase{
+	
+	public TilePurityGenerator() {
+		this.purity.maxPurity = 10000;
+		this.purity.minPurity = -10000;
+	}
 
 	@Override
 	protected boolean canGenerate() {
@@ -18,16 +23,9 @@ public class TilePurityGenerator extends TileGeneratorBase{
 	int count;
 	@Override
 	protected int getFuel() {
-		count++;
-		if(count == 20) {
+		if(count++ >= 20) {
 			count = 0;
-			if(this.getPurity() < 0) {
-				this.increasePurity(1);
-				return 5;
-			}else{
-				this.decreasePurity(1);
-				return 10;
-			}
+			return 1 + Math.abs(this.getPurity()/100);
 		}
 		return 0;
 	}

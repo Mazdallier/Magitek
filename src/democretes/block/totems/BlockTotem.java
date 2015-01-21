@@ -18,8 +18,8 @@ public class BlockTotem extends BlockMTBase {
 	public void registerBlockIcons(IIconRegister ir) {
 		facingActive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_Active");
 		facingInactive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_Inactive");
-		vertical = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vertical");;
-		sides = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_side");;
+		vertical = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vertical");
+		sides = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_side");
 	};
 	
 	IIcon facingInactive;

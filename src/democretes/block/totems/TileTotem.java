@@ -32,7 +32,13 @@ public class TileTotem extends TileMTBase {
 				this.worldObj.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, 0, 1 | 2);
 				return;
 			}
-			this.worldObj.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, 15, 1 | 2);
+			for(EntityPlayer p : players) {
+				if(!p.isInvisible()) {
+					this.worldObj.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, 15, 1 | 2);
+					return;					
+				}
+			}
+			this.worldObj.setBlockMetadataWithNotify(this.xCoord, this.yCoord, this.zCoord, 0, 1 | 2);
 		}
 	}
 

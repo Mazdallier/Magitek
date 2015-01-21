@@ -12,10 +12,8 @@ import democretes.block.generators.TileGeneratorBase;
 
 public class TileMachtCoil extends TileMTBase implements IMachtStorage  {
 	
-	public ArrayList<TileEntity> sources = new ArrayList();	
 	public ArrayList<TileEntity> receivers = new ArrayList();	
-	public int range = 3;
-	MachtStorage macht = new MachtStorage(100);
+	MachtStorage macht = new MachtStorage(5000);
 
 	int count = 100;
 	@Override
@@ -23,26 +21,13 @@ public class TileMachtCoil extends TileMTBase implements IMachtStorage  {
 		if(this.worldObj.isRemote) {
 			return;
 		}
-		for(TileEntity tile : sources) {
-			if(tile != null) {
-				if(canExtract(tile)) {
-					extractFrom(tile);
-				}
-			}else{
-				sources.remove(tile);
-			}
-		}
-		if(count == 100) {
+		if(count++ >= 100) {
 			count = 0;
 			getReceivers();
-		}else{
-			count++;
 		}
 		for(TileEntity tile : receivers) {
 			if(tile != null) {
-				if(canTransfer(tile)) {
-					transferTo(tile);
-				}
+				transferTo(tile);				
 			}else{
 				receivers.remove(tile);
 			}
@@ -52,9 +37,9 @@ public class TileMachtCoil extends TileMTBase implements IMachtStorage  {
 	public void getReceivers() {
 		for(int yy = -25; yy < 25; yy++) {
 			for(int zz = -25; zz < 25; zz++) {
-				for(int xx = -25; xx < xx; yy++) {
-					TileEntity tile = this.worldObj.getTileEntity(xx, yy, zz);
-					if(canLink(tile) && !this.sources.contains(tile)) {
+				for(int xx = -25; xx < 25; xx++) {
+					TileEntity tile = this.worldObj.getTileEntity(this.xCoord + xx, this.yCoord + yy, this.zCoord + zz);
+					if(canLink(tile)) {
 						this.receivers.add(tile);
 					}
 				}
@@ -65,21 +50,9 @@ public class TileMachtCoil extends TileMTBase implements IMachtStorage  {
 	public boolean canLink(TileEntity tile) {
 		return tile instanceof IMachtStorage && tile instanceof TileGeneratorBase == false;
 	}
-
-	public void extractFrom(TileEntity tile) {
-		receiveMacht(((IMachtStorage)tile).extractMacht(this.macht.getMachtStored()));
-	}
-
-	public boolean canExtract(TileEntity tile) {
-		return ((IMachtStorage)tile).getMachtStored() > 0;
-	}
 	
 	public void transferTo(TileEntity tile) {
 		extractMacht(((IMachtHandler)tile).receiveMacht(this.macht.getMachtStored()/this.receivers.size()));
-	}
-
-	public boolean canTransfer(TileEntity tile) {
-		return this.macht.getMachtStored() > 0;
 	}
 	
 	@Override

@@ -22,7 +22,6 @@ import democretes.item.sigils.ItemRitualSigil;
 import democretes.item.simple.ItemMaterial;
 import democretes.item.simple.ItemRune;
 import democretes.item.spells.ItemSpellBinder;
-import democretes.item.tools.ItemCoilLinker;
 import democretes.item.tools.ItemDebugger;
 import democretes.lib.ItemNames;
 
@@ -31,7 +30,6 @@ public class MTItems {
 	public static Item material;
 	public static Item rune;
 	public static Item debugger;
-	public static Item link;
 	public static Item binder;
 	public static Item machtSigil;
 	public static Item puritySigil;
@@ -53,7 +51,6 @@ public class MTItems {
 	public static void init() {
 		material = new ItemMaterial();
 		debugger = new ItemDebugger();
-		link = new ItemCoilLinker();
 		binder = new ItemSpellBinder();
 		rune = new ItemRune();
 		machtSigil = new ItemMachtSigil();

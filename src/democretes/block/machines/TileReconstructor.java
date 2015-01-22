@@ -55,6 +55,7 @@ public class TileReconstructor extends TileMachineBase implements IInventory{
 						if(this.inventory.getItem() == current.getItem() && current.getItemDamage() == this.inventory.getItemDamage()) {
 							if(this.inventory.stackSize < this.inventory.getMaxStackSize()) {
 								this.inventory.stackSize++;
+								this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 								this.current = null;
 								return;
 							}
@@ -62,6 +63,7 @@ public class TileReconstructor extends TileMachineBase implements IInventory{
 						this.worldObj.spawnEntityInWorld(new EntityItem(this.worldObj, this.xCoord + 0.5F, this.yCoord + 0.5F, this.zCoord + 0.5F, current));
 					}else{
 						this.inventory = current.copy();
+						this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 					}
 					this.current = null;
 				}
@@ -165,7 +167,7 @@ public class TileReconstructor extends TileMachineBase implements IInventory{
 		NBTTagCompound tag = nbt.getCompoundTag("Item");
 		this.inventory = ItemStack.loadItemStackFromNBT(tag);	
 	}
-	
+
 	@Override
 	public Packet getDescriptionPacket() {
 		NBTTagCompound nbt = new NBTTagCompound();
@@ -183,4 +185,5 @@ public class TileReconstructor extends TileMachineBase implements IInventory{
 		this.inventory = ItemStack.loadItemStackFromNBT(tag);
 	}
 
+	
 }

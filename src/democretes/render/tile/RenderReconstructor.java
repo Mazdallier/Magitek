@@ -20,10 +20,12 @@ public class RenderReconstructor extends TileEntitySpecialRenderer {
 			if(((TileReconstructor)tile).inventory != null) {
 				GL11.glPushMatrix();
 				if(item == null) {
-					item = new EntityItem(tile.getWorldObj(), tile.xCoord, tile.yCoord + 1, tile.zCoord, ((TileAltar)tile).inventory);
+					item = new EntityItem(tile.getWorldObj(), tile.xCoord, tile.yCoord + 1, tile.zCoord, ((TileReconstructor)tile).inventory);
 				}
 				item.age = (int)tile.getWorldObj().getTotalWorldTime();
 				item.setEntityItemStack(((TileReconstructor)tile).inventory);
+				tile.getWorldObj().getBlock((int)x, (int)y, (int)z).setLightOpacity(0);
+				tile.getWorldObj().getBlock((int)x, (int)y, (int)z).setLightLevel(15.0F);
 				GL11.glColor4f(1F, 1F, 1F, 1F);
 				GL11.glTranslatef(0.5F, 1.0F, 0.5F);
 				((Render)RenderManager.instance.entityRenderMap.get(EntityItem.class)).doRender(item, x, y, z, 1F, f);

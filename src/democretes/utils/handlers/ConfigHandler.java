@@ -10,6 +10,7 @@ import cpw.mods.fml.client.config.GuiConfig;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import democretes.lib.Reference;
 
 public class ConfigHandler {
@@ -31,16 +32,20 @@ public class ConfigHandler {
 	}
 	
 	public static void sync() {	
-		Property syphon = config.get(Configuration.CATEGORY_GENERAL, "Amount the syphon drains per use.", 100);
+        config.setCategoryLanguageKey(Reference.MOD_ID, "configcategory.general").setCategoryComment(Reference.MOD_ID, "configcategory.general");
+		
+        Property syphon = config.get(Reference.MOD_ID, "Amount the syphon drains per use.", 100);
 		syphonAmount = syphon.getInt();
 		
-		Property r = config.get(Configuration.CATEGORY_GENERAL, "Range that generators and runes search.", 15);
+		Property r = config.get(Reference.MOD_ID, "Range that generators and runes search.", 15);
 		range = r.getInt();
 		
-		Property ratio = config.get(Configuration.CATEGORY_GENERAL, "The ratio as a percent at which the Macht Ring will stop providing energy. (MaxPlayerMacht*Ratio)/100.", 75);
+		Property ratio = config.get(Reference.MOD_ID, "The ratio as a percent at which the Macht Ring will stop providing energy. (MaxPlayerMacht*Ratio)/100.", 75);
 		maxRatio = ratio.getInt();
 		
-		config.save();  
+		if(config.hasChanged()) {
+			config.save(); 			
+		} 
 	}
 	
 	public static class ConfigChange {

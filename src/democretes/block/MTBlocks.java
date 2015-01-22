@@ -14,6 +14,7 @@ import democretes.block.generators.BlockGenerator;
 import democretes.block.generators.ItemBlockGenerator;
 import democretes.block.generators.TileDestructionGenerator;
 import democretes.block.generators.TileMiniSpreader;
+import democretes.block.generators.TileOrganicGenerator;
 import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
@@ -31,6 +32,7 @@ import democretes.block.machines.TileReconstructor;
 import democretes.block.machines.TileRuneConstructor;
 import democretes.block.simple.BlockSimple;
 import democretes.block.simple.ItemBlockSimple;
+import democretes.block.totems.BlockEnhancingTotem;
 import democretes.block.totems.BlockTotem;
 import democretes.block.totems.TileTotem;
 import democretes.block.transfer.BlockTransfer;
@@ -50,6 +52,7 @@ public class MTBlocks {
 	public static Block simple;
 	public static Block transfer;
 	public static Block totem;
+	public static Block enhancer;
 	
 	public static void init() {
 		generator = new BlockGenerator();
@@ -62,6 +65,7 @@ public class MTBlocks {
 		simple = new BlockSimple();
 		transfer = new BlockTransfer();
 		totem = new BlockTotem();
+		enhancer = new BlockEnhancingTotem();
 		
 		GameRegistry.registerBlock(generator, ItemBlockGenerator.class, BlockNames.GENERATOR_NAME);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, BlockNames.MACHINE_NAME);
@@ -73,6 +77,7 @@ public class MTBlocks {
 		GameRegistry.registerBlock(simple, ItemBlockSimple.class, BlockNames.SIMPLE_NAME);
 		GameRegistry.registerBlock(transfer, BlockNames.TRANSFER_NAME);
 		GameRegistry.registerBlock(totem, BlockNames.TOTEM_NAME);
+		GameRegistry.registerBlock(enhancer, BlockNames.ENHANCER_NAME);
 		
 		GameRegistry.registerTileEntity(TileSubTerraGenerator.class, Reference.MOD_NAME + "TileSubTerra");
 		GameRegistry.registerTileEntity(TileSubTerraDummy.class, Reference.MOD_NAME + "TileSubTerraDummy");		
@@ -93,5 +98,6 @@ public class MTBlocks {
 		GameRegistry.registerTileEntity(TileMiniSpreader.class, Reference.MOD_NAME + "TileMiniSpreader");
 		GameRegistry.registerTileEntity(TileLightningGenerator.class,  Reference.MOD_NAME + "TileLightningGenerator");
 		GameRegistry.registerTileEntity(TileTotem.class,  Reference.MOD_NAME + "TileTotem");
+		GameRegistry.registerTileEntity(TileOrganicGenerator.class,  Reference.MOD_NAME + "TileOrganicGenerator");
 	}
 }

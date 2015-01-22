@@ -15,6 +15,11 @@ import democretes.lib.Reference;
 
 public class BlockTotem extends BlockMTBase {
 	
+	@Override
+	public String getUnlocalizedName() {
+		return "tile." + Reference.MOD_PREFIX + ".totem";
+	}
+	
 	public void registerBlockIcons(IIconRegister ir) {
 		facingActive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_Active");
 		facingInactive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_Inactive");

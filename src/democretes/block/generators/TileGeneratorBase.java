@@ -9,6 +9,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.Magitek;
 import democretes.api.macht.IMachtStorage;
+import democretes.block.MTBlocks;
 import democretes.block.TileEnergyTransferer;
 import democretes.block.TilePurityBase;
 import democretes.block.dummy.TileSubTerraDummy;
@@ -25,6 +26,7 @@ public abstract class TileGeneratorBase extends TileEnergyTransferer {
 	public TileGeneratorBase(int capacity) {
 		super(capacity);
 	}
+	
 	@Override
 	public void updateEntity() {
 		super.updateEntity();
@@ -45,6 +47,10 @@ public abstract class TileGeneratorBase extends TileEnergyTransferer {
 	protected abstract int getFuel();
 	
 	protected abstract void renderWhenActive();
+	
+	boolean isEnhanced() {
+		return this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == MTBlocks.enhancer;
+	}
 	
 	
 }

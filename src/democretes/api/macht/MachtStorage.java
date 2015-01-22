@@ -12,7 +12,6 @@ public class MachtStorage implements IMachtStorage {
 	
 	int capacity;
 	int macht;
-	boolean supercharge;
 	
 	public MachtStorage(int capacity) {
 		this.capacity = capacity;
@@ -41,11 +40,6 @@ public class MachtStorage implements IMachtStorage {
 	}
 
 	@Override
-	public boolean isSupercharged() {
-		return this.supercharge;
-	}
-
-	@Override
 	public int getCapacity() {
 		return this.capacity;
 	}
@@ -54,21 +48,14 @@ public class MachtStorage implements IMachtStorage {
 	public int getMachtStored() {
 		return this.macht;
 	}
-
-	@Override
-	public void setSupercharged(boolean charge) {
-		this.supercharge = charge;		
-	}
 	
 	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
 		nbt.setInteger("Macht", this.macht);
-		nbt.setBoolean("Charge", this.supercharge);
 		return nbt;
 	}
 	
 	public MachtStorage readFromNBT(NBTTagCompound nbt) {
 		this.macht = nbt.getInteger("Macht");
-		this.supercharge = nbt.getBoolean("Charge");
 		return this;
 	}
 }

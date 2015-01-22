@@ -66,16 +66,6 @@ public class TileMachtCoil extends TileMTBase implements IMachtStorage  {
 	}
 
 	@Override
-	public boolean isSupercharged() {
-		return this.macht.isSupercharged();
-	}
-
-	@Override
-	public void setSupercharged(boolean charge) {
-		this.macht.setSupercharged(charge);
-	}
-
-	@Override
 	public int getCapacity() {
 		return this.macht.getCapacity();
 	}

@@ -8,18 +8,6 @@ package democretes.api.macht;
  */
 public interface IMachtStorage extends IMachtHandler {
 	
-	/** Checks if the tile is supercharged. Supercharged tiles store and use more energy than normal tiles.
-	 * 
-	 * @return True if the tile is supercharged.
-	 */
-	public boolean isSupercharged();
-	
-	/** Set the tile entities supercharge state to the param charge.
-	 * 
-	 * @param charge
-	 */
-	public void setSupercharged(boolean charge);
-	
 	/** Return the maximum amount of macht the tile can store.
 	 * 
 	 * @return capacity

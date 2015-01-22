@@ -76,10 +76,8 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					if(Math.random() > 0.8D) {
 						Magitek.proxy.orbFX(this.worldObj, dummy.xCoord + 0.5D, dummy.yCoord+ 0.2D, dummy.zCoord + 0.5D, motionX, motionY, motionZ, color.getRed()/256.0F, color.getGreen()/256.0F, color.getBlue()/256.0F, (float)Math.random(), 3, true);	
 					}
-					System.out.println(count);
 					if(count++ >= 80) {
-						count = 0;		
-						System.out.println("Taken");
+						count = 0;
 						dummy.decrStackSize(0, 1);;
 						slot++;
 						if(slot == dummies.size()) {

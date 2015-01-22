@@ -54,7 +54,9 @@ tile.magitek.disposable.1.name=Electrocution Generator
 tile.magitek.simple.0.name=Macht Block
 tile.magitek.simple.1.name=Macht Infused Brick
 tile.magitek.transfer.name=Item Discharger
-tile.magitek.totem.name=Glaring Totem
+tile.magitek.totem.vision.name=Glaring Totem
+tile.magitek.totem.enhancer.name=Empowered Totem
+tile.magitek.totem.destruction.name=Destructive Totem
 
 #Spells
 magitek.spell.lowMacht=Your macht is too low to cast this spell.

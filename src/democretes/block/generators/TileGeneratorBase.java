@@ -49,7 +49,7 @@ public abstract class TileGeneratorBase extends TileEnergyTransferer {
 	protected abstract void renderWhenActive();
 	
 	boolean isEnhanced() {
-		return this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == MTBlocks.enhancer;
+		return this.worldObj.getBlock(this.xCoord, this.yCoord - 1, this.zCoord) == MTBlocks.totemEnhancer;
 	}
 	
 	

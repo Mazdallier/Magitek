@@ -23,7 +23,7 @@ public class BlockTransferHandler {
 		MagitekApi.registerBlockForEnergyTransfer(Blocks.diamond_block);
 		MagitekApi.registerBlockForEnergyTransfer(Blocks.emerald_block);
 		MagitekApi.registerBlockForEnergyTransfer(MTBlocks.simple);
-		MagitekApi.registerBlockForEnergyTransfer(MTBlocks.enhancer);
+		MagitekApi.registerBlockForEnergyTransfer(MTBlocks.totemEnhancer);
 	}
 
 }

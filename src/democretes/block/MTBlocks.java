@@ -32,8 +32,9 @@ import democretes.block.machines.TileReconstructor;
 import democretes.block.machines.TileRuneConstructor;
 import democretes.block.simple.BlockSimple;
 import democretes.block.simple.ItemBlockSimple;
+import democretes.block.totems.BlockDestructionTotem;
 import democretes.block.totems.BlockEnhancingTotem;
-import democretes.block.totems.BlockTotem;
+import democretes.block.totems.BlockVisionTotem;
 import democretes.block.totems.TileTotem;
 import democretes.block.transfer.BlockTransfer;
 import democretes.block.transfer.TileItemTransfer;
@@ -51,8 +52,9 @@ public class MTBlocks {
 	public static Block disposable;
 	public static Block simple;
 	public static Block transfer;
-	public static Block totem;
-	public static Block enhancer;
+	public static Block totemVision;
+	public static Block totemEnhancer;
+	public static Block totemDestruction;
 	
 	public static void init() {
 		generator = new BlockGenerator();
@@ -64,8 +66,9 @@ public class MTBlocks {
 		disposable = new BlockDisposableGenerator();
 		simple = new BlockSimple();
 		transfer = new BlockTransfer();
-		totem = new BlockTotem();
-		enhancer = new BlockEnhancingTotem();
+		totemVision = new BlockVisionTotem();
+		totemEnhancer = new BlockEnhancingTotem();
+		totemDestruction = new BlockDestructionTotem();
 		
 		GameRegistry.registerBlock(generator, ItemBlockGenerator.class, BlockNames.GENERATOR_NAME);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, BlockNames.MACHINE_NAME);
@@ -76,8 +79,9 @@ public class MTBlocks {
 		GameRegistry.registerBlock(disposable, ItemBlockDisposableGenerator.class, BlockNames.GENERATOR_NAME + "Disposable");
 		GameRegistry.registerBlock(simple, ItemBlockSimple.class, BlockNames.SIMPLE_NAME);
 		GameRegistry.registerBlock(transfer, BlockNames.TRANSFER_NAME);
-		GameRegistry.registerBlock(totem, BlockNames.TOTEM_NAME);
-		GameRegistry.registerBlock(enhancer, BlockNames.ENHANCER_NAME);
+		GameRegistry.registerBlock(totemVision, BlockNames.VISION_NAME);
+		GameRegistry.registerBlock(totemEnhancer, BlockNames.ENHANCER_NAME);
+		GameRegistry.registerBlock(totemDestruction, BlockNames.DESTRUCTION_NAME);
 		
 		GameRegistry.registerTileEntity(TileSubTerraGenerator.class, Reference.MOD_NAME + "TileSubTerra");
 		GameRegistry.registerTileEntity(TileSubTerraDummy.class, Reference.MOD_NAME + "TileSubTerraDummy");		

@@ -135,4 +135,10 @@ public class BlockMachine extends BlockMTBase {
 		}
 		return null;
 	}
+	
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
 }

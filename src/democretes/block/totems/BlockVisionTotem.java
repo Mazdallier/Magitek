@@ -13,18 +13,18 @@ import democretes.block.BlockMTBase;
 import democretes.block.transfer.TileItemTransfer;
 import democretes.lib.Reference;
 
-public class BlockTotem extends BlockMTBase {
+public class BlockVisionTotem extends BlockMTBase {
 	
 	@Override
 	public String getUnlocalizedName() {
-		return "tile." + Reference.MOD_PREFIX + ".totem";
+		return "tile." + Reference.MOD_PREFIX + ".totem.vision";
 	}
 	
 	public void registerBlockIcons(IIconRegister ir) {
-		facingActive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_Active");
-		facingInactive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_Inactive");
-		vertical = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vertical");
-		sides = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_side");
+		facingActive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vision_Active");
+		facingInactive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vision_Inactive");
+		vertical = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vision_vertical");
+		sides = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vision_side");
 	};
 	
 	IIcon facingInactive;

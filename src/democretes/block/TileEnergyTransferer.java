@@ -86,7 +86,8 @@ public class TileEnergyTransferer extends TilePurityBase {
 		if(horizon) {
 			for(ForgeDirection dir : DirectionHelper.horizontal) {
 				for(int j = 1; j < ConfigHandler.range; j++) {
-					if(block == this.worldObj.getBlock(xx + dir.offsetX*j, yy + dir.offsetY*j, zz + dir.offsetZ*j)) {
+					Block second = this.worldObj.getBlock(xx + dir.offsetX*j, yy + dir.offsetY*j, zz + dir.offsetZ*j);
+					if(block == second || block == MTBlocks.enhancer) {
 						if(this.worldObj.getBlock(xx + dir.offsetX*j, yy + 1 + dir.offsetY*j, zz + dir.offsetZ*j) != null) {
 							TileEntity tile = this.worldObj.getTileEntity(xx + dir.offsetX*j, yy + 1 + dir.offsetY*j, zz + dir.offsetZ*j);
 							if(tile instanceof IMachtStorage) {

@@ -12,6 +12,9 @@ public class TileSubTerraGenerator extends TileGeneratorBase {
 
 	@Override
 	protected boolean canGenerate() {
+		if(this.isEnhanced()) {
+			return this.yCoord < 70;
+		}
 		return this.yCoord < 6;
 	}
 

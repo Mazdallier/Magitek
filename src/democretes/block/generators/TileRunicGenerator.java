@@ -1,19 +1,16 @@
 package democretes.block.generators;
 
-import cpw.mods.fml.common.FMLLog;
-import democretes.Magitek;
-import democretes.api.RitualType;
-import democretes.api.helpers.RitualHelper;
-import democretes.api.helpers.RunicHelper;
-import democretes.item.MTItems;
+import java.util.Random;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import democretes.Magitek;
+import democretes.api.helpers.RunicHelper;
 
 public class TileRunicGenerator extends TileGeneratorBase implements IInventory {
 	
@@ -38,6 +35,12 @@ public class TileRunicGenerator extends TileGeneratorBase implements IInventory 
 			count =  0;
 			ItemStack stack = this.inventory;
 			this.inventory.stackSize--;
+			if(this.isEnhanced()) {
+				Random r = new Random();
+				if(r.nextInt(100) > 50) {
+					this.inventory.stackSize++;
+				}
+			}
 			if(this.inventory.stackSize == 0) {
 				this.inventory = null;
 			}

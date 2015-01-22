@@ -25,7 +25,7 @@ public class TilePurityGenerator extends TileGeneratorBase{
 	protected int getFuel() {
 		if(count++ >= 20) {
 			count = 0;
-			return 1 + Math.abs(this.getPurity()/100);
+			return 1 + Math.abs(this.getPurity()/100/(this.isEnhanced() ? 2 : 1));
 		}
 		return 0;
 	}

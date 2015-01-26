@@ -17,12 +17,14 @@ public class TileOrganicGenerator extends TileGeneratorBase {
 	ArrayList<Block> fuelSources = new ArrayList<Block>() {{ 
 		add(Blocks.leaves);
 		add(Blocks.leaves2);
-		add(Blocks.grass);}};
+		add(Blocks.grass);
+		add(Blocks.vine);}};
 	
 	int count = 20;
 	@Override
 	protected boolean canGenerate() {
 		if(count++ >= 20) {
+			count = 0;
 			getOrganicStuff();			
 		}
 		return fuel > 0;

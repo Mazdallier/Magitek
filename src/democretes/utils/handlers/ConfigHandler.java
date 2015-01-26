@@ -18,6 +18,7 @@ public class ConfigHandler {
 	public static int syphonAmount;
 	public static int range;
 	public static int maxRatio;
+	public static boolean altars;
 
 	public static Configuration config;
 	
@@ -42,6 +43,9 @@ public class ConfigHandler {
 		
 		Property ratio = config.get(Reference.MOD_ID, "The ratio as a percent at which the Macht Ring will stop providing energy. (MaxPlayerMacht*Ratio)/100.", 75);
 		maxRatio = ratio.getInt();
+		
+		Property world = config.get(Reference.MOD_ID, "True if natural dark and light altars should be generated.", true);
+		altars = world.getBoolean();
 		
 		if(config.hasChanged()) {
 			config.save(); 			

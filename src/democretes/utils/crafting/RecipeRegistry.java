@@ -26,6 +26,7 @@ public final class RecipeRegistry {
 		AltarRegistry.initAltarRecipes();
 		RitualRegistry.initRitualRecipes();
 		RitualRegistry.initSpellRecipes();
+		PurityAltarRegistry.initPurityRecipes();
 		ReconstructorRegistry.initReconstructorRecipes();
 		initShapedRecipes();
 		initShapelessRecipes();

@@ -3,7 +3,9 @@ package democretes.block;
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 import democretes.block.altar.BlockAltar;
+import democretes.block.altar.BlockPurityAltar;
 import democretes.block.altar.TileAltar;
+import democretes.block.altar.TilePurityAltar;
 import democretes.block.coils.BlockCoil;
 import democretes.block.coils.TileMachtCoil;
 import democretes.block.dummy.BlockAltarDummy;
@@ -55,6 +57,7 @@ public class MTBlocks {
 	public static Block totemVision;
 	public static Block totemEnhancer;
 	public static Block totemDestruction;
+	public static Block purityAltar;
 	
 	public static void init() {
 		generator = new BlockGenerator();
@@ -69,6 +72,7 @@ public class MTBlocks {
 		totemVision = new BlockVisionTotem();
 		totemEnhancer = new BlockEnhancingTotem();
 		totemDestruction = new BlockDestructionTotem();
+		purityAltar = new BlockPurityAltar();
 		
 		GameRegistry.registerBlock(generator, ItemBlockGenerator.class, BlockNames.GENERATOR_NAME);
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, BlockNames.MACHINE_NAME);
@@ -82,6 +86,7 @@ public class MTBlocks {
 		GameRegistry.registerBlock(totemVision, BlockNames.VISION_NAME);
 		GameRegistry.registerBlock(totemEnhancer, BlockNames.ENHANCER_NAME);
 		GameRegistry.registerBlock(totemDestruction, BlockNames.DESTRUCTION_NAME);
+		GameRegistry.registerBlock(purityAltar, BlockNames.ALTAR_PURITY_NAME);
 		
 		GameRegistry.registerTileEntity(TileSubTerraGenerator.class, Reference.MOD_NAME + "TileSubTerra");
 		GameRegistry.registerTileEntity(TileSubTerraDummy.class, Reference.MOD_NAME + "TileSubTerraDummy");		
@@ -103,5 +108,6 @@ public class MTBlocks {
 		GameRegistry.registerTileEntity(TileLightningGenerator.class,  Reference.MOD_NAME + "TileLightningGenerator");
 		GameRegistry.registerTileEntity(TileTotem.class,  Reference.MOD_NAME + "TileTotem");
 		GameRegistry.registerTileEntity(TileOrganicGenerator.class,  Reference.MOD_NAME + "TileOrganicGenerator");
+		GameRegistry.registerTileEntity(TilePurityAltar.class, Reference.MOD_NAME + "TilePurityAltar");
 	}
 }

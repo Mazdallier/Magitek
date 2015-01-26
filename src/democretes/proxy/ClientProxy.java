@@ -6,6 +6,7 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import democretes.block.altar.TileAltar;
+import democretes.block.altar.TilePurityAltar;
 import democretes.block.coils.TileMachtCoil;
 import democretes.block.generators.TileDestructionGenerator;
 import democretes.block.generators.TileMiniSpreader;
@@ -29,6 +30,7 @@ import democretes.render.tile.RenderDestructionGenerator;
 import democretes.render.tile.RenderItemTransfer;
 import democretes.render.tile.RenderMachtCoil;
 import democretes.render.tile.RenderMiniSpreader;
+import democretes.render.tile.RenderPurityAltar;
 import democretes.render.tile.RenderPurityGenerator;
 import democretes.render.tile.RenderReconstructor;
 import democretes.render.tile.RenderRuneConstructor;
@@ -75,6 +77,10 @@ public class ClientProxy extends CommonProxy{
 		RenderingRegistry.registerBlockHandler(new RenderBlockCoil());
 		RenderingRegistry.registerBlockHandler(new RenderBlockAltar());
 		RenderingRegistry.registerBlockHandler(new RenderBlockItemTransfer());
+		
+		ClientRegistry.bindTileEntitySpecialRenderer(TilePurityAltar.class, new RenderPurityAltar());
+    	RenderIds.idPURITY = RenderingRegistry.getNextAvailableRenderId();
+    	
 
     }
     

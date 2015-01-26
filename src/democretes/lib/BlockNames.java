@@ -12,5 +12,6 @@ public class BlockNames {
 	public static final String VISION_NAME = "vision";
 	public static final String ENHANCER_NAME = "enhancer";
 	public static final String DESTRUCTION_NAME = "destruction";
+	public static final String ALTAR_PURITY_NAME = "altarPurity";
 
 }

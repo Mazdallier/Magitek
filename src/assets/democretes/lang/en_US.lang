@@ -71,6 +71,7 @@ spell.blink.name=Teleportation Scroll
 spell.invisibility.name=Scroll of Invisibility
 
 #Misc
+enchantment.devour=Devourer
 magitek.nei.infusion=Infusion Recipe
 magitek.nei.reconstructor=Reconstructor Recipe
 magitek.nei.ritual.basic=Crude Ritual

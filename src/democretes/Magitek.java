@@ -1,7 +1,5 @@
 package democretes;
 
-import java.io.File;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
@@ -12,22 +10,24 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import democretes.api.helpers.RitualHelper;
-import democretes.api.helpers.RunicHelper;
+import cpw.mods.fml.common.registry.GameRegistry;
 import democretes.block.MTBlocks;
 import democretes.entity.EntitiesMT;
 import democretes.item.MTItems;
+import democretes.item.enchantments.MTEnchantments;
 import democretes.item.spells.SpellsMT;
 import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
 import democretes.render.fx.ParticleRenderDispatcher;
 import democretes.utils.CreativeTabsMT;
+import democretes.utils.MTLogger;
 import democretes.utils.crafting.RecipeRegistry;
 import democretes.utils.handlers.BlockTransferHandler;
 import democretes.utils.handlers.ConfigHandler;
 import democretes.utils.handlers.GuiHandler;
 import democretes.utils.handlers.MTEventHandler;
 import democretes.utils.network.PacketHandler;
+import democretes.utils.world.MTWorldGenerator;
 
 @Mod(modid = Reference.MOD_ID, 
 	 name = Reference.MOD_NAME, 
@@ -44,7 +44,8 @@ public class Magitek {
 	
 	public static CreativeTabs tabMT = new CreativeTabsMT(CreativeTabs.getNextID(), Reference.MOD_NAME);	
 		
-	
+	public static final MTLogger log = new MTLogger();
+	public MTWorldGenerator worldGen;
 	
 	@EventHandler
 	public void foreplay(FMLPreInitializationEvent event) {
@@ -52,7 +53,10 @@ public class Magitek {
 		SpellsMT.init();
 		MTBlocks.init();
 		MTItems.init();
+		MTEnchantments.init();
 		EntitiesMT.init();
+	    GameRegistry.registerWorldGenerator(this.worldGen = new MTWorldGenerator(), 0);
+		
 	}
 	
 	@EventHandler

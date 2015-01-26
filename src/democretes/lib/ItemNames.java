@@ -24,5 +24,6 @@ public class ItemNames {
 	public static final String DARK_LEGS_NAME = "legsDark";
 	public static final String DARK_CHEST_NAME = "chestDark";
 	public static final String DARK_HELMET_NAME = "helmetDark";
+	public static final String STAFF_SMITE_NAME = "staffSmite";
 
 }

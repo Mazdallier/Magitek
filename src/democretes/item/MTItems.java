@@ -23,6 +23,7 @@ import democretes.item.simple.ItemMaterial;
 import democretes.item.simple.ItemRune;
 import democretes.item.spells.ItemSpellBinder;
 import democretes.item.tools.ItemDebugger;
+import democretes.item.tools.ItemStaffSmite;
 import democretes.lib.ItemNames;
 
 public class MTItems {
@@ -37,6 +38,7 @@ public class MTItems {
 	public static Item enhanceSigil;
 	public static Item deactivator;
 	public static Item divinationSigil;
+	public static Item staffSmite;
 	
 	public static Item pureHelmet;
 	public static Item pureChestplate;
@@ -59,6 +61,7 @@ public class MTItems {
 		enhanceSigil = new ItemEnhancingSigil();
 		deactivator = new ItemDeactivatorSigil();
 		divinationSigil = new ItemDivinationSigil();
+		staffSmite = new ItemStaffSmite();
 		
 		pureHelmet = new ItemPureHelmet();
 		pureChestplate = new ItemPureChestplate();
@@ -80,6 +83,7 @@ public class MTItems {
 		GameRegistry.registerItem(enhanceSigil, ItemNames.ENHANCE_SIGIL_NAME);
 		GameRegistry.registerItem(deactivator, ItemNames.DEACTIVATOR_SIGIL_NAME);
 		GameRegistry.registerItem(divinationSigil, ItemNames.DIVINATION_SIGIL_NAME);
+		GameRegistry.registerItem(staffSmite, ItemNames.STAFF_SMITE_NAME);
 		
 		GameRegistry.registerItem(pureHelmet, ItemNames.PURE_HELMET_NAME);
 		GameRegistry.registerItem(pureChestplate, ItemNames.PURE_CHEST_NAME);

@@ -25,7 +25,7 @@ public class ItemMaterial extends ItemMTBase {
 		}
 	}
 	
-	IIcon icons[] = new IIcon[7];
+	IIcon icons[] = new IIcon[9];
 	
 	@Override
 	public void registerIcons(IIconRegister ir) {

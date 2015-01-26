@@ -5,7 +5,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class DirectionHelper {
 	
-	public static ForgeDirection[] horizontal = {ForgeDirection.EAST, ForgeDirection.WEST, ForgeDirection.NORTH, ForgeDirection.SOUTH};
+	public static ForgeDirection[] horizontal = {ForgeDirection.NORTH, ForgeDirection.SOUTH, ForgeDirection.EAST, ForgeDirection.WEST};
 	public static ForgeDirection[] vertical = {ForgeDirection.UP, ForgeDirection.DOWN};
 
 	public static ForgeDirection getDirectionFromTiles(TileEntity farTile, TileEntity mainTile) {

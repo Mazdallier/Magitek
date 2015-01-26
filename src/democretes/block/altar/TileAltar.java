@@ -303,7 +303,6 @@ public class TileAltar extends TilePurityBase implements IInventory{
 		return AltarHelper.recipeExists(stack);
 	}	
 	
-	
 	public IIcon getRitualIcon() {
 		BlockAltar altar = (BlockAltar)this.getBlockType();
 		if(this.ritual != null) {
@@ -312,28 +311,7 @@ public class TileAltar extends TilePurityBase implements IInventory{
 		}
 		return null;
 	}
-
-	@Override
-	public Packet getDescriptionPacket() {
-		NBTTagCompound nbt = new NBTTagCompound();
-		if(this.ritual != null) {
-			nbt.setInteger("Ritual", this.ritual.size);
-		}
-		NBTTagCompound tag = new NBTTagCompound();
-		if(this.inventory != null) {
-			this.inventory.writeToNBT(tag);
-		}
-		nbt.setTag("Item", tag);
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, nbt);
-	}
 	
-	@Override
-	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
-		this.ritual = RitualType.getRitual(pkt.func_148857_g().getInteger("Ritual"));
-		NBTTagCompound tag = pkt.func_148857_g().getCompoundTag("Item");
-		this.inventory = ItemStack.loadItemStackFromNBT(tag);
-	}
-
 	@Override
 	public void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);	

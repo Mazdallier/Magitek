@@ -14,6 +14,7 @@ import democretes.block.dummy.TileAltarDummy;
 import democretes.block.dummy.TileSubTerraDummy;
 import democretes.block.generators.BlockGenerator;
 import democretes.block.generators.ItemBlockGenerator;
+import democretes.block.generators.TileBounceGenerator;
 import democretes.block.generators.TileDestructionGenerator;
 import democretes.block.generators.TileMiniSpreader;
 import democretes.block.generators.TileOrganicGenerator;
@@ -37,7 +38,7 @@ import democretes.block.simple.ItemBlockSimple;
 import democretes.block.totems.BlockDestructionTotem;
 import democretes.block.totems.BlockEnhancingTotem;
 import democretes.block.totems.BlockVisionTotem;
-import democretes.block.totems.TileTotem;
+import democretes.block.totems.TileVisionTotem;
 import democretes.block.transfer.BlockTransfer;
 import democretes.block.transfer.TileItemTransfer;
 import democretes.lib.BlockNames;
@@ -106,8 +107,9 @@ public class MTBlocks {
 		GameRegistry.registerTileEntity(TileReconstructor.class, Reference.MOD_NAME + "TileReconstructor");
 		GameRegistry.registerTileEntity(TileMiniSpreader.class, Reference.MOD_NAME + "TileMiniSpreader");
 		GameRegistry.registerTileEntity(TileLightningGenerator.class,  Reference.MOD_NAME + "TileLightningGenerator");
-		GameRegistry.registerTileEntity(TileTotem.class,  Reference.MOD_NAME + "TileTotem");
+		GameRegistry.registerTileEntity(TileVisionTotem.class,  Reference.MOD_NAME + "TileTotem");
 		GameRegistry.registerTileEntity(TileOrganicGenerator.class,  Reference.MOD_NAME + "TileOrganicGenerator");
 		GameRegistry.registerTileEntity(TilePurityAltar.class, Reference.MOD_NAME + "TilePurityAltar");
+		GameRegistry.registerTileEntity(TileBounceGenerator.class, Reference.MOD_NAME + "TileBounceGenerator");
 	}
 }

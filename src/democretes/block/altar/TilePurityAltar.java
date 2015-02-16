@@ -36,7 +36,6 @@ public class TilePurityAltar extends TileEntityEndPortal {
 			if(!checkForStructure()) {
 				this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord);
 				this.worldObj.removeTileEntity(this.xCoord, this.yCoord, this.zCoord);
-				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 			}
 		}
 		if(count%10==0) {

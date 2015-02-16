@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -24,16 +25,11 @@ import democretes.api.macht.IMachtStorage;
 import democretes.block.BlockMTBase;
 import democretes.block.MTBlocks;
 import democretes.block.dummy.BlockSubTerraDummy;
+import democretes.block.totems.TileVisionTotem;
+import democretes.block.transfer.TileItemTransfer;
 import democretes.lib.RenderIds;
 
 public class BlockGenerator extends BlockMTBase {
-
-	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for(int i = 0; i < 9; i++) {
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
 	
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
@@ -151,13 +147,27 @@ public class BlockGenerator extends BlockMTBase {
 		return super.canPlaceBlockAt(world, x, y, z);
 	}
 	
+	int facing;
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
 		if(stack.getItemDamage() == 1) {
 			world.setBlock(x, y+1, z, MTBlocks.terraDummy);
 			((BlockSubTerraDummy)world.getBlock(x, y+1, z)).block = this;
 			world.getBlock(x, y+1, z).onPostBlockPlaced(world, x, y, z, stack.getItemDamage());
+		}else if(stack.getItemDamageForDisplay() == 9) {
+			TileEntity tile = world.getTileEntity(x, y, z);
+			if(tile instanceof TileBounceGenerator) {
+				((TileBounceGenerator)tile).facing = this.facing;
+			}
 		}
+	}
+	
+	@Override
+	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta){
+		if(meta == 9) {
+			this.facing = ForgeDirection.OPPOSITES[side];			
+		}
+		return super.onBlockPlaced(world, x, y, z, side, hitX, hitY, hitZ, meta);
 	}
 		
 	@Override
@@ -165,6 +175,13 @@ public class BlockGenerator extends BlockMTBase {
 		return Blocks.stone.getIcon(0, 0);
 	}
 
+	@Override
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+		for(int i = 0; i < 10; i++) {
+			list.add(new ItemStack(item, 1, i));
+		}
+	}
+	
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		switch(meta) {
@@ -186,6 +203,8 @@ public class BlockGenerator extends BlockMTBase {
 			return new TileMiniSpreader();
 		case 8:
 			return new TileOrganicGenerator();
+		case 9:
+			return new TileBounceGenerator();
 		}
 		return null;
 	}

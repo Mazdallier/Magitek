@@ -8,6 +8,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import democretes.block.altar.TileAltar;
 import democretes.block.altar.TilePurityAltar;
 import democretes.block.coils.TileMachtCoil;
+import democretes.block.generators.TileBounceGenerator;
 import democretes.block.generators.TileDestructionGenerator;
 import democretes.block.generators.TileMiniSpreader;
 import democretes.block.generators.TilePurityGenerator;
@@ -39,6 +40,7 @@ import democretes.render.tile.RenderSolarGenerator;
 import democretes.render.tile.RenderSpreader;
 import democretes.render.tile.RenderSubTerraGenerator;
 import democretes.render.tile.RenderThermalGenerator;
+import democretes.render.tile.RenderTileBounceGenerator;
 import democretes.utils.handlers.KeyHandler;
 
 public class ClientProxy extends CommonProxy{
@@ -58,6 +60,7 @@ public class ClientProxy extends CommonProxy{
     	ClientRegistry.bindTileEntitySpecialRenderer(TileThermalGenerator.class, new RenderThermalGenerator()); 
     	ClientRegistry.bindTileEntitySpecialRenderer(TileDestructionGenerator.class, new RenderDestructionGenerator());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileMiniSpreader.class, new RenderMiniSpreader());
+    	ClientRegistry.bindTileEntitySpecialRenderer(TileBounceGenerator.class, new RenderTileBounceGenerator());
     	RenderIds.idGENERATOR = RenderingRegistry.getNextAvailableRenderId();
     	
     	ClientRegistry.bindTileEntitySpecialRenderer(TileMachtCoil.class, new RenderMachtCoil());

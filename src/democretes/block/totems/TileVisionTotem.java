@@ -12,7 +12,7 @@ import net.minecraft.util.IIcon;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.block.TileMTBase;
 
-public class TileTotem extends TileMTBase {
+public class TileVisionTotem extends TileMTBase {
 	
 	public int facing;
 	

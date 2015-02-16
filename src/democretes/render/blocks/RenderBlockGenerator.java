@@ -8,6 +8,7 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import democretes.block.generators.TileBounceGenerator;
 import democretes.block.generators.TileDestructionGenerator;
 import democretes.block.generators.TileMiniSpreader;
 import democretes.block.generators.TilePurityGenerator;
@@ -43,7 +44,9 @@ public class RenderBlockGenerator implements ISimpleBlockRenderingHandler{
 		case 6:
 			dispatch.renderTileEntityAt(new TileDestructionGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
 		case 7:
-			dispatch.renderTileEntityAt(new TileMiniSpreader(), 0.0D, 0.0D, 0.0D, 0.0F);
+			dispatch.renderTileEntityAt(new TileMiniSpreader(), 0.0D, 0.0D, 0.0D, 0.0F);break;
+		case 9:
+			dispatch.renderTileEntityAt(new TileBounceGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);
 		}
 		GL11.glPopMatrix();
 	}

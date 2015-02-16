@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.material.MapColor;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -27,7 +28,11 @@ public class BlockPurityAltar extends BlockMTBase {
 	}
 	
 	@Override
-	public void getSubBlocks(Item item, CreativeTabs tab, List list) {}
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
+		if(Minecraft.getMinecraft().thePlayer.getDisplayName().equals("Democretes")) {
+			list.add(new ItemStack(item, 1, 0));
+		}
+	}
 	
 	@Override
 	public String getUnlocalizedName() {

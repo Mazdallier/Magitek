@@ -9,4 +9,5 @@ public class EntitiesMT {
 		int id = 0;
 		EntityRegistry.registerModEntity(EntityWindBlast.class, "WindBlast", id++, Magitek.instance, 128, 10, true);
 	}
+	
 }

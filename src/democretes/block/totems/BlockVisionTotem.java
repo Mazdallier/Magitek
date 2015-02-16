@@ -33,7 +33,7 @@ public class BlockVisionTotem extends BlockMTBase {
 	IIcon sides;
 	@Override
 	public IIcon getIcon(IBlockAccess world, int x,	int y, int z, int side) {
-		int facing = ((TileTotem)world.getTileEntity(x, y, z)).facing;
+		int facing = ((TileVisionTotem)world.getTileEntity(x, y, z)).facing;
 		if(side == facing) {
 			if(world.getBlockMetadata(x, y, z) == 15) {
 				return facingActive;
@@ -62,8 +62,8 @@ public class BlockVisionTotem extends BlockMTBase {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack){
 		int face = MathHelper.floor_double(entity.rotationYaw * 4.0F / 360.0F + 0.5D) & 0x3;
 		TileEntity tile = world.getTileEntity(x, y, z);
-		if ((tile instanceof TileTotem)) {
-			TileTotem totem = (TileTotem)tile;
+		if ((tile instanceof TileVisionTotem)) {
+			TileVisionTotem totem = (TileVisionTotem)tile;
 			switch(face) {
 			case 0:
 				totem.facing = 2;break;
@@ -79,7 +79,7 @@ public class BlockVisionTotem extends BlockMTBase {
 	
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileTotem();
+		return new TileVisionTotem();
 	}
 
 	@Override

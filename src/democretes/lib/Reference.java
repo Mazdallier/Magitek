@@ -15,6 +15,7 @@ public class Reference {
 	public static final String MODEL_ALTAR_TEXTURE = MODEL_PREFIX + "ModelAltar.png";
 	public static final String MODEL_ITEM_TRANSFER_TEXTURE = MODEL_PREFIX + "ModelItemTransfer.png";
 	public static final String MODEL_THERMAL_TEXTURE = MODEL_PREFIX + "ModelThermalGenerator.png";
+	public static final String MODEL_BOUNCE_GENERATOR_TEXTURE = MODEL_PREFIX + "ModelBounceGenerator.png";
 	
 
 	public static final String ARMOR_PREFIX = TEXTURE_PREFIX + "textures/armor/";

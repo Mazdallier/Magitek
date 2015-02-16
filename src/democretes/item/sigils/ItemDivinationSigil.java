@@ -34,6 +34,9 @@ public class ItemDivinationSigil extends ItemMTBase {
 			if(info.isPurityHandler()) {
 				text.appendText(", " + StringHelper.localize("magitek.purity.stored") + ": " + info.getPurity());
 			}
+			if(text.getUnformattedText().isEmpty()) {
+				return false;
+			}
 			player.addChatComponentMessage(text);
 		}
 		return false;

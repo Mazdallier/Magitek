@@ -21,6 +21,7 @@ public class PacketHandler {
     public static void init() {
     	registerPacket(PacketSpell.class, Side.SERVER);
     	registerPacket(PacketPurity.class, Side.CLIENT);
+    	registerPacket(PacketMacht.class, Side.CLIENT);
     }
     
     public static void sendToClient(IMessage packet, EntityPlayerMP player) {
@@ -37,6 +38,10 @@ public class PacketHandler {
 
     public static void sendAround(IMessage packet, TileEntity tile) {
         sendAround(packet, tile.getWorldObj().provider.dimensionId, tile.xCoord, tile.yCoord, tile.zCoord);
+    }
+    
+    public static void syncMacht(TileEntity tile, int amount, boolean receive) {
+    	sendAround(new PacketMacht(tile.xCoord, tile.yCoord, tile.zCoord, amount, receive), tile);
     }
     
     public static void syncPurity(TileEntity tile, int purity) {

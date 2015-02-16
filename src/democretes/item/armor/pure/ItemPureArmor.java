@@ -33,25 +33,21 @@ public class ItemPureArmor extends ItemArmor {
 	IIcon[] icons = new IIcon[4];
 	@Override
 	public void registerIcons(IIconRegister ir) {
-		String pre = Reference.TEXTURE_PREFIX + "pure";
-		icons[0] = ir.registerIcon(pre + "Helmet");
-		icons[1] = ir.registerIcon(pre + "Chestplate");
-		icons[2] = ir.registerIcon(pre + "Legs");
-		icons[3] = ir.registerIcon(pre + "Boots");		
+		String pre = Reference.TEXTURE_PREFIX + "armor/pure_";
+		icons[0] = ir.registerIcon(pre + "helmet");
+		icons[1] = ir.registerIcon(pre + "chestplate");
+		icons[2] = ir.registerIcon(pre + "leggings");
+		icons[3] = ir.registerIcon(pre + "boots");		
 	}
-	
-	@Override
-	public IIcon getIcon(ItemStack stack, int pass) {
-		return icons[((ItemArmor)stack.getItem()).armorType];
-	}
-	
+
+	int count = 2000;
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
 		if(SpellHelper.getPlayerPurity(player) < 0) {
 			return;
 		}
-		int count = 2000;
-		if(count%2000 == 0) {
+		if(count++%2000 == 0) {
+			count = 0;
 			int tier = SpellHelper.getTier(player);
 			if(stack.stackTagCompound != null) {
 				stack.stackTagCompound.setTag("ench", new NBTTagList());				

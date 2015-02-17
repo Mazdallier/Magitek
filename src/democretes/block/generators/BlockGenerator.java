@@ -177,7 +177,7 @@ public class BlockGenerator extends BlockMTBase {
 
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < 9; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}
@@ -202,8 +202,6 @@ public class BlockGenerator extends BlockMTBase {
 		case 7:
 			return new TileMiniSpreader();
 		case 8:
-			return new TileOrganicGenerator();
-		case 9:
 			return new TileBounceGenerator();
 		}
 		return null;

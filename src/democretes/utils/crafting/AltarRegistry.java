@@ -15,6 +15,7 @@ public class AltarRegistry {
 	public static AltarRecipe sigilCrude;
 	public static AltarRecipe machtIngot;
 	public static AltarRecipe scroll;
+	public static AltarRecipe shard;
 	
 	public static void initAltarRecipes() {
 		rune = new AltarRecipe(new ItemStack(Blocks.stone), new ItemStack(MTItems.material, 1, 0), 250);
@@ -22,5 +23,6 @@ public class AltarRegistry {
 		sigilCrude = new AltarRecipe(new ItemStack(MTItems.material, 1, 1), new ItemStack(MTItems.ritualSigil, 1, 0), 1000);
 		machtIngot = new AltarRecipe(new ItemStack(Items.iron_ingot), new ItemStack(MTItems.material, 1, 3), 500);
 		scroll = new AltarRecipe(new ItemStack(Items.paper), new ItemStack(MTItems.material, 1, 2), 500);
+		shard = new AltarRecipe(new ItemStack(Items.diamond), new ItemStack(MTBlocks.generator, 1, 7), 1000);
 	}
 }

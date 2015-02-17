@@ -45,7 +45,7 @@ public class RenderBlockGenerator implements ISimpleBlockRenderingHandler{
 			dispatch.renderTileEntityAt(new TileDestructionGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
 		case 7:
 			dispatch.renderTileEntityAt(new TileMiniSpreader(), 0.0D, 0.0D, 0.0D, 0.0F);break;
-		case 9:
+		case 8:
 			dispatch.renderTileEntityAt(new TileBounceGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);
 		}
 		GL11.glPopMatrix();

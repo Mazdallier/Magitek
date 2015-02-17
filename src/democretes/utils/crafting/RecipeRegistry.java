@@ -110,6 +110,16 @@ public final class RecipeRegistry {
 				'I', new ItemStack(MTItems.material, 1, 3),
 				'A', new ItemStack(MTItems.material, 1, 5),
 				'C', new ItemStack(MTItems.material, 1, 6));
+		GameRegistry.addShapedRecipe(new ItemStack(MTBlocks.generator, 1, 7), 
+				"ICI", "CAC", "ICI",
+				'I', new ItemStack(MTItems.material, 1, 3),
+				'A', new ItemStack(MTItems.material, 1, 5),
+				'C', new ItemStack(MTItems.material, 1, 6));
+		GameRegistry.addShapedRecipe(new ItemStack(MTBlocks.generator, 1, 8), 
+				"   ", " C ", "ITI",
+				'T', new ItemStack(MTBlocks.transfer),
+				'I', new ItemStack(MTItems.material, 1, 3),
+				'C', new ItemStack(MTItems.material, 1, 5));
 		addOreDictRecipe(new ItemStack(MTBlocks.altar),
 				"SSS", " T ", " T ", 
 				'S', new ItemStack(Blocks.stone_slab),
@@ -140,6 +150,51 @@ public final class RecipeRegistry {
 				'C', new ItemStack(MTItems.material, 1, 4),
 				'H', new ItemStack(Blocks.hopper),
 				'B', new ItemStack(MTBlocks.simple, 1, 1));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.darkBoots),
+				"   ", "I I", "I I",
+				'I', new ItemStack(MTItems.material, 1, 7));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.darkBoots),
+				"I I", "I I", "   ", 
+				'I', new ItemStack(MTItems.material, 1, 7));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.darkHelmet),
+				"III", "I I", "   ", 
+				'I', new ItemStack(MTItems.material, 1, 7));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.darkHelmet),
+				 "   ", "III", "I I",
+				'I', new ItemStack(MTItems.material, 1, 7));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.darkLeggings),
+				 "III", "I I", "I I",
+				'I', new ItemStack(MTItems.material, 1, 7));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.darkChestplate),
+				 "I I", "III", "III",
+				'I', new ItemStack(MTItems.material, 1, 7));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.pureBoots),
+				"   ", "I I", "I I",
+				'I', new ItemStack(MTItems.material, 1, 8));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.pureBoots),
+				"I I", "I I", "   ", 
+				'I', new ItemStack(MTItems.material, 1, 8));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.pureHelmet),
+				"III", "I I", "   ", 
+				'I', new ItemStack(MTItems.material, 1, 8));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.pureHelmet),
+				 "   ", "III", "I I",
+				'I', new ItemStack(MTItems.material, 1, 8));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.pureLeggings),
+				 "III", "I I", "I I",
+				'I', new ItemStack(MTItems.material, 1, 8));
+		GameRegistry.addShapedRecipe(new ItemStack(MTItems.pureChestplate),
+				 "I I", "III", "III",
+				'I', new ItemStack(MTItems.material, 1, 8));
+		GameRegistry.addShapedRecipe(new ItemStack(MTBlocks.totemEnhancer),
+				 "III", "SCS", "SSS",
+				'S', new ItemStack(MTBlocks.simple, 1, 1),
+				'C', new ItemStack(MTItems.material, 1, 5),
+				'I', new ItemStack(MTItems.material, 1, 3));
+		GameRegistry.addShapedRecipe(new ItemStack(MTBlocks.totemVision),
+				 "SSS", "SRS", "SSS",
+				'R', new ItemStack(Items.redstone),
+				'S', new ItemStack(MTBlocks.simple, 1, 1));
 	}
 	
 	public static void initShapelessRecipes() {

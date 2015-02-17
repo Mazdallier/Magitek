@@ -61,7 +61,6 @@ public class MTItems {
 		enhanceSigil = new ItemEnhancingSigil();
 		deactivator = new ItemDeactivatorSigil();
 		divinationSigil = new ItemDivinationSigil();
-		staffSmite = new ItemStaffSmite();
 		
 		pureHelmet = new ItemPureHelmet();
 		pureChestplate = new ItemPureChestplate();
@@ -83,7 +82,6 @@ public class MTItems {
 		GameRegistry.registerItem(enhanceSigil, ItemNames.ENHANCE_SIGIL_NAME);
 		GameRegistry.registerItem(deactivator, ItemNames.DEACTIVATOR_SIGIL_NAME);
 		GameRegistry.registerItem(divinationSigil, ItemNames.DIVINATION_SIGIL_NAME);
-		GameRegistry.registerItem(staffSmite, ItemNames.STAFF_SMITE_NAME);
 		
 		GameRegistry.registerItem(pureHelmet, ItemNames.PURE_HELMET_NAME);
 		GameRegistry.registerItem(pureChestplate, ItemNames.PURE_CHEST_NAME);

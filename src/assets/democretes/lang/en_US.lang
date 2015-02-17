@@ -9,6 +9,8 @@ item.magitek.material.3.name=Macht Ingot
 item.magitek.material.4.name=Basic Macht Core
 item.magitek.material.5.name=Advanced Macht Core
 item.magitek.material.6.name=Complex Macht Core
+item.magitek.material.7.name=Tainted Ingot
+item.magitek.material.8.name=Pure Ingot
 item.magitek.rune.0.name=Fire Rune
 item.magitek.rune.1.name=Water Rune
 item.magitek.rune.2.name=Earth Rune
@@ -33,6 +35,14 @@ item.magitek.ring.impure.5.name=One Ring
 item.magitek.ring.macht.0.name=Macht Ring
 item.magitek.ring.macht.1.name=Energetic Ring
 item.magitek.ring.macht.2.name=Infinity Ring
+item.dark.helmet.name=Tainted Helmet
+item.dark.chestplate.name=Tainted Chestplate
+item.dark.legs.name=Tainted Leggings
+item.dark.boots.name=Tainted Boots
+item.pure.helmet.name=Pure Helmet
+item.pure.chestplate.name=Pure Chestplate
+item.pure.legs.name=Pure Leggings
+item.pure.boots.name=Pure Boots
 
 
 #Blocks
@@ -44,6 +54,7 @@ tile.magitek.generator.4.name=Runic Generator
 tile.magitek.generator.5.name=Magmatic Consumer
 tile.magitek.generator.6.name=Chunk Devourer
 tile.magitek.generator.7.name=Macht Fragment
+tile.magitek.generator.8.name=Kinetic Generator
 tile.magitek.machine.0.name=Runic Constructor
 tile.magitek.machine.1.name=Purity Inverter
 tile.magitek.machine.2.name=Mass Constructor

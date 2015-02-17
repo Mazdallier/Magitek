@@ -36,6 +36,8 @@ public class ItemMaterial extends ItemMTBase {
 		icons[4] = ir.registerIcon(Reference.TEXTURE_PREFIX + "core_basic");
 		icons[5] = ir.registerIcon(Reference.TEXTURE_PREFIX + "core_advanced");
 		icons[6] = ir.registerIcon(Reference.TEXTURE_PREFIX + "core_complex");
+		icons[7] = ir.registerIcon(Reference.TEXTURE_PREFIX + "dark_ingot");
+		icons[8] = ir.registerIcon(Reference.TEXTURE_PREFIX + "pure_ingot");
 	}
 	
 	@Override

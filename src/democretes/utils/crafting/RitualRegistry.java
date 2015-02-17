@@ -30,9 +30,9 @@ public class RitualRegistry {
 		sigilComplex = new RitualRecipe(new ItemStack(MTItems.ritualSigil, 1, 1), RitualType.ADVANCED, new ItemStack[] {
 			new ItemStack(Blocks.diamond_block), new ItemStack(MTBlocks.simple, 1, 0), new ItemStack(Items.ender_eye), new ItemStack(Items.blaze_rod), new ItemStack(Items.ghast_tear)}, 
 			new ItemStack(MTItems.ritualSigil, 1, 2), 25000);
-		crystal = new RitualRecipe(new ItemStack(Items.diamond), RitualType.BASIC, new ItemStack[] {
+		crystal = new RitualRecipe(new ItemStack(MTBlocks.generator, 1, 7), RitualType.BASIC, new ItemStack[] {
 			new ItemStack(Blocks.quartz_block), new ItemStack(Items.ender_pearl), new ItemStack(Items.dye, 1, 4)}, 
-			new ItemStack(MTBlocks.generator, 1, 4), 5000);
+			new ItemStack(MTBlocks.generator, 1, 3), 5000);
 		sigilPower = new RitualRecipe(new ItemStack(MTItems.material, 1, 1), RitualType.BASIC, new ItemStack[] {
 			new ItemStack(MTItems.rune, 1, 4), new ItemStack(MTItems.rune, 1, 4), new ItemStack(MTItems.rune, 1, 4)},
 			new ItemStack(MTItems.machtSigil), 5000);

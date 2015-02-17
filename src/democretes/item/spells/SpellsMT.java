@@ -15,7 +15,6 @@ public class SpellsMT {
 		blink = new Spell("blink", 1000, 0, new SpellBlink());
 		invisible = new Spell("invisibility", 2000, 0, new SpellInvisible());
 		heal = new Spell("heal", 500, 10, new SpellHeal());
-		wind = new Spell("wind blast", 5000, -100, new SpellWindBlast());
 	}
 
 }

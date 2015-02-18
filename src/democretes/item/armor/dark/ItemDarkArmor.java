@@ -1,18 +1,13 @@
 package democretes.item.armor.dark;
 
-import democretes.Magitek;
-import democretes.api.MagitekApi;
-import democretes.api.spells.SpellHelper;
-import democretes.lib.Reference;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
+import democretes.Magitek;
+import democretes.api.MagitekApi;
+import democretes.lib.Reference;
 
 public class ItemDarkArmor extends ItemArmor {
 
@@ -35,53 +30,6 @@ public class ItemDarkArmor extends ItemArmor {
 		icons[1] = ir.registerIcon(pre + "chestplate");
 		icons[2] = ir.registerIcon(pre + "leggings");
 		icons[3] = ir.registerIcon(pre + "boots");		
-	}
-	
-	int count = 2000;	
-	@Override
-	public void onArmorTick(World world, EntityPlayer player, ItemStack stack) {
-		if(SpellHelper.getPlayerPurity(player) > 0) {
-			return;
-		}
-		if(count++%2000 == 0) {
-			count = 0;
-			int tier = SpellHelper.getTier(player);
-			if(stack.stackTagCompound != null) {
-				stack.stackTagCompound.setTag("ench", new NBTTagList());				
-			}
-			switch(tier) {
-			case 1:
-				stack.addEnchantment(Enchantment.thorns, tier);
-				stack.addEnchantment(Enchantment.unbreaking, tier);break;
-			case 2:
-				stack.addEnchantment(Enchantment.thorns, tier + 1);
-				stack.addEnchantment(Enchantment.unbreaking, tier);
-				switch(stack.getItemDamage()) {
-				case 0:
-					stack.addEnchantment(Enchantment.aquaAffinity, tier);break;
-				case 1:
-					stack.addEnchantment(Enchantment.blastProtection, tier);break;
-				case 2:
-					stack.addEnchantment(Enchantment.fireProtection, tier);break;
-				case 3:	
-					stack.addEnchantment(Enchantment.featherFalling, tier);
-				}
-			case 3:
-				stack.addEnchantment(Enchantment.thorns, tier + 2);	
-				stack.addEnchantment(Enchantment.unbreaking, tier);
-				switch(stack.getItemDamage()) {
-				case 0:
-					stack.addEnchantment(Enchantment.aquaAffinity, tier);
-					stack.addEnchantment(Enchantment.respiration, tier);break;
-				case 1:
-					stack.addEnchantment(Enchantment.blastProtection, tier);break;
-				case 2:
-					stack.addEnchantment(Enchantment.fireProtection, tier);break;
-				case 3:	
-					stack.addEnchantment(Enchantment.featherFalling, tier);
-				}
-			}		
-		}
 	}
 
 }

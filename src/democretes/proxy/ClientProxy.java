@@ -11,7 +11,6 @@ import democretes.block.coils.TileMachtCoil;
 import democretes.block.generators.TileBounceGenerator;
 import democretes.block.generators.TileDestructionGenerator;
 import democretes.block.generators.TileMiniSpreader;
-import democretes.block.generators.TilePurityGenerator;
 import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSpreader;
@@ -32,7 +31,6 @@ import democretes.render.tile.RenderItemTransfer;
 import democretes.render.tile.RenderMachtCoil;
 import democretes.render.tile.RenderMiniSpreader;
 import democretes.render.tile.RenderPurityAltar;
-import democretes.render.tile.RenderPurityGenerator;
 import democretes.render.tile.RenderReconstructor;
 import democretes.render.tile.RenderRuneConstructor;
 import democretes.render.tile.RenderRuneGenerator;
@@ -54,7 +52,6 @@ public class ClientProxy extends CommonProxy{
     public void initRenderers() {
     	ClientRegistry.bindTileEntitySpecialRenderer(TileSubTerraGenerator.class, new RenderSubTerraGenerator());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileSolarGenerator.class, new RenderSolarGenerator());
-    	ClientRegistry.bindTileEntitySpecialRenderer(TilePurityGenerator.class, new RenderPurityGenerator());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileSpreader.class, new RenderSpreader());
     	ClientRegistry.bindTileEntitySpecialRenderer(TileRunicGenerator.class, new RenderRuneGenerator());   
     	ClientRegistry.bindTileEntitySpecialRenderer(TileThermalGenerator.class, new RenderThermalGenerator()); 

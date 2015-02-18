@@ -11,7 +11,6 @@ import democretes.Magitek;
 import democretes.api.macht.IMachtStorage;
 import democretes.block.MTBlocks;
 import democretes.block.TileEnergyTransferer;
-import democretes.block.TilePurityBase;
 import democretes.block.dummy.TileSubTerraDummy;
 import democretes.utils.handlers.ConfigHandler;
 import democretes.utils.helper.DirectionHelper;

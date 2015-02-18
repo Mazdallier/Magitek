@@ -1,23 +1,15 @@
 package democretes.utils.crafting;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-import democretes.api.RitualType;
-import democretes.api.recipe.AltarRecipe;
-import democretes.api.recipe.RitualRecipe;
-import democretes.api.recipe.RuneRecipe;
-import democretes.api.spells.Spell;
-import democretes.api.spells.SpellHelper;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import democretes.block.MTBlocks;
 import democretes.item.MTItems;
-import democretes.item.spells.SpellsMT;
 
 public final class RecipeRegistry {
 	
@@ -25,14 +17,12 @@ public final class RecipeRegistry {
 		RunicRegistry.initRunicRecipes();
 		AltarRegistry.initAltarRecipes();
 		RitualRegistry.initRitualRecipes();
-		RitualRegistry.initSpellRecipes();
 		PurityAltarRegistry.initPurityRecipes();
 		ReconstructorRegistry.initReconstructorRecipes();
 		initShapedRecipes();
 		initShapelessRecipes();
 		if(Loader.isModLoaded("Baubles")) {
-			initBaubleRecipes();
-			RitualRegistry.initBaubleRecipes();			
+			initBaubleRecipes();		
 		}
 	}	
 	
@@ -205,27 +195,9 @@ public final class RecipeRegistry {
 		GameRegistry.addShapelessRecipe(new ItemStack(MTItems.rune, 1, 2), new ItemStack(MTItems.material, 1, 0), new ItemStack(Blocks.dirt), new ItemStack(Items.clay_ball));
 		GameRegistry.addShapelessRecipe(new ItemStack(MTItems.rune, 1, 3), new ItemStack(MTItems.material, 1, 0), new ItemStack(Items.feather));
 		GameRegistry.addShapelessRecipe(new ItemStack(MTItems.rune, 1, 4), new ItemStack(MTItems.material, 1, 0), new ItemStack(MTItems.rune, 1, 0), new ItemStack(MTItems.rune, 1, 0), new ItemStack(MTItems.rune, 1, 0), new ItemStack(MTItems.rune, 1, 0));
-		GameRegistry.addShapelessRecipe(new ItemStack(MTItems.machtSigil), new ItemStack(MTItems.puritySigil));
-		GameRegistry.addShapelessRecipe(new ItemStack(MTItems.puritySigil), new ItemStack(MTItems.machtSigil));
 	}
 	public static void initBaubleRecipes() {
-		GameRegistry.addShapedRecipe(new ItemStack(MTItems.purityRing, 1, 0), 
-				" C ", "MRM", " M ",
-				'C',new ItemStack(MTItems.material, 1, 5),
-				'R', new ItemStack(MTItems.rune, 1, 5),
-				'M', new ItemStack(MTItems.material, 1, 3));
 		
-		GameRegistry.addShapedRecipe(new ItemStack(MTItems.purityRing, 1, 3), 
-				" C ", "MRM", " M ",
-				'C',new ItemStack(MTItems.material, 1, 5),
-				'R', new ItemStack(MTItems.rune, 1, 6),
-				'M', new ItemStack(Items.iron_ingot));
-		
-		GameRegistry.addShapedRecipe(new ItemStack(MTItems.machtRing, 1, 0), 
-				" C ", "MRM", " M ",
-				'C',new ItemStack(MTItems.material, 1, 5),
-				'R', new ItemStack(MTItems.rune, 1, 4),
-				'M', new ItemStack(MTItems.material, 1, 3));
 	}
 	
 	private static void addOreDictRecipe(ItemStack output, Object... recipe) {

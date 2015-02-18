@@ -1,12 +1,8 @@
 package democretes.utils;
 
-import democretes.api.spells.Spell;
-import democretes.block.MTBlocks;
-import democretes.item.MTItems;
-import democretes.item.spells.SpellsMT;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import democretes.block.MTBlocks;
 
 public class CreativeTabsMT extends CreativeTabs {
 

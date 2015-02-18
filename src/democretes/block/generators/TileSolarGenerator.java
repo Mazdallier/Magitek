@@ -22,13 +22,8 @@ public class TileSolarGenerator extends TileGeneratorBase {
 	@Override
 	protected int getFuel() {
 		if(count++ >= 40) {
-			this.increasePurity(2);
 			count = 0;
-			if(isLight()) {
-				return 8;
-			}else{
-				return 4;
-			}
+			return 8;
 		}
 		return 0;
 	}

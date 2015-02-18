@@ -3,16 +3,11 @@ package democretes.block.altar;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -24,13 +19,12 @@ import democretes.api.RitualType;
 import democretes.api.helpers.AltarHelper;
 import democretes.api.helpers.RitualHelper;
 import democretes.api.recipe.RitualRecipe;
-import democretes.api.spells.Spell;
 import democretes.block.MTBlocks;
-import democretes.block.TilePurityBase;
+import democretes.block.TileMachtBase;
 import democretes.block.dummy.TileAltarDummy;
 import democretes.item.MTItems;
 
-public class TileAltar extends TilePurityBase implements IInventory{
+public class TileAltar extends TileMachtBase implements IInventory{
 
 	public ItemStack inventory;
 	public RitualType ritual;
@@ -93,10 +87,6 @@ public class TileAltar extends TilePurityBase implements IInventory{
 					this.inventory = null;
 					ItemStack stack = output.copy();
 					this.output = null;
-					if(stack.getItem() == MTItems.binder) {
-						stack.stackTagCompound = new NBTTagCompound();
-						stack.stackTagCompound.setString("SpellName", (String)Spell.spells.keySet().toArray()[stack.getItemDamage()]);						
-					}
 					this.inventory = stack.copy();
 					for(int i = 0; i < 15; i++) {
 						Magitek.proxy.orbFX(this.worldObj, this.xCoord + 0.5D, this.yCoord + 1.0D, this.zCoord + 0.5D, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (float)Math.random(), (float)Math.random(), (float)Math.random(), (float)Math.random(), 2, true);

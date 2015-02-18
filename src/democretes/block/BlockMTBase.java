@@ -16,7 +16,6 @@ import democretes.Magitek;
 import democretes.api.block.BlockInfo;
 import democretes.api.block.IBlockDebug;
 import democretes.api.macht.IMachtStorage;
-import democretes.api.purity.IPurityHandler;
 
 public class BlockMTBase extends BlockContainer implements IBlockDebug {
 
@@ -35,9 +34,6 @@ public class BlockMTBase extends BlockContainer implements IBlockDebug {
 	public BlockInfo getInfo(EntityPlayer player, int x, int y, int z) {
 		BlockInfo info = new BlockInfo(player, x, y, z);
 		TileEntity tile = player.worldObj.getTileEntity(x, y, z);
-		if(tile instanceof IPurityHandler) {
-			info.setPurity(((IPurityHandler)tile).getPurity());
-		}
 		if(tile instanceof IMachtStorage) {
 			info.setMacht(((IMachtStorage)tile).getMachtStored());
 		}

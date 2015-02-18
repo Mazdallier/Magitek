@@ -27,7 +27,6 @@ public abstract class TileSingleGeneratorBase extends TileGeneratorBase {
 	@Override
 	protected int getFuel() {
 		if(count++ >= 20) {
-			this.decreasePurity(15);
 			count = 0;
 			if(this.energyRemaining <= 0) {
 				detonate();

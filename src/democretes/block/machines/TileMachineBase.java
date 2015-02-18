@@ -1,8 +1,9 @@
 package democretes.block.machines;
 
-import democretes.block.TilePurityBase;
+import democretes.block.TileMachtBase;
 
-public abstract class TileMachineBase extends TilePurityBase {
+
+public abstract class TileMachineBase extends TileMachtBase {
 
 	public TileMachineBase(int machtCapacity) {
 		super(machtCapacity);

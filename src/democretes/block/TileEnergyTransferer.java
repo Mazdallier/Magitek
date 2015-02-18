@@ -13,7 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEnergyTransferer extends TilePurityBase {
+public class TileEnergyTransferer extends TileMachtBase {
 
 	public TileEnergyTransferer(int amount) {
 		super(amount);

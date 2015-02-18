@@ -3,14 +3,12 @@ package democretes.block.dummy;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import democretes.api.macht.IMachtStorage;
-import democretes.api.purity.IPurityHandler;
 import democretes.block.TileMTBase;
 
-public class TileSubTerraDummy extends TileMTBase implements IPurityHandler, IMachtStorage {
+public class TileSubTerraDummy extends TileMTBase implements IMachtStorage {
 	
 	public TileEntity tile;	
 	public IMachtStorage macht;
-	public IPurityHandler purity;
 	
 
 	@Override
@@ -28,7 +26,6 @@ public class TileSubTerraDummy extends TileMTBase implements IPurityHandler, IMa
 	public void setTile(TileEntity tile) {
 		this.tile = tile;
 		this.macht = (IMachtStorage)tile;
-		this.purity = (IPurityHandler)tile;
 	}
 
 	@Override
@@ -49,41 +46,6 @@ public class TileSubTerraDummy extends TileMTBase implements IPurityHandler, IMa
 	@Override
 	public int getMachtStored() {
 		return this.macht.getMachtStored();
-	}
-
-	@Override
-	public int getPurity() {
-		return purity.getPurity();
-	}
-
-	@Override
-	public boolean isDark() {
-		return purity.isDark();
-	}
-
-	@Override
-	public boolean isNeutral() {
-		return purity.isNeutral();
-	}
-
-	@Override
-	public boolean isLight() {
-		return purity.isLight();
-	}
-
-	@Override
-	public void increasePurity(int amount) {
-		purity.increasePurity(amount);
-	}
-
-	@Override
-	public void decreasePurity(int amount) {
-		purity.decreasePurity(amount);
-	}
-	
-	@Override
-	public boolean isFull() {
-		return purity.isFull();
 	}
 	
 	@Override

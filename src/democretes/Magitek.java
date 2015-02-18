@@ -15,7 +15,6 @@ import democretes.block.MTBlocks;
 import democretes.entity.EntitiesMT;
 import democretes.item.MTItems;
 import democretes.item.enchantments.MTEnchantments;
-import democretes.item.spells.SpellsMT;
 import democretes.lib.Reference;
 import democretes.proxy.CommonProxy;
 import democretes.render.fx.ParticleRenderDispatcher;
@@ -50,7 +49,6 @@ public class Magitek {
 	@EventHandler
 	public void foreplay(FMLPreInitializationEvent event) {
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
-		SpellsMT.init();
 		MTBlocks.init();
 		MTItems.init();
 		MTEnchantments.init();

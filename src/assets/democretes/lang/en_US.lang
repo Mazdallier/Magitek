@@ -18,23 +18,11 @@ item.magitek.rune.3.name=Air Rune
 item.magitek.rune.4.name=Rune of Energy
 item.magitek.rune.5.name=Rune of Balance
 item.magitek.rune.6.name=Rune of Control
-item.magitek.sigil.purity.name=Sigil of Purity
-item.magitek.sigil.macht.name=Sigil of Power
 item.magitek.sigil.ritual.0.name=Crude Sigil of Binding
 item.magitek.sigil.ritual.1.name=Generic Sigil of Binding
 item.magitek.sigil.ritual.2.name=Sophisticated Sigil of Binding
-item.magitek.sigil.enhance.name=Sigil of Abilities
 item.magitek.sigil.deactivator.name=Deactivation Sigil
 item.magitek.sigil.divination.name=Divination Sigil
-item.magitek.ring.pure.0.name=Purity Ring
-item.magitek.ring.pure.1.name=Ring of Saints
-item.magitek.ring.pure.2.name=Ring of Angels
-item.magitek.ring.impure.3.name=Evil Ring
-item.magitek.ring.impure.4.name=Demonic Ring
-item.magitek.ring.impure.5.name=One Ring
-item.magitek.ring.macht.0.name=Macht Ring
-item.magitek.ring.macht.1.name=Energetic Ring
-item.magitek.ring.macht.2.name=Infinity Ring
 item.dark.helmet.name=Tainted Helmet
 item.dark.chestplate.name=Tainted Chestplate
 item.dark.legs.name=Tainted Leggings
@@ -48,38 +36,22 @@ item.pure.boots.name=Pure Boots
 #Blocks
 tile.magitek.generator.0.name=Solar Array
 tile.magitek.generator.1.name=Sub Terranean Generator
-tile.magitek.generator.2.name=Purity Reactor
-tile.magitek.generator.3.name=Macht Crystal
-tile.magitek.generator.4.name=Runic Generator
-tile.magitek.generator.5.name=Magmatic Consumer
-tile.magitek.generator.6.name=Chunk Devourer
-tile.magitek.generator.7.name=Macht Fragment
-tile.magitek.generator.8.name=Kinetic Generator
+tile.magitek.generator.2.name=Macht Crystal
+tile.magitek.generator.3.name=Runic Generator
+tile.magitek.generator.4.name=Magmatic Consumer
+tile.magitek.generator.5.name=Chunk Devourer
+tile.magitek.generator.6.name=Macht Fragment
+tile.magitek.generator.7.name=Kinetic Generator
 tile.magitek.machine.0.name=Runic Constructor
-tile.magitek.machine.1.name=Purity Inverter
-tile.magitek.machine.2.name=Mass Constructor
+tile.magitek.machine.1.name=Mass Constructor
 tile.magitek.altar.name=Altar of Power
-tile.magitek.coil.name=Macht Coil
+tile.magitek.coil.name=Macht Coil 
 tile.magitek.disposable.0.name=Explosive Generator
-tile.magitek.disposable.1.name=Electrocution Generator
 tile.magitek.simple.0.name=Macht Block
 tile.magitek.simple.1.name=Macht Infused Brick
 tile.magitek.transfer.name=Item Discharger
 tile.magitek.totem.vision.name=Glaring Totem
 tile.magitek.totem.enhancer.name=Empowered Totem
-tile.magitek.totem.destruction.name=Destructive Totem
-
-#Spells
-magitek.spell.lowMacht=Your macht is too low to cast this spell.
-magitek.spell.lowPurity=You don't have enough purity to cast this spell.
-magitek.spell.bound=You have been bound with
-magitek.spell.godMode= has entered god mode.
-
-#Binders
-spell.heal.name=Heal Scroll
-spell.immortality.name=Scroll of the Ancients
-spell.blink.name=Teleportation Scroll
-spell.invisibility.name=Scroll of Invisibility
 
 #Misc
 enchantment.devour=Devourer

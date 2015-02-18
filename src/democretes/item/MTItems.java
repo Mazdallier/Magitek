@@ -12,9 +12,11 @@ import democretes.item.armor.pure.ItemPureChestplate;
 import democretes.item.armor.pure.ItemPureHelmet;
 import democretes.item.armor.pure.ItemPureLegs;
 import democretes.item.sigils.ItemDivinationSigil;
+import democretes.item.sigils.ItemRitualSigil;
 import democretes.item.simple.ItemMaterial;
 import democretes.item.simple.ItemRune;
 import democretes.item.tools.ItemDebugger;
+import democretes.item.tools.ItemResearch;
 import democretes.lib.ItemNames;
 
 public class MTItems {
@@ -23,8 +25,8 @@ public class MTItems {
 	public static Item rune;
 	public static Item debugger;
 	public static Item ritualSigil;
-	public static Item deactivator;
 	public static Item divinationSigil;
+	public static Item research;
 	
 	public static Item pureHelmet;
 	public static Item pureChestplate;
@@ -40,7 +42,9 @@ public class MTItems {
 		material = new ItemMaterial();
 		debugger = new ItemDebugger();
 		rune = new ItemRune();
+		ritualSigil = new ItemRitualSigil();
 		divinationSigil = new ItemDivinationSigil();
+		research = new ItemResearch();
 		
 		pureHelmet = new ItemPureHelmet();
 		pureChestplate = new ItemPureChestplate();
@@ -56,8 +60,8 @@ public class MTItems {
 		GameRegistry.registerItem(debugger, ItemNames.DEBUGGER_NAME);
 		GameRegistry.registerItem(rune, ItemNames.RUNE_NAME);
 		GameRegistry.registerItem(ritualSigil, ItemNames.RITUAL_NAME);
-		GameRegistry.registerItem(deactivator, ItemNames.DEACTIVATOR_SIGIL_NAME);
 		GameRegistry.registerItem(divinationSigil, ItemNames.DIVINATION_SIGIL_NAME);
+		GameRegistry.registerItem(research, ItemNames.RESEARCH_NAME);
 		
 		GameRegistry.registerItem(pureHelmet, ItemNames.PURE_HELMET_NAME);
 		GameRegistry.registerItem(pureChestplate, ItemNames.PURE_CHEST_NAME);

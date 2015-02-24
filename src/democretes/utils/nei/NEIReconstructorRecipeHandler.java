@@ -1,19 +1,13 @@
 package democretes.utils.nei;
 
-import java.awt.Rectangle;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
-import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
-import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
-import democretes.api.recipe.AltarRecipe;
 import democretes.api.recipe.ReconstructorRecipe;
 import democretes.utils.helper.StringHelper;
-import democretes.utils.nei.NEIAltarRecipeHandler.CachedAltarRecipe;
 
 public class NEIReconstructorRecipeHandler extends TemplateRecipeHandler {
 	

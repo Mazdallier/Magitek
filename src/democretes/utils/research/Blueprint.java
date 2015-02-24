@@ -27,13 +27,12 @@ public class Blueprint {
 	
 	public enum ResearchType {
 		COMBAT,
-		CRAFTING,
-		FARMING,
-		MACHINE,
 		MINING,
-		MISC,
-		SMELTING,
-		WOODCUTTING;		
+		CRAFTING,
+		AGRICULTURE,
+		MACHINE,
+		PROCESSING,
+		MISC;		
 	}
 
 }

@@ -6,6 +6,7 @@ import cpw.mods.fml.common.FMLLog;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -16,8 +17,11 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import democretes.api.helpers.RunicHelper;
+import democretes.api.helpers.ChipCrafterHelper;
 import democretes.block.BlockMTBase;
+import democretes.block.MTBlocks;
+import democretes.block.dummy.BlockSubTerraDummy;
+import democretes.block.generators.TileBounceGenerator;
 import democretes.block.generators.TileRunicGenerator;
 import democretes.item.MTItems;
 import democretes.lib.Reference;
@@ -39,16 +43,35 @@ public class BlockMachine extends BlockMTBase {
 		return new ItemStack(block, 1, meta);
 	}
 	
+	int facing;
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
+		if(stack.getItemDamageForDisplay() == 2) {
+			TileEntity tile = world.getTileEntity(x, y, z);
+			if(tile instanceof TileBounceGenerator) {
+				((TileMachtFurnace)tile).facing = this.facing;
+			}
+		}
+	}
+	
+	@Override
+	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta){
+		if(meta == 2) {
+			this.facing = ForgeDirection.OPPOSITES[side];			
+		}
+		return super.onBlockPlaced(world, x, y, z, side, hitX, hitY, hitZ, meta);
+	}
+	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if(world.getBlockMetadata(x, y, z) == 0) {
-			if(world.getTileEntity(x, y, z) instanceof TileRuneConstructor) {
-				TileRuneConstructor construct = (TileRuneConstructor)world.getTileEntity(x, y, z);
+			if(world.getTileEntity(x, y, z) instanceof TileChipCrafter) {
+				TileChipCrafter construct = (TileChipCrafter)world.getTileEntity(x, y, z);
 				if(player.getHeldItem() != null) {
-					int i = player.getHeldItem().getItem() == MTItems.material && player.getHeldItem().getItemDamage() == 0? 0 : 1;
+					int i = player.getHeldItem().getItem() == MTItems.ingot && player.getHeldItem().getItemDamage() == 0? 0 : 1;
 					ItemStack stack = player.getHeldItem();
 					if(i == 1) {
-						if(!RunicHelper.recipeExists(stack)) {
+						if(!ChipCrafterHelper.recipeExists(stack)) {
 							return false;
 						}
 					}
@@ -127,7 +150,7 @@ public class BlockMachine extends BlockMTBase {
 	public TileEntity createNewTileEntity(World world, int meta) {
 		switch(meta) {
 		case 0:
-			return new TileRuneConstructor();
+			return new TileChipCrafter();
 		case 1:
 			return new TileMachtFurnace();
 		case 2:

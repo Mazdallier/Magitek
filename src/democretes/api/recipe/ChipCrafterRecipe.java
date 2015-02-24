@@ -5,14 +5,14 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 
-public class RuneRecipe {
+public class ChipCrafterRecipe {
 	
 	ItemStack catalyst;
 	ItemStack output;
 	int macht;
 	int purity;
 	
-	public RuneRecipe(ItemStack catalyst, ItemStack output, int macht, int purity) {
+	public ChipCrafterRecipe(ItemStack catalyst, ItemStack output, int macht, int purity) {
 		this.catalyst = catalyst;
 		this.output = output;
 		this.macht = macht;
@@ -36,7 +36,7 @@ public class RuneRecipe {
 		return purity;
 	}
 	
-	public static List<RuneRecipe> runeRecipes = new ArrayList<RuneRecipe>();
+	public static List<ChipCrafterRecipe> runeRecipes = new ArrayList<ChipCrafterRecipe>();
 
 
 }

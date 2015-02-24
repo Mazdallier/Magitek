@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import democretes.api.recipe.AltarRecipe;
 import democretes.api.recipe.PurityRecipe;
 
 public class PurityAltarHelper {

@@ -10,9 +10,9 @@ import net.minecraft.util.IIcon;
 import democretes.item.ItemMTBase;
 import democretes.lib.Reference;
 
-public class ItemRune extends ItemMTBase {
+public class ItemChipset extends ItemMTBase {
 	
-	public ItemRune() {
+	public ItemChipset() {
 		setHasSubtypes(true);
 	}
 	
@@ -23,17 +23,16 @@ public class ItemRune extends ItemMTBase {
 		}
 	}
 	
-	IIcon icons[] = new IIcon[7];
-	
+	IIcon icons[] = new IIcon[6];	
 	@Override
 	public void registerIcons(IIconRegister ir) {
-		icons[0] = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune/rune_fire");
-		icons[1] = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune/rune_water");
-		icons[2] = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune/rune_earth");
-		icons[3] = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune/rune_air");
-		icons[4] = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune/rune_energy");
-		icons[5] = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune/rune_balance");
-		icons[6] = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune/rune_control");
+		String pre = Reference.TEXTURE_PREFIX + "chipset/chipset_";
+		icons[0] = ir.registerIcon(pre + "iron");
+		icons[1] = ir.registerIcon(pre + "gold");
+		icons[2] = ir.registerIcon(pre + "rustic");
+		icons[3] = ir.registerIcon(pre + "flimsy");
+		icons[4] = ir.registerIcon(pre + "pure");
+		icons[5] = ir.registerIcon(pre + "dark");
 	}
 	
 	@Override
@@ -43,7 +42,7 @@ public class ItemRune extends ItemMTBase {
 
 	@Override
 	public String getUnlocalizedNameInefficiently(ItemStack stack) {
-		return "item." + Reference.MOD_PREFIX + ".rune." + stack.getItemDamage();
+		return "item." + Reference.MOD_PREFIX + ".chip." + stack.getItemDamage();
 	}
 
 }

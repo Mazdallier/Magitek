@@ -64,8 +64,6 @@ public class GuiResearch extends GuiScreen {
 		mc.renderEngine.bindTexture(texture);
 		drawTexturedModalRect(left, top, 0, 0, guiWidth, guiHeight);		
 		if(blueprint != null) {
-			if(blueprint.getPages().length > 1) {
-			}
 			fontRendererObj.setUnicodeFlag(true);
 			this.drawCenteredString(fontRendererObj, StringHelper.localize(blueprint.getName()), left + guiWidth / 2, top + 8, 0);
 			if(blueprint.getPages()[currentPage].text != null) {
@@ -76,12 +74,10 @@ public class GuiResearch extends GuiScreen {
 			}else if(blueprint.getPages()[currentPage].recipeB != null) {
 				
 			}else if(blueprint.getPages()[currentPage].recipeC != null) {
-				
-			}else if(blueprint.getPages()[currentPage].recipeD != null) {
 				GL11.glColor4f(1F, 1F, 1F, 1F);
 				mc.renderEngine.bindTexture(craftingGrid);
 				drawTexturedModalRect(left+36, top+44, 0, 0, 80, 80);	
-				renderCraftingRecipe(left + 24, top + 40, blueprint.getPages()[currentPage].recipeD);
+				renderCraftingRecipe(left + 24, top + 40, blueprint.getPages()[currentPage].recipeC);
 			}
 			fontRendererObj.setUnicodeFlag(false);			
 		}else if(index != null && !index.isEmpty() && level == 1){
@@ -192,10 +188,11 @@ public class GuiResearch extends GuiScreen {
 		if(recipe == null) {
 			return;
 		}
+		buttonList.add(new ElementButtonItem(99, x+25, y-25, stack, this));
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
 				if(recipe[j*3+i] != null) {
-					buttonList.add(new ElementButtonItem(90+i*3+j,x + j*25, y+i*25, recipe[j*3+i], this));		
+					buttonList.add(new ElementButtonItem(90+i*3+j,x + j*25, y+i*25, recipe[j+i*3], this));		
 				}
 			}			
 		}

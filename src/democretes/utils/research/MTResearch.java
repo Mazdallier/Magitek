@@ -13,7 +13,7 @@ public class MTResearch {
 	public static Blueprint furnace;
 	
 	public static void initResearch() {
-		furnace = new Blueprint("magitek.blueprint.furnace", ResearchType.SMELTING, new BlueprintPage[]{new BlueprintPage("magitek.blueprint.furnace.0"), new BlueprintPage(new ItemStack(MTBlocks.totemVision))});
+		furnace = new Blueprint("magitek.blueprint.furnace", ResearchType.PROCESSING, new BlueprintPage[]{new BlueprintPage("magitek.blueprint.furnace.0"), new BlueprintPage(new ItemStack(MTBlocks.machine, 1, 2))});
 
 	}
 

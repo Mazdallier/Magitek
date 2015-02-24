@@ -12,8 +12,8 @@ public class PurityAltarRegistry {
 	
 
 	public static void initPurityRecipes() {
-		ingotLight = new PurityRecipe(new ItemStack(Items.iron_ingot), new ItemStack(MTItems.material, 1, 7), false);
-		ingotDark = new PurityRecipe(new ItemStack(Items.iron_ingot), new ItemStack(MTItems.material, 1, 8), true);
+		ingotLight = new PurityRecipe(new ItemStack(Items.iron_ingot), new ItemStack(MTItems.ingot, 1, 7), false);
+		ingotDark = new PurityRecipe(new ItemStack(Items.iron_ingot), new ItemStack(MTItems.ingot, 1, 8), true);
 	}
 	
 }

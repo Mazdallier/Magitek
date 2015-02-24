@@ -10,7 +10,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import democretes.Magitek;
-import democretes.api.helpers.RunicHelper;
+import democretes.api.helpers.ChipCrafterHelper;
 
 public class TileRunicGenerator extends TileGeneratorBase implements IInventory {
 	
@@ -25,7 +25,7 @@ public class TileRunicGenerator extends TileGeneratorBase implements IInventory 
 		if(this.inventory == null) {
 			return false;
 		}
-		return RunicHelper.recipeExistsFromOutput(this.inventory);
+		return ChipCrafterHelper.recipeExistsFromOutput(this.inventory);
 	}
 
 	int count;
@@ -48,7 +48,7 @@ public class TileRunicGenerator extends TileGeneratorBase implements IInventory 
 			for(int i = 0; i < 5; i++) {
 				Magitek.proxy.orbFX(this.worldObj, this.xCoord + 0.5D, this.yCoord + 1.0D, this.zCoord + 0.5D, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (Math.random() - Math.random())/10, (float)Math.random(), (float)Math.random(), (float)Math.random(), (float)Math.random(), 2, true);
 			}
-			return RunicHelper.getMachtFromOutput(stack)*4/5;
+			return ChipCrafterHelper.getMachtFromOutput(stack)*4/5;
 		}
 		return 0;
 	}
@@ -150,7 +150,7 @@ public class TileRunicGenerator extends TileGeneratorBase implements IInventory 
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return RunicHelper.recipeExistsFromOutput(stack);
+		return ChipCrafterHelper.recipeExistsFromOutput(stack);
 	}	
 
 }

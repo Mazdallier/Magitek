@@ -1,9 +1,5 @@
 package democretes.block.machines;
 
-import cpw.mods.fml.common.FMLLog;
-import democretes.api.helpers.AltarHelper;
-import democretes.api.helpers.RunicHelper;
-import democretes.item.MTItems;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -13,24 +9,26 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import democretes.api.helpers.ChipCrafterHelper;
+import democretes.item.MTItems;
 
-public class TileRuneConstructor extends TileMachineBase implements IInventory {
+public class TileChipCrafter extends TileMachineBase implements IInventory {
 
 	public ItemStack[] inventory = new ItemStack[2];
 	
-	public TileRuneConstructor() {
+	public TileChipCrafter() {
 		super(10000);
 	}
 
 	int energy;
 	@Override
 	public void doStuff() {
-		if(RunicHelper.recipeExists(this.inventory[1])) {
+		if(ChipCrafterHelper.recipeExists(this.inventory[1])) {
 			int multiplier = Math.min(this.inventory[0].stackSize, this.inventory[1].stackSize);
-			energy += this.extractMacht(RunicHelper.getMacht(this.inventory[1])*multiplier/20);
-			if(this.energy >= RunicHelper.getMacht(this.inventory[1])) {
+			energy += this.extractMacht(ChipCrafterHelper.getMacht(this.inventory[1])*multiplier/20);
+			if(this.energy >= ChipCrafterHelper.getMacht(this.inventory[1])) {
 				this.energy = 0;
-				ItemStack stack = RunicHelper.getResult(this.inventory[1]).copy();
+				ItemStack stack = ChipCrafterHelper.getResult(this.inventory[1]).copy();
 				stack.stackSize *= multiplier;
 				if(stack.stackSize > stack.getMaxStackSize() || this.inventory[1].stackSize > this.inventory[0].stackSize) {
 					EntityItem item = new EntityItem(this.worldObj, this.xCoord, this.yCoord + 0.5F, this.zCoord, stack);
@@ -146,9 +144,9 @@ public class TileRuneConstructor extends TileMachineBase implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack stack) {
 		if(i == 0) {
-			return stack.getItem() == MTItems.material && stack.getItemDamage() == 0;
+			return stack.getItem() == MTItems.ingot && stack.getItemDamage() == 0;
 		}else{
-			return RunicHelper.recipeExists(this.inventory[i]);
+			return ChipCrafterHelper.recipeExists(this.inventory[i]);
 		}
 	}
 

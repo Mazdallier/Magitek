@@ -20,7 +20,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import democretes.api.helpers.RunicHelper;
+import democretes.api.helpers.ChipCrafterHelper;
 import democretes.api.macht.IMachtStorage;
 import democretes.block.BlockMTBase;
 import democretes.block.MTBlocks;
@@ -107,7 +107,7 @@ public class BlockGenerator extends BlockMTBase {
 				}else{
 					if(player.getHeldItem() != null) {
 						ItemStack stack = player.getHeldItem();
-						if(!RunicHelper.recipeExistsFromOutput(stack)) {
+						if(!ChipCrafterHelper.recipeExistsFromOutput(stack)) {
 							return false;
 						}
 						int size = player.isSneaking() ? stack.stackSize : 1;

@@ -2,7 +2,7 @@ package democretes.render.tile;
 
 import org.lwjgl.opengl.GL11;
 
-import democretes.block.altar.TileAltar;
+import democretes.block.machines.TileChipCrafter;
 import democretes.block.machines.TileReconstructor;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;

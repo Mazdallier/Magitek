@@ -2,9 +2,7 @@ package democretes.block;
 
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
-import democretes.block.altar.BlockAltar;
 import democretes.block.altar.BlockPurityAltar;
-import democretes.block.altar.TileAltar;
 import democretes.block.altar.TilePurityAltar;
 import democretes.block.circuits.BlockCircuit;
 import democretes.block.circuits.ItemBlockCircuit;
@@ -31,7 +29,7 @@ import democretes.block.machines.BlockMachine;
 import democretes.block.machines.ItemBlockMachine;
 import democretes.block.machines.TileMachtFurnace;
 import democretes.block.machines.TileReconstructor;
-import democretes.block.machines.TileRuneConstructor;
+import democretes.block.machines.TileChipCrafter;
 import democretes.block.simple.BlockSimple;
 import democretes.block.simple.ItemBlockSimple;
 import democretes.block.totems.BlockEnhancingTotem;
@@ -48,7 +46,6 @@ public class MTBlocks {
 	public static Block machine;
 	public static Block terraDummy;
 	public static Block tesla;
-	public static Block altar;
 	public static Block altarDummy;
 	public static Block disposable;
 	public static Block simple;
@@ -63,7 +60,6 @@ public class MTBlocks {
 		machine = new BlockMachine();
 		terraDummy = new BlockSubTerraDummy();
 		tesla = new BlockCoil();
-		altar = new BlockAltar();
 		altarDummy = new BlockAltarDummy();
 		disposable = new BlockDisposableGenerator();
 		simple = new BlockSimple();
@@ -77,7 +73,6 @@ public class MTBlocks {
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, BlockNames.MACHINE_NAME);
 		GameRegistry.registerBlock(terraDummy, BlockNames.DUMMY_NAME);
 		//GameRegistry.registerBlock(tesla, BlockNames.TESLA_NAME);
-		GameRegistry.registerBlock(altar, BlockNames.ALTAR_NAME);
 		GameRegistry.registerBlock(altarDummy, BlockNames.ALTAR_NAME + "dumbass");
 		GameRegistry.registerBlock(disposable, ItemBlockDisposableGenerator.class, BlockNames.GENERATOR_NAME + "Disposable");
 		GameRegistry.registerBlock(simple, ItemBlockSimple.class, BlockNames.SIMPLE_NAME);
@@ -88,14 +83,13 @@ public class MTBlocks {
 		GameRegistry.registerBlock(circuit, ItemBlockCircuit.class, BlockNames.CIRCUIT_NAME);
 		
 		//GameRegistry.registerTileEntity(TileMachtCoil.class, Reference.MOD_NAME + "TileEnergyCoil");
-		GameRegistry.registerTileEntity(TileAltar.class, Reference.MOD_NAME + "TileAltar");
 		GameRegistry.registerTileEntity(TileAltarDummy.class, Reference.MOD_NAME + "TileAltarDummy");
 		GameRegistry.registerTileEntity(TileRunicGenerator.class, Reference.MOD_NAME + "TileRunicGenerator");
 		GameRegistry.registerTileEntity(TileItemTransfer.class, Reference.MOD_NAME + "TileItemTransfer");
 		GameRegistry.registerTileEntity(TileVisionTotem.class,  Reference.MOD_NAME + "TileTotem");
 		GameRegistry.registerTileEntity(TilePurityAltar.class, Reference.MOD_NAME + "TilePurityAltar");
 		
-		GameRegistry.registerTileEntity(TileRuneConstructor.class, Reference.MOD_NAME + "TileRuneConstrctor");
+		GameRegistry.registerTileEntity(TileChipCrafter.class, Reference.MOD_NAME + "TileRuneConstrctor");
 		GameRegistry.registerTileEntity(TileReconstructor.class, Reference.MOD_NAME + "TileReconstructor");
 		GameRegistry.registerTileEntity(TileMachtFurnace.class, Reference.MOD_NAME + "TileMachtFurnace");
 		

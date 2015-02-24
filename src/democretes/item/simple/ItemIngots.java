@@ -13,9 +13,9 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class ItemMaterial extends ItemMTBase {
+public class ItemIngots extends ItemMTBase {
 	
-	public ItemMaterial() {
+	public ItemIngots() {
 		setHasSubtypes(true);
 	}
 	
@@ -26,19 +26,16 @@ public class ItemMaterial extends ItemMTBase {
 		}
 	}
 	
-	IIcon icons[] = new IIcon[9];
+	IIcon icons[] = new IIcon[4];
 	
 	@Override
 	public void registerIcons(IIconRegister ir) {
-		icons[0] = ir.registerIcon(Reference.TEXTURE_PREFIX + "rune");
-		icons[1] = ir.registerIcon(Reference.TEXTURE_PREFIX + "sigil");
-		icons[2] = ir.registerIcon(Reference.TEXTURE_PREFIX + "scroll");
-		icons[3] = ir.registerIcon(Reference.TEXTURE_PREFIX + "macht_ingot");
-		icons[4] = ir.registerIcon(Reference.TEXTURE_PREFIX + "core_basic");
-		icons[5] = ir.registerIcon(Reference.TEXTURE_PREFIX + "core_advanced");
-		icons[6] = ir.registerIcon(Reference.TEXTURE_PREFIX + "core_complex");
-		icons[7] = ir.registerIcon(Reference.TEXTURE_PREFIX + "dark_ingot");
-		icons[8] = ir.registerIcon(Reference.TEXTURE_PREFIX + "pure_ingot");
+		String pre = Reference.TEXTURE_PREFIX + "ingots/";
+		icons[0] = ir.registerIcon(pre + "rustic_ingot");
+		icons[1] = ir.registerIcon(pre + "flimsy_ingot");
+		icons[2] = ir.registerIcon(pre + "dark_ingot");
+		icons[3] = ir.registerIcon(pre + "pure_ingot");
+		
 	}
 	
 	@Override
@@ -48,7 +45,7 @@ public class ItemMaterial extends ItemMTBase {
 
 	@Override
 	public String getUnlocalizedNameInefficiently(ItemStack stack) {
-		return "item." + Reference.MOD_PREFIX + ".material." + stack.getItemDamage();
+		return "item." + Reference.MOD_PREFIX + ".ingot." + stack.getItemDamage();
 	}
 	
 }

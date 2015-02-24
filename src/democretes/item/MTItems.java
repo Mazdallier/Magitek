@@ -12,19 +12,17 @@ import democretes.item.armor.pure.ItemPureChestplate;
 import democretes.item.armor.pure.ItemPureHelmet;
 import democretes.item.armor.pure.ItemPureLegs;
 import democretes.item.sigils.ItemDivinationSigil;
-import democretes.item.sigils.ItemRitualSigil;
-import democretes.item.simple.ItemMaterial;
-import democretes.item.simple.ItemRune;
+import democretes.item.simple.ItemChipset;
+import democretes.item.simple.ItemIngots;
 import democretes.item.tools.ItemDebugger;
 import democretes.item.tools.ItemResearch;
 import democretes.lib.ItemNames;
 
 public class MTItems {
 
-	public static Item material;
-	public static Item rune;
+	public static Item ingot;
+	public static Item chipset;
 	public static Item debugger;
-	public static Item ritualSigil;
 	public static Item divinationSigil;
 	public static Item research;
 	
@@ -39,10 +37,9 @@ public class MTItems {
 	public static Item darkBoots;
 	
 	public static void init() {
-		material = new ItemMaterial();
+		ingot = new ItemIngots();
 		debugger = new ItemDebugger();
-		rune = new ItemRune();
-		ritualSigil = new ItemRitualSigil();
+		chipset = new ItemChipset();
 		divinationSigil = new ItemDivinationSigil();
 		research = new ItemResearch();
 		
@@ -56,10 +53,9 @@ public class MTItems {
 		darkLeggings = new ItemDarkLegs();
 		darkBoots = new ItemDarkBoots();
 
-		GameRegistry.registerItem(material, ItemNames.MATERIAL_NAME);
+		GameRegistry.registerItem(ingot, ItemNames.MATERIAL_NAME);
 		GameRegistry.registerItem(debugger, ItemNames.DEBUGGER_NAME);
-		GameRegistry.registerItem(rune, ItemNames.RUNE_NAME);
-		GameRegistry.registerItem(ritualSigil, ItemNames.RITUAL_NAME);
+		GameRegistry.registerItem(chipset, ItemNames.CHIPSET_NAME);
 		GameRegistry.registerItem(divinationSigil, ItemNames.DIVINATION_SIGIL_NAME);
 		GameRegistry.registerItem(research, ItemNames.RESEARCH_NAME);
 		

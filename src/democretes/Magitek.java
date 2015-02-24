@@ -54,8 +54,7 @@ public class Magitek {
 		MTItems.init();
 		MTEnchantments.init();
 		EntitiesMT.init();
-	    GameRegistry.registerWorldGenerator(this.worldGen = new MTWorldGenerator(), 0);
-		
+	    GameRegistry.registerWorldGenerator(this.worldGen = new MTWorldGenerator(), 0);		
 	}
 	
 	@EventHandler

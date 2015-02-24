@@ -1,28 +1,21 @@
 itemGroup.Magitek=Magitek
 
 #Items
-item.magitek.debugger.name=Demo's Debugger
-item.magitek.material.0.name=Blank Rune
-item.magitek.material.1.name=Blank Sigil
-item.magitek.material.2.name=Blank Scroll
-item.magitek.material.3.name=Macht Ingot
-item.magitek.material.4.name=Basic Macht Core
-item.magitek.material.5.name=Advanced Macht Core
-item.magitek.material.6.name=Complex Macht Core
-item.magitek.material.7.name=Tainted Ingot
-item.magitek.material.8.name=Pure Ingot
-item.magitek.rune.0.name=Fire Rune
-item.magitek.rune.1.name=Water Rune
-item.magitek.rune.2.name=Earth Rune
-item.magitek.rune.3.name=Air Rune
-item.magitek.rune.4.name=Rune of Energy
-item.magitek.rune.5.name=Rune of Balance
-item.magitek.rune.6.name=Rune of Control
+item.magitek.ingot.0.name=Rustic Iron
+item.magitek.ingot.1.name=Flimsy Iron
+item.magitek.ingot.2.name=Light Iron
+item.magitek.ingot.3.name=Dark Iron
+item.magitek.chip.0.name=Iron Chipset
+item.magitek.chip.1.name=Gold Chipset
+item.magitek.chip.2.name=Rustic Chipset
+item.magitek.chip.3.name=Flimsy Chipset
+item.magitek.chip.4.name=Light Chipset
+item.magitek.chip.5.name=Dark Chipset
 item.magitek.sigil.ritual.0.name=Crude Sigil of Binding
 item.magitek.sigil.ritual.1.name=Generic Sigil of Binding
 item.magitek.sigil.ritual.2.name=Sophisticated Sigil of Binding
-item.magitek.sigil.deactivator.name=Deactivation Sigil
 item.magitek.sigil.divination.name=Divination Sigil
+
 item.dark.helmet.name=Tainted Helmet
 item.dark.chestplate.name=Tainted Chestplate
 item.dark.legs.name=Tainted Leggings
@@ -68,12 +61,11 @@ magitek.book.contents=Table of Contents
 
 magitek.research.category.combat=Combat
 magitek.research.category.crafting=Crafting
-magitek.research.category.farming=Farming
+magitek.research.category.agriculture=Agriculture
 magitek.research.category.machine=Machinery
 magitek.research.category.mining=Mining
 magitek.research.category.misc=Miscellaneous
-magitek.research.category.smelting=Smelting
-magitek.research.category.woodcutting=Woodcutting
+magitek.research.category.processing=Advanced Processing
 
 magitek.blueprint.furnace=Macht Furnace
 magitek.blueprint.furnace.0=You've developed a way to create an intense flame. So intense, that anything passing through it is melted almost instantly. You figure you can use this to cook or smelt anything needed by throwing it through the flame and having a hopper catch it on the other side.

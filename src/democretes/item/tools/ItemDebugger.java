@@ -78,11 +78,6 @@ public class ItemDebugger extends ItemMTBase {
 	}
 	
 	@Override
-	public int getRenderPasses(int metadata) {
-		return 1;
-	}
-	
-	@Override
 	public IIcon getIconFromDamage(int meta) {
 		return debug;
 	}

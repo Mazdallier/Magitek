@@ -16,10 +16,18 @@ public class TileMachtFurnace extends TileMachineBase {
 	public TileMachtFurnace() {
 		super(2000);
 	}
-
+	
+	int facing;
 	@Override
 	public void doStuff() {
-		List<EntityItem> entities = this.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord+1, this.yCoord+2, this.zCoord+1));
+		int negX = facing == 4 ? -2 : 0;
+		int posX = facing == 5 ? 2 : 1;
+		int negY = facing == 0 ? -2 : 0;
+		int posY = facing == 1 ? 2 : 1;
+		int negZ = facing == 2 ? -2 : 0;
+		int posZ = facing == 3 ? 2 : 1;
+		AxisAlignedBB box = AxisAlignedBB.getBoundingBox(this.xCoord+negX, this.yCoord+negY, this.zCoord+negZ, this.xCoord+posX, this.yCoord+posY, this.zCoord+posZ);
+		List<EntityItem> entities = this.worldObj.getEntitiesWithinAABB(EntityItem.class, box);
 		for(EntityItem item : entities) {
 			if(FurnaceRecipes.smelting().getSmeltingResult(item.getEntityItem()) != null && this.getMachtStored() > 100) {
 				this.extractMacht(100);

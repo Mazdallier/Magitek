@@ -53,8 +53,6 @@ public class ElementButtonItem extends ElementButtonInvisible {
 		render.renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRenderer, Minecraft.getMinecraft().getTextureManager(), stack, x, y);
 		RenderHelper.disableStandardItemLighting();
 		GL11.glPopMatrix();
-	}
-
-    
+	}    
 
 }

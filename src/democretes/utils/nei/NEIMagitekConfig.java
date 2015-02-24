@@ -13,9 +13,6 @@ public class NEIMagitekConfig implements IConfigureNEI {
 	public void loadConfig() {
 		API.hideItem(new ItemStack(MTBlocks.altarDummy, 1, OreDictionary.WILDCARD_VALUE));
 		API.hideItem(new ItemStack(MTBlocks.terraDummy, 1, OreDictionary.WILDCARD_VALUE));
-		
-		API.registerRecipeHandler(new NEIAltarRecipeHandler());
-		API.registerUsageHandler(new NEIAltarRecipeHandler());
 		API.registerRecipeHandler(new NEIRitualRecipeHandler.NEIBasicRitualHandler());
 		API.registerUsageHandler(new NEIRitualRecipeHandler.NEIBasicRitualHandler());
 		API.registerRecipeHandler(new NEIRitualRecipeHandler.NEIAdvancedRitualHandler());

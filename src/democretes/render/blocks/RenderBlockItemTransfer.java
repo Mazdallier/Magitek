@@ -8,7 +8,7 @@ import net.minecraft.world.IBlockAccess;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import democretes.block.altar.TileAltar;
+import democretes.block.machines.TileChipCrafter;
 import democretes.block.transfer.TileItemTransfer;
 import democretes.lib.RenderIds;
 

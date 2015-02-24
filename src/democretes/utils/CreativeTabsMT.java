@@ -12,7 +12,7 @@ public class CreativeTabsMT extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		return Item.getItemFromBlock(MTBlocks.altar);
+		return Item.getItemFromBlock(MTBlocks.circuit);
 	}
 	
 	

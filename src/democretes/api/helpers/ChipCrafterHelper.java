@@ -1,14 +1,14 @@
 package democretes.api.helpers;
 
 import net.minecraft.item.ItemStack;
-import democretes.api.recipe.RuneRecipe;
+import democretes.api.recipe.ChipCrafterRecipe;
 
-public class RunicHelper {
+public class ChipCrafterHelper {
 
 	
 	
 	public static ItemStack getResult(ItemStack catalyst) {
-		for(RuneRecipe recipe : RuneRecipe.runeRecipes) {
+		for(ChipCrafterRecipe recipe : ChipCrafterRecipe.runeRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getOutput().copy();
 			}
@@ -17,23 +17,14 @@ public class RunicHelper {
 	}
 	
 	public static int getMacht(ItemStack catalyst) {
-		for(RuneRecipe recipe : RuneRecipe.runeRecipes) {
+		for(ChipCrafterRecipe recipe : ChipCrafterRecipe.runeRecipes) {
 			if(recipe.getCatalyst().isItemEqual(catalyst)) {
 				return recipe.getEnergyRequired();
 			}
 		}
 		return 0;
 	}
-	
-	public static int getPurity(ItemStack catalyst) {
-		for(RuneRecipe recipe : RuneRecipe.runeRecipes) {
-			if(recipe.getCatalyst().isItemEqual(catalyst)) {
-				return recipe.getPurity();
-			}
-		}
-		return 0;
-	}
-	
+		
 	public static boolean recipeExists(ItemStack catalyst) {
 		return getResult(catalyst) != null;
 	}
@@ -42,7 +33,7 @@ public class RunicHelper {
 		if(output == null) {
 			return null;
 		}
-		for(RuneRecipe recipe : RuneRecipe.runeRecipes) {
+		for(ChipCrafterRecipe recipe : ChipCrafterRecipe.runeRecipes) {
 			if(recipe.getOutput().isItemEqual(output)) {
 				return recipe.getCatalyst().copy();
 			}
@@ -51,7 +42,7 @@ public class RunicHelper {
 	}	
 	
 	public static int getMachtFromOutput(ItemStack output) {
-		for(RuneRecipe recipe : RuneRecipe.runeRecipes) {
+		for(ChipCrafterRecipe recipe : ChipCrafterRecipe.runeRecipes) {
 			if(recipe.getOutput().isItemEqual(output)) {
 				return recipe.getEnergyRequired();
 			}

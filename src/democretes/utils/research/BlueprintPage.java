@@ -1,39 +1,32 @@
 package democretes.utils.research;
 
 import net.minecraft.item.ItemStack;
-import democretes.api.recipe.AltarRecipe;
-import democretes.api.recipe.PurityRecipe;
+import democretes.api.recipe.ChipCrafterRecipe;
 import democretes.api.recipe.RitualRecipe;
-import democretes.api.recipe.RuneRecipe;
 
 public class BlueprintPage {
 	
 	public String text;
-	public AltarRecipe recipeA;
-	public RitualRecipe recipeB;
-	public RuneRecipe recipeC;
-	public ItemStack recipeD;
+	public RitualRecipe recipeA;
+	public ChipCrafterRecipe recipeB;
+	public ItemStack recipeC;
 	
 	
 	public BlueprintPage(String text) {
 		this.text = text;
 	}
-	
-	public BlueprintPage(AltarRecipe recipe) {
-		this.recipeA = recipe;
-	}
 
 	public BlueprintPage(RitualRecipe recipe) {
-		this.recipeB = recipe;
+		this.recipeA = recipe;
 	}
 	
-	public BlueprintPage(RuneRecipe recipe) {
-		this.recipeC = recipe;
+	public BlueprintPage(ChipCrafterRecipe recipe) {
+		this.recipeB = recipe;
 	}
 	
 	//Crafting recipe
 	public BlueprintPage(ItemStack result) {
-		this.recipeD = result;	
+		this.recipeC = result;	
 	}
 	
 

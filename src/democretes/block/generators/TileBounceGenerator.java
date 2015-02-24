@@ -23,7 +23,7 @@ public class TileBounceGenerator extends TileMTBase {
 		if(count++%40==0 && this.canCreate) {
 			ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[facing];
 			TileEntity tile = this.worldObj.getTileEntity(this.xCoord + dir.offsetX, this.yCoord + dir.offsetY, this.zCoord + dir.offsetZ);
-			if(tile instanceof TileSpreader || tile instanceof TileMiniSpreader) {
+			/*if(tile instanceof TileSpreader || tile instanceof TileMiniSpreader) {
 				this.canCreate = false;
 				this.orb = new MachtOrb(this);
 				this.orb.macht = ((IMachtStorage)tile).extractMacht(100);;
@@ -31,7 +31,7 @@ public class TileBounceGenerator extends TileMTBase {
 					this.orb = null;
 					return;
 				}
-			}
+			}*/
 		}
 		if(this.orb == null) {
 			return;
@@ -41,10 +41,10 @@ public class TileBounceGenerator extends TileMTBase {
 			ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[ForgeDirection.OPPOSITES[this.facing]];
 			for(int i = 1; i < 50; i++) {
 				TileEntity tile = this.worldObj.getTileEntity(this.xCoord + dir.offsetX*i, this.yCoord + dir.offsetY*i, this.zCoord + dir.offsetZ*i);
-				if(tile instanceof TileBounceGenerator || tile instanceof TileSpreader || tile instanceof TileMiniSpreader) {
+				/*if(tile instanceof TileBounceGenerator || tile instanceof TileSpreader || tile instanceof TileMiniSpreader) {
 					distance = i;	
 					break;
-				}
+				}*/
 			}
 			this.worldObj.spawnEntityInWorld(new EntityMacht(this.worldObj, this.xCoord + 0.5D, this.yCoord+0.5, this.zCoord + 0.5D, v*dir.offsetX/20, v*dir.offsetY/20, v*dir.offsetZ/20));
 		}
@@ -68,14 +68,14 @@ public class TileBounceGenerator extends TileMTBase {
 				((TileBounceGenerator)tile).orb = this.orb;
 				this.orb = null;
 				break;
-			}else if(tile instanceof TileSpreader || tile instanceof TileMiniSpreader) {
+			}/*else if(tile instanceof TileSpreader || tile instanceof TileMiniSpreader) {
 				((IMachtStorage)tile).receiveMacht(orb.macht);
 				if(this.orb.getSource(this.worldObj) != null) {
 					this.orb.getSource(this.worldObj).canCreate = true;					
 				}
 				this.orb = null;
 				break;
-			}
+			}*/
 		}
 	}
 	

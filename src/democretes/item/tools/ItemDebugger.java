@@ -1,7 +1,6 @@
 package democretes.item.tools;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -17,9 +16,10 @@ import democretes.Magitek;
 import democretes.api.block.BlockInfo;
 import democretes.api.block.IBlockDebug;
 import democretes.api.macht.IMachtHandler;
+import democretes.block.circuits.BlockCircuit;
+import democretes.block.circuits.TileCircuitBase;
 import democretes.item.ItemMTBase;
 import democretes.lib.Reference;
-import democretes.utils.world.WorldGenAltar;
 
 public class ItemDebugger extends ItemMTBase {
 	
@@ -53,10 +53,19 @@ public class ItemDebugger extends ItemMTBase {
 				}
 			}
 			if(info.isMachtHandler()) {
-				FMLLog.info("Macht Stored: " + info.getMacht());
+				Magitek.log.info("Macht Stored: " + info.getMacht());
 			}
 			if(info.isPurityHandler()) {
-				FMLLog.info("Purity: " + info.getPurity());
+				Magitek.log.info("Purity: " + info.getPurity());
+			}
+		}
+		if(block instanceof BlockCircuit) {
+			TileCircuitBase tile = (TileCircuitBase)world.getTileEntity(x, y, z);
+			Magitek.log.info("Master: " + (tile.master != null));
+			if(tile.master != null) {
+				Magitek.log.info("MasterX: " + tile.master.xCoord);
+				Magitek.log.info("MasterY: " + tile.master.yCoord);
+				Magitek.log.info("MasterZ: " + tile.master.zCoord);				
 			}
 		}
 		return false;

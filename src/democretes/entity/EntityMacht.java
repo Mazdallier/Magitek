@@ -8,14 +8,10 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import democretes.Magitek;
-import democretes.block.generators.TileBounceGenerator;
-import democretes.block.generators.TileMiniSpreader;
-import democretes.block.generators.TileSpreader;
 
 public class EntityMacht extends EntityThrowable {
 	
@@ -119,9 +115,6 @@ public class EntityMacht extends EntityThrowable {
 			if(tile == source) {
 				return;
 			}			
-		}
-		if(tile instanceof TileSpreader || tile instanceof TileBounceGenerator || tile instanceof TileMiniSpreader) {
-			this.setDead();
 		}
 	}
 

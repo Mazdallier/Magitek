@@ -37,9 +37,9 @@ public class BlockDisposableGenerator extends BlockMTBase {
 		return new ItemStack(block, 1, meta);
 	}
 	
-	IIcon[] top = new IIcon[2];
-	IIcon[] bot = new IIcon[2];
-	IIcon[] sides = new IIcon[2];
+	IIcon[] top = new IIcon[1];
+	IIcon[] bot = new IIcon[1];
+	IIcon[] sides = new IIcon[1];
 	
 	@Override
 	public void registerBlockIcons(IIconRegister ir) {

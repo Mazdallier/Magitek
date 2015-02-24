@@ -13,5 +13,6 @@ public class BlockNames {
 	public static final String ENHANCER_NAME = "enhancer";
 	public static final String DESTRUCTION_NAME = "destruction";
 	public static final String ALTAR_PURITY_NAME = "altarPurity";
+	public static final String CIRCUIT_NAME = "circuit";
 
 }

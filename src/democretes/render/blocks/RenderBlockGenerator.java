@@ -10,10 +10,8 @@ import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import democretes.block.generators.TileBounceGenerator;
 import democretes.block.generators.TileDestructionGenerator;
-import democretes.block.generators.TileMiniSpreader;
 import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
-import democretes.block.generators.TileSpreader;
 import democretes.block.generators.TileSubTerraGenerator;
 import democretes.block.generators.TileThermalGenerator;
 import democretes.lib.RenderIds;
@@ -33,16 +31,12 @@ public class RenderBlockGenerator implements ISimpleBlockRenderingHandler{
 			GL11.glTranslatef(0, -0.3F, 0);
 			dispatch.renderTileEntityAt(new TileSubTerraGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
 		case 2:
-			dispatch.renderTileEntityAt(new TileSpreader(), 0.0D, 0.0D, 0.0D, 0.0F);break;
-		case 3:
 			dispatch.renderTileEntityAt(new TileRunicGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
-		case 4:
+		case 3:
 			dispatch.renderTileEntityAt(new TileThermalGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
-		case 5:
+		case 4:
 			dispatch.renderTileEntityAt(new TileDestructionGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);break;
-		case 6:
-			dispatch.renderTileEntityAt(new TileMiniSpreader(), 0.0D, 0.0D, 0.0D, 0.0F);break;
-		case 7:
+		case 5:
 			dispatch.renderTileEntityAt(new TileBounceGenerator(), 0.0D, 0.0D, 0.0D, 0.0F);
 		}
 		GL11.glPopMatrix();

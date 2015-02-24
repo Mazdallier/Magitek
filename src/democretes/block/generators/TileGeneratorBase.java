@@ -1,21 +1,9 @@
 package democretes.block.generators;
 
-import java.util.ArrayList;
-
-import cpw.mods.fml.common.FMLLog;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
-import democretes.Magitek;
-import democretes.api.macht.IMachtStorage;
 import democretes.block.MTBlocks;
-import democretes.block.TileEnergyTransferer;
-import democretes.block.dummy.TileSubTerraDummy;
-import democretes.utils.handlers.ConfigHandler;
-import democretes.utils.helper.DirectionHelper;
+import democretes.block.TileMachtBase;
 
-public abstract class TileGeneratorBase extends TileEnergyTransferer {
+public abstract class TileGeneratorBase extends TileMachtBase {
 	
 	
 	public TileGeneratorBase() {

@@ -36,14 +36,13 @@ item.pure.boots.name=Pure Boots
 #Blocks
 tile.magitek.generator.0.name=Solar Array
 tile.magitek.generator.1.name=Sub Terranean Generator
-tile.magitek.generator.2.name=Macht Crystal
-tile.magitek.generator.3.name=Runic Generator
-tile.magitek.generator.4.name=Magmatic Consumer
-tile.magitek.generator.5.name=Chunk Devourer
-tile.magitek.generator.6.name=Macht Fragment
-tile.magitek.generator.7.name=Kinetic Generator
+tile.magitek.generator.2.name=Runic Generator
+tile.magitek.generator.3.name=Magmatic Consumer
+tile.magitek.generator.4.name=Chunk Devourer
+tile.magitek.generator.5.name=Kinetic Generator
 tile.magitek.machine.0.name=Runic Constructor
-tile.magitek.machine.1.name=Mass Constructor
+tile.magitek.machine.1.name=Macht Furnace
+tile.magitek.machine.2.name=Mass Constructor
 tile.magitek.altar.name=Altar of Power
 tile.magitek.coil.name=Macht Coil 
 tile.magitek.disposable.0.name=Explosive Generator
@@ -62,3 +61,20 @@ magitek.nei.ritual.advanced=Generic Ritual
 magitek.nei.ritual.complex=Sophisticated Ritual
 magitek.macht.stored=Macht Stored
 magitek.purity.stored=Purity Stored
+
+#Research
+magitek.book.title=Codex of Wissen
+magitek.book.contents=Table of Contents
+
+magitek.research.category.combat=Combat
+magitek.research.category.crafting=Crafting
+magitek.research.category.farming=Farming
+magitek.research.category.machine=Machinery
+magitek.research.category.mining=Mining
+magitek.research.category.misc=Miscellaneous
+magitek.research.category.smelting=Smelting
+magitek.research.category.woodcutting=Woodcutting
+
+magitek.blueprint.furnace=Macht Furnace
+magitek.blueprint.furnace.0=You've developed a way to create an intense flame. So intense, that anything passing through it is melted almost instantly. You figure you can use this to cook or smelt anything needed by throwing it through the flame and having a hopper catch it on the other side.
+magitek.blueprint.furnace.1

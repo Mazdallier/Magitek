@@ -12,7 +12,7 @@ public class BlueprintPage {
 	public AltarRecipe recipeA;
 	public RitualRecipe recipeB;
 	public RuneRecipe recipeC;
-	public ItemStack[] recipeD;
+	public ItemStack recipeD;
 	
 	
 	public BlueprintPage(String text) {
@@ -32,8 +32,8 @@ public class BlueprintPage {
 	}
 	
 	//Crafting recipe
-	public BlueprintPage(ItemStack[] recipe) {
-		this.recipeD = recipe;		
+	public BlueprintPage(ItemStack result) {
+		this.recipeD = result;	
 	}
 	
 

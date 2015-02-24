@@ -26,6 +26,7 @@ import democretes.utils.handlers.ConfigHandler;
 import democretes.utils.handlers.GuiHandler;
 import democretes.utils.handlers.MTEventHandler;
 import democretes.utils.network.PacketHandler;
+import democretes.utils.research.MTResearch;
 import democretes.utils.world.MTWorldGenerator;
 
 @Mod(modid = Reference.MOD_ID, 
@@ -66,11 +67,13 @@ public class Magitek {
 		MinecraftForge.EVENT_BUS.register(new MTEventHandler());
 		MinecraftForge.EVENT_BUS.register(new ParticleRenderDispatcher());
 		BlockTransferHandler.registerBlocks();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 	}
 	
 	@EventHandler
 	public void orgasm(FMLPostInitializationEvent event) {
 		RecipeRegistry.initAllTheRecipes();
+		MTResearch.initResearch();
 	}
 	
 	

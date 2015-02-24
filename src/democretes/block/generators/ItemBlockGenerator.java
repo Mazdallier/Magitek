@@ -31,12 +31,6 @@ public class ItemBlockGenerator extends ItemBlockWithMetadata{
 	       field_150939_a.onBlockPlacedBy(world, x, y, z, player, stack);
 	       field_150939_a.onPostBlockPlaced(world, x, y, z, metadata);
 	    }
-	    TileEntity tile = world.getTileEntity(x, y, z);
-	    if(tile != null && stack.getTagCompound() != null) {
-	    	if(tile instanceof TileSpreader) {
-	    		((TileSpreader)tile).receiveMacht(stack.getTagCompound().getInteger("Macht"));
-	    	}
-	    }
 	    return true;
 	}
 	

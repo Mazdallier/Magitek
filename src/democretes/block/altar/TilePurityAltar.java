@@ -16,7 +16,6 @@ import net.minecraft.tileentity.TileEntityEndPortal;
 import net.minecraft.util.AxisAlignedBB;
 import democretes.api.helpers.PurityAltarHelper;
 import democretes.api.macht.MachtStorage;
-import democretes.block.generators.TileSpreader;
 
 public class TilePurityAltar extends TileEntityEndPortal {
 
@@ -31,22 +30,7 @@ public class TilePurityAltar extends TileEntityEndPortal {
 		if(!this.worldObj.isRemote) {
 			return;
 		}
-		if(count++ >= 60) {
-			count = 0;
-			if(!checkForStructure()) {
-				this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord);
-				this.worldObj.removeTileEntity(this.xCoord, this.yCoord, this.zCoord);
-			}
-		}
 		if(count%10==0) {
-			if(!creative) {
-				getMachtFromCrystals();
-				macht.extractMacht(50);
-				if(macht.getMachtStored() == 0) {
-					this.worldObj.setBlockToAir(this.xCoord, this.yCoord, this.zCoord);
-					this.worldObj.removeTileEntity(this.xCoord, this.yCoord, this.zCoord);				
-				}				
-			}
 			List<EntityItem> items = this.worldObj.getEntitiesWithinAABB(EntityItem.class, AxisAlignedBB.getBoundingBox(this.xCoord, this.yCoord, this.zCoord, this.xCoord + 1, this.yCoord + 2, this.zCoord+1));
 			for(EntityItem item : items) {
 				if(PurityAltarHelper.recipeExists(item.getEntityItem())) {
@@ -69,20 +53,6 @@ public class TilePurityAltar extends TileEntityEndPortal {
 				item.setVelocity(0.25D, 0.25D, 0);				
 			}
 			
-		}
-	}
-	
-	private void getMachtFromCrystals() {
-		for(int x = -10; x < 10; x++) {
-			for(int y = -5; y < 5; y++) {
-				for(int z = -10; z < 10; z++) {
-					TileEntity tile = this.worldObj.getTileEntity(this.xCoord + x, this.yCoord + y, this.zCoord + z);
-					if(tile instanceof TileSpreader) {
-						macht.receiveMacht(((TileSpreader)tile).extractMacht(1000));
-						return;
-					}
-				}
-			}
 		}
 	}
 	

@@ -13,12 +13,27 @@ public class Blueprint {
 		BlueprintHelper.blueprints.add(this);
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
+	public ResearchType getResearchType() {
+		return type;
+	}
+	
+	public BlueprintPage[] getPages() {
+		return page;
+	}
+	
 	public enum ResearchType {
-		MINING,
+		COMBAT,
 		CRAFTING,
+		FARMING,
+		MACHINE,
+		MINING,
+		MISC,
 		SMELTING,
-		ARMOR,
-		DAMAGE;		
+		WOODCUTTING;		
 	}
 
 }

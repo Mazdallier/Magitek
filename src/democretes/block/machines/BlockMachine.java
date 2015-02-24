@@ -129,6 +129,8 @@ public class BlockMachine extends BlockMTBase {
 		case 0:
 			return new TileRuneConstructor();
 		case 1:
+			return new TileMachtFurnace();
+		case 2:
 			return new TileReconstructor();
 		}
 		return null;

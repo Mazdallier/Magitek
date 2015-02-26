@@ -6,25 +6,19 @@ import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import cpw.mods.fml.common.FMLLog;
 import democretes.block.MTBlocks;
+import democretes.lib.Reference;
 
 public class NEIMagitekConfig implements IConfigureNEI {	
 	
 	@Override
 	public void loadConfig() {
-		API.hideItem(new ItemStack(MTBlocks.altarDummy, 1, OreDictionary.WILDCARD_VALUE));
 		API.hideItem(new ItemStack(MTBlocks.terraDummy, 1, OreDictionary.WILDCARD_VALUE));
-		API.registerRecipeHandler(new NEIRitualRecipeHandler.NEIBasicRitualHandler());
-		API.registerUsageHandler(new NEIRitualRecipeHandler.NEIBasicRitualHandler());
-		API.registerRecipeHandler(new NEIRitualRecipeHandler.NEIAdvancedRitualHandler());
-		API.registerUsageHandler(new NEIRitualRecipeHandler.NEIAdvancedRitualHandler());
-		API.registerRecipeHandler(new NEIRitualRecipeHandler.NEIComplexRitualHandler());
-		API.registerUsageHandler(new NEIRitualRecipeHandler.NEIComplexRitualHandler());
 		API.registerRecipeHandler(new NEIReconstructorRecipeHandler());
 	}
 
 	@Override
 	public String getName() {
-		return "Magitek NEI";
+		return Reference.MOD_NAME + " NEI";
 	}
 
 	@Override

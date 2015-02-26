@@ -1,8 +1,7 @@
 package democretes.api.helpers;
 
-import democretes.api.recipe.ReconstructorRecipe;
-import democretes.api.recipe.RitualRecipe;
 import net.minecraft.item.ItemStack;
+import democretes.api.recipe.ReconstructorRecipe;
 
 public class ReconstructorHelper {
 	

@@ -27,8 +27,7 @@ public class BlockSimple extends BlockMTBase {
 	public static IIcon[] icons = new IIcon[2];
 	@Override
 	public void registerBlockIcons(IIconRegister ir) {
-		icons[0] = ir.registerIcon(Reference.TEXTURE_PREFIX + "macht");
-		icons[1] = ir.registerIcon(Reference.TEXTURE_PREFIX + "stone_infused");
+		icons[0] = ir.registerIcon(Reference.TEXTURE_PREFIX + "stone_infused");
 	}
 
 	@Override

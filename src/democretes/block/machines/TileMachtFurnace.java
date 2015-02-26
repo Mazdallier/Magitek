@@ -2,6 +2,7 @@ package democretes.block.machines;
 
 import java.util.List;
 
+import democretes.Magitek;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -10,6 +11,7 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileMachtFurnace extends TileMachineBase {	
 
@@ -20,6 +22,7 @@ public class TileMachtFurnace extends TileMachineBase {
 	int facing;
 	@Override
 	public void doStuff() {
+		ForgeDirection dir = ForgeDirection.getOrientation(facing);
 		int negX = facing == 4 ? -2 : 0;
 		int posX = facing == 5 ? 2 : 1;
 		int negY = facing == 0 ? -2 : 0;
@@ -29,7 +32,7 @@ public class TileMachtFurnace extends TileMachineBase {
 		AxisAlignedBB box = AxisAlignedBB.getBoundingBox(this.xCoord+negX, this.yCoord+negY, this.zCoord+negZ, this.xCoord+posX, this.yCoord+posY, this.zCoord+posZ);
 		List<EntityItem> entities = this.worldObj.getEntitiesWithinAABB(EntityItem.class, box);
 		for(EntityItem item : entities) {
-			if(FurnaceRecipes.smelting().getSmeltingResult(item.getEntityItem()) != null && this.getMachtStored() > 100) {
+			if(FurnaceRecipes.smelting().getSmeltingResult(item.getEntityItem()) != null) {
 				this.extractMacht(100);
 				item.setEntityItemStack(FurnaceRecipes.smelting().getSmeltingResult(item.getEntityItem()).copy());
 				item.delayBeforeCanPickup = 20;
@@ -39,7 +42,7 @@ public class TileMachtFurnace extends TileMachineBase {
 
 	@Override
 	public boolean canActivate() {
-		return true;
+		return this.getMachtStored() > 100;
 	}
 
 

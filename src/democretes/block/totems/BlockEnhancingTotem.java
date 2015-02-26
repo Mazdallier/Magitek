@@ -16,9 +16,9 @@ public class BlockEnhancingTotem extends BlockMTBase {
 	IIcon[] icon = new IIcon[3];
 	@Override
 	public void registerBlockIcons(IIconRegister ir) {
-		icon[0] = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_enhancer_bot");
-		icon[1] = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_enhancer_top");
-		icon[2] = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_enhancer");
+		icon[0] = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem/totem_enhancer_bot");
+		icon[1] = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem/totem_enhancer_top");
+		icon[2] = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem/totem_enhancer");
 	}
 	
 	@Override

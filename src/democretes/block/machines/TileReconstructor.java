@@ -1,10 +1,8 @@
 package democretes.block.machines;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,7 +14,6 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.ForgeDirection;
-import democretes.api.RitualType;
 import democretes.api.helpers.ReconstructorHelper;
 import democretes.utils.helper.DirectionHelper;
 

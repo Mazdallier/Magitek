@@ -10,15 +10,11 @@ import democretes.block.circuits.TileCircuitWire;
 import democretes.block.circuits.TileMasterCircuit;
 import democretes.block.circuits.TileRedstoneCircuit;
 import democretes.block.coils.BlockCoil;
-import democretes.block.dummy.BlockAltarDummy;
 import democretes.block.dummy.BlockSubTerraDummy;
-import democretes.block.dummy.TileAltarDummy;
 import democretes.block.dummy.TileSubTerraDummy;
 import democretes.block.generators.BlockGenerator;
 import democretes.block.generators.ItemBlockGenerator;
 import democretes.block.generators.TileBounceGenerator;
-import democretes.block.generators.TileDestructionGenerator;
-import democretes.block.generators.TileRunicGenerator;
 import democretes.block.generators.TileSolarGenerator;
 import democretes.block.generators.TileSubTerraGenerator;
 import democretes.block.generators.TileThermalGenerator;
@@ -27,9 +23,9 @@ import democretes.block.generators.disposable.ItemBlockDisposableGenerator;
 import democretes.block.generators.disposable.TileDetonationGenerator;
 import democretes.block.machines.BlockMachine;
 import democretes.block.machines.ItemBlockMachine;
+import democretes.block.machines.TileChipCrafter;
 import democretes.block.machines.TileMachtFurnace;
 import democretes.block.machines.TileReconstructor;
-import democretes.block.machines.TileChipCrafter;
 import democretes.block.simple.BlockSimple;
 import democretes.block.simple.ItemBlockSimple;
 import democretes.block.totems.BlockEnhancingTotem;
@@ -46,7 +42,6 @@ public class MTBlocks {
 	public static Block machine;
 	public static Block terraDummy;
 	public static Block tesla;
-	public static Block altarDummy;
 	public static Block disposable;
 	public static Block simple;
 	public static Block transfer;
@@ -60,7 +55,6 @@ public class MTBlocks {
 		machine = new BlockMachine();
 		terraDummy = new BlockSubTerraDummy();
 		tesla = new BlockCoil();
-		altarDummy = new BlockAltarDummy();
 		disposable = new BlockDisposableGenerator();
 		simple = new BlockSimple();
 		transfer = new BlockTransfer();
@@ -73,7 +67,6 @@ public class MTBlocks {
 		GameRegistry.registerBlock(machine, ItemBlockMachine.class, BlockNames.MACHINE_NAME);
 		GameRegistry.registerBlock(terraDummy, BlockNames.DUMMY_NAME);
 		//GameRegistry.registerBlock(tesla, BlockNames.TESLA_NAME);
-		GameRegistry.registerBlock(altarDummy, BlockNames.ALTAR_NAME + "dumbass");
 		GameRegistry.registerBlock(disposable, ItemBlockDisposableGenerator.class, BlockNames.GENERATOR_NAME + "Disposable");
 		GameRegistry.registerBlock(simple, ItemBlockSimple.class, BlockNames.SIMPLE_NAME);
 		GameRegistry.registerBlock(transfer, BlockNames.TRANSFER_NAME);
@@ -83,8 +76,6 @@ public class MTBlocks {
 		GameRegistry.registerBlock(circuit, ItemBlockCircuit.class, BlockNames.CIRCUIT_NAME);
 		
 		//GameRegistry.registerTileEntity(TileMachtCoil.class, Reference.MOD_NAME + "TileEnergyCoil");
-		GameRegistry.registerTileEntity(TileAltarDummy.class, Reference.MOD_NAME + "TileAltarDummy");
-		GameRegistry.registerTileEntity(TileRunicGenerator.class, Reference.MOD_NAME + "TileRunicGenerator");
 		GameRegistry.registerTileEntity(TileItemTransfer.class, Reference.MOD_NAME + "TileItemTransfer");
 		GameRegistry.registerTileEntity(TileVisionTotem.class,  Reference.MOD_NAME + "TileTotem");
 		GameRegistry.registerTileEntity(TilePurityAltar.class, Reference.MOD_NAME + "TilePurityAltar");
@@ -94,7 +85,6 @@ public class MTBlocks {
 		GameRegistry.registerTileEntity(TileMachtFurnace.class, Reference.MOD_NAME + "TileMachtFurnace");
 		
 		GameRegistry.registerTileEntity(TileThermalGenerator.class, Reference.MOD_NAME + "TileThermalGenerator");
-		GameRegistry.registerTileEntity(TileDestructionGenerator.class, Reference.MOD_NAME + "TileDestructionGenerator");
 		GameRegistry.registerTileEntity(TileBounceGenerator.class, Reference.MOD_NAME + "TileBounceGenerator");
 		GameRegistry.registerTileEntity(TileDetonationGenerator.class, Reference.MOD_NAME + "TileDetonationGenerator");
 		GameRegistry.registerTileEntity(TileSubTerraGenerator.class, Reference.MOD_NAME + "TileSubTerra");

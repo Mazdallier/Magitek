@@ -2,7 +2,6 @@ package democretes.block.machines;
 
 import java.util.List;
 
-import cpw.mods.fml.common.FMLLog;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -14,15 +13,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import democretes.api.helpers.ChipCrafterHelper;
 import democretes.block.BlockMTBase;
-import democretes.block.MTBlocks;
-import democretes.block.dummy.BlockSubTerraDummy;
-import democretes.block.generators.TileBounceGenerator;
-import democretes.block.generators.TileRunicGenerator;
 import democretes.item.MTItems;
 import democretes.lib.Reference;
 
@@ -46,9 +40,9 @@ public class BlockMachine extends BlockMTBase {
 	int facing;
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack) {
-		if(stack.getItemDamageForDisplay() == 2) {
+		if(stack.getItemDamageForDisplay() == 1) {
 			TileEntity tile = world.getTileEntity(x, y, z);
-			if(tile instanceof TileBounceGenerator) {
+			if(tile instanceof TileMachtFurnace) {
 				((TileMachtFurnace)tile).facing = this.facing;
 			}
 		}
@@ -56,9 +50,7 @@ public class BlockMachine extends BlockMTBase {
 	
 	@Override
 	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta){
-		if(meta == 2) {
-			this.facing = ForgeDirection.OPPOSITES[side];			
-		}
+		this.facing = side;		
 		return super.onBlockPlaced(world, x, y, z, side, hitX, hitY, hitZ, meta);
 	}
 	

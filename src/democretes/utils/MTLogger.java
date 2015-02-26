@@ -10,8 +10,12 @@ import democretes.lib.Reference;
 
 public class MTLogger {
 	
-	public void info(String message) {
-		log(Level.INFO, message);
+	public void info(int num) {
+		log(Level.INFO, new String("" + num));
+	}
+	
+	public void info(String string) {
+		log(Level.INFO, string);
 	}
 	
 	public void warning(String message) {

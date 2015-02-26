@@ -72,12 +72,10 @@ public class GuiResearch extends GuiScreen {
 			}else if(blueprint.getPages()[currentPage].recipeA != null) {
 				
 			}else if(blueprint.getPages()[currentPage].recipeB != null) {
-				
-			}else if(blueprint.getPages()[currentPage].recipeC != null) {
 				GL11.glColor4f(1F, 1F, 1F, 1F);
 				mc.renderEngine.bindTexture(craftingGrid);
 				drawTexturedModalRect(left+36, top+44, 0, 0, 80, 80);	
-				renderCraftingRecipe(left + 24, top + 40, blueprint.getPages()[currentPage].recipeC);
+				renderCraftingRecipe(left + 24, top + 40, blueprint.getPages()[currentPage].recipeB);
 			}
 			fontRendererObj.setUnicodeFlag(false);			
 		}else if(index != null && !index.isEmpty() && level == 1){

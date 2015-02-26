@@ -81,46 +81,7 @@ public class BlockGenerator extends BlockMTBase {
 			world.spawnEntityInWorld(new EntityItem(world, x, y, z, stack));			
 		}
 	}
-	
-	
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		if(world.getBlockMetadata(x, y, z) == 4) {
-			if(world.getTileEntity(x, y, z) instanceof TileRunicGenerator) {
-				TileRunicGenerator generator = (TileRunicGenerator)world.getTileEntity(x, y, z);
-				if(generator.inventory != null) {
-					if(player.isSneaking()) {
-						if(!player.inventory.addItemStackToInventory(generator.inventory)) {
-							ForgeDirection fd = ForgeDirection.getOrientation(side);
-							world.spawnEntityInWorld(new EntityItem(world, x + 0.5F + fd.offsetX / 3.0F, y + 0.5F, z + 0.5F + fd.offsetZ / 3.0F, generator.inventory));
-						}
-						generator.inventory = null;
-					}else{
-						if(player.getHeldItem() == null) {
-							return false;
-						}
-						if(player.getHeldItem().getItem() == generator.inventory.getItem() && player.getHeldItem().getItemDamage() == generator.inventory.getItemDamage()) {
-							generator.inventory.stackSize++;
-							player.inventory.decrStackSize(player.inventory.currentItem, 1);
-						}
-					}
-				}else{
-					if(player.getHeldItem() != null) {
-						ItemStack stack = player.getHeldItem();
-						if(!ChipCrafterHelper.recipeExistsFromOutput(stack)) {
-							return false;
-						}
-						int size = player.isSneaking() ? stack.stackSize : 1;
-						generator.inventory = stack.copy();
-						generator.inventory.stackSize = size;
-						player.inventory.decrStackSize(player.inventory.currentItem, size);
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
+
 	
 	@Override
 	public void randomDisplayTick(World world, int x, int y, int z, Random r) {
@@ -177,7 +138,7 @@ public class BlockGenerator extends BlockMTBase {
 
 	@Override
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for(int i = 0; i < 6; i++) {
+		for(int i = 0; i < 5; i++) {
 			list.add(new ItemStack(item, 1, i));
 		}
 	}
@@ -190,13 +151,11 @@ public class BlockGenerator extends BlockMTBase {
 		case 1:
 			return new TileSubTerraGenerator();
 		case 2:
-			return new TileRunicGenerator();
-		case 3:
 			return new TileThermalGenerator();
-		case 4:
-			return new TileDestructionGenerator();
-		case 5:
+		case 3:
 			return new TileBounceGenerator();
+		case 4:
+			return new TileCoalGenerator();
 		}
 		return null;
 	}

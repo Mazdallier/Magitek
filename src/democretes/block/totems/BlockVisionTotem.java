@@ -21,11 +21,11 @@ public class BlockVisionTotem extends BlockMTBase {
 	}
 	
 	public void registerBlockIcons(IIconRegister ir) {
-		facingActive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vision_Active");
-		facingInactive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vision_Inactive");
-		vertical = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vision_vertical");
-		sides = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem_vision_side");
-	};
+		facingActive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem/totem_vision_Active");
+		facingInactive = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem/totem_vision_Inactive");
+		vertical = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem/totem_vision_vertical");
+		sides = ir.registerIcon(Reference.TEXTURE_PREFIX + "totem/totem_vision_side");
+	}
 	
 	IIcon facingInactive;
 	IIcon facingActive;

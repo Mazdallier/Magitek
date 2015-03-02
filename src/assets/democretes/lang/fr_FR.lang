@@ -1,0 +1,72 @@
+itemGroup.Magitek=Magitek
+
+#Items
+item.magitek.ingot.0.name=Fer rustique
+item.magitek.ingot.1.name=Fer fragile
+item.magitek.ingot.2.name=Fer lumineux
+item.magitek.ingot.3.name=Fer sombre
+item.magitek.chip.0.name=Circuit en fer
+item.magitek.chip.1.name=Circuit en or
+item.magitek.chip.2.name=Circuit rustique
+item.magitek.chip.3.name=Circuit fragile
+item.magitek.chip.4.name=Circuit lumineux
+item.magitek.chip.5.name=Circuit sombre
+item.magitek.sigil.ritual.0.name=Symbole brut d'attache
+item.magitek.sigil.ritual.1.name=Symbole générique d'attache
+item.magitek.sigil.ritual.2.name=Symbole sophistiqué d'attache
+item.magitek.sigil.divination.name=Symbole divinatoire
+
+item.dark.helmet.name=Casque infecté
+item.dark.chestplate.name=Plastron infecté
+item.dark.legs.name=Jambières infectées
+item.dark.boots.name=Bottes infectées
+item.pure.helmet.name=Casque pur
+item.pure.chestplate.name=Plastron pur
+item.pure.legs.name=Jambières pures
+item.pure.boots.name=Bottes pures
+
+
+#Blocks
+tile.magitek.generator.0.name=Panneau solaire
+tile.magitek.generator.1.name=Générateur sous-terrain
+tile.magitek.generator.2.name=Générateur runique
+tile.magitek.generator.3.name=Consommateur magmatique
+tile.magitek.generator.4.name=Dévoreur de chunk
+tile.magitek.generator.5.name=Générateur cinétique
+tile.magitek.machine.0.name=Constructeur runique
+tile.magitek.machine.1.name=Four Macht
+tile.magitek.machine.2.name=Constructeur de masse
+tile.magitek.altar.name=Autel de Pouvoir
+tile.magitek.coil.name=Bobine Macht 
+tile.magitek.disposable.0.name=Générateur explosif
+tile.magitek.simple.0.name=Bloc Macht
+tile.magitek.simple.1.name=Briques infusées Macht
+tile.magitek.transfer.name=Déchargeur d'éléments
+tile.magitek.totem.vision.name=Totem évident
+tile.magitek.totem.enhancer.name=Totem autonome
+
+#Misc
+enchantment.devour=Dévoreur
+magitek.nei.infusion=Recette d'infusion
+magitek.nei.reconstructor=Recette de reconstructeur
+magitek.nei.ritual.basic=Rituel brut
+magitek.nei.ritual.advanced=Rituel générique
+magitek.nei.ritual.complex=Rituel sophistiqué
+magitek.macht.stored=Macht stocké
+magitek.purity.stored=Pureté stockée
+
+#Research
+magitek.book.title=Manuscrit de Wissen
+magitek.book.contents=Table des matières
+
+magitek.research.category.combat=Combat
+magitek.research.category.crafting=Artisanat
+magitek.research.category.agriculture=Agriculture
+magitek.research.category.machine=Machinerie
+magitek.research.category.mining=Minage
+magitek.research.category.misc=Divers
+magitek.research.category.processing=Traitement avancé
+
+magitek.blueprint.furnace=Four Macht
+magitek.blueprint.furnace.0=Vous avez développé une façon de créer une flamme intense. Si intense, que quoi que ce soit passant par elle est fondu presque immédiatement. Vous supposez que vous pouvez ceci utiliser pour faire cuire ou avez senti quoi que ce soit de nécessaire en le jetant dans la flamme et l'ayant d'une trémie de récupération de l'autre côté.
+magitek.blueprint.furnace.1
